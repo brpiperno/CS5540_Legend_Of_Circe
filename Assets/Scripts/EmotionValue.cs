@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 
+//Assign this script to Circe and all NPCs
+
 public class EmotionValue : MonoBehaviour, EmotionInterface
 {
-    //add each emotion type and set the initial values to 100;
-    private Dictionary<EmotionType, int> emotionValues =
-        new Dictionary<EmotionType, int> {
+    private Dictionary<EmotionType, int> emotionValues;  
+    
+    private Dictionary<EmotionType, int> defenseModifiers;
+    
+    void Start() {
+        //add each emotion type and set the initial values to 100;
+        emotionValues = new Dictionary<EmotionType, int> {
             {EmotionType.Wrath, 100},
             {EmotionType.Love, 100},
             {EmotionType.Grief, 100},
             {EmotionType.Mirth, 100}
         };
-    
-    //add each emotion type and set the initial values to 1;
-    private Dictionary<EmotionType, int> defenseModifiers =
-        new Dictionary<EmotionType, int> {
+        //add each emotion type and set the initial values to 1;
+        defenseModifiers = new Dictionary<EmotionType, int> {
             {EmotionType.Wrath, 1},
             {EmotionType.Love, 1},
             {EmotionType.Grief, 1},
             {EmotionType.Mirth, 1}
         };
-    
+    }
 
     public int GetWrath()
     {
