@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
+    // true if the player is allowed to press a button. If false then pressing buttons won't do anything.
+    bool takingInInput = false;
+
+    public GameObject circe;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (circe == null) {
+            circe = GameObject.FindGameObjectWithTag("Player");
+        }
     }
 
     // Update is called once per frame
@@ -23,22 +31,46 @@ public class BattleManager : MonoBehaviour
         //get the NPC being interacted with on the other
 
         //bring up any game UIs (emotion values, heart indicators, spell indicators)
+        SceneManager.LoadScene("BattleScreen");
 
         //set all values for the caller and target emotions
 
         //enable the caller to set an input. Once that input is set, then use that input and the input from the target to determine the effects of the turn
+        playersTurn();
     }
 
-    public void submitMove(BattleMove battleMove)
+    public void playersTurn() {
+        takingInInput = true;
+        if (Input.GetKeyDown("up")) {
+            submitMove(new EmotionMove(EmotionType.Grief));
+        } else if (Input.GetKeyDown("left")) {
+            submitMove(new EmotionMove(EmotionType.Love));
+        } else if (Input.GetKeyDown("right")) {
+            submitMove(new EmotionMove(EmotionType.Wrath));
+        } else if (Input.GetKeyDown("down")) {
+            submitMove(new EmotionMove(EmotionType.Mirth));
+        } else if (Input.GetKeyDown("space")) {
+            openSpellMenu();
+        }
+    }
+
+    public void submitMove(IBattleMove battleMove)
     {
         //this is called by the player when they are ready to determine the effects of the move chosen
 
 
         //get the next move from the NPC
+        IBattleMove opponentMove = determineOpponentMove();
         
+        //Enact the caller's move, displaying appropriate animations and playing sounds
+        animateMoveForCirce(battleMove);
 
-        //Enact the caller's move, dispalying appropriate animations and playing sounds
         //Enact the target's move, displaying appropriate animations and playing sounds
+        animateMoveForOpponent(opponentMove);
+
+        // base number of points for each attack, specified as a variable able to be edited in the inspector?
+        // Call getTypeChartMultiplier() and multiply this by the base number of points
+        // Multiply this by 
 
         //if the move was supereffective against the target, update the heart UI
 
@@ -82,4 +114,19 @@ public class BattleManager : MonoBehaviour
      * A grief level
      * For each type of emotion, it also has a defense modifier that determines how effective BattleMoves are at affecting it
      */
+
+     public void openSpellMenu() {
+
+     }
+
+     public IBattleMove determineOpponentMove() {
+
+     }
+
+     public void animateMoveForCirce() {
+
+     }
+    public void animateMoveForOpponent() {
+
+     }
 }

@@ -5,10 +5,24 @@ using UnityEngine;
 
 public class EmotionValue : MonoBehaviour, EmotionInterface
 {
-    private Dictionary<EmotionType, int> emotionValues;
     //add each emotion type and set the initial values to 100;
-    private Dictionary<EmotionType, int> defenseModifiers;
+    private Dictionary<EmotionType, int> emotionValues =
+        new Dictionary<EmotionType, int> {
+            {EmotionType.Wrath, 100},
+            {EmotionType.Love, 100},
+            {EmotionType.Grief, 100},
+            {EmotionType.Mirth, 100}
+        };
+    
     //add each emotion type and set the initial values to 1;
+    private Dictionary<EmotionType, int> defenseModifiers =
+        new Dictionary<EmotionType, int> {
+            {EmotionType.Wrath, 1},
+            {EmotionType.Love, 1},
+            {EmotionType.Grief, 1},
+            {EmotionType.Mirth, 1}
+        };
+    
 
     public int GetWrath()
     {
