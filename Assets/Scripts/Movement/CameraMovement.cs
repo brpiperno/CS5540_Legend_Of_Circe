@@ -59,7 +59,7 @@ public class CameraMovement : MonoBehaviour
 
     private bool isBattleActive()
     {
-        return true;
+        return false;
 
         //TODO: update this method to ask the Battle Manager
     }
