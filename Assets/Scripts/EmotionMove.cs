@@ -5,6 +5,7 @@ using UnityEngine;
 public class EmotionMove : IBattleMove
 {
     EmotionType emotionType;
+    int EmotionCost;
 
     public EmotionMove(EmotionType e) {
         emotionType = e;

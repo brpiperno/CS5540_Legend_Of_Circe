@@ -127,10 +127,10 @@ public class BattleManager : MonoBehaviour
 
      }
 
-     public void animateMoveForCirce() {
+     /*public void animateMoveForCirce() {
 
      }
     public void animateMoveForOpponent() {
 
-     }
+     }*/
 }

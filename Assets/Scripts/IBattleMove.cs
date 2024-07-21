@@ -8,4 +8,5 @@ public interface IBattleMove
     public GameObject getTarget();
     public void ApplyMove();
     public string toString();
+    public string getAnimationTrigger();
 }
