@@ -7,17 +7,8 @@ public class SpellMove : IBattleMove
     EmotionType emotionType;
     SpellType spellType;
 
-    public GameObject getUser()
-    {
-        return null;
-    }
-    public GameObject getTarget()
-    {
-        return null;
-    }
-    public void ApplyMove()
-    {
-        return;
+    public EmotionType GetEmotionType() {
+        return emotionType;
     }
     public string toString()
     {

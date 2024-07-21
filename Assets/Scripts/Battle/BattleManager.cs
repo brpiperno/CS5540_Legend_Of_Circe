@@ -6,10 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    bool isPlayerTurn = true;
 
     public GameObject circe;
     public GameObject opponent;
+    public EmotionInterface playerSystem;
+    public EmotionInterface opponentSystem;
+    public RandomEmotionPicker randomEmotionPicker;
+    public static float basePowerForMoves = 10f;
+    bool isAskingForPlayerInput = true;
+    bool isRoundFinished = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +22,9 @@ public class BattleManager : MonoBehaviour
         if (circe == null) {
             circe = GameObject.FindGameObjectWithTag("Player");
         }
+        playerSystem = circe.GetComponent<EmotionSystem>();
+        opponentSystem = opponent.GetComponent<EmotionSystem>();
+        randomEmotionPicker = new RandomEmotionPicker(playerSystem as EmotionSystem, new EmotionSystem[] {opponentSystem as EmotionSystem});
     }
 
     // Update is called once per frame
@@ -24,18 +32,30 @@ public class BattleManager : MonoBehaviour
     {
         //int wrath = GetComponent<EmotionInterface>().GetWrath(); example on getting wrath values
 
-        if (isPlayerTurn) {
+        if (isAskingForPlayerInput) {
+            IBattleMove playersMove;
             if (Input.GetKeyDown("up")) {
-                submitMove(new EmotionMove(EmotionType.Grief));
+                isAskingForPlayerInput = false;
+                playersMove = new EmotionMove(EmotionType.Grief);
+                playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("left")) {
-                submitMove(new EmotionMove(EmotionType.Love));
+                isAskingForPlayerInput = false;
+                playersMove = new EmotionMove(EmotionType.Love);
+                playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("right")) {
-                submitMove(new EmotionMove(EmotionType.Wrath));
+                isAskingForPlayerInput = false;
+                playersMove = new EmotionMove(EmotionType.Wrath);
+                playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("down")) {
-                submitMove(new EmotionMove(EmotionType.Mirth));
+                isAskingForPlayerInput = false;
+                playersMove = new EmotionMove(EmotionType.Mirth);
+                playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("space")) {
                 openSpellMenu();
             }
+            IBattleMove opponentsMove = randomEmotionPicker.GetBattleMove();
+            opponentSystem.AcceptMove(playersMove, opponentsMove);
+            opponentSystem.PlayMove(opponentsMove);
         }
     }
 
@@ -65,8 +85,8 @@ public class BattleManager : MonoBehaviour
 
         // base number of points for each attack, specified as a variable able to be edited in the inspector?
         // Call getTypeChartMultiplier() and multiply this by the base number of points
-        // Multiply this by circe.GetComponent<EmotionValue>.getDefense(whichever_emotionType)
-          // or opponent.GetComponent<EmotionValue>.getDefense(whichever_emotionType)
+        // Multiply this by circe.GetComponent<EmotionSystem>.getDefense(whichever_emotionType)
+          // or opponent.GetComponent<EmotionSystem>.getDefense(whichever_emotionType)
         // update player's bars, aura
         // update opponent's bars, aura
 
@@ -127,14 +147,7 @@ public class BattleManager : MonoBehaviour
         return null;
      }
 
-<<<<<<< HEAD
-     public void animateMoveForCirce(IBattleMove move) {
-=======
-     /*public void animateMoveForCirce() {
->>>>>>> aec8856efcb76c092a12ce1de37bb0270e32206a
-
+     public static float getTypeChartMultiplier(EmotionType e1, EmotionType e2) {
+        return 1;
      }
-    public void animateMoveForOpponent(IBattleMove move) {
-
-     }*/
 }

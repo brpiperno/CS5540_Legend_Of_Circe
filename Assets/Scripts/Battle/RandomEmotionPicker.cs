@@ -9,10 +9,10 @@ public class RandomEmotionPicker : IMovePicker
 {
     private int minEmotionValue = 10; //the minimum amount of emotion needed to use a basic move
     private ISet<EmotionType> movesAvailable;
-    private EmotionValue[] targetEmotionValues; //TODO: confirm if this should be a type EmotionValue or GameObject
-    private EmotionValue userEmotionValue;
+    private EmotionSystem[] targetEmotionValues; //TODO: confirm if this should be a type EmotionValue or GameObject
+    private EmotionSystem userEmotionValue;
 
-    public RandomEmotionPicker(EmotionValue userEmotionValue, EmotionValue[] targets)
+    public RandomEmotionPicker(EmotionSystem userEmotionValue, EmotionSystem[] targets)
     {
         minEmotionValue = 10; //the minimum amount of emotion needed to use a basic move
         movesAvailable = new HashSet<EmotionType>();

@@ -13,7 +13,7 @@ public class EmotionBarManager : MonoBehaviour
     public Slider mirthSlider;
     
     private Dictionary<EmotionType, Slider> sliders = new Dictionary<EmotionType, Slider>();
-    public EmotionValue emotionValue; //get a reference to the object's emotion values that it should track
+    public EmotionSystem emotionValue; //get a reference to the object's emotion values that it should track
     
     // Start is called before the first frame update
     void Start()
