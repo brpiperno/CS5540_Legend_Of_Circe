@@ -44,11 +44,17 @@ public class EmotionValue : MonoBehaviour, EmotionInterface
         return emotionValues[EmotionType.Mirth];
     }
 
+    public int GetEmotionValue(EmotionType type)
+    {
+        return emotionValues[type];
+    }
 
     public void ShiftEmotion(EmotionType emotion, int value)
     {
         //get the current value of the chose Emotion type, and update it accordingly,
         //based on the min,max, current value, and defense modifier
+
+        //TODO: update UI for that bar
     }
 
 }

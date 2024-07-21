@@ -120,13 +120,13 @@ public class BattleManager : MonoBehaviour
      }
 
      public IBattleMove determineOpponentMove() {
-
+        return null;
      }
 
-     public void animateMoveForCirce() {
+     public void animateMoveForCirce(IBattleMove move) {
 
      }
-    public void animateMoveForOpponent() {
+    public void animateMoveForOpponent(IBattleMove move) {
 
      }
 }
