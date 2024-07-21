@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EmotionMove : IBattleMove
 {
-    private EmotionType emotionType;
-    private EmotionValue user;
-    private EmotionValue target;
-    private int effectStrength;
+    EmotionType emotionType;
+    int EmotionCost;
 
     public EmotionMove(EmotionType e, EmotionValue user, EmotionValue target, int effectStrength) {
         emotionType = e;

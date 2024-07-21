@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    // true if the player is allowed to press a button. If false then pressing buttons won't do anything.
-    bool takingInInput = false;
+    bool isPlayerTurn = true;
 
     public GameObject circe;
+    public GameObject opponent;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,23 @@ public class BattleManager : MonoBehaviour
     void Update()
     {
         //int wrath = GetComponent<EmotionInterface>().GetWrath(); example on getting wrath values
+
+        if (isPlayerTurn) {
+            if (Input.GetKeyDown("up")) {
+                submitMove(new EmotionMove(EmotionType.Grief));
+            } else if (Input.GetKeyDown("left")) {
+                submitMove(new EmotionMove(EmotionType.Love));
+            } else if (Input.GetKeyDown("right")) {
+                submitMove(new EmotionMove(EmotionType.Wrath));
+            } else if (Input.GetKeyDown("down")) {
+                submitMove(new EmotionMove(EmotionType.Mirth));
+            } else if (Input.GetKeyDown("space")) {
+                openSpellMenu();
+            }
+        }
     }
 
+    /** Battle starts when we open the battle scene?
     public void StartBattle(GameObject caller, GameObject target)
     {
         //get the player on one side
@@ -38,21 +53,7 @@ public class BattleManager : MonoBehaviour
         //enable the caller to set an input. Once that input is set, then use that input and the input from the target to determine the effects of the turn
         playersTurn();
     }
-
-    public void playersTurn() {
-        takingInInput = true;
-        if (Input.GetKeyDown("up")) {
-            submitMove(new EmotionMove(EmotionType.Grief));
-        } else if (Input.GetKeyDown("left")) {
-            submitMove(new EmotionMove(EmotionType.Love));
-        } else if (Input.GetKeyDown("right")) {
-            submitMove(new EmotionMove(EmotionType.Wrath));
-        } else if (Input.GetKeyDown("down")) {
-            submitMove(new EmotionMove(EmotionType.Mirth));
-        } else if (Input.GetKeyDown("space")) {
-            openSpellMenu();
-        }
-    }
+    **/
 
     public void submitMove(IBattleMove battleMove)
     {
@@ -61,25 +62,28 @@ public class BattleManager : MonoBehaviour
 
         //get the next move from the NPC
         IBattleMove opponentMove = determineOpponentMove();
-        
-        //Enact the caller's move, displaying appropriate animations and playing sounds
-        animateMoveForCirce(battleMove);
-
-        //Enact the target's move, displaying appropriate animations and playing sounds
-        animateMoveForOpponent(opponentMove);
 
         // base number of points for each attack, specified as a variable able to be edited in the inspector?
         // Call getTypeChartMultiplier() and multiply this by the base number of points
-        // Multiply this by 
+        // Multiply this by circe.GetComponent<EmotionValue>.getDefense(whichever_emotionType)
+          // or opponent.GetComponent<EmotionValue>.getDefense(whichever_emotionType)
+        // update player's bars, aura
+        // update opponent's bars, aura
+
+        // If animations are different depending on the type chart multiplier, do them after calling getTypeChartMultiplier
+        //Enact the caller's move, displaying appropriate animations and playing sounds
+        animateMoveForCirce(battleMove);
+        //Enact the target's move, displaying appropriate animations and playing sounds
+        animateMoveForOpponent(opponentMove);
 
         //if the move was supereffective against the target, update the heart UI
-
 
         //check if battle over
             // heart UI is filled on enemy
             // all emotion values for a caller or target are 0
             // specific emotion goals for target are met
         //enable the caller to set an input for the next turn
+        isPlayerTurn = true;
     }
 
 
@@ -123,10 +127,14 @@ public class BattleManager : MonoBehaviour
         return null;
      }
 
+<<<<<<< HEAD
      public void animateMoveForCirce(IBattleMove move) {
+=======
+     /*public void animateMoveForCirce() {
+>>>>>>> aec8856efcb76c092a12ce1de37bb0270e32206a
 
      }
     public void animateMoveForOpponent(IBattleMove move) {
 
-     }
+     }*/
 }

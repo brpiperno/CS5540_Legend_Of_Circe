@@ -16,4 +16,5 @@ public interface IBattleMove
     
     //Represent the IBattleMove as a string
     public string toString();
+    public string getAnimationTrigger();
 }
