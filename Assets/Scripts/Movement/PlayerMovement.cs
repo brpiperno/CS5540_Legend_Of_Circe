@@ -5,19 +5,27 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float rotationSpeed = 10f;
+    public float moveSpeed = 15f;
+    public float rotationSpeed = 40f;
     CharacterController controller;
+    BattleManager battleManager;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        battleManager = FindFirstObjectByType<BattleManager>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        //if there is a battle manager, return early
+        if (battleManager != null)
+        {
+            return;
+        }
+
         //Rotate player on left/right
         //move forwards or backwards on left right
         float moveHorizontal = Input.GetAxis("Horizontal");

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1622463403350754057}
   - component: {fileID: 1452169646054766466}
   m_Layer: 0
-  m_Name: Circe
+  m_Name: Circe (Capsule)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

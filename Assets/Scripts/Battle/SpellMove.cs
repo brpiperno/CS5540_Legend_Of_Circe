@@ -1,25 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpellMove : IBattleMove
 {
     EmotionType emotionType;
     SpellType spellType;
 
-    public GameObject getUser()
+    public EmotionType GetEmotionType()
     {
-        return null;
-    }
-    public GameObject getTarget()
-    {
-        return null;
-    }
-    public void ApplyMove()
-    {
-        return;
+        return emotionType;
     }
     public string toString()
+    {
+        return null;
+    }
+    public string getAnimationTrigger()
     {
         return null;
     }

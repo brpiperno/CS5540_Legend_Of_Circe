@@ -13,8 +13,10 @@ public class EmotionBarManager : MonoBehaviour
     public Slider mirthSlider;
     
     private Dictionary<EmotionType, Slider> sliders = new Dictionary<EmotionType, Slider>();
-    public EmotionValue emotionValue; //get a reference to the object's emotion values that it should track
-    
+    public EmotionSystem emotionValue; //get a reference to the object's emotion values that it should track
+
+    private bool isUpdatingUI = true; //whether the emotion bars are currently being updated
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +33,40 @@ public class EmotionBarManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        bool allBarsFinalized = true;
+        if (isUpdatingUI)
+        {
+            
+            foreach (EmotionType emotion in sliders.Keys)
+            {
+                float current = sliders[emotion].value;
+                float actual = emotionValue.GetEmotion(emotion);
+                if (current != actual)
+                {
+                    sliders[emotion].value = Mathf.Lerp(current, actual, Time.deltaTime);
+                }
+                else
+                {
+                    allBarsFinalized = allBarsFinalized && current == actual; //bars are finalized only if current == actual for all emotions
+                }
+            }
+        }
+        if (allBarsFinalized)
+        {
+            isUpdatingUI = false; //turn itself off after all bars are at their level.
+        }
+    }
+
 
     public void UpdateEmotionBar()
     {
-        foreach (EmotionType emotion in sliders.Keys)
-        {
-            sliders[emotion].value = emotionValue.GetEmotionValue(emotion);
-        }
+        isUpdatingUI = true;
+    }
+
+    public bool isChanging()
+    {
+        return isUpdatingUI;
     }
 }
