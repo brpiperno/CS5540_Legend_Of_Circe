@@ -9,6 +9,7 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject opponent;
     public IEmotion playerSystem;
     public IEmotion opponentSystem;
+    //public Canvas canvas;
     Dictionary<EmotionType, Slider> playerSliderDictionary;
     Dictionary<EmotionType, Slider> opponentSliderDictionary;
     void Start()
@@ -18,14 +19,24 @@ public class VisualController : MonoBehaviour, IVisualController
         }
         playerSystem = circe.GetComponent<EmotionSystem>();
         opponentSystem = opponent.GetComponent<EmotionSystem>();
-        playerSliderDictionary[EmotionType.Grief] = GameObject.Find("Grief bar").GetComponent<Slider>();
-        playerSliderDictionary[EmotionType.Love] = GameObject.Find("Love bar").GetComponent<Slider>();
-        playerSliderDictionary[EmotionType.Wrath] = GameObject.Find("Wrath bar").GetComponent<Slider>();
-        playerSliderDictionary[EmotionType.Mirth] = GameObject.Find("Mirth bar").GetComponent<Slider>();
-        opponentSliderDictionary[EmotionType.Grief] = GameObject.Find("Enemy Grief bar").GetComponent<Slider>();
-        opponentSliderDictionary[EmotionType.Love] = GameObject.Find("Enemy Love bar").GetComponent<Slider>();
-        opponentSliderDictionary[EmotionType.Wrath] = GameObject.Find("Enemy Wrath bar").GetComponent<Slider>();
-        opponentSliderDictionary[EmotionType.Mirth] = GameObject.Find("Enemy Mirth bar").GetComponent<Slider>();
+        /* Debugging
+        GameObject isValidGameObject = GameObject.Find("Grief bar");
+        if (isValidGameObject == null) {
+            Debug.Log("Could not find the object");
+        }
+        Slider doesThisWorkToo = GameObject.Find("Grief bar").GetComponent<Slider>();
+        if (doesThisWorkToo == null) {
+            Debug.Log("Could not find the slider component");
+        }*/
+        //playerSliderDictionary[EmotionType.Grief] = canvas.transform.FindChild("Grief bar").gameObject.GetComponent<Slider>();
+        playerSliderDictionary[EmotionType.Grief] = gameObject.transform.Find("Grief bar").GetComponent<Slider>();
+        playerSliderDictionary[EmotionType.Love] = gameObject.transform.Find("Love bar").GetComponent<Slider>();
+        playerSliderDictionary[EmotionType.Wrath] = gameObject.transform.Find("Wrath bar").GetComponent<Slider>();
+        playerSliderDictionary[EmotionType.Mirth] = gameObject.transform.Find("Mirth bar").GetComponent<Slider>();
+        opponentSliderDictionary[EmotionType.Grief] = gameObject.transform.Find("Enemy Grief bar").GetComponent<Slider>();
+        opponentSliderDictionary[EmotionType.Love] = gameObject.transform.Find("Enemy Love bar").GetComponent<Slider>();
+        opponentSliderDictionary[EmotionType.Wrath] = gameObject.transform.Find("Enemy Wrath bar").GetComponent<Slider>();
+        opponentSliderDictionary[EmotionType.Mirth] = gameObject.transform.Find("Enemy Mirth bar").GetComponent<Slider>();
     }
     public void setAnimationTrigger(string trigger) {
 
