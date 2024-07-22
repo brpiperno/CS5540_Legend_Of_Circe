@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IVisualController
+public interface IVisualController
 {
     void setAnimationTrigger(string trigger);
-    void updateEmotionBarUI();
+    void updateEmotionBarUI(bool updatingPlayerUI, EmotionType affectedEmotion, float damage);
 }

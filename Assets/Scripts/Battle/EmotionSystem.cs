@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using System;
 
 //Assign this script to Circe and all NPCs
 
-public class EmotionSystem : MonoBehaviour, EmotionInterface
+public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public GameObject playerAttackAnimationObject;
     public GameObject enemyAttackAnimationObject;
     public IVisualController visualController;
-    private Dictionary<EmotionType, int> emotionValues;  
+    private Dictionary<EmotionType, float> emotionValues;  
     
     private Dictionary<EmotionType, int> defenseModifiers;
     
     void Start() {
         //add each emotion type and set the initial values to 100;
-        emotionValues = new Dictionary<EmotionType, int> {
+        emotionValues = new Dictionary<EmotionType, float> {
             {EmotionType.Wrath, 100},
             {EmotionType.Love, 100},
             {EmotionType.Grief, 100},
@@ -31,20 +32,21 @@ public class EmotionSystem : MonoBehaviour, EmotionInterface
         };
     }
 
-    public int GetEmotion(EmotionType type) {
+    public float GetEmotion(EmotionType type) {
         return emotionValues[type];
     }
 
+    // Method does not use the move variable so far
     public void PlayMove(IBattleMove move) {
         // Circe's move animation
         if (gameObject.tag == "Player") {
             GameObject newAttack = Instantiate(playerAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
             Destroy(newAttack, 1);
-        }
-        // Opponent's move animation
-        if (gameObject.tag == "Enemy") {
+        } else if (gameObject.tag == "Enemy") { // Opponent's move animation
             GameObject newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
             Destroy(newAttack, 1);
+        } else {
+            throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
     }
 
@@ -53,16 +55,41 @@ public class EmotionSystem : MonoBehaviour, EmotionInterface
         object as well to calculate effectiveness.
     */
     public void AcceptMove(IBattleMove attacker, IBattleMove receiver) {
-        float damage = BattleManager.basePowerForMoves * 
+        //float damage = BattleManager.basePowerForMoves * 
+        //    BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
+        //    receiver.GetEmotionType()) * defenseModifiers[attacker.GetEmotionType()];
+
+        float damage = (attacker as EmotionMove).getEffectStrength() * 
             BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
-            receiver.GetEmotionType()) * defenseModifiers[];
-        
+            receiver.GetEmotionType()) * defenseModifiers[attacker.GetEmotionType()];
+
+        float newValue = ShiftEmotions(attacker.GetEmotionType(), damage);
+
+        if (gameObject.tag == "Player") {
+            Debug.Log("Circe's action has a " + BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(),
+                receiver.GetEmotionType()) + "x multiplier");
+            visualController.updateEmotionBarUI(true, attacker.GetEmotionType(), newValue);
+            Debug.Log("Opponent spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to Circe!");
+        } else if (gameObject.tag == "Enemy") {
+            Debug.Log("The opponent's action has a " +
+                BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
+                receiver.GetEmotionType()) + "x multiplier");
+            visualController.updateEmotionBarUI(false, attacker.GetEmotionType(), newValue);
+            Debug.Log("Circe spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to the opponent!");
+        }
     }
 
-    public void ShiftEmotions(EmotionType emotion, int value)
+    // Returns the new value of the emotion bar that was modified
+    public float ShiftEmotions(EmotionType emotion, float value)
     {
         //get the current value of the chose Emotion type, and update it accordingly,
         //based on the min,max, current value, and defense modifier
+        float newValue = GetEmotion(emotion) - value;
+        if (newValue < 0) {
+            newValue = 0;
+        }
+        emotionValues[emotion] = newValue;
+        return newValue;
     }
 
 }

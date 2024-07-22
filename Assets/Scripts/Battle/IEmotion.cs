@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IEmotion : MonoBehaviour
+public interface IEmotion
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    float GetEmotion(EmotionType type);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    float ShiftEmotions(EmotionType emotion, float value);
+
+    void PlayMove(IBattleMove move);
+
+    void AcceptMove(IBattleMove attacker, IBattleMove receiver);
 }

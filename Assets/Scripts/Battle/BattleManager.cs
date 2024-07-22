@@ -9,10 +9,11 @@ public class BattleManager : MonoBehaviour
 
     public GameObject circe;
     public GameObject opponent;
-    public EmotionInterface playerSystem;
-    public EmotionInterface opponentSystem;
+    public IEmotion playerSystem;
+    public IEmotion opponentSystem;
     public RandomEmotionPicker randomEmotionPicker;
-    public static float basePowerForMoves = 10f;
+    //public static float basePowerForMoves = 10f;
+    // Replaced with an effect strength for each move
     bool isAskingForPlayerInput = true;
     bool isRoundFinished = false;
 
@@ -30,10 +31,10 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //int wrath = GetComponent<EmotionInterface>().GetWrath(); example on getting wrath values
+        //int wrath = GetComponent<IEmotion>().GetWrath(); example on getting wrath values
 
         if (isAskingForPlayerInput) {
-            IBattleMove playersMove;
+            IBattleMove playersMove = null;
             if (Input.GetKeyDown("up")) {
                 isAskingForPlayerInput = false;
                 playersMove = new EmotionMove(EmotionType.Grief);
@@ -50,12 +51,16 @@ public class BattleManager : MonoBehaviour
                 isAskingForPlayerInput = false;
                 playersMove = new EmotionMove(EmotionType.Mirth);
                 playerSystem.PlayMove(playersMove);
-            } else if (Input.GetKeyDown("space")) {
-                openSpellMenu();
             }
-            IBattleMove opponentsMove = randomEmotionPicker.GetBattleMove();
-            opponentSystem.AcceptMove(playersMove, opponentsMove);
-            opponentSystem.PlayMove(opponentsMove);
+            //else if (Input.GetKeyDown("space")) {
+            //    openSpellMenu();
+            //}
+            if (playersMove != null) {
+                IBattleMove opponentsMove = randomEmotionPicker.GetBattleMove();
+                opponentSystem.AcceptMove(playersMove, opponentsMove);
+                opponentSystem.PlayMove(opponentsMove);
+                isAskingForPlayerInput = true;
+            }
         }
     }
 
@@ -75,13 +80,13 @@ public class BattleManager : MonoBehaviour
     }
     **/
 
-    public void submitMove(IBattleMove battleMove)
-    {
+    //public void submitMove(IBattleMove battleMove)
+    //{
         //this is called by the player when they are ready to determine the effects of the move chosen
 
 
         //get the next move from the NPC
-        IBattleMove opponentMove = determineOpponentMove();
+        //IBattleMove opponentMove = determineOpponentMove();
 
         // base number of points for each attack, specified as a variable able to be edited in the inspector?
         // Call getTypeChartMultiplier() and multiply this by the base number of points
@@ -92,9 +97,9 @@ public class BattleManager : MonoBehaviour
 
         // If animations are different depending on the type chart multiplier, do them after calling getTypeChartMultiplier
         //Enact the caller's move, displaying appropriate animations and playing sounds
-        animateMoveForCirce(battleMove);
+        //animateMoveForCirce(battleMove);
         //Enact the target's move, displaying appropriate animations and playing sounds
-        animateMoveForOpponent(opponentMove);
+        //animateMoveForOpponent(opponentMove);
 
         //if the move was supereffective against the target, update the heart UI
 
@@ -103,8 +108,8 @@ public class BattleManager : MonoBehaviour
             // all emotion values for a caller or target are 0
             // specific emotion goals for target are met
         //enable the caller to set an input for the next turn
-        isPlayerTurn = true;
-    }
+        //isPlayerTurn = true;
+    //}
 
 
     // Battle move is one of:
@@ -139,13 +144,9 @@ public class BattleManager : MonoBehaviour
      * For each type of emotion, it also has a defense modifier that determines how effective BattleMoves are at affecting it
      */
 
-     public void openSpellMenu() {
+     //public void openSpellMenu() {
 
-     }
-
-     public IBattleMove determineOpponentMove() {
-        return null;
-     }
+     //}
 
      public static float getTypeChartMultiplier(EmotionType e1, EmotionType e2) {
         return 1;

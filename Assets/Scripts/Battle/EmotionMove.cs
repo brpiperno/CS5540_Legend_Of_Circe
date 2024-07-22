@@ -17,4 +17,10 @@ public class EmotionMove : IBattleMove
     public string toString() {
         return "This is a " + emotionType + " emotion move.";
     }
+    public int getEffectStrength() {
+        return effectStrength;
+    }
+    public string getAnimationTrigger() {
+        return null;
+    }
 }

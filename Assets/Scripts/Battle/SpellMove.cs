@@ -14,4 +14,7 @@ public class SpellMove : IBattleMove
     {
         return null;
     }
+    public string getAnimationTrigger() {
+        return null;
+    }
 }
