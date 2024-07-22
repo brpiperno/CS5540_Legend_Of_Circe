@@ -38,16 +38,32 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
     // Method does not use the move variable so far
     public void PlayMove(IBattleMove move) {
+        GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
-            GameObject newAttack = Instantiate(playerAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
-            Destroy(newAttack, 1);
+            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            GameObject newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(3, 2, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
-            Destroy(newAttack, 1);
+            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(3, 2, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
+        switch(move.GetEmotionType()) {
+            case EmotionType.Grief:
+                newAttack.GetComponent<Renderer>().material.color = new Color(75, 0, 255);
+                break;
+            case EmotionType.Love:
+                newAttack.GetComponent<Renderer>().material.color = new Color(240, 85, 209);
+                break;
+            case EmotionType.Wrath:
+                newAttack.GetComponent<Renderer>().material.color = new Color(255, 60, 0);
+                break;
+            case EmotionType.Mirth:
+                newAttack.GetComponent<Renderer>().material.color = new Color(100, 225, 75);
+                break;
+            default:
+                break;
+        }
+        Destroy(newAttack, 1);
     }
 
     /*
