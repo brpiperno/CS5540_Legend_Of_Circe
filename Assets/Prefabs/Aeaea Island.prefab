@@ -69,7 +69,12 @@ PrefabInstance:
       value: Aeaea Island
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -2615453208677245630, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
+    - {fileID: 6085036178219441596, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
+    - {fileID: 4340423644140328716, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
+    - {fileID: -9038585923029775698, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
+    - {fileID: -8140499575222096, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8513424388201257645, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}

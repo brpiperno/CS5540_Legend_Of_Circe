@@ -26,10 +26,11 @@ public class RandomEmotionPicker : IMovePicker
 
     public IBattleMove GetBattleMove()
     {
-        List<EmotionType> availableOptions = movesAvailable.Where(v => userEmotionValue.GetEmotion(v) >= minEmotionValue).ToList();
-        Random rnd = new Random();
-        int emotionChoice  = rnd.Next(0, availableOptions.Count - 1);
-        int targetChoice = rnd.Next(0, targetEmotionValues.Length - 1);
-        return new EmotionMove(availableOptions[emotionChoice], 20);
+        //List<EmotionType> availableOptions = movesAvailable.Where(v => userEmotionValue.GetEmotion(v) >= minEmotionValue).ToList();
+        //Random rnd = new Random();
+        //int emotionChoice  = rnd.Next(0, availableOptions.Count - 1);
+        //int targetChoice = rnd.Next(0, targetEmotionValues.Length - 1);
+        //return new EmotionMove(availableOptions[emotionChoice], 20);
+        return new EmotionMove(EmotionType.Love);
     }
 }

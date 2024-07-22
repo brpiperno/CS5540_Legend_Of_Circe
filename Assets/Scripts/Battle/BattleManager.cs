@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class BattleManager : MonoBehaviour
 {
@@ -11,11 +13,21 @@ public class BattleManager : MonoBehaviour
     public GameObject opponent;
     public IEmotion playerSystem;
     public IEmotion opponentSystem;
-    public RandomEmotionPicker randomEmotionPicker;
+    public IMovePicker enemyMovePicker;
     //public static float basePowerForMoves = 10f;
     // Replaced with an effect strength for each move
     bool isAskingForPlayerInput = true;
     bool isRoundFinished = false;
+
+
+
+    //Level Management variables
+    public string previousScene;
+    public Text GameOverText;
+    private bool isBattleFinished = false;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +37,10 @@ public class BattleManager : MonoBehaviour
         }
         playerSystem = circe.GetComponent<EmotionSystem>();
         opponentSystem = opponent.GetComponent<EmotionSystem>();
-        randomEmotionPicker = new RandomEmotionPicker(playerSystem as EmotionSystem, new EmotionSystem[] {opponentSystem as EmotionSystem});
+        enemyMovePicker = new RandomEmotionPicker(playerSystem as EmotionSystem, new EmotionSystem[] {opponentSystem as EmotionSystem});
+        if (previousScene == null) {
+            Debug.Log("BattleManager: did not specify name of previous scene");
+        }
     }
 
     // Update is called once per frame
@@ -33,33 +48,51 @@ public class BattleManager : MonoBehaviour
     {
         //int wrath = GetComponent<IEmotion>().GetWrath(); example on getting wrath values
 
-        if (isAskingForPlayerInput) {
+        if (isAskingForPlayerInput && !isBattleFinished) {
             IBattleMove playersMove = null;
             if (Input.GetKeyDown("up")) {
                 isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Grief);
+                playersMove = new EmotionMove(EmotionType.Grief, 25);
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("left")) {
                 isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Love);
+                playersMove = new EmotionMove(EmotionType.Love, 25);
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("right")) {
                 isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Wrath);
+                playersMove = new EmotionMove(EmotionType.Wrath, 25);
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("down")) {
                 isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Mirth);
+                playersMove = new EmotionMove(EmotionType.Mirth, 25);
                 playerSystem.PlayMove(playersMove);
             }
             //else if (Input.GetKeyDown("space")) {
             //    openSpellMenu();
             //}
             if (playersMove != null) {
-                IBattleMove opponentsMove = randomEmotionPicker.GetBattleMove();
+                IBattleMove opponentsMove = enemyMovePicker.GetBattleMove();
                 opponentSystem.AcceptMove(playersMove, opponentsMove);
                 opponentSystem.PlayMove(opponentsMove);
+                playerSystem.AcceptMove(opponentsMove, playersMove);
                 isAskingForPlayerInput = true;
+            }
+        }
+
+        //check for a battle draw condition:
+        foreach (EmotionType e in Enum.GetValues(typeof(EmotionType))) {
+            if (playerSystem.GetEmotion(e) <= 0)
+            {
+                //load previous level
+                SceneManager.LoadScene(previousScene);
+                isBattleFinished = true;
+            }
+            if (opponentSystem.GetEmotion(e) <= 0)
+            {
+                //show game won screen
+                GameOverText.gameObject.SetActive(true);
+                isBattleFinished = true;
+
             }
         }
     }

@@ -43,7 +43,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             GameObject newAttack = Instantiate(playerAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
             Destroy(newAttack, 1);
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            GameObject newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
+            GameObject newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(3, 2, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
             Destroy(newAttack, 1);
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
@@ -68,13 +68,13 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         if (gameObject.tag == "Player") {
             Debug.Log("Circe's action has a " + BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(),
                 receiver.GetEmotionType()) + "x multiplier");
-            visualController.updateEmotionBarUI(true, attacker.GetEmotionType(), newValue);
+            //visualController.updateEmotionBarUI(true, attacker.GetEmotionType(), newValue);
             Debug.Log("Opponent spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to Circe!");
         } else if (gameObject.tag == "Enemy") {
             Debug.Log("The opponent's action has a " +
                 BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
                 receiver.GetEmotionType()) + "x multiplier");
-            visualController.updateEmotionBarUI(false, attacker.GetEmotionType(), newValue);
+            //visualController.updateEmotionBarUI(false, attacker.GetEmotionType(), newValue);
             Debug.Log("Circe spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to the opponent!");
         }
     }
@@ -89,6 +89,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             newValue = 0;
         }
         emotionValues[emotion] = newValue;
+        Debug.Log("new value for " + emotion + " is : " + newValue + "for " + name);
         return newValue;
     }
 

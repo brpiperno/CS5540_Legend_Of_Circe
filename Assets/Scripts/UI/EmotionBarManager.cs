@@ -4,14 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-/*
-This script is not used anywhere else, I didn't see it so I think I re-implemented it
-*/
-
-
 //Script to be added to a slider that adjusts the bar's level when called.
 public class EmotionBarManager : MonoBehaviour
 {
+    public float sliderSpeed = 10;
+
     //Unity doesn't provide the ability to populate data into a dictionary, so instead we will get references when we start and then insert them into the dictionary
     public Slider wrathSlider;
     public Slider griefSlider;
@@ -19,7 +16,7 @@ public class EmotionBarManager : MonoBehaviour
     public Slider mirthSlider;
     
     private Dictionary<EmotionType, Slider> sliders = new Dictionary<EmotionType, Slider>();
-    public EmotionSystem emotionValue; //get a reference to the object's emotion values that it should track
+    public EmotionSystem emotionSystem; //get a reference to the object's emotion values that it should track
 
     private bool isUpdatingUI = true; //whether the emotion bars are currently being updated
 
@@ -36,6 +33,7 @@ public class EmotionBarManager : MonoBehaviour
             //set the maximum (100) and minimum (0)
             sliders[type].minValue = 0;
             sliders[type].maxValue = 100;
+            sliders[type].value = 100;
         }
     }
 
@@ -48,24 +46,27 @@ public class EmotionBarManager : MonoBehaviour
             foreach (EmotionType emotion in sliders.Keys)
             {
                 float current = sliders[emotion].value;
-                float actual = emotionValue.GetEmotion(emotion);
+                float actual = emotionSystem.GetEmotion(emotion);
+                
                 if (current != actual)
                 {
-                    sliders[emotion].value = Mathf.Lerp(current, actual, Time.deltaTime);
+                    //sliders[emotion].value = actual;
+                    sliders[emotion].value = Mathf.Clamp(Mathf.Lerp(current, actual, Time.deltaTime * sliderSpeed), 0, 100);
                 }
                 else
                 {
-                    allBarsFinalized = allBarsFinalized && current == actual; //bars are finalized only if current == actual for all emotions
+                    //allBarsFinalized = allBarsFinalized && current == actual; //bars are finalized only if current == actual for all emotions
                 }
+                Debug.Log(name + ": slider value: " + current + " actual value: " + actual);
             }
         }
-        if (allBarsFinalized)
-        {
-            isUpdatingUI = false; //turn itself off after all bars are at their level.
-        }
+        //if (allBarsFinalized)
+        //{
+        //    isUpdatingUI = false; //turn itself off after all bars are at their level.
+        //}
     }
 
-
+    //public method to be called by an IEmotion to update the bars according to the IEmotion's Values
     public void UpdateEmotionBar()
     {
         isUpdatingUI = true;
