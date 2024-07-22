@@ -20,13 +20,12 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (circe == null)
-        {
+        if (circe == null) {
             circe = GameObject.FindGameObjectWithTag("Player");
         }
         playerSystem = circe.GetComponent<EmotionSystem>();
         opponentSystem = opponent.GetComponent<EmotionSystem>();
-        randomEmotionPicker = new RandomEmotionPicker(playerSystem as EmotionSystem, new EmotionSystem[] { opponentSystem as EmotionSystem });
+        randomEmotionPicker = new RandomEmotionPicker(playerSystem as EmotionSystem, new EmotionSystem[] {opponentSystem as EmotionSystem});
     }
 
     // Update is called once per frame
@@ -34,29 +33,21 @@ public class BattleManager : MonoBehaviour
     {
         //int wrath = GetComponent<IEmotion>().GetWrath(); example on getting wrath values
 
-        if (isAskingForPlayerInput)
-        {
+        if (isAskingForPlayerInput) {
             IBattleMove playersMove = null;
-            if (Input.GetKeyDown("up"))
-            {
+            if (Input.GetKeyDown("up")) {
                 isAskingForPlayerInput = false;
                 playersMove = new EmotionMove(EmotionType.Grief);
                 playerSystem.PlayMove(playersMove);
-            }
-            else if (Input.GetKeyDown("left"))
-            {
+            } else if (Input.GetKeyDown("left")) {
                 isAskingForPlayerInput = false;
                 playersMove = new EmotionMove(EmotionType.Love);
                 playerSystem.PlayMove(playersMove);
-            }
-            else if (Input.GetKeyDown("right"))
-            {
+            } else if (Input.GetKeyDown("right")) {
                 isAskingForPlayerInput = false;
                 playersMove = new EmotionMove(EmotionType.Wrath);
                 playerSystem.PlayMove(playersMove);
-            }
-            else if (Input.GetKeyDown("down"))
-            {
+            } else if (Input.GetKeyDown("down")) {
                 isAskingForPlayerInput = false;
                 playersMove = new EmotionMove(EmotionType.Mirth);
                 playerSystem.PlayMove(playersMove);
@@ -64,8 +55,7 @@ public class BattleManager : MonoBehaviour
             //else if (Input.GetKeyDown("space")) {
             //    openSpellMenu();
             //}
-            if (playersMove != null)
-            {
+            if (playersMove != null) {
                 IBattleMove opponentsMove = randomEmotionPicker.GetBattleMove();
                 opponentSystem.AcceptMove(playersMove, opponentsMove);
                 opponentSystem.PlayMove(opponentsMove);
@@ -92,33 +82,33 @@ public class BattleManager : MonoBehaviour
 
     //public void submitMove(IBattleMove battleMove)
     //{
-    //this is called by the player when they are ready to determine the effects of the move chosen
+        //this is called by the player when they are ready to determine the effects of the move chosen
 
 
-    //get the next move from the NPC
-    //IBattleMove opponentMove = determineOpponentMove();
+        //get the next move from the NPC
+        //IBattleMove opponentMove = determineOpponentMove();
 
-    // base number of points for each attack, specified as a variable able to be edited in the inspector?
-    // Call getTypeChartMultiplier() and multiply this by the base number of points
-    // Multiply this by circe.GetComponent<EmotionSystem>.getDefense(whichever_emotionType)
-    // or opponent.GetComponent<EmotionSystem>.getDefense(whichever_emotionType)
-    // update player's bars, aura
-    // update opponent's bars, aura
+        // base number of points for each attack, specified as a variable able to be edited in the inspector?
+        // Call getTypeChartMultiplier() and multiply this by the base number of points
+        // Multiply this by circe.GetComponent<EmotionSystem>.getDefense(whichever_emotionType)
+          // or opponent.GetComponent<EmotionSystem>.getDefense(whichever_emotionType)
+        // update player's bars, aura
+        // update opponent's bars, aura
 
-    // If animations are different depending on the type chart multiplier, do them after calling getTypeChartMultiplier
-    //Enact the caller's move, displaying appropriate animations and playing sounds
-    //animateMoveForCirce(battleMove);
-    //Enact the target's move, displaying appropriate animations and playing sounds
-    //animateMoveForOpponent(opponentMove);
+        // If animations are different depending on the type chart multiplier, do them after calling getTypeChartMultiplier
+        //Enact the caller's move, displaying appropriate animations and playing sounds
+        //animateMoveForCirce(battleMove);
+        //Enact the target's move, displaying appropriate animations and playing sounds
+        //animateMoveForOpponent(opponentMove);
 
-    //if the move was supereffective against the target, update the heart UI
+        //if the move was supereffective against the target, update the heart UI
 
-    //check if battle over
-    // heart UI is filled on enemy
-    // all emotion values for a caller or target are 0
-    // specific emotion goals for target are met
-    //enable the caller to set an input for the next turn
-    //isPlayerTurn = true;
+        //check if battle over
+            // heart UI is filled on enemy
+            // all emotion values for a caller or target are 0
+            // specific emotion goals for target are met
+        //enable the caller to set an input for the next turn
+        //isPlayerTurn = true;
     //}
 
 
@@ -154,12 +144,11 @@ public class BattleManager : MonoBehaviour
      * For each type of emotion, it also has a defense modifier that determines how effective BattleMoves are at affecting it
      */
 
-    //public void openSpellMenu() {
+     //public void openSpellMenu() {
 
-    //}
+     //}
 
-    public static float getTypeChartMultiplier(EmotionType e1, EmotionType e2)
-    {
+     public static float getTypeChartMultiplier(EmotionType e1, EmotionType e2) {
         return 1;
-    }
+     }
 }

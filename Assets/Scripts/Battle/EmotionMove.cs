@@ -7,25 +7,20 @@ public class EmotionMove : IBattleMove
     int EmotionCost;
     int effectStrength;
 
-    public EmotionMove(EmotionType e, int effectStrength = 10)
-    {
+    public EmotionMove(EmotionType e, int effectStrength = 10) {
         emotionType = e;
         this.effectStrength = effectStrength;
     }
-    public EmotionType GetEmotionType()
-    {
+    public EmotionType GetEmotionType() {
         return emotionType;
     }
-    public string toString()
-    {
+    public string toString() {
         return "This is a " + emotionType + " emotion move.";
     }
-    public int getEffectStrength()
-    {
+    public int getEffectStrength() {
         return effectStrength;
     }
-    public string getAnimationTrigger()
-    {
+    public string getAnimationTrigger() {
         return null;
     }
 }

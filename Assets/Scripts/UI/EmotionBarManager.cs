@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/*
+This script is not used anywhere else, I didn't see it so I think I re-implemented it
+*/
+
+
 //Script to be added to a slider that adjusts the bar's level when called.
 public class EmotionBarManager : MonoBehaviour
 {

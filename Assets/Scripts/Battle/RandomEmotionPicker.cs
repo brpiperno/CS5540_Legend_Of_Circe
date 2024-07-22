@@ -7,16 +7,16 @@ using System.Runtime;
 //A script that creates BattleMoves using a random choice of emotions available
 public class RandomEmotionPicker : IMovePicker
 {
-    private float minEmotionValue = 10.0f; //the minimum amount of emotion needed to use a basic move
+    private int minEmotionValue = 10; //the minimum amount of emotion needed to use a basic move
     private ISet<EmotionType> movesAvailable;
-    private IEmotion[] target;
-    private IEmotion user;
+    private EmotionSystem[] targetEmotionValues; //TODO: confirm if this should be a type EmotionValue or GameObject
+    private EmotionSystem userEmotionValue;
 
-    public RandomEmotionPicker(IEmotion userEmotionValue, IEmotion[] targets)
+    public RandomEmotionPicker(EmotionSystem userEmotionValue, EmotionSystem[] targets)
     {
         minEmotionValue = 10; //the minimum amount of emotion needed to use a basic move
         movesAvailable = new HashSet<EmotionType>();
-        target = targets;
+        targetEmotionValues = targets; //TODO: confirm if this should be a type EmotionValue or GameObject
 
         movesAvailable.Add(EmotionType.Love);
         movesAvailable.Add(EmotionType.Wrath);
@@ -26,10 +26,10 @@ public class RandomEmotionPicker : IMovePicker
 
     public IBattleMove GetBattleMove()
     {
-        List<EmotionType> availableOptions = movesAvailable.Where(v => user.GetEmotion(v) >= minEmotionValue).ToList();
+        List<EmotionType> availableOptions = movesAvailable.Where(v => userEmotionValue.GetEmotion(v) >= minEmotionValue).ToList();
         Random rnd = new Random();
         int emotionChoice  = rnd.Next(0, availableOptions.Count - 1);
-        int targetChoice = rnd.Next(0, target.Length - 1);
+        int targetChoice = rnd.Next(0, targetEmotionValues.Length - 1);
         return new EmotionMove(availableOptions[emotionChoice], 20);
     }
 }
