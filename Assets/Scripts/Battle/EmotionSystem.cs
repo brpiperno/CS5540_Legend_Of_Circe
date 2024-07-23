@@ -41,24 +41,24 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
-            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(3, 3, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
+            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(2.17f, 1.5f, -3.57f), Quaternion.Euler(new Vector3(90, 40, 0)));
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(3, 2, -3), Quaternion.Euler(new Vector3(90, 45, 0)));
+            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(1.8f, 2.03f, -2.5f), Quaternion.Euler(new Vector3(90, 40, 0)));
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
         switch(move.GetEmotionType()) {
             case EmotionType.Grief:
-                newAttack.GetComponent<Renderer>().material.color = new Color(75, 0, 255);
+                newAttack.GetComponent<Renderer>().material.color = new Color(0.2941177f, 0, 1f);
                 break;
             case EmotionType.Love:
-                newAttack.GetComponent<Renderer>().material.color = new Color(240, 85, 209);
+                newAttack.GetComponent<Renderer>().material.color = new Color(0.9411765f, 0.3333333f, 0.8207547f);
                 break;
             case EmotionType.Wrath:
-                newAttack.GetComponent<Renderer>().material.color = new Color(255, 60, 0);
+                newAttack.GetComponent<Renderer>().material.color = new Color(1f, 0.2352941f, 0f);
                 break;
             case EmotionType.Mirth:
-                newAttack.GetComponent<Renderer>().material.color = new Color(100, 225, 75);
+                newAttack.GetComponent<Renderer>().material.color = new Color(0.3921569f, 0.8823529f, 0.2941177f);
                 break;
             default:
                 break;
