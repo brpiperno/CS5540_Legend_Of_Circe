@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 15f;
+    public float moveSpeed = 20f;
     public float rotationSpeed = 40f;
     CharacterController controller;
     BattleManager battleManager;
