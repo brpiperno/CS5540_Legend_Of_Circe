@@ -1,4 +1,7 @@
 /*
+Things you have to do every time?
+Uncheck (set to inactive) the GameOver Screen object under Canvas/Enemy Emotion UI
+
 Give the GameObject for Circe the tag "Player".
 Give the GameObject for the opponent the tag "Enemy".
 
