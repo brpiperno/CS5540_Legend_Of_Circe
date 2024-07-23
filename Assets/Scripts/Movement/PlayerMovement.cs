@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 40f;
     CharacterController controller;
     BattleManager battleManager;
+    public float fallSpeed = -9.81f;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
         //input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized * moveSpeed * Time.deltaTime;
         Vector3 moveDirection = transform.forward * moveVertical;
-        moveDirection.y -= 9.81f * Time.deltaTime; //constantly apply gravity down
+        moveDirection.y += fallSpeed * Time.deltaTime; //constantly apply gravity down
         controller.Move(moveDirection * Time.deltaTime * moveSpeed);
         transform.Rotate(Vector3.up, moveHorizontal * Time.deltaTime * rotationSpeed);
     }
