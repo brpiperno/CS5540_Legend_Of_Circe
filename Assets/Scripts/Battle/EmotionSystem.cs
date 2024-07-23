@@ -41,9 +41,9 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
-            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(2.17f, 1.5f, -3.57f), Quaternion.Euler(new Vector3(90, 40, 0)));
+            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(1.8f, 2.03f, -2.5f), Quaternion.Euler(new Vector3(90, 40, 0)));
+            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
