@@ -11,4 +11,7 @@ public interface IEmotion
     void PlayMove(IBattleMove move);
 
     void AcceptEmotionMove(EmotionMove attacker, EmotionMove receiver);
+
+    // Sets it to true only (Invoke only works on functions with no parameters)
+    void SetAskInput();
 }

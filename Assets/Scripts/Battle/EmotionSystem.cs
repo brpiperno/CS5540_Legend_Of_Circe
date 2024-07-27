@@ -41,31 +41,38 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
-            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
+            //newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
+            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(0.5f, 1.5f, -6f), Quaternion.Euler(new Vector3(-90, 0, 0)));
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
+            //newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
+            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(2.7f, 1.5f, 0f), Quaternion.Euler(new Vector3(0, 0, 0)));
+            Invoke("SetAskInput", 2);
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
         if (move.GetMoveType() == MoveType.Damage) {
+            ParticleSystem.MainModule ps = newAttack.GetComponent<ParticleSystem>().main;
             switch((move as EmotionMove).GetEmotionType()) {
                 case EmotionType.Grief:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(0.2941177f, 0, 1f);
+                    //newAttack.GetComponent<Renderer>().material.color = new Color(0.2941177f, 0, 1f);
+                    ps.startColor = new Color(0.2941177f, 0, 1f);
                     break;
                 case EmotionType.Love:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(0.9411765f, 0.3333333f, 0.8207547f);
+                    //newAttack.GetComponent<Renderer>().material.color = new Color(0.9411765f, 0.3333333f, 0.8207547f);
+                    ps.startColor = new Color(0.9411765f, 0.3333333f, 0.8207547f);
                     break;
                 case EmotionType.Wrath:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(1f, 0.2352941f, 0f);
+                    //newAttack.GetComponent<Renderer>().material.color = new Color(1f, 0.2352941f, 0f);
+                    ps.startColor = new Color(1f, 0.2352941f, 0f);
                     break;
                 case EmotionType.Mirth:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(0.3921569f, 0.8823529f, 0.2941177f);
+                    //newAttack.GetComponent<Renderer>().material.color = new Color(0.3921569f, 0.8823529f, 0.2941177f);
+                    ps.startColor = new Color(0.3921569f, 0.8823529f, 0.2941177f);
                     break;
                 default:
                     break;
             }
         }
-        Destroy(newAttack, 1);
     }
 
     /*
@@ -110,4 +117,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         return newValue;
     }
 
+    // Sets it to true only (Invoke only works on functions with no parameters)
+    public void SetAskInput() {
+        BattleManager.isAskingForPlayerInput = true;
+    }
 }

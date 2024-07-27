@@ -16,7 +16,7 @@ public class BattleManager : MonoBehaviour
     public IMovePicker enemyMovePicker;
     //public static float basePowerForMoves = 10f;
     // Replaced with an effect strength for each move
-    bool isAskingForPlayerInput = true;
+    public static bool isAskingForPlayerInput = true;
     bool isRoundFinished = false;
 
 
@@ -77,7 +77,6 @@ public class BattleManager : MonoBehaviour
                     opponentSystem.PlayMove(opponentsMove);
                     playerSystem.AcceptEmotionMove(opponentsMove as EmotionMove, playersMove as EmotionMove);
                 }
-                isAskingForPlayerInput = true;
             }
         }
 

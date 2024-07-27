@@ -793,8 +793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
-  enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
+  playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
+  enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
 --- !u!1001 &1303107867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -893,8 +893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
-  enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
+  playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
+  enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
 --- !u!114 &1358873738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2640028388925518140, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
