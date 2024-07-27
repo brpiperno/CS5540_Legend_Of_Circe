@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using System;
+using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
 
@@ -78,18 +79,18 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //    receiver.GetEmotionType()) * defenseModifiers[attacker.GetEmotionType()];
 
         float damage = (attacker as EmotionMove).getEffectStrength() * 
-            attacker.GetEmotionType().getEffectivenessAgainst(receiver.GetEmotionType()) *
+            attacker.GetEmotionType().GetEffectivenessAgainst(receiver.GetEmotionType()) *
             defenseModifiers[attacker.GetEmotionType()];
 
         float newValue = ShiftEmotions(attacker.GetEmotionType(), damage);
 
         if (gameObject.tag == "Player") {
-            Debug.Log("Circe's action has a " + attacker.GetEmotionType().getEffectivenessAgainst(receiver.GetEmotionType()) +
+            Debug.Log("Circe's action has a " + attacker.GetEmotionType().GetEffectivenessAgainst(receiver.GetEmotionType()) +
                 "x multiplier");
             //visualController.updateEmotionBarUI(true, attacker.GetEmotionType(), newValue);
             Debug.Log("Opponent spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to Circe!");
         } else if (gameObject.tag == "Enemy") {
-            Debug.Log("The opponent's action has a " + attacker.GetEmotionType().getEffectivenessAgainst(receiver.GetEmotionType()) +
+            Debug.Log("The opponent's action has a " + attacker.GetEmotionType().GetEffectivenessAgainst(receiver.GetEmotionType()) +
                 "x multiplier");
             //visualController.updateEmotionBarUI(false, attacker.GetEmotionType(), newValue);
             Debug.Log("Circe spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to the opponent!");
@@ -107,6 +108,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         }
         emotionValues[emotion] = newValue;
         Debug.Log("new value for " + emotion + " is : " + newValue + "for " + name);
+
         return newValue;
     }
 

@@ -5,7 +5,9 @@ using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using UnityEditor.PackageManager.Requests;
 
+//The BattleManager is a script that maintains the state of a battle and tells IEmotion instances when to attack.
 public class BattleManager : MonoBehaviour
 {
 
@@ -27,19 +29,112 @@ public class BattleManager : MonoBehaviour
     private bool isBattleFinished = false;
 
 
+    //Reworked Variables
+    public IEmotion[] playersTeam;
+    public IEmotion[] opponentTeam;
+    public bool isPlayersTeamsTurn;
+    public int activePlayerIndex;
+    public int currentRound;
+    public bool askedCurrentPlayerForInput = false;
+    public bool isCurrentPlayersMoveComplete = false;
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        if (circe == null) {
-            circe = GameObject.FindGameObjectWithTag("Player");
+        if (playersTeam == null)
+        {
+            playersTeam = new IEmotion[1] { GameObject.FindGameObjectWithTag("Player").GetComponent<EmotionSystem>() };
         }
-        playerSystem = circe.GetComponent<EmotionSystem>();
-        opponentSystem = opponent.GetComponent<EmotionSystem>();
-        enemyMovePicker = new RandomEmotionPicker(playerSystem as EmotionSystem, new EmotionSystem[] {opponentSystem as EmotionSystem});
-        if (previousScene == null) {
-            Debug.Log("BattleManager: did not specify name of previous scene");
+        if (opponentTeam == null)
+        {
+            throw new Exception("Opponent Team not set in inspector");
+        }
+        currentRound = 0;
+        activePlayerIndex = 0;
+        isPlayersTeamsTurn = true;
+
+        foreach (var player in playersTeam)
+        {
+            player.ReadyBattle();
+        }
+        foreach (var player in opponentTeam)
+        {
+            player.ReadyBattle();
+        }
+
+        //Turn off other player controls or NPC behavior
+
+        //Enable Battle Specific UI
+    }
+
+
+    private void Updatev2()
+    {
+        if (askedCurrentPlayerForInput)
+        {
+            return;
+        } else if (isPlayersTeamsTurn)
+        {
+            playersTeam[activePlayerIndex].RequestNextMove()
+        } else
+        {
+            opponentTeam[activePlayerIndex].RequestNextMove();
+        }
+        askedCurrentPlayerForInput = true;
+    }
+
+    /// <summary>
+    /// Method to be used by IEmotion instances to submit a move chosen to the BattleManager to be enacted.
+    /// </summary>
+    /// <param name="move"> The move to be used</param>
+    /// <param name="user"> The originator of the move</param>
+    /// <param name="target">The target of the move</param>
+    public void SubmitMove(IBattleMove move, IEmotion user, IEmotion target)
+    {
+        if (user != getCurrentPlayer())
+        {
+            return; //ignore out of turn moves
+        } else
+        {
+            user.PlayMove(move);
+            target.AcceptMove(move);
+        }
+    }
+
+    /// <summary>
+    /// Method used by IEmotion instances to notify the BattleManager that they have finished Playing a move
+    /// </summary>
+    /// <param name="user">The user that performed the move</param>
+    public void CompleteMove(IEmotion user)
+    {
+        //reset the asking for input variable
+        askedCurrentPlayerForInput = false;
+
+        IEmotion[] team = isPlayersTeamsTurn ? playersTeam : opponentTeam;
+        if (activePlayerIndex == team.Length)
+        {
+            isPlayersTeamsTurn = !isPlayersTeamsTurn;
+            activePlayerIndex = 0;
+        }
+        else
+        {
+            activePlayerIndex++;
+        }
+
+        //increment the index, unles it is at its max, in which case switch teams
+    }
+
+    private IEmotion getCurrentPlayer()
+    {
+        if (isPlayersTeamsTurn)
+        {
+            return playersTeam[activePlayerIndex];
+        } else
+        {
+            return opponentTeam[activePlayerIndex];
         }
     }
 
