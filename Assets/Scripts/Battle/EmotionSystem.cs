@@ -47,21 +47,23 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
-        switch(move.GetEmotionType()) {
-            case EmotionType.Grief:
-                newAttack.GetComponent<Renderer>().material.color = new Color(0.2941177f, 0, 1f);
-                break;
-            case EmotionType.Love:
-                newAttack.GetComponent<Renderer>().material.color = new Color(0.9411765f, 0.3333333f, 0.8207547f);
-                break;
-            case EmotionType.Wrath:
-                newAttack.GetComponent<Renderer>().material.color = new Color(1f, 0.2352941f, 0f);
-                break;
-            case EmotionType.Mirth:
-                newAttack.GetComponent<Renderer>().material.color = new Color(0.3921569f, 0.8823529f, 0.2941177f);
-                break;
-            default:
-                break;
+        if (move.GetMoveType() == MoveType.Damage) {
+            switch((move as EmotionMove).GetEmotionType()) {
+                case EmotionType.Grief:
+                    newAttack.GetComponent<Renderer>().material.color = new Color(0.2941177f, 0, 1f);
+                    break;
+                case EmotionType.Love:
+                    newAttack.GetComponent<Renderer>().material.color = new Color(0.9411765f, 0.3333333f, 0.8207547f);
+                    break;
+                case EmotionType.Wrath:
+                    newAttack.GetComponent<Renderer>().material.color = new Color(1f, 0.2352941f, 0f);
+                    break;
+                case EmotionType.Mirth:
+                    newAttack.GetComponent<Renderer>().material.color = new Color(0.3921569f, 0.8823529f, 0.2941177f);
+                    break;
+                default:
+                    break;
+            }
         }
         Destroy(newAttack, 1);
     }
@@ -70,26 +72,25 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         Performs the move "attacker" against the current object. Needs to take in the move chosen by this
         object as well to calculate effectiveness.
     */
-    public void AcceptMove(IBattleMove attacker, IBattleMove receiver) {
+    public void AcceptEmotionMove(EmotionMove attacker, EmotionMove receiver) {
         //float damage = BattleManager.basePowerForMoves * 
         //    BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
         //    receiver.GetEmotionType()) * defenseModifiers[attacker.GetEmotionType()];
 
         float damage = (attacker as EmotionMove).getEffectStrength() * 
-            BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
-            receiver.GetEmotionType()) * defenseModifiers[attacker.GetEmotionType()];
+            attacker.GetEmotionType().getEffectivenessAgainst(receiver.GetEmotionType()) *
+            defenseModifiers[attacker.GetEmotionType()];
 
         float newValue = ShiftEmotions(attacker.GetEmotionType(), damage);
 
         if (gameObject.tag == "Player") {
-            Debug.Log("Circe's action has a " + BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(),
-                receiver.GetEmotionType()) + "x multiplier");
+            Debug.Log("Circe's action has a " + attacker.GetEmotionType().getEffectivenessAgainst(receiver.GetEmotionType()) +
+                "x multiplier");
             //visualController.updateEmotionBarUI(true, attacker.GetEmotionType(), newValue);
             Debug.Log("Opponent spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to Circe!");
         } else if (gameObject.tag == "Enemy") {
-            Debug.Log("The opponent's action has a " +
-                BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
-                receiver.GetEmotionType()) + "x multiplier");
+            Debug.Log("The opponent's action has a " + attacker.GetEmotionType().getEffectivenessAgainst(receiver.GetEmotionType()) +
+                "x multiplier");
             //visualController.updateEmotionBarUI(false, attacker.GetEmotionType(), newValue);
             Debug.Log("Circe spoke with " + attacker.GetEmotionType() + ", causing " + damage + " damage to the opponent!");
         }

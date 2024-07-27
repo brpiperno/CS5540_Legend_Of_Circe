@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SpellType
+public enum MoveType
 {
     Shield,
     Transformation,
     Enhancement,
     Paralysis,
-    Pharmaka
+    Pharmaka,
+    Damage
 }

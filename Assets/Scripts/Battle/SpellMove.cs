@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class SpellMove : IBattleMove
 {
-    EmotionType emotionType;
-    SpellType spellType;
+    MoveType spellType;
+    int strength;
 
-    public EmotionType GetEmotionType() {
-        return emotionType;
+    public SpellMove(MoveType spellType, int strength) {
+        this.spellType = spellType;
+        this.strength =  strength;
     }
     public string toString()
     {
-        return null;
+        return "This is a spell of type " + spellType;
     }
     public string getAnimationTrigger() {
         return null;
+    }
+    public int getEffectStrength() {
+        return strength;
+    }
+    public MoveType GetMoveType() {
+        return spellType;
     }
 }

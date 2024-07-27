@@ -4,9 +4,11 @@ using UnityEngine;
 
 public interface IBattleMove
 {
-    public EmotionType GetEmotionType();
+    //public EmotionType GetEmotionType();
     
     //Represent the IBattleMove as a string
     public string toString();
     public string getAnimationTrigger();
+    public int getEffectStrength();
+    public MoveType GetMoveType();
 }

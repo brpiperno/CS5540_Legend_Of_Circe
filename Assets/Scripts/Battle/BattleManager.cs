@@ -67,14 +67,16 @@ public class BattleManager : MonoBehaviour
                 playersMove = new EmotionMove(EmotionType.Mirth, 25);
                 playerSystem.PlayMove(playersMove);
             }
-            //else if (Input.GetKeyDown("space")) {
-            //    openSpellMenu();
-            //}
+            else if (Input.GetKeyDown("space")) {
+                useSpell();
+            }
             if (playersMove != null) {
                 IBattleMove opponentsMove = enemyMovePicker.GetBattleMove();
-                opponentSystem.AcceptMove(playersMove, opponentsMove);
-                opponentSystem.PlayMove(opponentsMove);
-                playerSystem.AcceptMove(opponentsMove, playersMove);
+                if (playersMove.GetMoveType() == MoveType.Damage && opponentsMove.GetMoveType() == MoveType.Damage) {
+                    opponentSystem.AcceptEmotionMove(playersMove as EmotionMove, opponentsMove as EmotionMove);
+                    opponentSystem.PlayMove(opponentsMove);
+                    playerSystem.AcceptEmotionMove(opponentsMove as EmotionMove, playersMove as EmotionMove);
+                }
                 isAskingForPlayerInput = true;
             }
         }
@@ -177,11 +179,7 @@ public class BattleManager : MonoBehaviour
      * For each type of emotion, it also has a defense modifier that determines how effective BattleMoves are at affecting it
      */
 
-     //public void openSpellMenu() {
+     public void useSpell() {
 
-     //}
-
-     public static float getTypeChartMultiplier(EmotionType e1, EmotionType e2) {
-        return 1;
      }
 }

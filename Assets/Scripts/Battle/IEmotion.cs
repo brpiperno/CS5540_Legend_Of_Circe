@@ -10,5 +10,5 @@ public interface IEmotion
 
     void PlayMove(IBattleMove move);
 
-    void AcceptMove(IBattleMove attacker, IBattleMove receiver);
+    void AcceptEmotionMove(EmotionMove attacker, EmotionMove receiver);
 }

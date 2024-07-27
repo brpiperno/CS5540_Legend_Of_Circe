@@ -23,4 +23,7 @@ public class EmotionMove : IBattleMove
     public string getAnimationTrigger() {
         return null;
     }
+    public MoveType GetMoveType() {
+        return MoveType.Damage;
+    }
 }
