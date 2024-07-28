@@ -5,10 +5,9 @@ using UnityEngine;
 //An Interface for a strategy object that chooses IBattleMoves based on the state of its EmotionValue
 public interface IMovePicker
 {
-
     /// <summary>
-    /// Method <c>GetBattleMove</c> Get the battlemove that this chooses.
+    /// Set the IMovePicker to determine another move 
+    /// (which it provides using the LoadNextMove method in the IEmotion interface once determined)
     /// </summary>
-    /// <returns></returns>
-    public IBattleMove GetBattleMove();
+    public void MoveRequested();
 }

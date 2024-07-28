@@ -19,12 +19,16 @@ namespace EmotionTypeExtension
                 case EmotionType.Mirth:
                     return new Color(0.3921569f, 0.8823529f, 0.2941177f);
                 default:
-                    return new Color(0, 0, 0);
+                    throw new System.ArgumentException("Did not account for new EmotionType");
             }
         }
 
         public static float GetEffectivenessAgainst(this EmotionType attacker, EmotionType defender)
         {
+            if ((int) defender >= 4 || (int) attacker >= 4)
+            {
+                throw new System.ArgumentException("Did not account for all emotion types");
+            }
             //define a 2D matrix, using the int of each type as an index for rows and columns
             float[,] effectiveness = { 
                 { 2f, 0.5f, 2f, 0.5f }, //Love Effectiveness
@@ -34,6 +38,21 @@ namespace EmotionTypeExtension
             }; 
             return effectiveness[(int) attacker, (int) defender];
         }
+
+        public static string ToString(this EmotionType emotion)
+        {
+            switch (emotion) {
+                case EmotionType.Love:
+                    return "Love";
+                case EmotionType.Wrath:
+                    return "Wrath";
+                case EmotionType.Grief:
+                    return "Grief";
+                case EmotionType.Mirth:
+                    return "Mirth";
+                default:
+                    throw new System.ArgumentException("Unexpected EmotionType");
+        }   
     }
 }
 

@@ -5,7 +5,7 @@ using UnityEngine.Scripting.APIUpdating;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
-using UnityEditor.PackageManager.Requests;
+using EmotionTypeExtension;
 
 //The BattleManager is a script that maintains the state of a battle and tells IEmotion instances when to attack.
 public class BattleManager : MonoBehaviour
@@ -54,20 +54,12 @@ public class BattleManager : MonoBehaviour
         }
         currentRound = 0;
         activePlayerIndex = 0;
-        isPlayersTeamsTurn = true;
+        isPlayersTeamsTurn = true; //Player's team always goes first
+        askedCurrentPlayerForInput = false;
 
-        foreach (var player in playersTeam)
-        {
-            player.ReadyBattle();
-        }
-        foreach (var player in opponentTeam)
-        {
-            player.ReadyBattle();
-        }
+        //TODO: Turn off other player controls or NPC behavior
 
-        //Turn off other player controls or NPC behavior
-
-        //Enable Battle Specific UI
+        //TODO: Enable Battle Specific UI
     }
 
 
@@ -78,7 +70,7 @@ public class BattleManager : MonoBehaviour
             return;
         } else if (isPlayersTeamsTurn)
         {
-            playersTeam[activePlayerIndex].RequestNextMove()
+            playersTeam[activePlayerIndex].RequestNextMove();
         } else
         {
             opponentTeam[activePlayerIndex].RequestNextMove();
@@ -99,7 +91,7 @@ public class BattleManager : MonoBehaviour
             return; //ignore out of turn moves
         } else
         {
-            user.PlayMove(move);
+            user.PlayMove();
             target.AcceptMove(move);
         }
     }
@@ -127,6 +119,17 @@ public class BattleManager : MonoBehaviour
         //increment the index, unles it is at its max, in which case switch teams
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="loser"></param>
+    public void EndBattle(IEmotion loser)
+    {
+        //end the battle
+        //if the battleManager has an item held, give it to the player
+        //load the previous scene if needed
+    }
+
     private IEmotion getCurrentPlayer()
     {
         if (isPlayersTeamsTurn)
@@ -138,53 +141,37 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    public IEmotion getEnemy(IEmotion requester)
+    {
+        foreach (IEmotion player in playersTeam)
+        {
+            if (player == requester)
+            {
+                return opponentTeam[0];
+            }
+        }
+        foreach (IEmotion player in opponentTeam)
+        {
+            if (player == requester)
+            {
+                return playersTeam[0];
+            }
+        }
+        throw new System.ArgumentException("Requester is not in the battle");
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //int wrath = GetComponent<IEmotion>().GetWrath(); example on getting wrath values
-
-        if (isAskingForPlayerInput && !isBattleFinished) {
-            IBattleMove playersMove = null;
-            if (Input.GetKeyDown("up")) {
-                isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Grief, 25);
-                playerSystem.PlayMove(playersMove);
-            } else if (Input.GetKeyDown("left")) {
-                isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Love, 25);
-                playerSystem.PlayMove(playersMove);
-            } else if (Input.GetKeyDown("right")) {
-                isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Wrath, 25);
-                playerSystem.PlayMove(playersMove);
-            } else if (Input.GetKeyDown("down")) {
-                isAskingForPlayerInput = false;
-                playersMove = new EmotionMove(EmotionType.Mirth, 25);
-                playerSystem.PlayMove(playersMove);
-            }
-            else if (Input.GetKeyDown("space")) {
-                useSpell();
-            }
-            if (playersMove != null) {
-                IBattleMove opponentsMove = enemyMovePicker.GetBattleMove();
-                if (playersMove.GetMoveType() == MoveType.Damage && opponentsMove.GetMoveType() == MoveType.Damage) {
-                    opponentSystem.AcceptEmotionMove(playersMove as EmotionMove, opponentsMove as EmotionMove);
-                    opponentSystem.PlayMove(opponentsMove);
-                    playerSystem.AcceptEmotionMove(opponentsMove as EmotionMove, playersMove as EmotionMove);
-                }
-                isAskingForPlayerInput = true;
-            }
-        }
-
         //check for a battle draw condition:
         foreach (EmotionType e in Enum.GetValues(typeof(EmotionType))) {
-            if (playerSystem.GetEmotion(e) <= 0)
+            if (playerSystem.GetEmotionValue(e) <= 0)
             {
                 //load previous level
                 SceneManager.LoadScene(previousScene);
                 isBattleFinished = true;
             }
-            if (opponentSystem.GetEmotion(e) <= 0)
+            if (opponentSystem.GetEmotionValue(e) <= 0)
             {
                 //show game won screen
                 GameOverText.gameObject.SetActive(true);

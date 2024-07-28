@@ -46,7 +46,7 @@ public class EmotionBarManager : MonoBehaviour
             foreach (EmotionType emotion in sliders.Keys)
             {
                 float current = sliders[emotion].value;
-                float actual = emotionSystem.GetEmotion(emotion);
+                float actual = emotionSystem.GetEmotionValue(emotion);
                 
                 if (current != actual)
                 {
