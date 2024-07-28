@@ -1308,10 +1308,10 @@ MonoBehaviour:
   playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
   visualController: {fileID: 0}
-  upArrow: {fileID: 0}
-  leftArrow: {fileID: 0}
-  rightArrow: {fileID: 0}
-  downArrow: {fileID: 0}
+  upArrow: {fileID: 862694545}
+  leftArrow: {fileID: 2083252477}
+  rightArrow: {fileID: 997999522}
+  downArrow: {fileID: 1305166716}
 --- !u!1 &1305166716
 GameObject:
   m_ObjectHideFlags: 0
