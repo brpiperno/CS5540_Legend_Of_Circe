@@ -30,6 +30,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             {EmotionType.Grief, 1},
             {EmotionType.Mirth, 1}
         };
+        visualController = new VisualController();
     }
 
     public float GetEmotion(EmotionType type) {
@@ -47,6 +48,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             //newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
             newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(2.7f, 1.5f, 0f), Quaternion.Euler(new Vector3(0, 0, 0)));
             Invoke("SetAskInput", 2);
+            Invoke("RemoveHighlight", 2);
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
@@ -120,5 +122,15 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     // Sets it to true only (Invoke only works on functions with no parameters)
     public void SetAskInput() {
         BattleManager.isAskingForPlayerInput = true;
+    }
+
+    // Highlights the arrow that was pressed by calling VisualController. For direction - 0 means up, 1 means left, 2 means right, 
+    // and 3 means down
+    public void HighlightArrow(int direction) {
+        visualController.HighlightArrow(direction);
+    }
+    // Returns all arrows to their original color.
+    public void RemoveHighlight() {
+        visualController.RemoveHighlight();
     }
 }

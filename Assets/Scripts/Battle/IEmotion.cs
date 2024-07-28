@@ -14,4 +14,9 @@ public interface IEmotion
 
     // Sets it to true only (Invoke only works on functions with no parameters)
     void SetAskInput();
+    // Highlights the arrow that was pressed by calling VisualController. For direction - 0 means up, 1 means left, 2 means right, 
+    // and 3 means down
+    public void HighlightArrow(int direction);
+    // Returns all arrows to their original color.
+    public void RemoveHighlight();
 }

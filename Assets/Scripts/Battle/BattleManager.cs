@@ -52,6 +52,7 @@ public class BattleManager : MonoBehaviour
             IBattleMove playersMove = null;
             if (Input.GetKeyDown("up")) {
                 isAskingForPlayerInput = false;
+                playerSystem.HighlightArrow(0);
                 playersMove = new EmotionMove(EmotionType.Grief, 25);
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("left")) {

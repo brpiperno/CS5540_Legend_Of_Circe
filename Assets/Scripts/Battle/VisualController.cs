@@ -2,29 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-public class VisualController : MonoBehaviour, IVisualController
+public class VisualController : IVisualController
 {
     public GameObject circe;
     public GameObject opponent;
     public IEmotion playerSystem;
     public IEmotion opponentSystem;
+    public GameObject upArrow;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
+    public GameObject downArrow;
 
-    //references to the player's sliders
-    public Slider CirceGriefSlider;
-    public Slider CirceLoveSlider;
-    public Slider CirceWrathSlider;
-    public Slider CirceMirthSlider;
-
-    //references to the enemy's sliders
-    public Slider EnemyGriefSlider;
-    public Slider EnemyLoveSlider;
-    public Slider EnemyWrathSlider;
-    public Slider EnemyMirthSlider;
-
-    //public Canvas canvas;
-    Dictionary<EmotionType, Slider> playerSliderDictionary;
-    Dictionary<EmotionType, Slider> opponentSliderDictionary;
     void Start()
     {
         if (circe == null) {
@@ -32,35 +22,37 @@ public class VisualController : MonoBehaviour, IVisualController
         }
         playerSystem = circe.GetComponent<EmotionSystem>();
         opponentSystem = opponent.GetComponent<EmotionSystem>();
-        /* Debugging
-        GameObject isValidGameObject = GameObject.Find("Grief bar");
-        if (isValidGameObject == null) {
-            Debug.Log("Could not find the object");
-        }
-        Slider doesThisWorkToo = GameObject.Find("Grief bar").GetComponent<Slider>();
-        if (doesThisWorkToo == null) {
-            Debug.Log("Could not find the slider component");
-        }*/
-        //playerSliderDictionary[EmotionType.Grief] = canvas.transform.FindChild("Grief bar").gameObject.GetComponent<Slider>();
-        playerSliderDictionary[EmotionType.Grief] = CirceGriefSlider;
-        playerSliderDictionary[EmotionType.Love] = CirceLoveSlider;
-        playerSliderDictionary[EmotionType.Wrath] = CirceWrathSlider;
-        playerSliderDictionary[EmotionType.Mirth] = CirceMirthSlider;
-        opponentSliderDictionary[EmotionType.Grief] = EnemyGriefSlider;
-        opponentSliderDictionary[EmotionType.Love] = EnemyLoveSlider;
-        opponentSliderDictionary[EmotionType.Wrath] = EnemyWrathSlider;
-        opponentSliderDictionary[EmotionType.Mirth] = EnemyMirthSlider;
+        upArrow = GameObject.FindGameObjectWithTag("UpArrow");
+        leftArrow = GameObject.FindGameObjectWithTag("LeftArrow");
+        rightArrow = GameObject.FindGameObjectWithTag("RightArrow");
+        downArrow = GameObject.FindGameObjectWithTag("DownArrow");
     }
     public void setAnimationTrigger(string trigger) {
 
     }
-    public void updateEmotionBarUI(bool updatingPlayerUI, EmotionType affectedEmotion, float newValue) {
-        Slider slider;
-        if (updatingPlayerUI) {
-            slider = playerSliderDictionary[affectedEmotion];
-        } else {
-            slider = opponentSliderDictionary[affectedEmotion];
+    public void HighlightArrow(int direction) {
+        switch (direction) {
+            case 0:
+                upArrow.SetActive(true);
+                Debug.Log("Set up arrow to active");
+                break;
+            case 1:
+                leftArrow.SetActive(true);
+                break;
+            case 2:
+                rightArrow.SetActive(true);
+                break;
+            case 3:
+                downArrow.SetActive(true);
+                break;
+            default:
+                throw new ArgumentException("Invalid arrow direction given for highlight animation.");
         }
-        slider.value = newValue;
+    }
+    public void RemoveHighlight() {
+        upArrow.SetActive(false);
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+        downArrow.SetActive(false);
     }
 }
