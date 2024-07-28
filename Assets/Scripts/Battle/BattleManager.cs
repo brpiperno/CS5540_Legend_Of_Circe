@@ -57,14 +57,17 @@ public class BattleManager : MonoBehaviour
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("left")) {
                 isAskingForPlayerInput = false;
+                playerSystem.HighlightArrow(1);
                 playersMove = new EmotionMove(EmotionType.Love, 25);
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("right")) {
                 isAskingForPlayerInput = false;
+                playerSystem.HighlightArrow(2);
                 playersMove = new EmotionMove(EmotionType.Wrath, 25);
                 playerSystem.PlayMove(playersMove);
             } else if (Input.GetKeyDown("down")) {
                 isAskingForPlayerInput = false;
+                playerSystem.HighlightArrow(3);
                 playersMove = new EmotionMove(EmotionType.Mirth, 25);
                 playerSystem.PlayMove(playersMove);
             }

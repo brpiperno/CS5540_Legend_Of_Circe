@@ -440,14 +440,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circe: {fileID: 0}
   opponent: {fileID: 0}
-  CirceGriefSlider: {fileID: 1075226734}
-  CirceLoveSlider: {fileID: 1870508310}
-  CirceWrathSlider: {fileID: 1358873738}
-  CirceMirthSlider: {fileID: 1947432906}
-  EnemyGriefSlider: {fileID: 0}
-  EnemyLoveSlider: {fileID: 0}
-  EnemyWrathSlider: {fileID: 0}
-  EnemyMirthSlider: {fileID: 0}
 --- !u!1001 &628637131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1114,17 +1106,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997999522}
   m_CullTransparentMesh: 1
---- !u!114 &1075226734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7823140309169839100, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1171452487 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3185496781731396728, guid: 8c9a19f219f58204cbd9531594943396, type: 3}
@@ -1221,6 +1202,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
+  visualController: {fileID: 0}
+  upArrow: {fileID: 862694545}
+  leftArrow: {fileID: 2083252477}
+  rightArrow: {fileID: 997999522}
+  downArrow: {fileID: 1305166716}
 --- !u!1001 &1303107867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1321,6 +1307,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
+  visualController: {fileID: 0}
+  upArrow: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
+  downArrow: {fileID: 0}
 --- !u!1 &1305166716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1324,7 @@ GameObject:
   - component: {fileID: 1305166719}
   - component: {fileID: 1305166718}
   m_Layer: 5
-  m_Name: Down arrow selected (1)
+  m_Name: Down arrow selected
   m_TagString: DownArrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,17 +1387,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305166716}
   m_CullTransparentMesh: 1
---- !u!114 &1358873738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2640028388925518140, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1408709653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,28 +1519,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 108461cc563321543b016d5b25bd535f, type: 3}
---- !u!114 &1870508310 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8954290490665177840, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1947432906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4114921334272472934, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2083252477
 GameObject:
   m_ObjectHideFlags: 0

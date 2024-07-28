@@ -10,7 +10,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public GameObject playerAttackAnimationObject;
     public GameObject enemyAttackAnimationObject;
-    public IVisualController visualController;
+    public GameObject visualController;
+    public GameObject upArrow;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
+    public GameObject downArrow;
     private Dictionary<EmotionType, float> emotionValues;  
     
     private Dictionary<EmotionType, int> defenseModifiers;
@@ -30,7 +34,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             {EmotionType.Grief, 1},
             {EmotionType.Mirth, 1}
         };
-        visualController = new VisualController();
     }
 
     public float GetEmotion(EmotionType type) {
@@ -127,10 +130,28 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     // Highlights the arrow that was pressed by calling VisualController. For direction - 0 means up, 1 means left, 2 means right, 
     // and 3 means down
     public void HighlightArrow(int direction) {
-        visualController.HighlightArrow(direction);
+        switch (direction) {
+            case 0:
+                upArrow.SetActive(true);
+                break;
+            case 1:
+                leftArrow.SetActive(true);
+                break;
+            case 2:
+                rightArrow.SetActive(true);
+                break;
+            case 3:
+                downArrow.SetActive(true);
+                break;
+            default:
+                throw new ArgumentException("Invalid arrow direction given for highlight animation.");
+        }
     }
     // Returns all arrows to their original color.
     public void RemoveHighlight() {
-        visualController.RemoveHighlight();
+        upArrow.SetActive(false);
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+        downArrow.SetActive(false);
     }
 }
