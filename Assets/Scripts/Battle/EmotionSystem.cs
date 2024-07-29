@@ -4,7 +4,7 @@ using System;
 using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
-
+[RequireComponent(typeof(VisualController))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public GameObject playerAttackAnimationObject;
@@ -28,6 +28,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public BattleManager battleManager; //The battle manager that it sends moves to;
     public IMovePicker movePicker;
     public int baseStrength; //effectiveness of IBattleMoves instantiated, where applicable.
+
+    void Start()
+    {
+        visualController = GetComponent<VisualController>();
+    }
 
     public float GetEmotionValue(EmotionType type) {
         return emotionValues[type];
@@ -71,6 +76,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void RequestNextMove()
     {
         visualController.setEmotionWheelVisibility(true);
+        //if a next move was already loaded ( such as if stunned or transformed, use it)
+        if (nextMove != null)
+        {
+            battleManager.SubmitMove(nextMove, this, battleManager.GetEnemy(this));
+            return;
+        }
         movePicker.MoveRequested();
     }
 
@@ -79,7 +90,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         nextMove = new BasicMove(this.baseStrength, emotion, move);
         //for shield and enhancement spells, the target is the user
         IEmotion target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
-            this : battleManager.getEnemy(this); 
+            this : battleManager.GetEnemy(this); 
         battleManager.SubmitMove(nextMove, this, target);
     }
 
@@ -97,7 +108,10 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         if (lastMoveUsed.GetMoveType() == MoveType.Damage) {
             newAttack.GetComponent<Renderer>().material.color = lastMoveUsed.GetEmotionType().GetColor();
         }
-        visualController.setAnimationTrigger(lastMoveUsed.getAnimationTrigger());
+        visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
+        lastMoveUsed = null; //clear the last move used
         Destroy(newAttack, 1);
+        battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
     }
+
 }

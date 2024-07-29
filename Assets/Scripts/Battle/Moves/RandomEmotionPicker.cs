@@ -3,20 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime;
+using UnityEngine;
+using EmotionTypeExtension;
 
+[RequireComponent(typeof(IEmotion))]
+[RequireComponent(typeof(IVisualController))]
 //A script that creates BattleMoves using a random choice of emotions available
-public class RandomEmotionPicker : IMovePicker
+public class RandomEmotionPicker : MonoBehaviour, IMovePicker
 {
     private int minEmotionValue = 10; //the minimum amount of emotion needed to use a basic move
-    private ISet<EmotionType> movesAvailable;
-    private EmotionSystem[] targetEmotionValues; //TODO: confirm if this should be a type EmotionValue or GameObject
-    private EmotionSystem userEmotionValue;
+    private ISet<EmotionType> movesAvailable = new HashSet<EmotionType>();
+    private IEmotion[] targetEmotions; //TODO: confirm if this should be a type EmotionValue or GameObject
+    private IEmotion userEmotions;
+    private IVisualController visualController;
 
-    public RandomEmotionPicker(EmotionSystem userEmotionValue, EmotionSystem[] targets)
+
+
+    void Start()
     {
-        minEmotionValue = 10; //the minimum amount of emotion needed to use a basic move
-        movesAvailable = new HashSet<EmotionType>();
-        targetEmotionValues = targets; //TODO: confirm if this should be a type EmotionValue or GameObject
+        if (targetEmotions.Length == 0)
+        {
+            targetEmotions = new IEmotion[1] {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<IEmotion>()
+            };
+        }
+        userEmotions = GetComponent<IEmotion>();
+        visualController = GetComponent<VisualController>();
 
         movesAvailable.Add(EmotionType.Love);
         movesAvailable.Add(EmotionType.Wrath);
@@ -24,13 +36,11 @@ public class RandomEmotionPicker : IMovePicker
         movesAvailable.Add(EmotionType.Grief);
     }
 
-    public IBattleMove GetBattleMove()
+    public void MoveRequested()
     {
-        //List<EmotionType> availableOptions = movesAvailable.Where(v => userEmotionValue.GetEmotion(v) >= minEmotionValue).ToList();
-        //Random rnd = new Random();
-        //int emotionChoice  = rnd.Next(0, availableOptions.Count - 1);
-        //int targetChoice = rnd.Next(0, targetEmotionValues.Length - 1);
-        //return new EmotionMove(availableOptions[emotionChoice], 20);
-        return new EmotionMove(EmotionType.Love);
+        System.Random rnd = new System.Random();
+        int emotionChoice  = rnd.Next(0, movesAvailable.Count - 1);
+        EmotionType emtn = movesAvailable.ElementAt(emotionChoice);
+        userEmotions.LoadNextMove(emtn, MoveType.Damage);
     }
 }

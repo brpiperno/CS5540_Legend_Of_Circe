@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EmotionTypeExtension;
 
 
 //Script to be added to a slider that adjusts the bar's level when called.
@@ -39,7 +40,6 @@ public class EmotionBarManager : MonoBehaviour
 
     private void Update()
     {
-        bool allBarsFinalized = true;
         if (isUpdatingUI)
         {
             
@@ -60,10 +60,6 @@ public class EmotionBarManager : MonoBehaviour
                 Debug.Log(name + ": slider value: " + current + " actual value: " + actual);
             }
         }
-        //if (allBarsFinalized)
-        //{
-        //    isUpdatingUI = false; //turn itself off after all bars are at their level.
-        //}
     }
 
     //public method to be called by an IEmotion to update the bars according to the IEmotion's Values

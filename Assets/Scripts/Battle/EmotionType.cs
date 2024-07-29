@@ -25,23 +25,24 @@ namespace EmotionTypeExtension
 
         public static float GetEffectivenessAgainst(this EmotionType attacker, EmotionType defender)
         {
-            if ((int) defender >= 4 || (int) attacker >= 4)
+            if ((int)defender >= 4 || (int)attacker >= 4)
             {
                 throw new System.ArgumentException("Did not account for all emotion types");
             }
             //define a 2D matrix, using the int of each type as an index for rows and columns
-            float[,] effectiveness = { 
+            float[,] effectiveness = {
                 { 2f, 0.5f, 2f, 0.5f }, //Love Effectiveness
                 { 2.0f, 1.0f, 0.5f, 1.0f}, //Wrath Effectiveness
                 { 1.0f, 0.5f, 1.0f, 2.0f},  //Grief Effectiveness
                 { 1.0f, 2.0f, 0.5f, 1.0f} //Mirth Effectiveness
-            }; 
-            return effectiveness[(int) attacker, (int) defender];
+            };
+            return effectiveness[(int)attacker, (int)defender];
         }
 
         public static string ToString(this EmotionType emotion)
         {
-            switch (emotion) {
+            switch (emotion)
+            {
                 case EmotionType.Love:
                     return "Love";
                 case EmotionType.Wrath:
@@ -52,14 +53,15 @@ namespace EmotionTypeExtension
                     return "Mirth";
                 default:
                     throw new System.ArgumentException("Unexpected EmotionType");
-        }   
+            }
+        }
     }
-}
 
-public enum EmotionType
-{
-    Love = 0, //assign the int appropriate to each enum
-    Wrath = 1,
-    Grief = 2,
-    Mirth = 3,
+    public enum EmotionType
+    {
+        Love = 0, //assign the int appropriate to each enum
+        Wrath = 1,
+        Grief = 2,
+        Mirth = 3
+    }
 }

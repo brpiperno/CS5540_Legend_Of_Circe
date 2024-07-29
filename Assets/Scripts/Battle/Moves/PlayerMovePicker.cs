@@ -30,6 +30,8 @@ public class PlayerMovePicker : MonoBehaviour, IMovePicker
     // Update is called once per frame
     void Update()
     {
+        if (!isAskingForPlayInput) { return; } //do nothing when out of turn
+
         EmotionType emotionChosen = EmotionType.Grief;
         if (Input.GetKeyDown("up"))
         {
