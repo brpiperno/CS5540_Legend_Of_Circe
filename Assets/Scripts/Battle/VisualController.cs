@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EmotionTypeExtension;
+//using System;
 
 /// <summary>
 /// Simple implementation of an IVisualController intended for either a single NPC or player.
@@ -19,6 +20,11 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject playerAttackEffect;
     public Vector3 playerAttackEffectPosition;
     public Vector3 playerAttackEffectRotation;
+
+    public GameObject upArrow;
+    public GameObject leftArrow;
+    public GameObject rightArrow;
+    public GameObject downArrow;
 
     public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
         GameObject attack = Instantiate(playerAttackEffect, 
@@ -39,7 +45,30 @@ public class VisualController : MonoBehaviour, IVisualController
 
     public void updateEmotionWheelSelection(EmotionType emotion)
     {
-        //TODO: highlight chosen emotion
+        switch (emotion) {
+            case EmotionType.Grief:
+                upArrow.SetActive(true);
+                break;
+            case EmotionType.Love:
+                leftArrow.SetActive(true);
+                break;
+            case EmotionType.Wrath:
+                rightArrow.SetActive(true);
+                break;
+            case EmotionType.Mirth:
+                downArrow.SetActive(true);
+                break;
+            default:
+                throw new ArgumentException("Invalid emotion given for emotion wheel selection animation.");
+        }
+    }
+
+    // Returns all arrows to their original color.
+    public void RemoveHighlight() {
+        upArrow.SetActive(false);
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+        downArrow.SetActive(false);
     }
 
     public void setEmotionWheelVisibility(bool isVisible)
