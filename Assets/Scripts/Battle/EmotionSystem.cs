@@ -10,10 +10,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public GameObject playerAttackAnimationObject;
     public GameObject enemyAttackAnimationObject;
     public IVisualController visualController;
-    public GameObject upArrow;
-    public GameObject leftArrow;
-    public GameObject rightArrow;
-    public GameObject downArrow;
+    
     private Dictionary<EmotionType, float> emotionValues = new Dictionary<EmotionType, float> {
         {EmotionType.Wrath, 100},
         {EmotionType.Love, 100},
@@ -26,21 +23,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {EmotionType.Grief, 1},
         {EmotionType.Mirth, 1}
     };
-    void Start() {
-        //add each emotion type and set the initial values to 100;
-        emotionValues = new Dictionary<EmotionType, float> {
-            {EmotionType.Wrath, 100},
-            {EmotionType.Love, 100},
-            {EmotionType.Grief, 100},
-            {EmotionType.Mirth, 100}
-        };
-        //add each emotion type and set the initial values to 1;
-        defenseModifiers = new Dictionary<EmotionType, int> {
-            {EmotionType.Wrath, 1},
-            {EmotionType.Love, 1},
-            {EmotionType.Grief, 1},
-            {EmotionType.Mirth, 1}
-        };
+    
     public EmotionType currentEmotion; //set some starting default emotion;
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
@@ -123,30 +106,9 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
             //newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
             newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(2.7f, 1.5f, 0f), Quaternion.Euler(new Vector3(0, 0, 0)));
-            Invoke("SetAskInput", 2);
-            Invoke("RemoveHighlight", 2);
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
-        if (move.GetMoveType() == MoveType.Damage) {
-            switch((move as EmotionMove).GetEmotionType()) {
-                case EmotionType.Grief:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(0.2941177f, 0, 1f);
-                    break;
-                case EmotionType.Love:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(0.9411765f, 0.3333333f, 0.8207547f);
-                    break;
-                case EmotionType.Wrath:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(1f, 0.2352941f, 0f);
-                    break;
-                case EmotionType.Mirth:
-                    newAttack.GetComponent<Renderer>().material.color = new Color(0.3921569f, 0.8823529f, 0.2941177f);
-                    break;
-                default:
-                    break;
-            }
-        }
-        Destroy(newAttack, 1);
 
         if (lastMoveUsed.GetMoveType() == MoveType.Damage) {
             ParticleSystem.MainModule ps = newAttack.GetComponent<ParticleSystem>().main;
@@ -156,41 +118,5 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         lastMoveUsed = null; //clear the last move used
         Destroy(newAttack, 1);
         battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
-    }
-
-
-
-
-    // Sets it to true only (Invoke only works on functions with no parameters)
-    public void SetAskInput() {
-        BattleManager.isAskingForPlayerInput = true;
-    }
-
-    // Highlights the arrow that was pressed by calling VisualController. For direction - 0 means up, 1 means left, 2 means right, 
-    // and 3 means down
-    public void HighlightArrow(int direction) {
-        switch (direction) {
-            case 0:
-                upArrow.SetActive(true);
-                break;
-            case 1:
-                leftArrow.SetActive(true);
-                break;
-            case 2:
-                rightArrow.SetActive(true);
-                break;
-            case 3:
-                downArrow.SetActive(true);
-                break;
-            default:
-                throw new ArgumentException("Invalid arrow direction given for highlight animation.");
-        }
-    }
-    // Returns all arrows to their original color.
-    public void RemoveHighlight() {
-        upArrow.SetActive(false);
-        leftArrow.SetActive(false);
-        rightArrow.SetActive(false);
-        downArrow.SetActive(false);
     }
 }

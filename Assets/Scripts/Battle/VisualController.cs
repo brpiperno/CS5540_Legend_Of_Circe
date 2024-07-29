@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EmotionTypeExtension;
-//using System;
+using System;
 
 /// <summary>
 /// Simple implementation of an IVisualController intended for either a single NPC or player.

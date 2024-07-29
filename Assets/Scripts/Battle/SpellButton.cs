@@ -19,7 +19,7 @@ public class SpellButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DisplayPotion();
+        //DisplayPotion();
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class SpellButton : MonoBehaviour
         
     }
 
-    public void DisplayPotion() {
+    /*public void DisplayPotion() {
         switch (Spell.typeOfCurrentSpell) {
             case MoveType.Shield:
                 switch (Spell.emotionOfCurrentSpell) {
@@ -71,5 +71,5 @@ public class SpellButton : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
 }

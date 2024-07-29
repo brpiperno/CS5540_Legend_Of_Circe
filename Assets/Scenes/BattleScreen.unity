@@ -425,7 +425,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousScene: NavigationScene
   GameOverText: {fileID: 20479637}
-  playersTeam: []
+  playersTeam:
+  - {fileID: 1270705323}
   opponentTeam:
   - {fileID: 1303107869}
   turnIndex: 0
@@ -441,9 +442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackEffect: {fileID: 0}
+  playerAttackEffect: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   playerAttackEffectPosition: {x: 0, y: 0, z: 0}
   playerAttackEffectRotation: {x: 0, y: 0, z: 0}
+  upArrow: {fileID: 862694545}
+  leftArrow: {fileID: 2083252477}
+  rightArrow: {fileID: 997999522}
+  downArrow: {fileID: 1305166716}
 --- !u!1001 &628637131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1207,10 +1212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
-  enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
+  playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
+  enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
   currentEmotion: 0
-  battleManager: {fileID: 0}
+  battleManager: {fileID: 427306908}
   baseStrength: 0
 --- !u!114 &1270705324
 MonoBehaviour:
@@ -1224,9 +1229,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackEffect: {fileID: 0}
+  playerAttackEffect: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   playerAttackEffectPosition: {x: 0, y: 0, z: 0}
   playerAttackEffectRotation: {x: 0, y: 0, z: 0}
+  upArrow: {fileID: 862694545}
+  leftArrow: {fileID: 2083252477}
+  rightArrow: {fileID: 997999522}
+  downArrow: {fileID: 1305166716}
 --- !u!1001 &1303107867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1239,6 +1248,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2854542704565528355, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: upArrow
+      value: 
+      objectReference: {fileID: 862694545}
+    - target: {fileID: 2854542704565528355, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: downArrow
+      value: 
+      objectReference: {fileID: 1305166716}
+    - target: {fileID: 2854542704565528355, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: leftArrow
+      value: 
+      objectReference: {fileID: 2083252477}
+    - target: {fileID: 2854542704565528355, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: rightArrow
+      value: 
+      objectReference: {fileID: 997999522}
+    - target: {fileID: 2854542704565528355, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: playerAttackEffect
+      value: 
+      objectReference: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1327,11 +1356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
-  visualController: {fileID: 0}
-  upArrow: {fileID: 862694545}
-  leftArrow: {fileID: 2083252477}
-  rightArrow: {fileID: 997999522}
-  downArrow: {fileID: 1305166716}
+  currentEmotion: 0
+  battleManager: {fileID: 0}
+  baseStrength: 0
 --- !u!1 &1305166716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,6 +1909,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ade716ae6a549eab20049ba9b8639e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  griefEnhancement: {fileID: 21300000, guid: 7100b4bb2759c4365894ea79ed47c357, type: 3}
+  griefShield: {fileID: 21300000, guid: 8fb5b508c77b84457af0abc92cc7bee4, type: 3}
+  loveEnhancement: {fileID: 21300000, guid: 26516ec1f72754dd79eb87971dfce07a, type: 3}
+  loveShield: {fileID: 21300000, guid: f49c9d23dfe74486cbc83e55149d6107, type: 3}
+  mirthEnhancement: {fileID: 21300000, guid: 9e32431bcea2e4b8ea6976ace9b067a5, type: 3}
+  mirthShield: {fileID: 21300000, guid: a9ce7b27124b34cc49c25d279199056b, type: 3}
+  wrathEnhancement: {fileID: 21300000, guid: 11d981d79bcd74dfdb6027e75404780e, type: 3}
+  wrathShield: {fileID: 21300000, guid: d75eefc69d47c4333abd3f66f4f65940, type: 3}
+  stun: {fileID: 21300000, guid: 2c55d0f8297c04aa89bd625fa0973843, type: 3}
+  pharmaka: {fileID: 21300000, guid: d4119352922464d03bf5910b249db57c, type: 3}
 --- !u!1001 &21835756764223729
 PrefabInstance:
   m_ObjectHideFlags: 0

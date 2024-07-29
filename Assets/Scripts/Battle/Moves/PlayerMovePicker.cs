@@ -59,10 +59,12 @@ public class PlayerMovePicker : MonoBehaviour, IMovePicker
         }
         if (Input.GetKeyDown("space") && isEmotionChosen)
         {
+            // Display text that says "Press space to confirm"
             userEmotionSystem.LoadNextMove(emotionChosen, MoveType.Damage);
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
+            visualController.RemoveHighlight();
         }
     }
 
