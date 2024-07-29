@@ -5,12 +5,12 @@ using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
 [RequireComponent(typeof(VisualController))]
+[RequireComponent(typeof(IMovePicker))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public GameObject playerAttackAnimationObject;
     public GameObject enemyAttackAnimationObject;
-    public IVisualController visualController;
-    
+    public VisualController visualController;
     private Dictionary<EmotionType, float> emotionValues = new Dictionary<EmotionType, float> {
         {EmotionType.Wrath, 100},
         {EmotionType.Love, 100},
@@ -73,10 +73,23 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 break; //do nothing. User of this move was stunned.
             default: throw new NotImplementedException();
         }
+        CheckGameOver();
+    }
+
+    private void CheckGameOver()
+    {
+        foreach (EmotionType emotion in emotionValues.Keys)
+        {
+            if (emotionValues[emotion] <= 0)
+            {
+                battleManager.EndBattle(this);
+            }
+        }
     }
 
     public void RequestNextMove()
     {
+        Debug.Log("EmotionSystem: RequestNext move called on " + this.name);
         visualController.setEmotionWheelVisibility(true);
         //if a next move was already loaded ( such as if stunned or transformed, use it)
         if (nextMove != null)
