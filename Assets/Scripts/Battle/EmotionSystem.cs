@@ -5,7 +5,7 @@ using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
 [RequireComponent(typeof(VisualController))]
-[RequireComponent(typeof(IMovePicker))]
+[RequireComponent(typeof(AbstractMovePicker))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public GameObject playerAttackAnimationObject;
@@ -27,12 +27,13 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
-    public IMovePicker movePicker;
+    public AbstractMovePicker movePicker;
     public int baseStrength; //effectiveness of IBattleMoves instantiated, where applicable.
 
     void Start()
     {
         visualController = GetComponent<VisualController>();
+        movePicker = GetComponent<AbstractMovePicker>();
     }
 
     public float GetEmotionValue(EmotionType type) {
@@ -89,7 +90,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void RequestNextMove()
     {
         Debug.Log("EmotionSystem: RequestNext move called on " + this.name);
-        visualController.setEmotionWheelVisibility(true);
         //if a next move was already loaded ( such as if stunned or transformed, use it)
         if (nextMove != null)
         {

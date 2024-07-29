@@ -1,32 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EmotionTypeExtension;
 
 [RequireComponent(typeof(IEmotion))]
 [RequireComponent(typeof(IVisualController))]
-public class PlayerMovePicker : MonoBehaviour, IMovePicker
+public class PlayerMovePicker : AbstractMovePicker
 {
-
-    private bool isAskingForPlayInput = false;
-    private bool isEmotionChosen = false;
-    public IVisualController visualController;
-    public IEmotion userEmotionSystem;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (userEmotionSystem == null)
-        {
-            userEmotionSystem = GetComponent<IEmotion>();
-        }
-        if (visualController == null)
-        {
-            visualController = GetComponent<VisualController>();
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -68,7 +46,7 @@ public class PlayerMovePicker : MonoBehaviour, IMovePicker
 
     public void MoveRequested()
     {
-        isAskingForPlayInput = true;
         visualController.setEmotionWheelVisibility(true);
+        base.MoveRequested();
     }
 }
