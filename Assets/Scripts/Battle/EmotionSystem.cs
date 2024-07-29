@@ -82,7 +82,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {
             if (emotionValues[emotion] <= 0)
             {
-                battleManager.EndBattle(this);
+                battleManager.EndBattle(gameObject);
             }
         }
     }

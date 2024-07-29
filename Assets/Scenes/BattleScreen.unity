@@ -431,6 +431,8 @@ MonoBehaviour:
   opponentTeam:
   - {fileID: 1303107869}
   turnIndex: 0
+  gameOverSFX: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
+  gameWonSFX: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
 --- !u!114 &427306909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,6 +1222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
+  visualController: {fileID: 0}
   currentEmotion: 0
   battleManager: {fileID: 427306908}
   baseStrength: 0
@@ -1473,6 +1476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
+  visualController: {fileID: 0}
   currentEmotion: 0
   battleManager: {fileID: 0}
   baseStrength: 0
