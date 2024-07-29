@@ -114,21 +114,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         lastMoveUsed = nextMove;
         nextMove = null;
 
-
-        GameObject newAttack;
-        // Circe's move animation
-        if (gameObject.tag == "Player") {
-            //newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
-            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(0.5f, 1.5f, -6f), Quaternion.Euler(new Vector3(-90, 0, 0)));
-        } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            //newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
-            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(2.7f, 1.5f, 0f), Quaternion.Euler(new Vector3(0, 0, 0)));
-        } else {
-            throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
-        }
-
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        Destroy(newAttack, 1);
         battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
     }
 }
