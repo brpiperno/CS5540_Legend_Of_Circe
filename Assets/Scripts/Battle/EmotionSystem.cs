@@ -23,7 +23,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             {EmotionType.Grief, 1},
             {EmotionType.Mirth, 1}
         };
-    public EmotionType currentEmotion; //set some starting default emotion;
+    public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
@@ -103,7 +103,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     {
         nextMove = new BasicMove(this.baseStrength, emotion, move);
         //for shield and enhancement spells, the target is the user
-        IEmotion target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
+        EmotionSystem target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
             this : battleManager.GetEnemy(this); 
         battleManager.SubmitMove(nextMove, this, target);
     }
@@ -112,6 +112,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void PlayMove() {
         lastMoveUsed = nextMove;
         nextMove = null;
+        currentEmotion = lastMoveUsed.GetEmotionType();
 
 
         GameObject newAttack;

@@ -49,6 +49,9 @@ public class VisualController : MonoBehaviour, IVisualController
 
     public void updateEmotionWheelSelection(EmotionType emotion)
     {
+        //turn off all others
+        setEmotionWheelVisibility(false);
+
         switch (emotion)
         {
             case EmotionType.Grief:

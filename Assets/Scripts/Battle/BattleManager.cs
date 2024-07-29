@@ -40,7 +40,7 @@ public class BattleManager : MonoBehaviour
         turnIndex = 0;
         //TODO: Turn off other player controls or NPC behavior
         //TODO: Enable Battle Specific UI
-        //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
+        Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
     }
 
@@ -50,8 +50,9 @@ public class BattleManager : MonoBehaviour
     /// <param name="move"> The move to be used</param>
     /// <param name="user"> The originator of the move</param>
     /// <param name="target">The target of the move</param>
-    public void SubmitMove(IBattleMove move, IEmotion user, IEmotion target)
+    public void SubmitMove(IBattleMove move, EmotionSystem user, EmotionSystem target)
     {
+        Debug.Log("BattleManager: SubmitMove called with move:" + move.ToString() + "Target: " + target.name + "User: " + user.name);
         if (getPlayerIndex(user) != turnIndex)
         {
             return; //ignore out of turn moves
@@ -84,7 +85,7 @@ public class BattleManager : MonoBehaviour
     /// End the battle, noting who lost. The BattleManager will use that info to determine any rewards or other behavior
     /// </summary>
     /// <param name="loser"></param>
-    public void EndBattle(IEmotion loser)
+    public void EndBattle(EmotionSystem loser)
     {
         //end the battle
         //if the battleManager has an item held, give it to the player
@@ -92,7 +93,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Battle ended");
     }
 
-    private int getPlayerIndex(IEmotion player)
+    private int getPlayerIndex(EmotionSystem player)
     {
         for (int i = 0; i < turnOrder.Count; i++)
         {
@@ -104,7 +105,7 @@ public class BattleManager : MonoBehaviour
         throw new ArgumentException("Player not managed by BattleManager called method");
     }
 
-    public IEmotion GetEnemy(IEmotion player)
+    public EmotionSystem GetEnemy(EmotionSystem player)
     {
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }

@@ -2,27 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(IEmotion))]
-[RequireComponent(typeof(IVisualController))]
+[RequireComponent(typeof(EmotionSystem))]
+[RequireComponent(typeof(VisualController))]
 public abstract class AbstractMovePicker : MonoBehaviour, IMovePicker
 {
     protected bool isAskingForPlayInput = false;
-    public IVisualController visualController;
-    public IEmotion userEmotionSystem;
+    protected VisualController visualController;
+    protected EmotionSystem userEmotionSystem;
 
     // Start is called before the first frame update
     void Start()
     {
-        {
-            if (userEmotionSystem == null)
-            {
-                userEmotionSystem = GetComponent<IEmotion>();
-            }
-            if (visualController == null)
-            {
-                visualController = GetComponent<VisualController>();
-            }
-        }
+        userEmotionSystem = GetComponent<EmotionSystem>();
+        visualController = GetComponent<VisualController>();
     }
 
     public void MoveRequested()

@@ -1,12 +1,26 @@
 using UnityEngine;
 using EmotionTypeExtension;
 
-[RequireComponent(typeof(IEmotion))]
-[RequireComponent(typeof(IVisualController))]
+[RequireComponent(typeof(EmotionSystem))]
+[RequireComponent(typeof(VisualController))]
 public class PlayerMovePicker : AbstractMovePicker
 {
     public EmotionType emotionChosen = EmotionType.Grief;
     protected bool isEmotionChosen = false;
+    public GameObject spacePrompt;
+
+    void Start()
+    {
+        if (userEmotionSystem == null)
+        {
+            userEmotionSystem = GetComponent<EmotionSystem>();
+        }
+        if (visualController == null)
+        {
+            visualController = GetComponent<VisualController>();
+        }
+        spacePrompt = GameObject.FindGameObjectWithTag("Space");
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,24 +33,28 @@ public class PlayerMovePicker : AbstractMovePicker
             emotionChosen = EmotionType.Grief;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
+            spacePrompt.SetActive(true);
         }
         else if (Input.GetKeyDown("left"))
         {
             emotionChosen = EmotionType.Love;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
+            spacePrompt.SetActive(true);
         }
         else if (Input.GetKeyDown("right"))
         {   
             emotionChosen = EmotionType.Wrath;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
+            spacePrompt.SetActive(true);
         }
         else if (Input.GetKeyDown("down"))
         {
             emotionChosen = EmotionType.Mirth;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
+            spacePrompt.SetActive(true);
         }
         if (Input.GetKeyDown("space") && isEmotionChosen)
         {
@@ -44,6 +62,7 @@ public class PlayerMovePicker : AbstractMovePicker
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
+            spacePrompt.SetActive(false);
         }
     }
 
