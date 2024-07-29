@@ -56,9 +56,11 @@ public class BattleManager : MonoBehaviour
     {
         if (getPlayerIndex(user) != turnIndex)
         {
+            Debug.Log("Not user's turn");
             return; //ignore out of turn moves
         } else
         {
+            Debug.Log("Playing user's move");
             user.PlayMove();
             target.AcceptMove(move);
         }
