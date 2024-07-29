@@ -418,10 +418,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8829a3b742bf9fa46bcebb51a65a1b12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circe: {fileID: 1270705322}
-  opponent: {fileID: 1303107868}
   previousScene: NavigationScene
   GameOverText: {fileID: 20479637}
+  playersTeam: []
+  opponentTeam:
+  - {fileID: 1303107869}
+  turnIndex: 0
 --- !u!114 &427306909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,16 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circe: {fileID: 0}
-  opponent: {fileID: 0}
-  CirceGriefSlider: {fileID: 1075226734}
-  CirceLoveSlider: {fileID: 1870508310}
-  CirceWrathSlider: {fileID: 1358873738}
-  CirceMirthSlider: {fileID: 1947432906}
-  EnemyGriefSlider: {fileID: 0}
-  EnemyLoveSlider: {fileID: 0}
-  EnemyWrathSlider: {fileID: 0}
-  EnemyMirthSlider: {fileID: 0}
+  playerAttackEffect: {fileID: 0}
+  playerAttackEffectPosition: {x: 0, y: 0, z: 0}
+  playerAttackEffectRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &628637131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -688,17 +683,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6048984421049505559, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
   m_PrefabInstance: {fileID: 21835756764223729}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1075226734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7823140309169839100, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1171452487 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3185496781731396728, guid: 8c9a19f219f58204cbd9531594943396, type: 3}
@@ -775,6 +759,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1270705323}
+    - targetCorrespondingSourceObject: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1270705324}
   m_SourcePrefab: {fileID: 100100000, guid: cb569c01d0047ae47afac295867b5549, type: 3}
 --- !u!1 &1270705322 stripped
 GameObject:
@@ -795,6 +782,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
   enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
+  currentEmotion: 0
+  battleManager: {fileID: 0}
+  baseStrength: 0
+--- !u!114 &1270705324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270705322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttackEffect: {fileID: 0}
+  playerAttackEffectPosition: {x: 0, y: 0, z: 0}
+  playerAttackEffectRotation: {x: 0, y: 0, z: 0}
 --- !u!1001 &1303107867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -895,17 +900,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
   enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
---- !u!114 &1358873738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2640028388925518140, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  currentEmotion: 0
+  battleManager: {fileID: 0}
+  baseStrength: 0
 --- !u!1 &1408709653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,28 +1035,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 108461cc563321543b016d5b25bd535f, type: 3}
---- !u!114 &1870508310 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8954290490665177840, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1947432906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4114921334272472934, guid: 72f0413142cdc8a4d8186ebc267e446d, type: 3}
-  m_PrefabInstance: {fileID: 21835756764223729}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &21835756764223729
 PrefabInstance:
   m_ObjectHideFlags: 0
