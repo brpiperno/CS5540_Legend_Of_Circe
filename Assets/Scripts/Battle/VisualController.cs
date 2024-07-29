@@ -38,8 +38,9 @@ public class VisualController : MonoBehaviour, IVisualController
 
         if (moveType == MoveType.Damage)
         {
-            ParticleSystem.MainModule ps = attack.GetComponent<ParticleSystem>().main;
-            ps.startColor = emotion.GetColor();
+            var ps = attack.GetComponent<ParticleSystem>();
+            var newColor = ps.main;
+            newColor.startColor = emotion.GetColor();
         }
         Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
         AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);

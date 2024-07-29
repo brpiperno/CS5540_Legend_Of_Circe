@@ -5,7 +5,7 @@ using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
 [RequireComponent(typeof(VisualController))]
-[RequireComponent(typeof(IMovePicker))]
+[RequireComponent(typeof(AbstractMovePicker))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public GameObject playerAttackAnimationObject;
@@ -28,12 +28,13 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
-    public IMovePicker movePicker;
+    public AbstractMovePicker movePicker;
     public int baseStrength; //effectiveness of IBattleMoves instantiated, where applicable.
 
     void Start()
     {
         visualController = GetComponent<VisualController>();
+        movePicker = GetComponent<AbstractMovePicker>();
     }
 
     public float GetEmotionValue(EmotionType type) {
@@ -90,7 +91,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void RequestNextMove()
     {
         Debug.Log("EmotionSystem: RequestNext move called on " + this.name);
-        visualController.setEmotionWheelVisibility(true);
         //if a next move was already loaded ( such as if stunned or transformed, use it)
         if (nextMove != null)
         {
@@ -111,6 +111,10 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
     // Method does not use the move variable so far
     public void PlayMove() {
+        lastMoveUsed = nextMove;
+        nextMove = null;
+
+
         GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
@@ -124,7 +128,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         }
 
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        lastMoveUsed = null; //clear the last move used
         Destroy(newAttack, 1);
         battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
     }

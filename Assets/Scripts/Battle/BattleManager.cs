@@ -42,7 +42,7 @@ public class BattleManager : MonoBehaviour
         turnIndex = 0;
         //TODO: Turn off other player controls or NPC behavior
         //TODO: Enable Battle Specific UI
-        Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
+        //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
     }
 

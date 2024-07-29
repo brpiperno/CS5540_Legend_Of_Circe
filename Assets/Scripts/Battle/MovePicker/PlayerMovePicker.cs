@@ -1,39 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using EmotionTypeExtension;
 
 [RequireComponent(typeof(IEmotion))]
 [RequireComponent(typeof(IVisualController))]
-public class PlayerMovePicker : MonoBehaviour, IMovePicker
+public class PlayerMovePicker : AbstractMovePicker
 {
-    public IVisualController visualController;
-    public IEmotion userEmotionSystem;
     public GameObject spacePrompt;
-    private bool isAskingForPlayInput = false;
-    private bool isEmotionChosen = false;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (userEmotionSystem == null)
-        {
-            userEmotionSystem = GetComponent<IEmotion>();
-        }
-        if (visualController == null)
-        {
-            visualController = GetComponent<VisualController>();
-        }
-        spacePrompt = GameObject.FindGameObjectWithTag("Space");
-    }
+    public EmotionType emotionChosen = EmotionType.Grief;
+    protected bool isEmotionChosen = false;
 
     // Update is called once per frame
     void Update()
     {
+        
         if (!isAskingForPlayInput) { return; } //do nothing when out of turn
-
-        EmotionType emotionChosen = EmotionType.Grief;
+        Debug.Log("Player's turn and player input is requested");
         if (Input.GetKeyDown("up"))
         {
             spacePrompt.SetActive(true);
@@ -75,7 +56,7 @@ public class PlayerMovePicker : MonoBehaviour, IMovePicker
 
     public void MoveRequested()
     {
-        isAskingForPlayInput = true;
         visualController.setEmotionWheelVisibility(true);
+        base.MoveRequested();
     }
 }
