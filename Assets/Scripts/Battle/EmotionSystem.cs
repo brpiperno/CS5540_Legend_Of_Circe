@@ -110,6 +110,10 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
     // Method does not use the move variable so far
     public void PlayMove() {
+        lastMoveUsed = nextMove;
+        nextMove = null;
+
+
         GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
@@ -123,7 +127,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             newAttack.GetComponent<Renderer>().material.color = lastMoveUsed.GetEmotionType().GetColor();
         }
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        lastMoveUsed = null; //clear the last move used
         Destroy(newAttack, 1);
         battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
     }

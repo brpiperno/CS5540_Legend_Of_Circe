@@ -7,7 +7,6 @@ using UnityEngine;
 public abstract class AbstractMovePicker : MonoBehaviour, IMovePicker
 {
     protected bool isAskingForPlayInput = false;
-    protected bool isEmotionChosen = false;
     public IVisualController visualController;
     public IEmotion userEmotionSystem;
 

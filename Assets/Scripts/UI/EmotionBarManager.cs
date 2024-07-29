@@ -57,7 +57,7 @@ public class EmotionBarManager : MonoBehaviour
                 {
                     //allBarsFinalized = allBarsFinalized && current == actual; //bars are finalized only if current == actual for all emotions
                 }
-                Debug.Log(name + ": slider value: " + current + " actual value: " + actual);
+                //Debug.Log(name + ": slider value: " + current + " actual value: " + actual);
             }
         }
     }

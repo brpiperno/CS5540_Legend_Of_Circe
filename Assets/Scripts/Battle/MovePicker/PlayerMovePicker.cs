@@ -5,12 +5,15 @@ using EmotionTypeExtension;
 [RequireComponent(typeof(IVisualController))]
 public class PlayerMovePicker : AbstractMovePicker
 {
+    public EmotionType emotionChosen = EmotionType.Grief;
+    protected bool isEmotionChosen = false;
+
     // Update is called once per frame
     void Update()
     {
+        
         if (!isAskingForPlayInput) { return; } //do nothing when out of turn
-
-        EmotionType emotionChosen = EmotionType.Grief;
+        Debug.Log("Player's turn and player input is requested");
         if (Input.GetKeyDown("up"))
         {
             emotionChosen = EmotionType.Grief;

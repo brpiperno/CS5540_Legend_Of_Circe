@@ -28,8 +28,9 @@ public class VisualController : MonoBehaviour, IVisualController
         //TODO: Invoke removehighlight at 2 seconds
         if (moveType == MoveType.Damage)
         {
-            ParticleSystem.MainModule ps = attack.GetComponent<ParticleSystem>().main;
-            ps.startColor = emotion.GetColor();
+            var ps = attack.GetComponent<ParticleSystem>();
+            var newColor = ps.main;
+            newColor.startColor = emotion.GetColor();
         }
     }
 
