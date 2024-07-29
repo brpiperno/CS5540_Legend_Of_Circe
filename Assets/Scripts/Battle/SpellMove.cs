@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SpellMove : IBattleMove
 {
+    EmotionType emotionType;
     MoveType spellType;
     int strength;
 
-    public SpellMove(MoveType spellType, int strength) {
+    public SpellMove(EmotionType emotionType, MoveType spellType, int strength) {
+        this.emotionType = emotionType;
         this.spellType = spellType;
         this.strength =  strength;
     }
@@ -23,5 +25,8 @@ public class SpellMove : IBattleMove
     }
     public MoveType GetMoveType() {
         return spellType;
+    }
+    public EmotionType GetEmotionType() {
+        return emotionType;
     }
 }

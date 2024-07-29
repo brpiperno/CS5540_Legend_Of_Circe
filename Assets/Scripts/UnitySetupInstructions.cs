@@ -11,4 +11,7 @@ prefabs to both scripts
 Drag the VisualController script onto the BattleManager GameObject. Add the objects
 
 Drag each of the "arrow selected" Game Objects under Canvas to the appropriate fields in the Emotion Systems of Circe and the opponent
+
+Credits:
+Potion images from an asset pack by Josué Rocha
 */

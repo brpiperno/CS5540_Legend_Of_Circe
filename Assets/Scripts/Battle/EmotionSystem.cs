@@ -84,7 +84,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         Performs the move "attacker" against the current object. Needs to take in the move chosen by this
         object as well to calculate effectiveness.
     */
-    public void AcceptEmotionMove(EmotionMove attacker, EmotionMove receiver) {
+    public void AcceptEmotionMove(IBattleMove attacker, IBattleMove receiver) {
         //float damage = BattleManager.basePowerForMoves * 
         //    BattleManager.getTypeChartMultiplier(attacker.GetEmotionType(), 
         //    receiver.GetEmotionType()) * defenseModifiers[attacker.GetEmotionType()];

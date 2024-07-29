@@ -7,7 +7,8 @@ public enum EmotionType
     Love,
     Wrath,
     Grief,
-    Mirth
+    Mirth,
+    None
 }
 
 // Get the name of the EmotionType by doing

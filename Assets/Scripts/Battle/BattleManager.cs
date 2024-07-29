@@ -28,7 +28,6 @@ public class BattleManager : MonoBehaviour
 
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +71,7 @@ public class BattleManager : MonoBehaviour
                 playerSystem.PlayMove(playersMove);
             }
             else if (Input.GetKeyDown("space")) {
-                useSpell();
+                UseSpell();
             }
             if (playersMove != null) {
                 IBattleMove opponentsMove = enemyMovePicker.GetBattleMove();
@@ -86,18 +85,20 @@ public class BattleManager : MonoBehaviour
 
         //check for a battle draw condition:
         foreach (EmotionType e in Enum.GetValues(typeof(EmotionType))) {
-            if (playerSystem.GetEmotion(e) <= 0)
-            {
-                //load previous level
-                SceneManager.LoadScene(previousScene);
-                isBattleFinished = true;
-            }
-            if (opponentSystem.GetEmotion(e) <= 0)
-            {
-                //show game won screen
-                GameOverText.gameObject.SetActive(true);
-                isBattleFinished = true;
+            if (e != EmotionType.None) {
+                if (playerSystem.GetEmotion(e) <= 0)
+                {
+                    //load previous level
+                    SceneManager.LoadScene(previousScene);
+                    isBattleFinished = true;
+                }
+                if (opponentSystem.GetEmotion(e) <= 0)
+                {
+                    //show game won screen
+                    GameOverText.gameObject.SetActive(true);
+                    isBattleFinished = true;
 
+                }
             }
         }
     }
@@ -182,7 +183,7 @@ public class BattleManager : MonoBehaviour
      * For each type of emotion, it also has a defense modifier that determines how effective BattleMoves are at affecting it
      */
 
-     public void useSpell() {
+     public void UseSpell() {
 
      }
 }

@@ -11,4 +11,5 @@ public interface IBattleMove
     public string getAnimationTrigger();
     public int getEffectStrength();
     public MoveType GetMoveType();
+    public EmotionType GetEmotionType();
 }
