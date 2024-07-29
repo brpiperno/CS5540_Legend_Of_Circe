@@ -10,8 +10,11 @@ prefabs to both scripts
 
 Drag the VisualController script onto the BattleManager GameObject. Add the objects
 
-Drag each of the "arrow selected" Game Objects under Canvas to the appropriate fields in the Emotion Systems of Circe and the opponent
+Drag each of the "arrow selected" Game Objects under Canvas to the appropriate fields in the Visual Controllers in Circe, the opponent, and the Battle Manager
+
+Drag the "Strum" audio to the SFX fields in each Visual Controller
 
 Credits:
 Potion images from an asset pack by Josué Rocha
+Sound effects by Dustyroom
 */

@@ -110,10 +110,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
 
-        if (lastMoveUsed.GetMoveType() == MoveType.Damage) {
-            ParticleSystem.MainModule ps = newAttack.GetComponent<ParticleSystem>().main;
-            ps.startColor = lastMoveUsed.GetEmotionType().GetColor();
-        }
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
         lastMoveUsed = null; //clear the last move used
         Destroy(newAttack, 1);

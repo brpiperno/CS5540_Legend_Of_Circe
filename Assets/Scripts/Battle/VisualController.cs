@@ -25,6 +25,8 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject leftArrow;
     public GameObject rightArrow;
     public GameObject downArrow;
+    public AudioClip playerMoveSFX;
+    public float moveSFXPitch;
 
     public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
         GameObject attack = Instantiate(playerAttackEffect, 
@@ -32,11 +34,16 @@ public class VisualController : MonoBehaviour, IVisualController
             Quaternion.Euler(playerAttackEffectRotation));
         //TODO: Invoke setAskInput at 2 seconds
         //TODO: Invoke removehighlight at 2 seconds
+            // Is called in PlayerMovePicker?
+
         if (moveType == MoveType.Damage)
         {
             ParticleSystem.MainModule ps = attack.GetComponent<ParticleSystem>().main;
             ps.startColor = emotion.GetColor();
         }
+        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+
     }
     public void updateEmotionBarUI() {
         //do nothing for now. EmotionBarManager acts independently and checks each frame
