@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 5251107426523682287}
   - component: {fileID: 8575405642148900806}
   - component: {fileID: 1576979089778481383}
-  - component: {fileID: -6210044762279469423}
+  - component: {fileID: 3209314537067489923}
+  - component: {fileID: 5586430151674790258}
+  - component: {fileID: 1424382743400218567}
   m_Layer: 0
   m_Name: NPC Old Man
   m_TagString: Enemy
@@ -29,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8234436724202565122}
   m_Father: {fileID: 0}
@@ -63,7 +65,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7940719953895527930}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6266ab5b0ec2f6b4795fe8beec5e4fbe, type: 3}
   m_Name: 
@@ -72,7 +74,7 @@ MonoBehaviour:
   triggerBattlePanel: {fileID: 0}
   BattleSceneName: 
   NPCName: Sailor
---- !u!114 &-6210044762279469423
+--- !u!114 &3209314537067489923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,6 +88,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
   enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
+  visualController: {fileID: 5586430151674790258}
+  currentEmotion: 0
+  battleManager: {fileID: 0}
+  movePicker: {fileID: 1424382743400218567}
+  baseStrength: 0
+--- !u!114 &5586430151674790258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719953895527930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttackEffect: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
+  playerAttackEffectPosition: {x: 0, y: 0, z: 0}
+  playerAttackEffectRotation: {x: 0, y: 2, z: 0}
+--- !u!114 &1424382743400218567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719953895527930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23862b88fd16897499c8df13cabcf0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8488196711846185449
 PrefabInstance:
   m_ObjectHideFlags: 0

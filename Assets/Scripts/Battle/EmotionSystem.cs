@@ -28,7 +28,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
     public AbstractMovePicker movePicker;
-    public int baseStrength; //effectiveness of IBattleMoves instantiated, where applicable.
+    public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
 
     void Start()
     {
@@ -117,18 +117,23 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         GameObject newAttack;
         // Circe's move animation
         if (gameObject.tag == "Player") {
-            newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
+            //newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
         } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
+            //newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
         } else {
             throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
         }
         if (lastMoveUsed.GetMoveType() == MoveType.Damage) {
-            newAttack.GetComponent<Renderer>().material.color = lastMoveUsed.GetEmotionType().GetColor();
+            //newAttack.GetComponent<Renderer>().material.color = lastMoveUsed.GetEmotionType().GetColor();
         }
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        Destroy(newAttack, 1);
-        battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
+        //Destroy(newAttack, 1);
+        Invoke("FinishTurn", 2);
+    }
+
+    private void FinishTurn()
+    {
+        battleManager.CompleteMove(this);
     }
 
 }

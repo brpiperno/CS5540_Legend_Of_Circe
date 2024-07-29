@@ -67,8 +67,9 @@ public class BattleManager : MonoBehaviour
     /// Tell the BattleManager to move onto the next turn
     /// </summary>
     /// <param name="user">The user that performed the move</param>
-    public void CompleteMove(IEmotion user)
+    public void CompleteMove(EmotionSystem user)
     {
+        Debug.Log("Complete Moved called by " + user.name);
         if (getPlayerIndex(user) != turnIndex)
         {
             return; //ignore out of turn completion calls

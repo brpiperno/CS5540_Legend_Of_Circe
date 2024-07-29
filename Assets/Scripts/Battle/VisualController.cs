@@ -34,11 +34,6 @@ public class VisualController : MonoBehaviour, IVisualController
         }
     }
 
-    void Start()
-    {
-        Debug.Log("VisualController instantiated for " + name);
-    }
-
     public void updateEmotionBarUI() {
         //do nothing for now. EmotionBarManager acts independently and checks each frame
         //TODO: integrate EmotionBarManager into this class or at least control when the emotion bar manager starts checking

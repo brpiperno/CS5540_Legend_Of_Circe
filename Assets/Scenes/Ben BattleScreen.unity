@@ -939,7 +939,7 @@ MonoBehaviour:
   currentEmotion: 0
   battleManager: {fileID: 427306908}
   movePicker: {fileID: 1270705325}
-  baseStrength: 0
+  baseStrength: 10
 --- !u!114 &1270705324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackEffect: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
+  playerAttackEffect: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
   playerAttackEffectPosition: {x: 0, y: 0, z: 0}
   playerAttackEffectRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1270705325
@@ -967,6 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a494ff3b39b0454fb2e51e90153a8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emotionChosen: 2
 --- !u!1001 &1303107867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -975,22 +976,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1576979089778481383, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 3209314537067489923, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: baseStrength
+      value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
-      objectReference: {fileID: 0}
+    - target: {fileID: 3209314537067489923, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: battleManager
+      value: 
+      objectReference: {fileID: 427306908}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.6
@@ -1031,80 +1024,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_Name
       value: NPC Old Man
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1303107869}
-    - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1303107874}
-    - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1303107873}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
---- !u!1 &1303107868 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+--- !u!114 &1303107869 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3209314537067489923, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
   m_PrefabInstance: {fileID: 1303107867}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1303107869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303107868}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
-  enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
-  visualController: {fileID: 1303107874}
-  currentEmotion: 0
-  battleManager: {fileID: 427306908}
-  movePicker: {fileID: 1303107873}
-  baseStrength: 0
---- !u!114 &1303107873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303107868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23862b88fd16897499c8df13cabcf0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1303107874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303107868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAttackEffect: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
-  playerAttackEffectPosition: {x: 0, y: 0, z: 0}
-  playerAttackEffectRotation: {x: 0, y: 2, z: 0}
 --- !u!1 &1408709653
 GameObject:
   m_ObjectHideFlags: 0
