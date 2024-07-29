@@ -20,6 +20,8 @@ public class BattleManager : MonoBehaviour
     public EmotionSystem[] opponentTeam;
     private  List<EmotionSystem> turnOrder;
     public int turnIndex;
+    public AudioClip gameOverSFX;
+    public AudioClip gameWonSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -83,12 +85,17 @@ public class BattleManager : MonoBehaviour
     /// End the battle, noting who lost. The BattleManager will use that info to determine any rewards or other behavior
     /// </summary>
     /// <param name="loser"></param>
-    public void EndBattle(IEmotion loser)
+    public void EndBattle(GameObject loser)
     {
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
         Debug.Log("Battle ended");
+        if (loser.tag == "Player") {
+            AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
+        } else if (loser.tag == "Enemy") {
+            AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
+        }
     }
 
     private int getPlayerIndex(IEmotion player)

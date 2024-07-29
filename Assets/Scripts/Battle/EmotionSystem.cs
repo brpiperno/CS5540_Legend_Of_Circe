@@ -67,7 +67,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 visualController.updateEmotionBarUI();
                 break;
             case MoveType.Pharmaka:
-                battleManager.EndBattle(this);
+                battleManager.EndBattle(gameObject);
                 break;
             case MoveType.Null:
                 break; //do nothing. User of this move was stunned.
