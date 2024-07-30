@@ -6,7 +6,8 @@ Create an empty GameObject called BattleManager. Add the BattleManager script to
 Drag the GameObjects for the player and the opponent to their respective fields in the BattleManager script.
 
 Drag the EmotionSystem script onto both the GameObjects for Circe and the opponent. Attach the Circe Spell Cloud and Enemy Spell Cloud 
-prefabs to both scripts
+prefabs to both scripts. Set the coordinates: Circe cloud's position is (0.5, 1.5, -6), and rotation is (-90, 0, 0). Enemy cloud's position is (2.7, 1.5, 0),
+rotation is (0, 0, 0)
 
 Drag the VisualController script onto the BattleManager GameObject. Add the objects
 
