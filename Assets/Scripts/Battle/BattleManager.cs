@@ -91,6 +91,7 @@ public class BattleManager : MonoBehaviour
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
         Debug.Log("Battle ended");
+        SceneManager.LoadScene(previousScene);
     }
 
     private int getPlayerIndex(EmotionSystem player)

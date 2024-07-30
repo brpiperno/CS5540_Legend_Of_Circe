@@ -7,7 +7,7 @@ public class PlayerMovePicker : AbstractMovePicker
 {
     public EmotionType emotionChosen = EmotionType.Grief;
     protected bool isEmotionChosen = false;
-    public GameObject spacePrompt;
+    private GameObject spacePrompt;
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class PlayerMovePicker : AbstractMovePicker
             visualController = GetComponent<VisualController>();
         }
         spacePrompt = GameObject.FindGameObjectWithTag("Space");
+        spacePrompt.SetActive(false);
     }
 
     // Update is called once per frame
