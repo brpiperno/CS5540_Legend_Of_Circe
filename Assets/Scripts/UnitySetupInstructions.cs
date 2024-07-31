@@ -21,4 +21,5 @@ Credits:
 Potion images from an asset pack by Josué Rocha
 Sound effects by Dustyroom
 Additional tree assets from a pack by past12pm
+Spider model by Dante's anvil
 */
