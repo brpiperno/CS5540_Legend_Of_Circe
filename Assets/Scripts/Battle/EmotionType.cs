@@ -62,6 +62,7 @@ namespace EmotionTypeExtension
         Love = 0, //assign the int appropriate to each enum
         Wrath = 1,
         Grief = 2,
-        Mirth = 3
+        Mirth = 3,
+        Null = 4
     }
 }
