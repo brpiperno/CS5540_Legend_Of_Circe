@@ -18,8 +18,10 @@ public class BattleManager : MonoBehaviour
     //Reworked Variables
     public EmotionSystem[] playersTeam;
     public EmotionSystem[] opponentTeam;
-    private  List<EmotionSystem> turnOrder;
     public int turnIndex;
+
+    private  List<EmotionSystem> turnOrder;
+    public static bool opponentIsDying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -90,8 +92,18 @@ public class BattleManager : MonoBehaviour
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
-        Debug.Log("Battle ended");
-        SceneManager.LoadScene(previousScene);
+        if (loser.gameObject.tag == "Player") {
+            GameObject gameOverScreen = GameObject.FindGameObjectWithTag("GameOver");
+            gameOverScreen.SetActive(true);
+            if (Input.GetKeyDown("space")) {
+                SceneManager.LoadScene(previousScene);
+            }
+        } else if (loser.gameObject.tag == "Enemy") {
+            opponentIsDying = true;
+            Invoke("ShowWinText", 1);
+        } else {
+            throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
+        }
     }
 
     private int getPlayerIndex(EmotionSystem player)
@@ -110,4 +122,8 @@ public class BattleManager : MonoBehaviour
     {
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
-}
+
+    public void ShowWinText() {
+
+    }
+ }
