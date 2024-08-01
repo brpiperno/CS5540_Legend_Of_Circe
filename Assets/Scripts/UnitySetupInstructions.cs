@@ -24,4 +24,6 @@ Additional tree assets from a pack by past12pm
 Spider model by Dante's anvil
 Mushroom assets from Papersy
 Butterfly asset from Acorn Bringer
+Throne room background is from https://stablediffusionweb.com/ko/image/5081178-ancient-greek-throne-room
+Helios art is from https://www.youtube.com/watch?v=SfjekCNkA5A
 */
