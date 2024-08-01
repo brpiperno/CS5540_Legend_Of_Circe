@@ -11,6 +11,7 @@ public class MoveTypeIngredient : MonoBehaviour
 
     private Collider cldr;
     public MoveType moveType;
+    public AudioClip collectedSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class MoveTypeIngredient : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //Add itself to the player's inventory
+            AudioSource.PlayClipAtPoint(collectedSFX, Camera.main.transform.position);
             Inventory inventory = collided.GetComponent<Inventory>();
             inventory.addMoveIngredient(moveType);
             Destroy(this);
