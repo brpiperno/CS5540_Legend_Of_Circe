@@ -96,11 +96,12 @@ public class BattleManager : MonoBehaviour
             GameObject gameOverScreen = GameObject.FindGameObjectWithTag("GameOver");
             gameOverScreen.SetActive(true);
             if (Input.GetKeyDown("space")) {
-                SceneManager.LoadScene(previousScene);
+                ReturnToOverworld();
             }
         } else if (loser.gameObject.tag == "Enemy") {
             opponentIsDying = true;
             Invoke("ShowWinText", 1);
+            Invoke("ReturnToOverworld", 2);
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
@@ -123,7 +124,12 @@ public class BattleManager : MonoBehaviour
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
 
-    public void ShowWinText() {
+    private void ShowWinText() {
+        GameObject winText = GameObject.FindGameObjectWithTag("WinText");
+        winText.SetActive(true);
+    }
 
+    private void ReturnToOverworld() {
+        SceneManager.LoadScene(previousScene);
     }
  }
