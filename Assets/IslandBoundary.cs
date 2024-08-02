@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /// <summary>
@@ -7,24 +8,26 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class IslandBoundary : MonoBehaviour
 {
-    Collider cd;
-    public GameObject attemptToEscapeText;
+    public GameObject SystemDialoguePanel;
+    Text SystemDialogueText;
 
     // Start is called before the first frame update
     void Start()
     {
-         cd = GetComponent<Collider>();
+        SystemDialogueText = SystemDialoguePanel.GetComponentInChildren<Text>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    void turnOffText()
     {
-        //make the text prompt visible
-        attemptToEscapeText.SetActive(true);
+        SystemDialoguePanel.SetActive(false);
+    }
+
+    public void ReachedBoundary()
+    {
+        SystemDialoguePanel.SetActive(true);
+        SystemDialogueText.enabled = true;
+        SystemDialogueText.text = "Your exile perists. You may not leave Aeaea.";
         Invoke("turnOffText", 5);
-    }
-
-    private void turnOffText()
-    {
-        attemptToEscapeText.SetActive(false);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Collider))] //adding a trigger collider for overworld boundary detection;
 //[RequireComponent(typeof(Animator))]
 
 public class ThirdPersonController : MonoBehaviour
@@ -64,5 +65,13 @@ public class ThirdPersonController : MonoBehaviour
         moveDirection.y -= gravity * Time.deltaTime; //constantly apply gravity downwards
         controller.Move(moveDirection * Time.deltaTime * moveSpeed);
         //animator.SetInteger(animStateTriggerName, animState);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Boundary"))
+        {
+            other.gameObject.GetComponent<IslandBoundary>().ReachedBoundary();
+        }
     }
 }
