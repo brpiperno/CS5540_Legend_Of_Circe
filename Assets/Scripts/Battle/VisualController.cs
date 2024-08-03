@@ -26,10 +26,10 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject rightArrow;
     public GameObject downArrow;
     public AudioClip playerMoveSFX;
-    public float moveSFXPitch;
+    //public float moveSFXPitch;
 
     public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
-        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
         AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
         GameObject attack = Instantiate(playerAttackEffect, 
             playerAttackEffectPosition,

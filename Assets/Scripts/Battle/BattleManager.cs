@@ -19,9 +19,11 @@ public class BattleManager : MonoBehaviour
     public EmotionSystem[] playersTeam;
     public EmotionSystem[] opponentTeam;
     public int turnIndex;
+    public static bool opponentIsDying = false;
+    public AudioClip loseSFX;
+    public AudioClip winSFX;
 
     private  List<EmotionSystem> turnOrder;
-    public static bool opponentIsDying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -95,12 +97,14 @@ public class BattleManager : MonoBehaviour
         if (loser.gameObject.tag == "Player") {
             GameObject gameOverScreen = GameObject.FindGameObjectWithTag("GameOver");
             gameOverScreen.SetActive(true);
+            AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
             if (Input.GetKeyDown("space")) {
                 ReturnToOverworld();
             }
         } else if (loser.gameObject.tag == "Enemy") {
             opponentIsDying = true;
             Invoke("ShowWinText", 1);
+            AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
             Invoke("ReturnToOverworld", 2);
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
