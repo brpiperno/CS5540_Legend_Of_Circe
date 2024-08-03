@@ -746,6 +746,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circe (Model)
       objectReference: {fileID: 0}
+    - target: {fileID: 4244498544126288499, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937576209994485584, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8955312117500733587, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       propertyPath: NavCam
       value: 

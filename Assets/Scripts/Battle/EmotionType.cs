@@ -18,6 +18,8 @@ namespace EmotionTypeExtension
                     return new Color(0.2941177f, 0, 1f);
                 case EmotionType.Mirth:
                     return new Color(0.3921569f, 0.8823529f, 0.2941177f);
+                case EmotionType.Null:
+                    return new Color(0, 0, 0);
                 default:
                     throw new System.ArgumentException("Did not account for new EmotionType");
             }

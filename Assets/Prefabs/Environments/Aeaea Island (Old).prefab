@@ -1826,6 +1826,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SystemDialoguePanel: {fileID: 0}
+--- !u!1 &2199256168929969961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346694391944322064}
+  m_Layer: 0
+  m_Name: Geometry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1346694391944322064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2199256168929969961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 205438938954464191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2502301996700737302
 GameObject:
   m_ObjectHideFlags: 0
@@ -5970,6 +6001,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8610515355724765686}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1346694391944322064}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -8513424388201257645, guid: 10afa85f7ef2b8747978cef3df4fbce7, type: 3}
       insertIndex: -1

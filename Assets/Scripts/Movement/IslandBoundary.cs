@@ -27,7 +27,7 @@ public class IslandBoundary : MonoBehaviour
     {
         SystemDialoguePanel.SetActive(true);
         SystemDialogueText.enabled = true;
-        SystemDialogueText.text = "Your exile perists. You may not leave Aeaea.";
+        SystemDialogueText.text = "Your exile persists. You may not leave Aeaea.";
         Invoke("turnOffText", 5);
     }
 }
