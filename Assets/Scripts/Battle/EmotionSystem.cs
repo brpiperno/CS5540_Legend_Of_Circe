@@ -29,6 +29,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public BattleManager battleManager; //The battle manager that it sends moves to;
     public AbstractMovePicker movePicker;
     public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
+    public float enemySpellAnimationDelay = 1.7f;
 
     void Start()
     {
@@ -114,27 +115,21 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         nextMove = null;
         currentEmotion = lastMoveUsed.GetEmotionType();
 
-
-        GameObject newAttack;
-        // Circe's move animation
+        // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
         if (gameObject.tag == "Player") {
-            //newAttack = Instantiate(playerAttackAnimationObject, new Vector3(1.26f, 1.42f, -3.07f), Quaternion.Euler(new Vector3(90, 33, 0)));
-        } else if (gameObject.tag == "Enemy") { // Opponent's move animation
-            //newAttack = Instantiate(enemyAttackAnimationObject, new Vector3(0.35f, 1.63f, -2.04f), Quaternion.Euler(new Vector3(90, 33, 0)));
-        } else {
-            throw new ArgumentException("Tag of GameObject containing this EmotionSystem script is neither Player nor Enemy.");
-        }
-        if (lastMoveUsed.GetMoveType() == MoveType.Damage) {
-            //newAttack.GetComponent<Renderer>().material.color = lastMoveUsed.GetEmotionType().GetColor();
+            Invoke("PlayEnemyAnimation", enemySpellAnimationDelay);
         }
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        //Destroy(newAttack, 1);
         Invoke("FinishTurn", 2);
     }
 
     private void FinishTurn()
     {
         battleManager.CompleteMove(this);
+    }
+
+    private void PlayEnemyAnimation() {
+        visualController.PlayEnemyAnimation();
     }
 
 }

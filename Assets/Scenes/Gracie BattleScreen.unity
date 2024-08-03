@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 427306908}
   m_Layer: 0
   m_Name: BattleManager
-  m_TagString: Untagged
+  m_TagString: BattleManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -604,6 +604,9 @@ MonoBehaviour:
   turnIndex: 0
   loseSFX: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   winSFX: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+  spacePrompt: {fileID: 672379629}
+  winScreen: {fileID: 762204326}
+  gameOverScreen: {fileID: 1490622857}
 --- !u!114 &504941856 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
@@ -1211,6 +1214,11 @@ PrefabInstance:
       addedObject: {fileID: 20479636}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9a19f219f58204cbd9531594943396, type: 3}
+--- !u!1 &672379629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
+  m_PrefabInstance: {fileID: 1554300782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,6 +1433,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 9124543530202561350, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
   m_PrefabInstance: {fileID: 759032169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &762204326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6739044018151131276, guid: 6550c5816839c4cd592e6728046d0f94, type: 3}
+  m_PrefabInstance: {fileID: 7003727823441200468}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &897298756 stripped
 RectTransform:
@@ -2081,7 +2094,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444240500}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 929846cee9942414f8a16ecaaaa2a565, type: 3}
   m_Name: 
@@ -2108,6 +2121,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1490622857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4471916553915261643, guid: 1b0972eaa1f25434d8aa3c356f069bf6, type: 3}
+  m_PrefabInstance: {fileID: 7912816142992104652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1533921760 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3113867867844517700, guid: 6550c5816839c4cd592e6728046d0f94, type: 3}
@@ -2207,7 +2225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3195,6 +3213,10 @@ PrefabInstance:
     - target: {fileID: 4471916553915261643, guid: 1b0972eaa1f25434d8aa3c356f069bf6, type: 3}
       propertyPath: m_Name
       value: GameOverScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471916553915261643, guid: 1b0972eaa1f25434d8aa3c356f069bf6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -7,7 +7,7 @@ public class PlayerMovePicker : AbstractMovePicker
 {
     public EmotionType emotionChosen = EmotionType.Grief;
     protected bool isEmotionChosen = false;
-    private GameObject spacePrompt;
+    BattleManager battleManager;
 
     void Start()
     {
@@ -19,8 +19,8 @@ public class PlayerMovePicker : AbstractMovePicker
         {
             visualController = GetComponent<VisualController>();
         }
-        spacePrompt = GameObject.FindGameObjectWithTag("Space");
-        spacePrompt.SetActive(false);
+        battleManager = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
+        battleManager.spacePrompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,28 +34,28 @@ public class PlayerMovePicker : AbstractMovePicker
             emotionChosen = EmotionType.Grief;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            spacePrompt.SetActive(true);
+            battleManager.spacePrompt.SetActive(true);
         }
         else if (Input.GetKeyDown("left"))
         {
             emotionChosen = EmotionType.Love;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            spacePrompt.SetActive(true);
+            battleManager.spacePrompt.SetActive(true);
         }
         else if (Input.GetKeyDown("right"))
         {   
             emotionChosen = EmotionType.Wrath;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            spacePrompt.SetActive(true);
+            battleManager.spacePrompt.SetActive(true);
         }
         else if (Input.GetKeyDown("down"))
         {
             emotionChosen = EmotionType.Mirth;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            spacePrompt.SetActive(true);
+            battleManager.spacePrompt.SetActive(true);
         }
         if (Input.GetKeyDown("space") && isEmotionChosen)
         {
@@ -63,7 +63,7 @@ public class PlayerMovePicker : AbstractMovePicker
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
-            spacePrompt.SetActive(false);
+            battleManager.spacePrompt.SetActive(false);
         }
     }
 

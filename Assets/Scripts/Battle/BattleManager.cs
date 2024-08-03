@@ -19,11 +19,16 @@ public class BattleManager : MonoBehaviour
     public EmotionSystem[] playersTeam;
     public EmotionSystem[] opponentTeam;
     public int turnIndex;
-    public static bool opponentIsDying = false;
     public AudioClip loseSFX;
     public AudioClip winSFX;
+    public GameObject spacePrompt;
+    public GameObject winScreen;
+    public GameObject gameOverScreen;
 
+    public static bool opponentIsDying = false;
     private  List<EmotionSystem> turnOrder;
+    bool gameOver = false;
+    GameObject opponent;
 
     // Start is called before the first frame update
     void Start()
@@ -42,10 +47,17 @@ public class BattleManager : MonoBehaviour
         turnOrder.AddRange(playersTeam); //player's team goes first, then enemies
         turnOrder.AddRange(opponentTeam);
         turnIndex = 0;
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
         //TODO: Turn off other player controls or NPC behavior
         //TODO: Enable Battle Specific UI
         Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
+    }
+
+    void Update() {
+        if (gameOver && Input.GetKeyDown("space")) {
+            ReturnToOverworld();
+        }
     }
 
     /// <summary>
@@ -95,17 +107,13 @@ public class BattleManager : MonoBehaviour
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
         if (loser.gameObject.tag == "Player") {
-            GameObject gameOverScreen = GameObject.FindGameObjectWithTag("GameOver");
             gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
-            if (Input.GetKeyDown("space")) {
-                ReturnToOverworld();
-            }
+            gameOver = true;
         } else if (loser.gameObject.tag == "Enemy") {
-            opponentIsDying = true;
-            Invoke("ShowWinText", 1);
-            AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
-            Invoke("ReturnToOverworld", 2);
+            Invoke("WinActions", 2);
+            Animator anim = opponent.GetComponent<Animator>();
+            anim.SetInteger("state", 1);
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
@@ -128,9 +136,11 @@ public class BattleManager : MonoBehaviour
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
 
-    private void ShowWinText() {
-        GameObject winText = GameObject.FindGameObjectWithTag("WinText");
-        winText.SetActive(true);
+    private void WinActions() {
+        AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
+        //GameObject winText = GameObject.FindGameObjectWithTag("WinText");
+        winScreen.SetActive(true);
+        Invoke("ReturnToOverworld", 3);
     }
 
     private void ReturnToOverworld() {
