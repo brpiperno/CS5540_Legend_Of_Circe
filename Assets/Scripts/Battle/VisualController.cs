@@ -26,16 +26,13 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject rightArrow;
     public GameObject downArrow;
     public AudioClip playerMoveSFX;
-    public float moveSFXPitch;
 
     public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
-        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
         AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
         GameObject attack = Instantiate(playerAttackEffect, 
             playerAttackEffectPosition,
             Quaternion.Euler(playerAttackEffectRotation));
-        //TODO: Invoke setAskInput at 2 seconds
-        //TODO: Invoke removehighlight at 2 seconds
         if (moveType == MoveType.Damage)
         {
             var ps = attack.GetComponent<ParticleSystem>();
@@ -79,5 +76,11 @@ public class VisualController : MonoBehaviour, IVisualController
         leftArrow.SetActive(isVisible);
         rightArrow.SetActive(isVisible);
         downArrow.SetActive(isVisible);
+    }
+
+    public void PlayEnemyAnimation() {
+        GameObject opponent = GameObject.FindGameObjectWithTag("Enemy");
+        Animator anim = opponent.GetComponent<Animator>();
+        anim.SetTrigger("spellCast");
     }
 }

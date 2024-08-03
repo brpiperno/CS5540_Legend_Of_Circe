@@ -39,6 +39,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 52828309193972616, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      propertyPath: moveSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.4
@@ -87,10 +91,6 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.33
       objectReference: {fileID: 0}
-    - target: {fileID: 4244498544126288499, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5634609114713868187, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.4
@@ -112,7 +112,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8726069015679110809, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+    - {fileID: 6937576209994485584, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+    - {fileID: 3671383042519181569, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+    - {fileID: 4244498544126288499, guid: cb569c01d0047ae47afac295867b5549, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6716667685288686700, guid: cb569c01d0047ae47afac295867b5549, type: 3}
     - {fileID: 810444992778634979, guid: cb569c01d0047ae47afac295867b5549, type: 3}
@@ -123,9 +125,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1437411535439309943}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5164509739930823423}
     - targetCorrespondingSourceObject: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7879239548783568295}
@@ -140,22 +139,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
   m_PrefabInstance: {fileID: 7345047875954354016}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5164509739930823423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7861534131497994873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2f5963db25b7c644b33394c1c9292b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1.5
-  jumpHeight: 2
-  gravity: 9.81
-  airControl: 1
 --- !u!136 &7879239548783568295
 CapsuleCollider:
   m_ObjectHideFlags: 0
