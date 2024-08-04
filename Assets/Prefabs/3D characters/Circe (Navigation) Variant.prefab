@@ -1,5 +1,92 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2292872021016861025
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3816892571235687151}
+  - component: {fileID: 1903926282572558134}
+  m_Layer: 0
+  m_Name: InventorySystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3816892571235687151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292872021016861025}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7372980894949986499}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1903926282572558134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2292872021016861025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad0a6c6f2fe82e459fee19b2f522c73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellStrength: 20
+  maxMoveIngredients: 1
+  maxEmotionIngredients: 1
+  dropDistance: 1
+  mirthPrefabDrop: {fileID: 3024472539410522356, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
+  lovePrefabDrop: {fileID: 1320508769966560038, guid: f288c546d65e47d458c0a9a5531409f1, type: 3}
+  wrathPrefabDrop: {fileID: 5450069358699974683, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
+  griefPrefabDrop: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
+  EnhancementPrefabDrop: {fileID: 7625876037589919623, guid: 2ebf403137aa0bc408f38f9110018846, type: 3}
+  ShieldPrefabDrop: {fileID: 4897650447536225936, guid: 8bcd3f031c040a64fb386c72231bd7d5, type: 3}
+  ParalysisPrefabDrop: {fileID: 8830794094116864256, guid: 9b912bbe5f2b53b438ab11747664edb6, type: 3}
+  PharmakaPrefabDrop: {fileID: 8848070717540022058, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
+  TransformationPrefabDrop: {fileID: 9177569064428636979, guid: 1428abdc92aa19c49b2eb9ff7babfff4, type: 3}
+  craftSpellText: {fileID: 0}
+  emotionIngredientPanel: {fileID: 0}
+  moveTypeIngredientPanel: {fileID: 0}
+  emotionIngredientIcon: {fileID: 0}
+  moveTypeIngredientIcon: {fileID: 0}
+  potionIcon: {fileID: 0}
+  potionPanel: {fileID: 0}
+  mirthIcon: {fileID: 21300000, guid: 44e16b41345e9450695907e414c87aea, type: 3}
+  loveIcon: {fileID: 21300000, guid: a52cc1b06446348e0b352d847597c110, type: 3}
+  wrathIcon: {fileID: 21300000, guid: 3e3b6d5efe8fd75488c5de5fa4fd3bc0, type: 3}
+  griefIcon: {fileID: 21300000, guid: 1dab0e97ec7169040817bdf5369bda46, type: 3}
+  enhancementIcon: {fileID: 21300000, guid: 182fb72aed5fc4b5084ba6548656aee1, type: 3}
+  shieldIcon: {fileID: 21300000, guid: 85b6b2e918f6e46658dcb6ff764a52e4, type: 3}
+  paralysisIcon: {fileID: 21300000, guid: ca564a7c86dd1a14cbd32aa4db4ee731, type: 3}
+  transformationIcon: {fileID: 21300000, guid: 006759c02bb8329438a2efff452a2a72, type: 3}
+  pharmakaIcon: {fileID: 21300000, guid: 445f91a509b344582a82117beb435f6a, type: 3}
+  pharmakaPotionSprite: {fileID: 21300000, guid: d4119352922464d03bf5910b249db57c, type: 3}
+  paralysisPotionSprite: {fileID: 21300000, guid: 2c55d0f8297c04aa89bd625fa0973843, type: 3}
+  loveEnhancementPotionSprite: {fileID: 21300000, guid: 26516ec1f72754dd79eb87971dfce07a, type: 3}
+  wrathEnhancementPotionSprite: {fileID: 21300000, guid: 11d981d79bcd74dfdb6027e75404780e, type: 3}
+  griefEnhancementPotionSprite: {fileID: 21300000, guid: 7100b4bb2759c4365894ea79ed47c357, type: 3}
+  mirthEnhancementPotionSprite: {fileID: 21300000, guid: 9e32431bcea2e4b8ea6976ace9b067a5, type: 3}
+  griefShieldPotionSprite: {fileID: 21300000, guid: 8fb5b508c77b84457af0abc92cc7bee4, type: 3}
+  loveShieldPotionSprite: {fileID: 21300000, guid: f49c9d23dfe74486cbc83e55149d6107, type: 3}
+  wrathShieldPotionSprite: {fileID: 21300000, guid: d75eefc69d47c4333abd3f66f4f65940, type: 3}
+  mirthShieldPotionSprite: {fileID: 21300000, guid: a9ce7b27124b34cc49c25d279199056b, type: 3}
+  griefTransformationPotionSprite: {fileID: 21300000, guid: 0ca24afb363c748f1a65ca8ae785bc65, type: 3}
+  loveTransformationPotionSprite: {fileID: 21300000, guid: 32c4bc5368fac4552b163da6b258fdc0, type: 3}
+  wrathTransformationPotionSprite: {fileID: 21300000, guid: 06c556faa256748ea98e328d74fc8d35, type: 3}
+  mirthTransformationPotionSprite: {fileID: 21300000, guid: 55e1f15292fa5494b9a70b74efd5d859, type: 3}
 --- !u!1 &7731222418605759740
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +211,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1437411535439309943}
+    - targetCorrespondingSourceObject: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3816892571235687151}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       insertIndex: -1
