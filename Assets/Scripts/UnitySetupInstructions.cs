@@ -26,6 +26,10 @@ Mushroom assets from Papersy
 Butterfly asset from Acorn Bringer
 Throne room background is from https://stablediffusionweb.com/ko/image/5081178-ancient-greek-throne-room
 Helios art is from https://www.youtube.com/watch?v=SfjekCNkA5A
+Mushroom 2D asset from reddit user Street-Return2
+Butterfly 2D asset from pixilart.com user abruptbird
+Spider 2D asset from pixilart.com user amytoorMarn
+Grief Mushroom ingreident 2D asset from redit user Aggravating-Carob580
 */
 
 
