@@ -107,7 +107,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             return;
         }
         movePicker = GetComponent<IMovePicker>();
-        if (gameObject.CompareTag("Player")) {
+        
+        if (gameObject.tag == "Player") {
             movePicker.MoveRequested();
         } else
         {
