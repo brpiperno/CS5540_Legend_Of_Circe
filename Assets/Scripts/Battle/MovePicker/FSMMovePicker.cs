@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EmotionTypeExtension;
+using System;
 
 /// <summary>
 /// Simple Move Picker that chooses whatever move is super effective against 
@@ -25,6 +26,7 @@ public class FSMMovePicker : AbstractMovePicker
     // Start is called before the first frame update
     protected new void Start()
     {
+        base.Start();
         transitionOdds.Add(loveTransitions);
         transitionOdds.Add(wrathTransitions);
         transitionOdds.Add(griefTransitions);
@@ -36,12 +38,21 @@ public class FSMMovePicker : AbstractMovePicker
                 transition.AddRange( new float[] { 0.25f, 0.25f, 0.25f, 0.25f });
             }
         }
-        base.Start();
+        for (int i = 0; i < emotionTypeArrayIndices.Length; i++)
+        {
+            if (emotionTypeArrayIndices[i] == userEmotionSystem.currentEmotion)
+            {
+                currentMoodIndex = i;
+            }
+        }
+        Debug.Log("FSMMovePicker Start() in GameObject " + gameObject.name);
+        
     }
 
 
     public new void UpdateLastMoveRecieved(IBattleMove received) 
     {
+        base.UpdateLastMoveRecieved(received);
         //Update the row for the NPCs current mood
         for (int i = 0; i < emotionTypeArrayIndices.Length; i++)
         {
@@ -55,35 +66,49 @@ public class FSMMovePicker : AbstractMovePicker
             {
                 transitionOdds[currentMoodIndex][i] = Mathf.Clamp(transitionOdds[currentMoodIndex][i] - 0.125f, 0, 1);
             }
+
+            //TODO: readjust logic
         }
-        Debug.Log("FSM transition odds updated:\n" + transitionOdds);
+        Debug.Log("FSM transition odds updated:\n" + PrintArr(transitionOdds[currentMoodIndex].ToArray()));
     }
 
     public new void MoveRequested()
     {
+        base.MoveRequested();
         //Debug.Log("FSMMovePicker: moveRequested reached");
         //Sum up the odds for the current mod FSM transitions, and pick a number in that range
         //transisition sum should always be 1 but just in case it ever isn't due to type effectiveness,
         //calculate it iteratively
         float transitionSum = 0;
-        base.MoveRequested();
         float[] transitionThresholds = new float[emotionTypeArrayIndices.Length];
         for (int i = 0; i < emotionTypeArrayIndices.Length; ++i)
         {
             transitionSum += transitionOdds[currentMoodIndex][i];
             transitionThresholds[i] = transitionSum;
         }
-        float rng = Random.Range(0, transitionSum);
+        Debug.Log("Calculating transitionThresholds: " + PrintArr(transitionThresholds) + ", transitionsum: " + transitionSum);
+        float rng = UnityEngine.Random.Range(0, transitionSum);
         for (int i = 0; i < transitionThresholds.Length; ++i)
         {   
-            if (transitionThresholds[i] < rng )
+            if (transitionThresholds[i] >= rng )
             {
                 userEmotionSystem.LoadNextMove(emotionTypeArrayIndices[i], MoveType.Damage);
                 return;
             }
         }
-        throw new System.Exception("Did not correctly calculate move with rng: " + rng + "using range: [0, " + transitionSum + "].");
+        throw new Exception("Did not correctly calculate move with rng: " + rng + "using range: [0, " + transitionSum + "].");
+    }
 
+    private string PrintArr(float[] arr)
+    {
+        string output = " { ";
+        
+        foreach (var item in arr)
+        {
+            output += item + ", ";
+        }
+        output += "}\n";
+        return output;
     }
 
 }

@@ -17,7 +17,7 @@ public abstract class AbstractMovePicker : MonoBehaviour, IMovePicker
     public void MoveRequested()
     {
         isAskingForPlayInput = true;
-        Debug.Log("AbstractMovePicker: moveRequested reached");
+        //Debug.Log("AbstractMovePicker: moveRequested reached");
     }
 
     public void UpdateLastMoveRecieved(IBattleMove received)

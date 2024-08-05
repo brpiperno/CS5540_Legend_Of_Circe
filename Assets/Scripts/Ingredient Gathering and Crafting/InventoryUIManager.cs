@@ -36,8 +36,9 @@ public class InventoryUIManager : MonoBehaviour
     void Start()
     {
         initializeVariables();
+        updateEmotionIngredientUI();
+        updateMoveIngredientUI();
     }
-
     public void updateMoveIngredientUI()
     {       
         moveType = Inventory.getMoveType();
