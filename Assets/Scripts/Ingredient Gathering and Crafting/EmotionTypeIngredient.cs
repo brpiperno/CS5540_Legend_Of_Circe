@@ -5,6 +5,7 @@ using EmotionTypeExtension;
 /// Dictates the behavior of an ingredient pickup in the overworld. which can be combined with other ingredients by an inventory system to create spells.
 /// </summary>
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Renderer))]
 public class EmotionIngredient : MonoBehaviour
 {
        
@@ -15,6 +16,7 @@ public class EmotionIngredient : MonoBehaviour
     public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
     private bool turnedOn = false;
     private float startedTime;
+    private Renderer rndrer;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,10 @@ public class EmotionIngredient : MonoBehaviour
         cldr = GetComponent<Collider>();
         cldr.enabled = false;
         startedTime = Time.time;
+        rndrer = GetComponent<Renderer>();
+        Color color = emotionType.GetColor();
+        color.a = 0.2f;
+        rndrer.material.color = color;
     }
 
     private void Update()

@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EmotionTypeExtension;
 using System;
 using UnityEngine.UI;
-using System.Runtime.CompilerServices;
 
 /// <summary>
 /// This behavior script is to be attached to the player game object and allows them to collect and manage spell crafting ingredients. This also controls any UI updates
@@ -143,7 +141,7 @@ public class Inventory : MonoBehaviour
 
     void dropInFrontOfPlayer(GameObject drop)
     {
-        Vector3 dropLocation = transform.position + transform.forward * dropDistance;
+        Vector3 dropLocation = transform.position + transform.forward * dropDistance + new Vector3(0, -.5f, 0);
         Instantiate(drop, dropLocation, transform.rotation);
     }
 
@@ -187,6 +185,8 @@ public class Inventory : MonoBehaviour
     {
         updateEmotionIngredientUI();
         updateMoveIngredientUI();
+
+        /* Skip the code below for now
         craftSpellText.enabled = canCraft();
         if (craftedSpell != null || craftedSpell.GetEmotionType() == EmotionType.Null || craftedSpell.GetMoveType() == MoveType.Null)
         {
@@ -200,6 +200,7 @@ public class Inventory : MonoBehaviour
             potionIcon.color = craftedSpell.GetEmotionType().GetColor();
             potionIcon.sprite = potionSprites[craftedSpell.GetMoveType()][craftedSpell.GetEmotionType()];
         }
+        */
     }
 
 
