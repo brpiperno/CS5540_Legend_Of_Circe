@@ -26,9 +26,21 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject rightArrow;
     public GameObject downArrow;
     public AudioClip playerMoveSFX;
+    public bool hasBlockAnimation;
+    GameObject opponent;
 
-    public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
+    private Animator anim;
+
+    public void Start() {
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        anim = opponent.GetComponent<Animator>();
+    }
+
+    public IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType) {
         //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        if (hasBlockAnimation) {
+            yield return new WaitForSeconds(1f);
+        }
         AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
         GameObject attack = Instantiate(playerAttackEffect, 
             playerAttackEffectPosition,
@@ -78,9 +90,14 @@ public class VisualController : MonoBehaviour, IVisualController
         downArrow.SetActive(isVisible);
     }
 
-    public void PlayEnemyAnimation() {
-        GameObject opponent = GameObject.FindGameObjectWithTag("Enemy");
-        Animator anim = opponent.GetComponent<Animator>();
+    public void PlayEnemySpellCastAnimation() {
         anim.SetTrigger("spellCast");
+    }
+
+    public void PlayEnemyBlockAnimation() {
+        Debug.Log(gameObject.name + " hasBlockAnimation: " + hasBlockAnimation);
+        if (opponent.GetComponent<VisualController>().hasBlockAnimation) {
+            anim.SetTrigger("block");
+        }
     }
 }

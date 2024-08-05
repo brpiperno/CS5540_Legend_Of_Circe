@@ -12,6 +12,7 @@ public class FSMMovePicker : AbstractMovePicker
     private float[,] transitions;
     public int currentMoodIndex = 0; //the default starting emotion of the NPC
 
+    
 
 
     // Start is called before the first frame update

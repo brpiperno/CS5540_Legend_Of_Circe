@@ -28,7 +28,7 @@ public class PlayerMovePicker : AbstractMovePicker
     {
         
         if (!isAskingForPlayInput) { return; } //do nothing when out of turn
-        Debug.Log("Player's turn and player input is requested");
+        //Debug.Log("Player's turn and player input is requested");
         if (Input.GetKeyDown("up"))
         {
             emotionChosen = EmotionType.Grief;
