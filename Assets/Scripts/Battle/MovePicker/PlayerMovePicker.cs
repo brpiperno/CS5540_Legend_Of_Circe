@@ -1,26 +1,26 @@
 using UnityEngine;
 using EmotionTypeExtension;
+using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(EmotionSystem))]
 [RequireComponent(typeof(VisualController))]
 public class PlayerMovePicker : AbstractMovePicker
 {
     public EmotionType emotionChosen = EmotionType.Grief;
     protected bool isEmotionChosen = false;
     BattleManager battleManager;
+    VisualController visualController;
 
-    void Start()
+
+    protected new void Start()
     {
-        if (userEmotionSystem == null)
-        {
-            userEmotionSystem = GetComponent<EmotionSystem>();
-        }
+        base.Start();
         if (visualController == null)
         {
             visualController = GetComponent<VisualController>();
         }
         battleManager = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
         battleManager.spacePrompt.SetActive(false);
+        //Because inventory items are static, we dont need a specific instance
     }
 
     // Update is called once per frame
@@ -67,7 +67,7 @@ public class PlayerMovePicker : AbstractMovePicker
         }
     }
 
-    public void MoveRequested()
+    public new void MoveRequested()
     {
         visualController.setEmotionWheelVisibility(true);
         base.MoveRequested();

@@ -330,12 +330,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6048984421049505559}
+  m_Father: {fileID: 855821662021407983}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -288, y: -296.5}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -95.2, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5702561041796318568
 CanvasRenderer:
@@ -410,6 +410,7 @@ RectTransform:
   m_Children:
   - {fileID: 3353970831272650127}
   - {fileID: 7712800847754790618}
+  - {fileID: 1612116132107217059}
   m_Father: {fileID: 6048984421049505559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -498,12 +499,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6048984421049505559}
+  m_Father: {fileID: 593487618067887685}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -288, y: -338.5}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -58, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2050816374762668312
 CanvasRenderer:
@@ -577,12 +578,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6048984421049505559}
+  m_Father: {fileID: 98135877769181670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -288, y: -276.5}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -49.1, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3257897801996329578
 CanvasRenderer:
@@ -879,6 +880,7 @@ RectTransform:
   m_Children:
   - {fileID: 3351067604452909833}
   - {fileID: 8380672569381452720}
+  - {fileID: 2443772301701306672}
   m_Father: {fileID: 6048984421049505559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1046,12 +1048,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6048984421049505559}
+  m_Father: {fileID: 1716837586335075359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -288, y: -317.5}
-  m_SizeDelta: {x: 500, y: 100}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -58, y: 0}
+  m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &519651445386658758
 CanvasRenderer:
@@ -1128,6 +1130,7 @@ RectTransform:
   m_Children:
   - {fileID: 8805869951681389495}
   - {fileID: 4260686364546140335}
+  - {fileID: 2799127203253047242}
   m_Father: {fileID: 6048984421049505559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1452,6 +1455,7 @@ RectTransform:
   m_Children:
   - {fileID: 4046329409889360811}
   - {fileID: 6759319724613144811}
+  - {fileID: 6803557388440506132}
   m_Father: {fileID: 6048984421049505559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2069,10 +2073,6 @@ RectTransform:
   - {fileID: 7832181884095489586}
   - {fileID: 8775867739075333913}
   - {fileID: 3629796676576966903}
-  - {fileID: 6803557388440506132}
-  - {fileID: 2443772301701306672}
-  - {fileID: 1612116132107217059}
-  - {fileID: 2799127203253047242}
   - {fileID: 6530421710056936678}
   - {fileID: 2981249522576565620}
   - {fileID: 5899739103201845444}
@@ -2100,8 +2100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8f7e681b7a9041b99bf3c69c778bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderSpeed: 10
   wrathSlider: {fileID: 2640028388925518140}
   griefSlider: {fileID: 7823140309169839100}
   loveSlider: {fileID: 8954290490665177840}
   mirthSlider: {fileID: 4114921334272472934}
-  emotionValue: {fileID: 0}
+  emotionSystem: {fileID: 0}

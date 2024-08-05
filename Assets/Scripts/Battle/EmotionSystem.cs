@@ -5,11 +5,8 @@ using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
 [RequireComponent(typeof(VisualController))]
-[RequireComponent(typeof(AbstractMovePicker))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
-    public GameObject playerAttackAnimationObject;
-    public GameObject enemyAttackAnimationObject;
     public VisualController visualController;
     private Dictionary<EmotionType, float> emotionValues = new Dictionary<EmotionType, float> {
         {EmotionType.Wrath, 100},
@@ -27,14 +24,21 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
-    public AbstractMovePicker movePicker;
+    public IMovePicker movePicker;
     public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
     public float enemySpellAnimationDelay = 1.7f;
 
     void Start()
     {
-        visualController = GetComponent<VisualController>();
-        movePicker = GetComponent<AbstractMovePicker>();
+        if (visualController == null)
+        {
+            visualController = GetComponent<VisualController>();
+        }
+        if (movePicker == null)
+        {
+            movePicker = GetComponent<IMovePicker>();
+        }
+        
     }
 
     public float GetEmotionValue(EmotionType type) {
@@ -75,6 +79,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             default: throw new NotImplementedException();
         }
         CheckGameOver();
+        movePicker.UpdateLastMoveRecieved(move);
     }
 
     private void CheckGameOver()
@@ -95,9 +100,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         if (nextMove != null)
         {
             battleManager.SubmitMove(nextMove, this, battleManager.GetEnemy(this));
+            Debug.Log("Skipping turn, next move already loaded:" + nextMove.toString());
             return;
         }
         movePicker.MoveRequested();
+        Debug.Log("called moveRequested on movePicker in ");
     }
 
     public void LoadNextMove(EmotionType emotion, MoveType move)

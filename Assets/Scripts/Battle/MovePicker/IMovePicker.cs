@@ -10,4 +10,10 @@ public interface IMovePicker
     /// (which it provides using the LoadNextMove method in the IEmotion interface once determined)
     /// </summary>
     public void MoveRequested();
+
+    /// <summary>
+    /// Update the IMovePicker to decide based on the last move its EmotionSystem received.
+    /// </summary>
+    /// <param name="received">The battlemove received</param>
+    void UpdateLastMoveRecieved(IBattleMove received);
 }

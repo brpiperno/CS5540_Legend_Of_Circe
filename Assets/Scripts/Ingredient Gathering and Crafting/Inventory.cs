@@ -9,15 +9,14 @@ using UnityEngine.UI;
 /// </summary>
 public class Inventory : MonoBehaviour
 {
-    [Header("Inventory Management")]
-    public int spellStrength = 20;
-    private Queue<EmotionType> emotionIngredientsCollected;
-    private Queue<MoveType> moveIngredientsCollected;
-    public int maxMoveIngredients = 1;
-    public int maxEmotionIngredients = 1;
-    public float dropDistance = 5.0f;
-    private IBattleMove craftedSpell;
-    private bool canCraftSpell = false;
+    [Header("Static Inventory Management")]
+    public static int spellStrength = 20;
+    private static Queue<EmotionType> emotionIngredientsCollected;
+    private static Queue<MoveType> moveIngredientsCollected;
+    public static int maxMoveIngredients = 1;
+    public static int maxEmotionIngredients = 1;
+    public static float dropDistance = 5.0f;
+    private static IBattleMove craftedSpell;
 
     //When the inventory is maxed out, drop the prefab at the front of the queue of the right type
     [Header("EmotionIngrdient Drop Prefabs")]
@@ -66,20 +65,20 @@ public class Inventory : MonoBehaviour
 
     [Header("Completed Potion Sprites")]
     //Sprites for finalized potions
-    public Sprite pharmakaPotionSprite;
-    public Sprite paralysisPotionSprite;
-    public Sprite loveEnhancementPotionSprite;
-    public Sprite wrathEnhancementPotionSprite;
-    public Sprite griefEnhancementPotionSprite;
-    public Sprite mirthEnhancementPotionSprite;
-    public Sprite griefShieldPotionSprite;
-    public Sprite loveShieldPotionSprite;
-    public Sprite wrathShieldPotionSprite;
-    public Sprite mirthShieldPotionSprite;
-    public Sprite griefTransformationPotionSprite;
-    public Sprite loveTransformationPotionSprite;
-    public Sprite wrathTransformationPotionSprite;
-    public Sprite mirthTransformationPotionSprite;
+    public static Sprite pharmakaPotionSprite;
+    public static Sprite paralysisPotionSprite;
+    public static Sprite loveEnhancementPotionSprite;
+    public static Sprite wrathEnhancementPotionSprite;
+    public static Sprite griefEnhancementPotionSprite;
+    public static Sprite mirthEnhancementPotionSprite;
+    public static Sprite griefShieldPotionSprite;
+    public static Sprite loveShieldPotionSprite;
+    public static Sprite wrathShieldPotionSprite;
+    public static Sprite mirthShieldPotionSprite;
+    public static Sprite griefTransformationPotionSprite;
+    public static Sprite loveTransformationPotionSprite;
+    public static Sprite wrathTransformationPotionSprite;
+    public static Sprite mirthTransformationPotionSprite;
     private Dictionary<MoveType, Dictionary<EmotionType, Sprite>> potionSprites;
 
 
@@ -91,12 +90,9 @@ public class Inventory : MonoBehaviour
         initializeVariables();
         craftedSpell = new BasicMove(0, EmotionType.Null, MoveType.Null);
         updateUI();
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    private void Update()
-    {
-        
-    }
 
     public void addMoveIngredient(MoveType moveType)
     {
@@ -145,7 +141,7 @@ public class Inventory : MonoBehaviour
         Instantiate(drop, dropLocation, transform.rotation);
     }
 
-    public bool canCraft()
+    public static bool canCraft()
     {
         return emotionIngredientsCollected.TryPeek(out EmotionType emotionType) 
             && emotionType != EmotionType.Null
@@ -153,16 +149,16 @@ public class Inventory : MonoBehaviour
             && moveType != MoveType.Null;
     }
 
-    public void CraftSpell()
+    public static void CraftSpell()
     {
         if (!canCraft())
         {
-            throw new System.Exception("Tried Crafting a Spell when unable to do so!");
+            throw new Exception("Tried Crafting a Spell when unable to do so!");
         }
         craftedSpell = new BasicMove(spellStrength, emotionIngredientsCollected.Dequeue(), moveIngredientsCollected.Dequeue());
     }
 
-    public IBattleMove GetSpell()
+    public static IBattleMove GetSpell()
     {
         if (craftedSpell.GetMoveType() == MoveType.Null || craftedSpell.GetEmotionType() == EmotionType.Null)
         {
@@ -171,12 +167,12 @@ public class Inventory : MonoBehaviour
         return craftedSpell;
     }
 
-    public void UseSpell()
+    public static void UseSpell()
     {
         craftedSpell = new BasicMove(0, EmotionType.Null, MoveType.Null);
     }
 
-    public bool hasSpell()
+    public static bool hasSpell()
     {
         return craftedSpell.GetMoveType() == MoveType.Null || craftedSpell.GetEmotionType() == EmotionType.Null;
     }
