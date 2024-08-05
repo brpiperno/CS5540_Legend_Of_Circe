@@ -28,8 +28,11 @@ public class BattleManager : MonoBehaviour
     public GameObject gameOverScreen;
 
     public static bool opponentIsDying = false;
+    // Only used for displaying the denominator of the slider text
+    public static int maxSliderValue = 100;
     private  List<EmotionSystem> turnOrder;
     bool gameOver = false;
+    bool gameOverOrWon = false;
     GameObject opponent;
 
     // Start is called before the first frame update
@@ -101,8 +104,10 @@ public class BattleManager : MonoBehaviour
         }
         //increment the index, unles it is at its max,
         //in which set it back to zero and increment the round count
-        turnIndex = (turnIndex == turnOrder.Count - 1) ? 0 : turnIndex + 1;
-        turnOrder[turnIndex].RequestNextMove();//Ask the next person in line
+        if (!gameOverOrWon) {
+            turnIndex = (turnIndex == turnOrder.Count - 1) ? 0 : turnIndex + 1;
+            turnOrder[turnIndex].RequestNextMove();//Ask the next person in line
+        }
     }
 
     /// <summary>
@@ -114,30 +119,18 @@ public class BattleManager : MonoBehaviour
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
-        Debug.Log("Battle ended");
-        if (loser.tag == "Player")
-        {
-            AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
-        }
-        else if (loser.tag == "Enemy")
-        {
-            AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
-            if (loser.gameObject.tag == "Player")
-            {
-                gameOverScreen.SetActive(true);
-                AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
-                gameOver = true;
-            }
-            else if (loser.gameObject.tag == "Enemy")
-            {
-                Invoke("WinActions", 2);
-                Animator anim = opponent.GetComponent<Animator>();
-                anim.SetInteger("state", 1);
-            }
-            else
-            {
-                throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
-            }
+        if (loser.gameObject.tag == "Player") {
+            gameOverScreen.SetActive(true);
+            AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
+            gameOver = true;
+            gameOverOrWon = true;
+        } else if (loser.gameObject.tag == "Enemy") {
+            Invoke("WinActions", 2);
+            Animator anim = opponent.GetComponent<Animator>();
+            anim.SetInteger("state", 1);
+            gameOverOrWon = true;
+        } else {
+            throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
     }
 

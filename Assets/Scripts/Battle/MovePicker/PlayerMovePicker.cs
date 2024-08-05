@@ -75,6 +75,7 @@ public class PlayerMovePicker : AbstractMovePicker
 
     public new void MoveRequested()
     {
+        Debug.Log("PlayerMovePicker MoveRequested reached");
         visualController.setEmotionWheelVisibility(true);
         base.MoveRequested();
     }
