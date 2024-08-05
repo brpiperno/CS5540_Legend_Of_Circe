@@ -4332,6 +4332,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Navigation Camera System
       objectReference: {fileID: 0}
+    - target: {fileID: 3629340465320102614, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99768496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629340465320102614, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.068005666
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139676766383250854, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9994968
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139676766383250854, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.03171992
+      objectReference: {fileID: 0}
     - target: {fileID: 7815412153239092072, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
       propertyPath: m_Follow
       value: 
@@ -4340,6 +4356,14 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1086745493}
+    - target: {fileID: 7815412153239092072, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
+      propertyPath: m_XAxis.m_MaxSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7815412153239092072, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
+      propertyPath: m_YAxis.m_MaxSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
