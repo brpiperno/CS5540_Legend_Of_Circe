@@ -13,7 +13,7 @@ public interface IVisualController
     /// Set the animation controller of this character according to the given trigger.
     /// </summary>
     /// <param name="trigger"></param>
-    void setAnimationTrigger(EmotionType emotion, MoveType moveType);
+    IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType);
     
     /// <summary>
     /// Update the emotion bar UI for this character;

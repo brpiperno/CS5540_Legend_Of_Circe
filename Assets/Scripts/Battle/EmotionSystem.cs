@@ -5,11 +5,8 @@ using EmotionTypeExtension;
 
 //Assign this script to Circe and all NPCs
 [RequireComponent(typeof(VisualController))]
-[RequireComponent(typeof(AbstractMovePicker))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
-    public GameObject playerAttackAnimationObject;
-    public GameObject enemyAttackAnimationObject;
     public VisualController visualController;
     private Dictionary<EmotionType, float> emotionValues = new Dictionary<EmotionType, float> {
         {EmotionType.Wrath, 100},
@@ -18,6 +15,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {EmotionType.Mirth, 100}
     };
     private Dictionary<EmotionType, int> defenseModifiers = new Dictionary<EmotionType, int> {
+<<<<<<< HEAD
         {EmotionType.Wrath, 1},
         {EmotionType.Love, 1},
         {EmotionType.Grief, 1},
@@ -25,16 +23,32 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     };
     
     public EmotionType currentEmotion; //set some starting default emotion;
+=======
+            {EmotionType.Wrath, 1},
+            {EmotionType.Love, 1},
+            {EmotionType.Grief, 1},
+            {EmotionType.Mirth, 1}
+        };
+    public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
+>>>>>>> ben
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
-    public AbstractMovePicker movePicker;
-    public int baseStrength; //effectiveness of IBattleMoves instantiated, where applicable.
+    public IMovePicker movePicker;
+    public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
+    public float enemySpellAnimationDelay = 1.7f;
 
     void Start()
     {
-        visualController = GetComponent<VisualController>();
-        movePicker = GetComponent<AbstractMovePicker>();
+        if (visualController == null)
+        {
+            visualController = GetComponent<VisualController>();
+        }
+        if (movePicker == null)
+        {
+            movePicker = GetComponent<IMovePicker>();
+        }
+        
     }
 
     public float GetEmotionValue(EmotionType type) {
@@ -75,6 +89,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             default: throw new NotImplementedException();
         }
         CheckGameOver();
+        movePicker.UpdateLastMoveRecieved(move);
     }
 
     private void CheckGameOver()
@@ -95,16 +110,19 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         if (nextMove != null)
         {
             battleManager.SubmitMove(nextMove, this, battleManager.GetEnemy(this));
+            Debug.Log("Skipping turn, next move already loaded:" + nextMove.toString());
             return;
         }
         movePicker.MoveRequested();
+        Debug.Log("called moveRequested on movePicker in ");
     }
 
     public void LoadNextMove(EmotionType emotion, MoveType move)
     {
         nextMove = new BasicMove(this.baseStrength, emotion, move);
+        Debug.Log("LoadNextMove has created " + nextMove.toString());
         //for shield and enhancement spells, the target is the user
-        IEmotion target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
+        EmotionSystem target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
             this : battleManager.GetEnemy(this); 
         battleManager.SubmitMove(nextMove, this, target);
     }
@@ -113,8 +131,29 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void PlayMove() {
         lastMoveUsed = nextMove;
         nextMove = null;
+        currentEmotion = lastMoveUsed.GetEmotionType();
 
+<<<<<<< HEAD
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
         battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
+=======
+        // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
+        if (gameObject.tag == "Player") {
+            Debug.Log("Reached line 121");
+            Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
+            visualController.PlayEnemyBlockAnimation();
+        }
+        StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
+        Invoke("FinishTurn", 2);
+    }
+
+    private void FinishTurn()
+    {
+        battleManager.CompleteMove(this);
+    }
+
+    private void PlayEnemySpellCastAnimation() {
+        visualController.PlayEnemySpellCastAnimation();
+>>>>>>> ben
     }
 }

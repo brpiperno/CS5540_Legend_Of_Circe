@@ -26,6 +26,7 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject rightArrow;
     public GameObject downArrow;
     public AudioClip playerMoveSFX;
+<<<<<<< HEAD
     public float moveSFXPitch;
 
     public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
@@ -36,6 +37,27 @@ public class VisualController : MonoBehaviour, IVisualController
         //TODO: Invoke removehighlight at 2 seconds
             // Is called in PlayerMovePicker?
 
+=======
+    public bool hasBlockAnimation;
+    GameObject opponent;
+
+    private Animator anim;
+
+    public void Start() {
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        anim = opponent.GetComponent<Animator>();
+    }
+
+    public IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType) {
+        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        if (hasBlockAnimation) {
+            yield return new WaitForSeconds(1f);
+        }
+        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        GameObject attack = Instantiate(playerAttackEffect, 
+            playerAttackEffectPosition,
+            Quaternion.Euler(playerAttackEffectRotation));
+>>>>>>> ben
         if (moveType == MoveType.Damage)
         {
             var ps = attack.GetComponent<ParticleSystem>();
@@ -47,11 +69,6 @@ public class VisualController : MonoBehaviour, IVisualController
 
     }
 
-    void Start()
-    {
-        Debug.Log("VisualController instantiated for " + name);
-    }
-
     public void updateEmotionBarUI() {
         //do nothing for now. EmotionBarManager acts independently and checks each frame
         //TODO: integrate EmotionBarManager into this class or at least control when the emotion bar manager starts checking
@@ -59,7 +76,15 @@ public class VisualController : MonoBehaviour, IVisualController
 
     public void updateEmotionWheelSelection(EmotionType emotion)
     {
+<<<<<<< HEAD
         switch (emotion) {
+=======
+        //turn off all others
+        setEmotionWheelVisibility(false);
+
+        switch (emotion)
+        {
+>>>>>>> ben
             case EmotionType.Grief:
                 upArrow.SetActive(true);
                 break;
@@ -75,6 +100,7 @@ public class VisualController : MonoBehaviour, IVisualController
             default:
                 throw new ArgumentException("Invalid emotion given for emotion wheel selection animation.");
         }
+<<<<<<< HEAD
     }
 
     // Returns all arrows to their original color.
@@ -83,10 +109,26 @@ public class VisualController : MonoBehaviour, IVisualController
         leftArrow.SetActive(false);
         rightArrow.SetActive(false);
         downArrow.SetActive(false);
+=======
+>>>>>>> ben
     }
 
     public void setEmotionWheelVisibility(bool isVisible)
     {
-        //TODO: turn emotion wheel on/off
+        upArrow.SetActive(isVisible);
+        leftArrow.SetActive(isVisible);
+        rightArrow.SetActive(isVisible);
+        downArrow.SetActive(isVisible);
+    }
+
+    public void PlayEnemySpellCastAnimation() {
+        anim.SetTrigger("spellCast");
+    }
+
+    public void PlayEnemyBlockAnimation() {
+        Debug.Log(gameObject.name + " hasBlockAnimation: " + hasBlockAnimation);
+        if (opponent.GetComponent<VisualController>().hasBlockAnimation) {
+            anim.SetTrigger("block");
+        }
     }
 }
