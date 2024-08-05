@@ -26,9 +26,9 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject rightArrow;
     public GameObject downArrow;
     public AudioClip playerMoveSFX;
+    public float moveSFXPitch;
     public bool hasBlockAnimation;
     GameObject opponent;
-
     private Animator anim;
 
     public void Start() {
@@ -51,6 +51,9 @@ public class VisualController : MonoBehaviour, IVisualController
             var newColor = ps.main;
             newColor.startColor = emotion.GetColor();
         }
+        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+
     }
 
     public void updateEmotionBarUI() {
@@ -80,6 +83,14 @@ public class VisualController : MonoBehaviour, IVisualController
             default:
                 throw new ArgumentException("Invalid emotion given for emotion wheel selection animation.");
         }
+    }
+
+    // Returns all arrows to their original color.
+    public void RemoveHighlight() {
+        upArrow.SetActive(false);
+        leftArrow.SetActive(false);
+        rightArrow.SetActive(false);
+        downArrow.SetActive(false);
     }
 
     public void setEmotionWheelVisibility(bool isVisible)
