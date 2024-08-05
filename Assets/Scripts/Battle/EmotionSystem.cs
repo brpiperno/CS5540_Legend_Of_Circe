@@ -103,6 +103,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void LoadNextMove(EmotionType emotion, MoveType move)
     {
         nextMove = new BasicMove(this.baseStrength, emotion, move);
+        Debug.Log("LoadNextMove has created " + nextMove.toString());
         //for shield and enhancement spells, the target is the user
         EmotionSystem target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
             this : battleManager.GetEnemy(this); 
@@ -117,9 +118,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
         if (gameObject.tag == "Player") {
-            Invoke("PlayEnemyAnimation", enemySpellAnimationDelay);
+            Debug.Log("Reached line 121");
+            Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
+            visualController.PlayEnemyBlockAnimation();
         }
-        visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
+        StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
         Invoke("FinishTurn", 2);
     }
 
@@ -128,8 +131,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         battleManager.CompleteMove(this);
     }
 
-    private void PlayEnemyAnimation() {
-        visualController.PlayEnemyAnimation();
+    private void PlayEnemySpellCastAnimation() {
+        visualController.PlayEnemySpellCastAnimation();
     }
 
 }

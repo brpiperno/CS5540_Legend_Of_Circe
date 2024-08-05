@@ -33,7 +33,8 @@ Grief Mushroom ingreident 2D asset from redit user Aggravating-Carob580
 */
 
 
-/*
+/*  UI COORDINATES
+
 Space prompt - position - (0, -425, 0)
 For all of the text objects - do the shift alt anchor thing and set it to center center, then set each to the specified positions below.
 Then in the Paragraph settings, select the 5th option (aligned in the middle vertically). Set all to font size 24
@@ -77,4 +78,15 @@ TriggerBattlePanel in the Navigation scene - size - (2500, 500)
 	Size - (1000, 100)
 	Font size - 35
     Drag LUMOS font to it (in Assets)
+*/
+
+/*  MEDEA BATTLE ANIMATION COORDINATES
+
+Player Animations
+Position - (-118, 0.6, 97.8)
+Rotation - (-90, -80.606, 0)
+
+Medea Animations
+Position - (-122, 1.32, 99.5)
+Rotation - (0, -75, 0)
 */
