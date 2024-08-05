@@ -1337,9 +1337,17 @@ PrefabInstance:
       propertyPath: playerAttackEffectRotation.y
       value: -80.606
       objectReference: {fileID: 0}
+    - target: {fileID: 6320981907757463770, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8496941556593304060, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: m_Name
       value: Circe (Battle) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054348245531875181, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9124543530202561350, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: m_LocalPosition.x

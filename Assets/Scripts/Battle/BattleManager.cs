@@ -117,6 +117,7 @@ public class BattleManager : MonoBehaviour
             Invoke("WinActions", 2);
             Animator anim = opponent.GetComponent<Animator>();
             anim.SetInteger("state", 1);
+            
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
