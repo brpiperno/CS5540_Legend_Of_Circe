@@ -40,7 +40,7 @@ Mushroom 2D asset from reddit user Street-Return2
 Butterfly 2D asset from pixilart.com user abruptbird
 Spider 2D asset from pixilart.com user amytoorMarn
 Grief Mushroom ingreident 2D asset from redit user Aggravating-Carob580
-Font is from https://www.fontspace.com/glorious-christmas-font-f111779
+Font is from https://www.fontspace.com/aiden-font-f25745
 */
 
 
