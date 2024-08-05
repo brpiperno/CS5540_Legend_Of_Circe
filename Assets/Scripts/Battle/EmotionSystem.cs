@@ -34,11 +34,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {
             visualController = GetComponent<VisualController>();
         }
-        if (movePicker == null)
-        {
-            movePicker = GetComponent<IMovePicker>();
-        }
-        
+        //if (movePicker == null)
+        //{
+        //    movePicker = GetComponent<IMovePicker>();
+        //}
+        //Debug.Log("Is movePicker null?");
+        //Debug.Log(gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
     }
 
     public float GetEmotionValue(EmotionType type) {
@@ -79,6 +80,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             default: throw new NotImplementedException();
         }
         CheckGameOver();
+        movePicker = GetComponent<IMovePicker>();
         movePicker.UpdateLastMoveRecieved(move);
     }
 
@@ -103,8 +105,14 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             Debug.Log("Skipping turn, next move already loaded:" + nextMove.toString());
             return;
         }
-        movePicker.MoveRequested();
-        Debug.Log("called moveRequested on movePicker in ");
+        //Debug.Log("Line 107: " + gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
+        movePicker = GetComponent<IMovePicker>();
+        if (gameObject.tag == "Player") {
+            movePicker.MoveRequested();
+        } else {
+            (movePicker as FSMMovePicker).MoveRequested();
+        }
+        Debug.Log("called moveRequested on movePicker in " + this.name);
     }
 
     public void LoadNextMove(EmotionType emotion, MoveType move)

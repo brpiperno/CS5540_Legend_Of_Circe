@@ -18,9 +18,11 @@ public class FSMMovePicker : AbstractMovePicker
     // Start is called before the first frame update
     protected new void Start()
     {
+        Debug.Log("FSMMovePicker Start() in GameObject " + gameObject.name);
         emotionTypeArrayIndices = new EmotionType[4] {
             EmotionType.Love, EmotionType.Wrath, EmotionType.Grief, EmotionType.Mirth
         };
+        Debug.Log("Length of emotionTypeArrayIndices is " + emotionTypeArrayIndices.Length);
 
         float[,] fsmtransitionOdds = { 
             { 0.25f, 0.25f, 0.25f, 0.25f}, //Likelihood of transitions out of love
@@ -28,6 +30,9 @@ public class FSMMovePicker : AbstractMovePicker
             { 0.25f, 0.25f, 0.25f, 0.25f}, //Likelihood of transitions out of grief
             { 0.25f, 0.25f, 0.25f, 0.25f}, //Likelihood of transitions out of mirth    
         };
+
+        transitions = fsmtransitionOdds;
+
         base.Start();
     }
 
