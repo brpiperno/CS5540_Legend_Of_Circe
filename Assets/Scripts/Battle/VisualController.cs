@@ -26,21 +26,9 @@ public class VisualController : MonoBehaviour, IVisualController
     public GameObject rightArrow;
     public GameObject downArrow;
     public AudioClip playerMoveSFX;
-<<<<<<< HEAD
     public float moveSFXPitch;
-
-    public void setAnimationTrigger(EmotionType emotion, MoveType moveType) {
-        GameObject attack = Instantiate(playerAttackEffect, 
-            playerAttackEffectPosition,
-            Quaternion.Euler(playerAttackEffectRotation));
-        //TODO: Invoke setAskInput at 2 seconds
-        //TODO: Invoke removehighlight at 2 seconds
-            // Is called in PlayerMovePicker?
-
-=======
     public bool hasBlockAnimation;
     GameObject opponent;
-
     private Animator anim;
 
     public void Start() {
@@ -57,7 +45,6 @@ public class VisualController : MonoBehaviour, IVisualController
         GameObject attack = Instantiate(playerAttackEffect, 
             playerAttackEffectPosition,
             Quaternion.Euler(playerAttackEffectRotation));
->>>>>>> ben
         if (moveType == MoveType.Damage)
         {
             var ps = attack.GetComponent<ParticleSystem>();
@@ -76,15 +63,11 @@ public class VisualController : MonoBehaviour, IVisualController
 
     public void updateEmotionWheelSelection(EmotionType emotion)
     {
-<<<<<<< HEAD
-        switch (emotion) {
-=======
         //turn off all others
         setEmotionWheelVisibility(false);
 
         switch (emotion)
         {
->>>>>>> ben
             case EmotionType.Grief:
                 upArrow.SetActive(true);
                 break;
@@ -100,7 +83,6 @@ public class VisualController : MonoBehaviour, IVisualController
             default:
                 throw new ArgumentException("Invalid emotion given for emotion wheel selection animation.");
         }
-<<<<<<< HEAD
     }
 
     // Returns all arrows to their original color.
@@ -109,8 +91,6 @@ public class VisualController : MonoBehaviour, IVisualController
         leftArrow.SetActive(false);
         rightArrow.SetActive(false);
         downArrow.SetActive(false);
-=======
->>>>>>> ben
     }
 
     public void setEmotionWheelVisibility(bool isVisible)

@@ -15,22 +15,13 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {EmotionType.Mirth, 100}
     };
     private Dictionary<EmotionType, int> defenseModifiers = new Dictionary<EmotionType, int> {
-<<<<<<< HEAD
         {EmotionType.Wrath, 1},
         {EmotionType.Love, 1},
         {EmotionType.Grief, 1},
         {EmotionType.Mirth, 1}
     };
     
-    public EmotionType currentEmotion; //set some starting default emotion;
-=======
-            {EmotionType.Wrath, 1},
-            {EmotionType.Love, 1},
-            {EmotionType.Grief, 1},
-            {EmotionType.Mirth, 1}
-        };
     public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
->>>>>>> ben
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
     public BattleManager battleManager; //The battle manager that it sends moves to;
@@ -82,7 +73,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 visualController.updateEmotionBarUI();
                 break;
             case MoveType.Pharmaka:
-                battleManager.EndBattle(gameObject);
+                battleManager.EndBattle(this);
                 break;
             case MoveType.Null:
                 break; //do nothing. User of this move was stunned.
@@ -98,7 +89,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {
             if (emotionValues[emotion] <= 0)
             {
-                battleManager.EndBattle(gameObject);
+                battleManager.EndBattle(this);
             }
         }
     }
@@ -113,7 +104,14 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             Debug.Log("Skipping turn, next move already loaded:" + nextMove.toString());
             return;
         }
-        movePicker.MoveRequested();
+        movePicker = GetComponent<IMovePicker>();
+        if (gameObject.CompareTag("Player")) {
+            movePicker.MoveRequested();
+        } else
+        {
+            //TODO: debug why this isn't working with casting
+            (movePicker as FSMMovePicker).MoveRequested();
+        }
         Debug.Log("called moveRequested on movePicker in ");
     }
 
@@ -132,11 +130,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         lastMoveUsed = nextMove;
         nextMove = null;
         currentEmotion = lastMoveUsed.GetEmotionType();
-
-<<<<<<< HEAD
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        battleManager.CompleteMove(this); //tell the battle manager that this user's turn is complete
-=======
+        battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
         if (gameObject.tag == "Player") {
             Debug.Log("Reached line 121");
@@ -154,6 +149,5 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
     private void PlayEnemySpellCastAnimation() {
         visualController.PlayEnemySpellCastAnimation();
->>>>>>> ben
     }
 }

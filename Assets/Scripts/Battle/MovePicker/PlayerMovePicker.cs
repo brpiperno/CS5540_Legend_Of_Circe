@@ -27,7 +27,6 @@ public class PlayerMovePicker : AbstractMovePicker
     // Update is called once per frame
     void Update()
     {
-        
         if (!isAskingForPlayInput) { return; } //do nothing when out of turn
         //Debug.Log("Player's turn and player input is requested");
         if (Input.GetKeyDown("up"))
@@ -69,11 +68,8 @@ public class PlayerMovePicker : AbstractMovePicker
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
-<<<<<<< HEAD
             visualController.RemoveHighlight();
-=======
             battleManager.spacePrompt.SetActive(false);
->>>>>>> ben
         }
     }
 

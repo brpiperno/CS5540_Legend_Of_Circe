@@ -19,10 +19,8 @@ public class BattleManager : MonoBehaviour
     public EmotionSystem[] playersTeam;
     public EmotionSystem[] opponentTeam;
     public int turnIndex;
-<<<<<<< HEAD
     public AudioClip gameOverSFX;
     public AudioClip gameWonSFX;
-=======
     public AudioClip loseSFX;
     public AudioClip winSFX;
     public GameObject spacePrompt;
@@ -33,7 +31,6 @@ public class BattleManager : MonoBehaviour
     private  List<EmotionSystem> turnOrder;
     bool gameOver = false;
     GameObject opponent;
->>>>>>> ben
 
     // Start is called before the first frame update
     void Start()
@@ -59,7 +56,8 @@ public class BattleManager : MonoBehaviour
         turnOrder[turnIndex].RequestNextMove();
     }
 
-    void Update() {
+    void Update()
+    {
         if (gameOver && Input.GetKeyDown("space")) {
             ReturnToOverworld();
         }
@@ -111,34 +109,35 @@ public class BattleManager : MonoBehaviour
     /// End the battle, noting who lost. The BattleManager will use that info to determine any rewards or other behavior
     /// </summary>
     /// <param name="loser"></param>
-<<<<<<< HEAD
-    public void EndBattle(GameObject loser)
-=======
     public void EndBattle(EmotionSystem loser)
->>>>>>> ben
     {
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
-<<<<<<< HEAD
         Debug.Log("Battle ended");
-        if (loser.tag == "Player") {
+        if (loser.tag == "Player")
+        {
             AudioSource.PlayClipAtPoint(gameOverSFX, Camera.main.transform.position);
-        } else if (loser.tag == "Enemy") {
+        }
+        else if (loser.tag == "Enemy")
+        {
             AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
-=======
-        if (loser.gameObject.tag == "Player") {
-            gameOverScreen.SetActive(true);
-            AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
-            gameOver = true;
-        } else if (loser.gameObject.tag == "Enemy") {
-            Invoke("WinActions", 2);
-            Animator anim = opponent.GetComponent<Animator>();
-            anim.SetInteger("state", 1);
-            
-        } else {
-            throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
->>>>>>> ben
+            if (loser.gameObject.tag == "Player")
+            {
+                gameOverScreen.SetActive(true);
+                AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
+                gameOver = true;
+            }
+            else if (loser.gameObject.tag == "Enemy")
+            {
+                Invoke("WinActions", 2);
+                Animator anim = opponent.GetComponent<Animator>();
+                anim.SetInteger("state", 1);
+            }
+            else
+            {
+                throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
+            }
         }
     }
 
@@ -158,9 +157,7 @@ public class BattleManager : MonoBehaviour
     {
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
-<<<<<<< HEAD
-}
-=======
+
 
     private void WinActions() {
         AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
@@ -169,8 +166,9 @@ public class BattleManager : MonoBehaviour
         Invoke("ReturnToOverworld", 3);
     }
 
-    private void ReturnToOverworld() {
+    void ReturnToOverworld()
+    {
         SceneManager.LoadScene(previousScene);
     }
- }
->>>>>>> ben
+
+}
