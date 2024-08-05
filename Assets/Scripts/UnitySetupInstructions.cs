@@ -91,3 +91,25 @@ Medea Animations
 Position - (-122, 1.32, 99.5)
 Rotation - (0, -75, 0)
 */
+
+/* UI Coordinates for Gracie BattleScene
+For all of the text objects - do the shift alt anchor thing and set it to left center, then set each to the specified positions below.
+Then in the Paragraph settings, select the 4th option (aligned to the top vertically). Set all to font size 24
+Circe:
+Grief text - (-70, -35, 0)
+Love text - (-70, -35, 0)
+Wrath text - (-70, -35, 0)
+Mirth text - (-70, -35, 0)
+Grief bar - (-240, -500, 0)
+Love bar - (-240, -530, 0)
+Wrath bar - (-240, -560, 0)
+Mirth bar - (-240, -590, 0)
+
+UI Coordinates for Gracie BattleScene 2
+For all of the text objects - do the shift alt anchor thing and set it to left center, then set each to the specified positions below.
+Then in the Paragraph settings, select the 5th option (aligned in the center vertically). Set all to font size 24
+Grief text - (-75, 2, 0)
+Love text - (-75, 2, 0)
+Wrath text - (-75, 12, 0)
+Mirth text - (-75, 2, 0)
+*/

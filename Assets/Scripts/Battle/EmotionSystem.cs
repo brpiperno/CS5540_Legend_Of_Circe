@@ -107,11 +107,17 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         }
         //Debug.Log("Line 107: " + gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
         movePicker = GetComponent<IMovePicker>();
-        if (gameObject.tag == "Player") {
+
+        
+        // Changing this temporarily for testing Gracie battle scene
+        /*if (gameObject.tag == "Player") {
             movePicker.MoveRequested();
         } else {
             (movePicker as FSMMovePicker).MoveRequested();
-        }
+        }*/
+        movePicker.MoveRequested();
+
+
         Debug.Log("called moveRequested on movePicker in " + this.name);
     }
 
