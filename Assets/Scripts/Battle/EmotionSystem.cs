@@ -29,6 +29,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
     public float enemySpellAnimationDelay = 1.7f;
     private bool isStunned = false;
+    private bool isTransformed = false;
 
     void Start()
     {
@@ -63,6 +64,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 break;
             case MoveType.Transformation:
                 LoadNextMove(move.GetEmotionType(), MoveType.Damage);
+                Debug.Log("Transformed users next move to be damage, type :" + move.GetMoveType().ToString());
                 break;
             case MoveType.Paralysis:
                 isStunned = true;
@@ -114,6 +116,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {
             battleManager.SubmitMove(new BasicMove(0, EmotionType.Null, MoveType.Null), this, battleManager.GetEnemy(this));
             isStunned = false;
+            return;
+        } else if (isTransformed)
+        {
+            battleManager.SubmitMove(nextMove, this, battleManager.GetEnemy(this));
+            isTransformed = false;
             return;
         }
         movePicker = GetComponent<IMovePicker>();
