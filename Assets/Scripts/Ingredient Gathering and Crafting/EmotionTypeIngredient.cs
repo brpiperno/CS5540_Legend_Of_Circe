@@ -6,7 +6,7 @@ using EmotionTypeExtension;
 /// </summary>
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Renderer))]
-public class EmotionIngredient : MonoBehaviour
+public class EmotionTypeIngredient : MonoBehaviour
 {
        
     

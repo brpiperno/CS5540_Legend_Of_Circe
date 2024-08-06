@@ -33,11 +33,11 @@ namespace EmotionTypeExtension
             }
             //define a 2D matrix, using the int of each type as an index for rows and columns
             float[,] effectiveness = {
-                { 2f, 0.5f, 2f, 0.5f }, //Love Effectiveness
-                { 2.0f, 1.0f, 0.5f, 1.0f}, //Wrath Effectiveness
-                { 1.0f, 0.5f, 1.0f, 2.0f},  //Grief Effectiveness
-                { 1.0f, 2.0f, 0.5f, 1.0f}, //Mirth Effectiveness
-                { 1.0f, 1.0f, 1.0f, 1.0f } //Null Effectiveness
+                { 2.0f, 0.5f, 2.0f, 0.5f, 1.0f}, //Love Effectiveness
+                { 2.0f, 1.0f, 0.5f, 1.0f, 1.0f}, //Wrath Effectiveness
+                { 1.0f, 0.5f, 1.0f, 2.0f, 1.0f},  //Grief Effectiveness
+                { 1.0f, 2.0f, 0.5f, 1.0f, 1.0f}, //Mirth Effectiveness
+                { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f} //Null Effectiveness
             };
             return effectiveness[(int)attacker, (int)defender];
         }
