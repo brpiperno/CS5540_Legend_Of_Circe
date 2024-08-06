@@ -62,16 +62,16 @@ public class Inventory : MonoBehaviour
         if (hasIngredient && first == MoveType.Null) //if null for whatever reason, just drop it
         {
             moveIngredientsCollected.Dequeue();
-            Debug.Log("Removed Empty MoveIngredient");
+            //Debug.Log("Removed Empty MoveIngredient");
         }
         //if the max size has been met, drop the first in the queue into the overworld a few feet in front of the player
         else if (hasIngredient && moveIngredientsCollected.Count >= maxMoveIngredients) 
         {
             dropInFrontOfPlayer(moveIngredientDropOptions[moveIngredientsCollected.Dequeue()]);
-            Debug.Log("Dropped movetype prefab in front of player");
+            //Debug.Log("Dropped movetype prefab in front of player");
         }
         moveIngredientsCollected.Enqueue(moveType);
-        Debug.Log("Collected moveType Ingredient: " + moveType.ToString());
+        //Debug.Log("Collected moveType Ingredient: " + moveType.ToString());
         safeUpdateUI();
     }
 
@@ -82,17 +82,17 @@ public class Inventory : MonoBehaviour
         if (hasIngredient && first == EmotionType.Null) //if null for whatever reawson, just drop it
         {
             emotionIngredientsCollected.Dequeue();
-            Debug.Log("Removed Empty EmotionIngredient");
+            //Debug.Log("Removed Empty EmotionIngredient");
         }
         //if the max size has been met, drop the first in the queue into the overworld a few feet in front of the player
         else if (hasIngredient && emotionIngredientsCollected.Count >= maxEmotionIngredients)
         {
-            Debug.Log("emotionIngredientCount: " + emotionIngredientsCollected.Count);
+            //Debug.Log("emotionIngredientCount: " + emotionIngredientsCollected.Count);
             dropInFrontOfPlayer(emotionIngredientDropOptions[emotionIngredientsCollected.Dequeue()]);
-            Debug.Log("Dropped emotion prefab in front of player");
+            //Debug.Log("Dropped emotion prefab in front of player");
         }
         emotionIngredientsCollected.Enqueue(emotionType);
-        Debug.Log("Collected emotion ingredient: " + emotionType.ToString());
+        //Debug.Log("Collected emotion ingredient: " + emotionType.ToString());
         safeUpdateUI();
     }
 
@@ -117,6 +117,7 @@ public class Inventory : MonoBehaviour
 
     public static bool canCraft()
     {
+        /*
         Debug.Log("Inventory: moveIngredient count: " + moveIngredientsCollected.Count);
         Debug.Log("Inventory: emotionIngredient count: " + emotionIngredientsCollected.Count);
         if (moveIngredientsCollected.Count > 0)
@@ -127,6 +128,7 @@ public class Inventory : MonoBehaviour
         {
             Debug.Log("Inventory: firstEmotionIngredient = " + emotionIngredientsCollected.Peek().ToString());
         }
+        */
         return emotionIngredientsCollected.TryPeek(out EmotionType emotionType) 
             && emotionType != EmotionType.Null
             && moveIngredientsCollected.TryPeek(out MoveType moveType)
