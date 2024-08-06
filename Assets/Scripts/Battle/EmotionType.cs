@@ -27,7 +27,7 @@ namespace EmotionTypeExtension
 
         public static float GetEffectivenessAgainst(this EmotionType attacker, EmotionType defender)
         {
-            if ((int)defender >= 4 || (int)attacker >= 4)
+            if ((int)defender >= 5 || (int)attacker >= 4)
             {
                 throw new System.ArgumentException("Did not account for all emotion types");
             }
@@ -36,7 +36,8 @@ namespace EmotionTypeExtension
                 { 2f, 0.5f, 2f, 0.5f }, //Love Effectiveness
                 { 2.0f, 1.0f, 0.5f, 1.0f}, //Wrath Effectiveness
                 { 1.0f, 0.5f, 1.0f, 2.0f},  //Grief Effectiveness
-                { 1.0f, 2.0f, 0.5f, 1.0f} //Mirth Effectiveness
+                { 1.0f, 2.0f, 0.5f, 1.0f}, //Mirth Effectiveness
+                { 1.0f, 1.0f, 1.0f, 1.0f } //Null Effectiveness
             };
             return effectiveness[(int)attacker, (int)defender];
         }

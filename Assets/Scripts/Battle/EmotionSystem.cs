@@ -68,11 +68,17 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 isStunned = true;
                 break;
             case MoveType.Damage:
+                int baseDamage = move.getEffectStrength();
+                float defense = defenseModifiers[move.GetEmotionType()];
+                float effectiveness = move.GetEmotionType().GetEffectivenessAgainst(currentEmotion);
+                float damageDealt = baseDamage / defense * effectiveness; 
+
                 emotionValues[move.GetEmotionType()] -= 
                     Mathf.Abs(move.getEffectStrength())
-                    * defenseModifiers[move.GetEmotionType()]
+                    / defenseModifiers[move.GetEmotionType()]
                     * move.GetEmotionType().GetEffectivenessAgainst(currentEmotion);
                 visualController.updateEmotionBarUI();
+                //Debug.Log(String.Format("Took %d damage. Defense: %.2f. Effectiveness: %.2f. Base Strength: %d", ));
                 break;
             case MoveType.Pharmaka:
                 battleManager.EndBattle(this);
