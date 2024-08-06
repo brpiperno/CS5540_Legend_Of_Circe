@@ -2541,6 +2541,10 @@ PrefabInstance:
       propertyPath: SystemDialoguePanel
       value: 
       objectReference: {fileID: 1495928641}
+    - target: {fileID: 4382960207166345803, guid: 108461cc563321543b016d5b25bd535f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5016458502856927971, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 

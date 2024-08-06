@@ -67,6 +67,7 @@ public class PlayerMovePicker : AbstractMovePicker
         }
         else if (Input.GetKeyDown(KeyCode.X) && Inventory.canCraft())
         {
+            Debug.Log("Player Pressed x while being able to craft");
             userEmotionSystem.LoadNextMove(Inventory.getEmotionType(), Inventory.getMoveType());
             isAskingForPlayInput = false;
             isEmotionChosen = false;
@@ -75,6 +76,10 @@ public class PlayerMovePicker : AbstractMovePicker
             battleManager.spacePrompt.SetActive(false);
             Inventory.CraftSpell();
             potionCraftingUIManager.UpdateUI(Inventory.getEmotionType(), Inventory.getMoveType());
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("Player Pressed x while unable to craft");
         }
 
         if (Input.GetKeyDown("space") && isEmotionChosen)

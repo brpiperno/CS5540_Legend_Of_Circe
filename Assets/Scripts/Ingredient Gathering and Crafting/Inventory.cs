@@ -11,8 +11,8 @@ public class Inventory : MonoBehaviour
 {
     [Header("Static Inventory Management")]
     public static int spellStrength = 20;
-    private static Queue<EmotionType> emotionIngredientsCollected;
-    private static Queue<MoveType> moveIngredientsCollected;
+    private static Queue<EmotionType> emotionIngredientsCollected = new Queue<EmotionType>();
+    private static Queue<MoveType> moveIngredientsCollected = new Queue<MoveType>();
     public static int maxMoveIngredients = 1;
     public static int maxEmotionIngredients = 1;
     public static float dropDistance = 5.0f;
@@ -40,12 +40,10 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        emotionIngredientsCollected = new Queue<EmotionType>();
-        moveIngredientsCollected = new Queue<MoveType>();
         initializeVariables();
         craftedSpell = new BasicMove(0, EmotionType.Null, MoveType.Null);
         //DontDestroyOnLoad(this.gameObject.transform.parent.gameObject);
-        safeUpdateUI(); //don't do so if in a battle scne
+        safeUpdateUI(); //don't do so if in a battle scene
     }
 
     private void safeUpdateUI()
@@ -119,6 +117,16 @@ public class Inventory : MonoBehaviour
 
     public static bool canCraft()
     {
+        Debug.Log("Inventory: moveIngredient count: " + moveIngredientsCollected.Count);
+        Debug.Log("Inventory: emotionIngredient count: " + emotionIngredientsCollected.Count);
+        if (moveIngredientsCollected.Count > 0)
+        {
+            Debug.Log("Inventory: firstMoveIngredient = " + moveIngredientsCollected.Peek().ToString());
+        }
+        if (emotionIngredientsCollected.Count > 0)
+        {
+            Debug.Log("Inventory: firstEmotionIngredient = " + emotionIngredientsCollected.Peek().ToString());
+        }
         return emotionIngredientsCollected.TryPeek(out EmotionType emotionType) 
             && emotionType != EmotionType.Null
             && moveIngredientsCollected.TryPeek(out MoveType moveType)

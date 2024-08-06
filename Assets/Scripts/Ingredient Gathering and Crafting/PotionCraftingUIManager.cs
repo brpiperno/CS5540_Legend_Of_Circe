@@ -41,11 +41,13 @@ public class PotionCraftingUIManager : MonoBehaviour
         potionSprites = InitializeDictionary();
         foreach (MoveType m in potionSprites.Keys)
         {
-            Debug.Log("PotionSprites: MoveType: " + m.ToString());
+            /*
+             * Debug.Log("PotionSprites: MoveType: " + m.ToString());
             foreach (EmotionType e in potionSprites[m].Keys)
             {
                 Debug.Log("PotionSprites[" + m.ToString() + "][" + e.ToString() + "] = " + potionSprites[m][e].ToString());
             }
+            */
         }
     }
 
