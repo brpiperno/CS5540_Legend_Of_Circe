@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 653544044947741640}
   - component: {fileID: 2226612103154617445}
   - component: {fileID: 2512187278143339084}
-  - component: {fileID: 6354040524304521141}
+  - component: {fileID: 8124843163449356729}
   m_Layer: 5
   m_Name: IngredientGatheringPanel
   m_TagString: Untagged
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6354040524304521141
+--- !u!114 &8124843163449356729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,9 +166,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 2235103566553836764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29834702139abcc419f4664ae2f19057, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b1113974719f184fb5cd44a8e6457a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emotionIngredientPanel: {fileID: 5355560234842272642}
+  emotionIngredientIcon: {fileID: 5468291648108487118}
+  moveTypeIngredientIcon: {fileID: 6027196474333897155}
+  emotionIngredientText: {fileID: 2841294142069264133}
+  moveIngredientText: {fileID: 1183451171666963569}
+  mirthIcon: {fileID: 21300000, guid: 44e16b41345e9450695907e414c87aea, type: 3}
+  loveIcon: {fileID: 21300000, guid: a52cc1b06446348e0b352d847597c110, type: 3}
+  wrathIcon: {fileID: 21300000, guid: 3e3b6d5efe8fd75488c5de5fa4fd3bc0, type: 3}
+  griefIcon: {fileID: 21300000, guid: 1dab0e97ec7169040817bdf5369bda46, type: 3}
+  enhancementIcon: {fileID: 21300000, guid: 445f91a509b344582a82117beb435f6a, type: 3}
+  shieldIcon: {fileID: 21300000, guid: 85b6b2e918f6e46658dcb6ff764a52e4, type: 3}
+  paralysisIcon: {fileID: 21300000, guid: ca564a7c86dd1a14cbd32aa4db4ee731, type: 3}
+  transformationIcon: {fileID: 21300000, guid: 006759c02bb8329438a2efff452a2a72, type: 3}
+  pharmakaIcon: {fileID: 21300000, guid: d4119352922464d03bf5910b249db57c, type: 3}
 --- !u!1 &3398370550723580462
 GameObject:
   m_ObjectHideFlags: 0

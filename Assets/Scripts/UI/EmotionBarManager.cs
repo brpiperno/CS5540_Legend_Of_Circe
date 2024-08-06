@@ -17,7 +17,6 @@ public class EmotionBarManager : MonoBehaviour
     public Slider mirthSlider;
     
     private Dictionary<EmotionType, Slider> sliders = new Dictionary<EmotionType, Slider>();
-    private Dictionary<EmotionType, Text> barValues = new Dictionary<EmotionType, Text>();
     public EmotionSystem emotionSystem; //get a reference to the object's emotion values that it should track
 
     private bool isUpdatingUI = true; //whether the emotion bars are currently being updated
@@ -37,11 +36,6 @@ public class EmotionBarManager : MonoBehaviour
             sliders[type].maxValue = 100;
             sliders[type].value = 100;
         }
-
-        barValues.Add(EmotionType.Grief, griefSlider.transform.Find("Value").gameObject.GetComponent<Text>());
-        barValues.Add(EmotionType.Love, loveSlider.transform.Find("Value").gameObject.GetComponent<Text>());
-        barValues.Add(EmotionType.Wrath, wrathSlider.transform.Find("Value").gameObject.GetComponent<Text>());
-        barValues.Add(EmotionType.Mirth, mirthSlider.transform.Find("Value").gameObject.GetComponent<Text>());
     }
 
     private void Update()
@@ -57,9 +51,7 @@ public class EmotionBarManager : MonoBehaviour
                 if (current != actual)
                 {
                     //sliders[emotion].value = actual;
-                    float setTo = Mathf.Clamp(Mathf.Lerp(current, actual, Time.deltaTime * sliderSpeed), 0, 100);
-                    sliders[emotion].value = setTo;
-                    barValues[emotion].text = System.Math.Round(setTo, 0).ToString() + "/" + BattleManager.maxSliderValue.ToString();
+                    sliders[emotion].value = Mathf.Clamp(Mathf.Lerp(current, actual, Time.deltaTime * sliderSpeed), 0, 100);
                 }
                 else
                 {

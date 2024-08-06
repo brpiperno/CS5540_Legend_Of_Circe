@@ -860,12 +860,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: baseStrength
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 427306908}
+    - target: {fileID: 5186829697002237590, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: spacePrompt
+      value: 
+      objectReference: {fileID: 672379629}
     - target: {fileID: 5759947500827125220, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: upArrow
       value: 

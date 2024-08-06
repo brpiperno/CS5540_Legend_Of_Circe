@@ -28,6 +28,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public IMovePicker movePicker;
     public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
     public float enemySpellAnimationDelay = 1.7f;
+    public bool hasFSM = false;
 
     void Start()
     {
@@ -107,12 +108,19 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             return;
         }
         movePicker = GetComponent<IMovePicker>();
+        /*
         if (gameObject.CompareTag("Player")) {
             movePicker.MoveRequested();
         } else
         {
             //TODO: debug why this isn't working with casting
             (movePicker as FSMMovePicker).MoveRequested();
+        }
+        */
+        if (hasFSM) {
+            (movePicker as FSMMovePicker).MoveRequested();
+        } else {
+            movePicker.MoveRequested();
         }
         Debug.Log("called moveRequested on movePicker in ");
     }
