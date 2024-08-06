@@ -76,7 +76,7 @@ public class FSMMovePicker : AbstractMovePicker
         float rng = Random.Range(0, transitionSum);
         for (int i = 0; i < transitionThresholds.Length; ++i)
         {   
-            if (transitionThresholds[i] < rng )
+            if (transitionThresholds[i] >= rng )
             {
                 userEmotionSystem.LoadNextMove(emotionTypeArrayIndices[i], MoveType.Damage);
                 return;

@@ -19,8 +19,6 @@ public class BattleManager : MonoBehaviour
     public EmotionSystem[] playersTeam;
     public EmotionSystem[] opponentTeam;
     public int turnIndex;
-    public AudioClip gameOverSFX;
-    public AudioClip gameWonSFX;
     public AudioClip loseSFX;
     public AudioClip winSFX;
     public GameObject spacePrompt;
