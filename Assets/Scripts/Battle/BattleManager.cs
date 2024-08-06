@@ -57,8 +57,7 @@ public class BattleManager : MonoBehaviour
         turnOrder[turnIndex].RequestNextMove();
     }
 
-    void Update()
-    {
+    void Update() {
         if (gameOver && Input.GetKeyDown("space")) {
             ReturnToOverworld();
         }
@@ -78,11 +77,9 @@ public class BattleManager : MonoBehaviour
         //Debug.Log("BattleManager: SubmitMove called with move:" + move.ToString() + "Target: " + target.name + "User: " + user.name);
         if (getPlayerIndex(user) != turnIndex)
         {
-            Debug.Log("Not user's turn");
             return; //ignore out of turn moves
         } else
         {
-            Debug.Log("Playing user's move");
             user.PlayMove();
             target.AcceptMove(move);
         }
@@ -149,7 +146,6 @@ public class BattleManager : MonoBehaviour
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
 
-
     private void WinActions() {
         AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
         //GameObject winText = GameObject.FindGameObjectWithTag("WinText");
@@ -157,9 +153,7 @@ public class BattleManager : MonoBehaviour
         Invoke("ReturnToOverworld", 3);
     }
 
-    void ReturnToOverworld()
-    {
-        SceneManager.LoadScene(previousScene);
+    private void ReturnToOverworld() {
+        SceneManager.LoadScene("BenIngredientGathering");
     }
-
-}
+ }

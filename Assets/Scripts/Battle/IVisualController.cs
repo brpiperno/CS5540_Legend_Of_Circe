@@ -26,9 +26,6 @@ public interface IVisualController
     /// <param name="emotion"></param>
     void updateEmotionWheelSelection(EmotionType emotion);
 
-    // Undoes selecting an arrow and returns all arrows to their original color.
-    public void RemoveHighlight();
-
     /// <summary>
     /// Method specific to Player Characters, to show hide the emotion wheel.
     /// </summary>

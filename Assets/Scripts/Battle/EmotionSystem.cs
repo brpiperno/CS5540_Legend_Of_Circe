@@ -15,12 +15,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {EmotionType.Mirth, 100}
     };
     private Dictionary<EmotionType, int> defenseModifiers = new Dictionary<EmotionType, int> {
-        {EmotionType.Wrath, 1},
-        {EmotionType.Love, 1},
-        {EmotionType.Grief, 1},
-        {EmotionType.Mirth, 1}
-    };
-    
+            {EmotionType.Wrath, 1},
+            {EmotionType.Love, 1},
+            {EmotionType.Grief, 1},
+            {EmotionType.Mirth, 1}
+        };
     public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove;
@@ -28,7 +27,6 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public IMovePicker movePicker;
     public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
     public float enemySpellAnimationDelay = 1.7f;
-    public bool hasFSM = false;
 
     void Start()
     {
@@ -107,22 +105,20 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             Debug.Log("Skipping turn, next move already loaded:" + nextMove.toString());
             return;
         }
+        //Debug.Log("Line 107: " + gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
         movePicker = GetComponent<IMovePicker>();
-        /*
-        if (gameObject.CompareTag("Player")) {
+
+        
+        // Changing this temporarily for testing Gracie battle scene
+        /*if (gameObject.tag == "Player") {
             movePicker.MoveRequested();
-        } else
-        {
-            //TODO: debug why this isn't working with casting
-            (movePicker as FSMMovePicker).MoveRequested();
-        }
-        */
-        if (hasFSM) {
-            (movePicker as FSMMovePicker).MoveRequested();
         } else {
-            movePicker.MoveRequested();
-        }
-        Debug.Log("called moveRequested on movePicker in ");
+            (movePicker as FSMMovePicker).MoveRequested();
+        }*/
+        movePicker.MoveRequested();
+
+
+        Debug.Log("called moveRequested on movePicker in " + this.name);
     }
 
     public void LoadNextMove(EmotionType emotion, MoveType move)
@@ -140,8 +136,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         lastMoveUsed = nextMove;
         nextMove = null;
         currentEmotion = lastMoveUsed.GetEmotionType();
-        visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
-        battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
+
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
         if (gameObject.tag == "Player") {
             Debug.Log("Reached line 121");
@@ -160,4 +155,5 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     private void PlayEnemySpellCastAnimation() {
         visualController.PlayEnemySpellCastAnimation();
     }
+
 }
