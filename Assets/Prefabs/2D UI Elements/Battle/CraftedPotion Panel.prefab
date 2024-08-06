@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7356847104374313342}
   - component: {fileID: 7834509245957801857}
   m_Layer: 5
-  m_Name: Craft Spell Option
+  m_Name: CraftSpellText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 38.7}
+  m_SizeDelta: {x: 160, y: 77.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7356847104374313342
 CanvasRenderer:
@@ -72,13 +72,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press 'x' to craft a spell with the gathered ingredients!
+  m_Text: Press 'X' to craft!
 --- !u!1 &5928795227848747151
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6902574997574791956
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7287269487446456326
 CanvasRenderer:
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8fb5b508c77b84457af0abc92cc7bee4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -165,9 +165,10 @@ GameObject:
   - component: {fileID: 2071040648943871860}
   - component: {fileID: 5399181686496181963}
   - component: {fileID: 3975025015555795878}
+  - component: {fileID: 910357826293489667}
   m_Layer: 5
   m_Name: CraftedPotion Panel
-  m_TagString: Untagged
+  m_TagString: PotionUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,3 +232,34 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &910357826293489667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962055685257151673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24fa455868d6a5d4ab3b70efb1732ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pharmakaPotionSprite: {fileID: 21300000, guid: d4119352922464d03bf5910b249db57c, type: 3}
+  paralysisPotionSprite: {fileID: 21300000, guid: 2c55d0f8297c04aa89bd625fa0973843, type: 3}
+  loveEnhancementPotionSprite: {fileID: 21300000, guid: 26516ec1f72754dd79eb87971dfce07a, type: 3}
+  wrathEnhancementPotionSprite: {fileID: 21300000, guid: 11d981d79bcd74dfdb6027e75404780e, type: 3}
+  griefEnhancementPotionSprite: {fileID: 21300000, guid: 7100b4bb2759c4365894ea79ed47c357, type: 3}
+  mirthEnhancementPotionSprite: {fileID: 21300000, guid: 9e32431bcea2e4b8ea6976ace9b067a5, type: 3}
+  griefShieldPotionSprite: {fileID: 21300000, guid: 8fb5b508c77b84457af0abc92cc7bee4, type: 3}
+  loveShieldPotionSprite: {fileID: 21300000, guid: f49c9d23dfe74486cbc83e55149d6107, type: 3}
+  wrathShieldPotionSprite: {fileID: 21300000, guid: d75eefc69d47c4333abd3f66f4f65940, type: 3}
+  mirthShieldPotionSprite: {fileID: 21300000, guid: a9ce7b27124b34cc49c25d279199056b, type: 3}
+  griefTransformationPotionSprite: {fileID: 21300000, guid: b34e4634e8dbd49fc86506097de57003, type: 3}
+  loveTransformationPotionSprite: {fileID: 21300000, guid: 32c4bc5368fac4552b163da6b258fdc0, type: 3}
+  wrathTransformationPotionSprite: {fileID: 21300000, guid: 06c556faa256748ea98e328d74fc8d35, type: 3}
+  mirthTransformationPotionSprite: {fileID: 21300000, guid: f67090b2555774266afc075d92226963, type: 3}
+  potionIcon: {fileID: 3814840371877639170}
+  potionPanel: {fileID: 3975025015555795878}
+  potionText: {fileID: 7834509245957801857}
+  potionEmotion: 4
+  potionMoveType: 6
