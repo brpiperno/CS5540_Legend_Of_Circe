@@ -1447,6 +1447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059115754}
   - component: {fileID: 1059115753}
+  - component: {fileID: 1059115755}
   m_Layer: 0
   m_Name: Timeline
   m_TagString: Untagged
@@ -1500,6 +1501,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
+=======
+--- !u!114 &1059115755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059115752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ed0feae2c3e472097f501c0ebc737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: BenIngredientGathering
+>>>>>>> 7d0d57900154f27e3ccb587ab2ed63323eadd906
 --- !u!1 &1134300838
 GameObject:
   m_ObjectHideFlags: 0

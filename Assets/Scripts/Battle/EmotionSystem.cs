@@ -35,11 +35,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {
             visualController = GetComponent<VisualController>();
         }
-        if (movePicker == null)
-        {
-            movePicker = GetComponent<IMovePicker>();
-        }
-        
+        //if (movePicker == null)
+        //{
+        //    movePicker = GetComponent<IMovePicker>();
+        //}
+        //Debug.Log("Is movePicker null?");
+        //Debug.Log(gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
     }
 
     public float GetEmotionValue(EmotionType type) {
@@ -80,6 +81,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             default: throw new NotImplementedException();
         }
         CheckGameOver();
+        movePicker = GetComponent<IMovePicker>();
         movePicker.UpdateLastMoveRecieved(move);
     }
 
@@ -105,7 +107,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             return;
         }
         movePicker = GetComponent<IMovePicker>();
-        if (gameObject.CompareTag("Player")) {
+        
+        if (gameObject.tag == "Player") {
             movePicker.MoveRequested();
         } else
         {

@@ -6,12 +6,7 @@ Create an empty GameObject called BattleManager. Add the BattleManager script to
 Drag the GameObjects for the player and the opponent to their respective fields in the BattleManager script.
 
 Drag the EmotionSystem script onto both the GameObjects for Circe and the opponent. Attach the Circe Spell Cloud and Enemy Spell Cloud 
-<<<<<<< HEAD
-prefabs to both scripts. Set the coordinates: Circe cloud's position is (0.5, 1.5, -6), and rotation is (-90, 0, 0). Enemy cloud's position is (2.7, 1.5, 0),
-rotation is (0, 0, 0)
-=======
 prefabs to both scripts
->>>>>>> ben
 
 Drag the VisualController script onto the BattleManager GameObject. Add the objects
 
@@ -19,11 +14,6 @@ Drag each of the "arrow selected" Game Objects under Canvas to the appropriate f
 
 Drag the "Strum" audio to the SFX fields in each Visual Controller
 
-<<<<<<< HEAD
-Credits:
-Potion images from an asset pack by Josué Rocha
-Sound effects by Dustyroom
-=======
 Set the slope limit for Circe's character controller to 60
 Set move speed in the Third Person Controller script to 2.
 
@@ -100,5 +90,4 @@ Rotation - (-90, -80.606, 0)
 Medea Animations
 Position - (-122, 1.32, 99.5)
 Rotation - (0, -75, 0)
->>>>>>> ben
 */

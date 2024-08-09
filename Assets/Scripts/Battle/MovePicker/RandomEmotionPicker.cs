@@ -31,6 +31,13 @@ public class RandomEmotionPicker : AbstractMovePicker
         System.Random rnd = new System.Random();
         int emotionChoice = rnd.Next(0, movesAvailable.Count - 1);
         EmotionType emtn = movesAvailable.ElementAt(emotionChoice);
+        if (userEmotionSystem == null) {
+            Debug.Log("User Emotion System is null");
+        }
+        if (emtn == null) {
+            Debug.Log("emtn is null");
+        }
+        userEmotionSystem = GetComponent<EmotionSystem>();
         userEmotionSystem.LoadNextMove(emtn, MoveType.Damage);
     }
 }
