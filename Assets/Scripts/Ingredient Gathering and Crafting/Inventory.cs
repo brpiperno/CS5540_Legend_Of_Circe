@@ -11,8 +11,8 @@ public class Inventory : MonoBehaviour
 {
     [Header("Static Inventory Management")]
     public static int spellStrength = 20;
-    private static Queue<EmotionType> emotionIngredientsCollected;
-    private static Queue<MoveType> moveIngredientsCollected;
+    private static Queue<EmotionType> emotionIngredientsCollected = new Queue<EmotionType>();
+    private static Queue<MoveType> moveIngredientsCollected = new Queue<MoveType>();
     public static int maxMoveIngredients = 1;
     public static int maxEmotionIngredients = 1;
     public static float dropDistance = 5.0f;
@@ -37,37 +37,23 @@ public class Inventory : MonoBehaviour
 
 
 
-    [Header("Completed Potion Sprites")]
-    //Sprites for finalized potions
-    public static Sprite pharmakaPotionSprite;
-    public static Sprite paralysisPotionSprite;
-    public static Sprite loveEnhancementPotionSprite;
-    public static Sprite wrathEnhancementPotionSprite;
-    public static Sprite griefEnhancementPotionSprite;
-    public static Sprite mirthEnhancementPotionSprite;
-    public static Sprite griefShieldPotionSprite;
-    public static Sprite loveShieldPotionSprite;
-    public static Sprite wrathShieldPotionSprite;
-    public static Sprite mirthShieldPotionSprite;
-    public static Sprite griefTransformationPotionSprite;
-    public static Sprite loveTransformationPotionSprite;
-    public static Sprite wrathTransformationPotionSprite;
-    public static Sprite mirthTransformationPotionSprite;
-    private Dictionary<MoveType, Dictionary<EmotionType, Sprite>> potionSprites;
-
-
     // Start is called before the first frame update
     void Start()
     {
-        emotionIngredientsCollected = new Queue<EmotionType>();
-        moveIngredientsCollected = new Queue<MoveType>();
         initializeVariables();
         craftedSpell = new BasicMove(0, EmotionType.Null, MoveType.Null);
-        DontDestroyOnLoad(this.gameObject);
-        gatheringUI.updateEmotionIngredientUI();
-        gatheringUI.updateMoveIngredientUI();
+        //DontDestroyOnLoad(this.gameObject.transform.parent.gameObject);
+        safeUpdateUI(); //don't do so if in a battle scene
     }
 
+    private void safeUpdateUI()
+    {
+        if (gatheringUI != null)
+        {
+            gatheringUI.updateEmotionIngredientUI();
+            gatheringUI.updateMoveIngredientUI();
+        }
+    }
 
     public void addMoveIngredient(MoveType moveType)
     {
@@ -76,17 +62,17 @@ public class Inventory : MonoBehaviour
         if (hasIngredient && first == MoveType.Null) //if null for whatever reason, just drop it
         {
             moveIngredientsCollected.Dequeue();
-            Debug.Log("Removed Empty MoveIngredient");
+            //Debug.Log("Removed Empty MoveIngredient");
         }
         //if the max size has been met, drop the first in the queue into the overworld a few feet in front of the player
         else if (hasIngredient && moveIngredientsCollected.Count >= maxMoveIngredients) 
         {
             dropInFrontOfPlayer(moveIngredientDropOptions[moveIngredientsCollected.Dequeue()]);
-            Debug.Log("Dropped movetype prefab in front of player");
+            //Debug.Log("Dropped movetype prefab in front of player");
         }
         moveIngredientsCollected.Enqueue(moveType);
-        Debug.Log("Collected moveType Ingredient: " + moveType.ToString());
-        gatheringUI.updateMoveIngredientUI();
+        //Debug.Log("Collected moveType Ingredient: " + moveType.ToString());
+        safeUpdateUI();
     }
 
     public void addEmotionIngredient(EmotionType emotionType)
@@ -96,18 +82,18 @@ public class Inventory : MonoBehaviour
         if (hasIngredient && first == EmotionType.Null) //if null for whatever reawson, just drop it
         {
             emotionIngredientsCollected.Dequeue();
-            Debug.Log("Removed Empty EmotionIngredient");
+            //Debug.Log("Removed Empty EmotionIngredient");
         }
         //if the max size has been met, drop the first in the queue into the overworld a few feet in front of the player
         else if (hasIngredient && emotionIngredientsCollected.Count >= maxEmotionIngredients)
         {
-            Debug.Log("emotionIngredientCount: " + emotionIngredientsCollected.Count);
+            //Debug.Log("emotionIngredientCount: " + emotionIngredientsCollected.Count);
             dropInFrontOfPlayer(emotionIngredientDropOptions[emotionIngredientsCollected.Dequeue()]);
-            Debug.Log("Dropped emotion prefab in front of player");
+            //Debug.Log("Dropped emotion prefab in front of player");
         }
         emotionIngredientsCollected.Enqueue(emotionType);
-        Debug.Log("Collected emotion ingredient: " + emotionType.ToString());
-        gatheringUI.updateEmotionIngredientUI();
+        //Debug.Log("Collected emotion ingredient: " + emotionType.ToString());
+        safeUpdateUI();
     }
 
     private void dropInFrontOfPlayer(GameObject drop)
@@ -118,8 +104,9 @@ public class Inventory : MonoBehaviour
 
     public static EmotionType getEmotionType()
     {
-        return (emotionIngredientsCollected.TryPeek(out EmotionType emotion)) ? 
-            emotion : EmotionType.Null;
+        EmotionType emotion;
+        bool hasIngredient = emotionIngredientsCollected.TryPeek(out emotion);
+        return (hasIngredient) ? emotion : EmotionType.Null;
     }
 
     public static MoveType getMoveType()
@@ -130,6 +117,18 @@ public class Inventory : MonoBehaviour
 
     public static bool canCraft()
     {
+        /*
+        Debug.Log("Inventory: moveIngredient count: " + moveIngredientsCollected.Count);
+        Debug.Log("Inventory: emotionIngredient count: " + emotionIngredientsCollected.Count);
+        if (moveIngredientsCollected.Count > 0)
+        {
+            Debug.Log("Inventory: firstMoveIngredient = " + moveIngredientsCollected.Peek().ToString());
+        }
+        if (emotionIngredientsCollected.Count > 0)
+        {
+            Debug.Log("Inventory: firstEmotionIngredient = " + emotionIngredientsCollected.Peek().ToString());
+        }
+        */
         return emotionIngredientsCollected.TryPeek(out EmotionType emotionType) 
             && emotionType != EmotionType.Null
             && moveIngredientsCollected.TryPeek(out MoveType moveType)
@@ -180,39 +179,6 @@ public class Inventory : MonoBehaviour
             { MoveType.Paralysis, ParalysisPrefabDrop },
             { MoveType.Pharmaka, PharmakaPrefabDrop },
             { MoveType.Transformation, TransformationPrefabDrop }
-        };
-
-        potionSprites = new Dictionary<MoveType, Dictionary<EmotionType, Sprite>> {
-            { MoveType.Pharmaka, new Dictionary<EmotionType, Sprite>{
-                { EmotionType.Love, pharmakaPotionSprite},
-                { EmotionType.Mirth, pharmakaPotionSprite},
-                { EmotionType.Wrath, pharmakaPotionSprite},
-                { EmotionType.Grief, pharmakaPotionSprite}
-            } },
-            { MoveType.Paralysis, new Dictionary<EmotionType, Sprite>{
-                { EmotionType.Love, paralysisPotionSprite},
-                { EmotionType.Mirth, paralysisPotionSprite},
-                { EmotionType.Wrath, paralysisPotionSprite},
-                { EmotionType.Grief, paralysisPotionSprite}
-            } },
-            { MoveType.Transformation, new Dictionary<EmotionType, Sprite>{
-                { EmotionType.Love, loveTransformationPotionSprite },
-                { EmotionType.Mirth, mirthTransformationPotionSprite },
-                { EmotionType.Wrath, wrathTransformationPotionSprite},
-                { EmotionType.Grief, griefTransformationPotionSprite }
-            } },
-            { MoveType.Enhancement, new Dictionary<EmotionType, Sprite> {
-                { EmotionType.Love, loveEnhancementPotionSprite },
-                { EmotionType.Mirth, mirthEnhancementPotionSprite },
-                { EmotionType.Wrath, wrathEnhancementPotionSprite},
-                { EmotionType.Grief, griefEnhancementPotionSprite }
-            } },
-            { MoveType.Shield, new Dictionary<EmotionType, Sprite>() {
-                { EmotionType.Love, loveShieldPotionSprite },
-                { EmotionType.Mirth, mirthShieldPotionSprite },
-                { EmotionType.Wrath, wrathShieldPotionSprite},
-                { EmotionType.Grief, griefShieldPotionSprite }
-            } }
         };
     }
 }

@@ -10,15 +10,19 @@ public class PlayerMovePicker : AbstractMovePicker
     protected bool isEmotionChosen = false;
     BattleManager battleManager;
     VisualController visualController;
-
-
-    protected new void Start()
+    public PotionCraftingUIManager potionCraftingUIManager;
+    public new void Start()
     {
         base.Start();
         if (visualController == null)
         {
             visualController = GetComponent<VisualController>();
         }
+        if (potionCraftingUIManager == null)
+        {
+            potionCraftingUIManager = GameObject.FindGameObjectWithTag("PotionUI").GetComponent<PotionCraftingUIManager>();
+        }
+        potionCraftingUIManager.UpdateUI(Inventory.getEmotionType(), Inventory.getMoveType());
         battleManager = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
         battleManager.spacePrompt.SetActive(false);
         //Because inventory items are static, we dont need a specific instance
@@ -61,6 +65,23 @@ public class PlayerMovePicker : AbstractMovePicker
             visualController.updateEmotionWheelSelection(emotionChosen);
             battleManager.spacePrompt.SetActive(true);
         }
+        else if (Input.GetKeyDown(KeyCode.X) && Inventory.canCraft())
+        {
+            Debug.Log("Player Pressed x while being able to craft");
+            userEmotionSystem.LoadNextMove(Inventory.getEmotionType(), Inventory.getMoveType());
+            isAskingForPlayInput = false;
+            isEmotionChosen = false;
+            visualController.setEmotionWheelVisibility(false);
+            visualController.RemoveHighlight();
+            battleManager.spacePrompt.SetActive(false);
+            Inventory.CraftSpell();
+            potionCraftingUIManager.UpdateUI(Inventory.getEmotionType(), Inventory.getMoveType());
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("Player Pressed x while unable to craft");
+        }
+
         if (Input.GetKeyDown("space") && isEmotionChosen)
         {
             spacePrompt.SetActive(false);
@@ -71,11 +92,13 @@ public class PlayerMovePicker : AbstractMovePicker
             visualController.RemoveHighlight();
             battleManager.spacePrompt.SetActive(false);
         }
+
+        
     }
 
     public new void MoveRequested()
     {
-        Debug.Log("PlayerMovePicker MoveRequested reached");
+        //Debug.Log("PlayerMovePicker MoveRequested reached");
         visualController.setEmotionWheelVisibility(true);
         base.MoveRequested();
     }
