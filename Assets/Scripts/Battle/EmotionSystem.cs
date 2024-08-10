@@ -15,12 +15,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {EmotionType.Mirth, 100}
     };
     private Dictionary<EmotionType, int> defenseModifiers = new Dictionary<EmotionType, int> {
-        {EmotionType.Wrath, 1},
-        {EmotionType.Love, 1},
-        {EmotionType.Grief, 1},
-        {EmotionType.Mirth, 1}
-    };
-    
+            {EmotionType.Wrath, 1},
+            {EmotionType.Love, 1},
+            {EmotionType.Grief, 1},
+            {EmotionType.Mirth, 1}
+        };
     public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
     public IBattleMove lastMoveUsed;
     public IBattleMove nextMove = new BasicMove(-1, EmotionType.Null, MoveType.Null);
@@ -123,6 +122,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             isTransformed = false;
             return;
         }
+        //Debug.Log("Line 107: " + gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
         movePicker = GetComponent<IMovePicker>();
         
         if (gameObject.tag == "Player") {
@@ -170,4 +170,5 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     private void PlayEnemySpellCastAnimation() {
         visualController.PlayEnemySpellCastAnimation();
     }
+
 }
