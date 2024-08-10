@@ -7,19 +7,13 @@ public class PlayNextScene : MonoBehaviour
 {
     public string nextScene;
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        yield return StartCoroutine("NextScene");
     }
 
     IEnumerator NextScene() {
         yield return new WaitForSeconds(41);
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene("BenIngredientGathering");
     }
 }
