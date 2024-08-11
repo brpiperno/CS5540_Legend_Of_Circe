@@ -17,6 +17,8 @@ public class ThirdPersonController : MonoBehaviour
     public float gravity = 9.81f;
     public float airControl = 1.0f;
 
+    Animator animator;
+
     //Animation variables
     //private int animState;
     //private Animator animator;
@@ -27,8 +29,8 @@ public class ThirdPersonController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        //animator = GetComponent<Animator>();
-        //animState = 0; //start at idle pose
+        animator = GetComponent<Animator>();
+        animator.SetInteger("state", 0);
     }
 
     // Update is called once per frame
@@ -40,16 +42,19 @@ public class ThirdPersonController : MonoBehaviour
         input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized * moveSpeed;
 
         //rotate the character in the direction of the camera
-        if (input.magnitude >= 0.01f)
-        {
-            float cameraYawRotation = Camera.main.transform.eulerAngles.y;
-            Quaternion directionToFace = Quaternion.Euler(0f, cameraYawRotation, 0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, directionToFace, Time.deltaTime * 10);
-        }
+        float cameraYawRotation = Camera.main.transform.eulerAngles.y;
+        //Debug.Log("cameraYawRotation is " + cameraYawRotation);
+        Quaternion directionToFace = Quaternion.Euler(0f, cameraYawRotation, 0f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, directionToFace, Time.deltaTime * 10);
 
 
         if (controller.isGrounded)
         {
+            if (moveHorizontal != 0 || moveVertical != 0) {
+                animator.SetInteger("state", 1);
+            } else {
+                animator.SetInteger("state", 0);
+            }
             moveDirection = input;
             bool toJump = Input.GetButton("Jump");
             moveDirection.y = toJump ? Mathf.Sqrt(2 * jumpHeight * gravity) : 0.0f;
@@ -63,7 +68,7 @@ public class ThirdPersonController : MonoBehaviour
         }
 
         moveDirection.y -= gravity * Time.deltaTime; //constantly apply gravity downwards
-        controller.Move(moveDirection * Time.deltaTime * moveSpeed);
+        controller.Move(moveDirection * Time.deltaTime);
         //animator.SetInteger(animStateTriggerName, animState);
     }
 

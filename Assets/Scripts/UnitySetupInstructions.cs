@@ -14,8 +14,7 @@ Drag each of the "arrow selected" Game Objects under Canvas to the appropriate f
 
 Drag the "Strum" audio to the SFX fields in each Visual Controller
 
-Set the slope limit for Circe's character controller to 60
-Set move speed in the Third Person Controller script to 2.
+Set move speed in the Third Person Controller script to 5.
 
 Credits:
 Circe Model - Mechanist by Yuliya Perevoznikova
@@ -78,7 +77,6 @@ TriggerBattlePanel in the Navigation scene - size - (2500, 500)
 	Start Battle Text - change pos Y to 200
 	Size - (1000, 100)
 	Font size - 35
-    Drag LUMOS font to it (in Assets)
 */
 
 /*  MEDEA BATTLE ANIMATION COORDINATES

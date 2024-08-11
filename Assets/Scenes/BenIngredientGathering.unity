@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTag: Player
-  triggerBattlePanel: {fileID: 0}
+  triggerBattlePanel: {fileID: 2071032747}
   BattleSceneName: (3) Daedalus Battle
   NPCName: Sailor
 --- !u!1 &668860070 stripped
@@ -1138,6 +1138,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2071032747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9202891056980047700, guid: 21f6d14074f5e4f718eb706a0d8c6197, type: 3}
+  m_PrefabInstance: {fileID: 1599860467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &2085352072
 Mesh:
   m_ObjectHideFlags: 0
@@ -1351,14 +1356,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8076041150532760877, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b68e8e87f034d4b7d8558d9ada7158d2, type: 2}
+    - target: {fileID: 8076041150532760877, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8096043965058116905, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
       propertyPath: m_Name
-      value: Mechanist_all
+      value: New Circe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183046866934185183, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183046866934185183, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
+      propertyPath: m_Center.y
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 8223616813111201457, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
       propertyPath: gatheringUI
       value: 
       objectReference: {fileID: 1138489382}
+    - target: {fileID: 9035360804286039579, guid: d76d57886638747b09c12f7c5840f4cb, type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2366,7 +2391,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1322004570757131502, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
