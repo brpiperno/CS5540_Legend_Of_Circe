@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using EmotionTypeExtension;
+using UnityEngine.UI;
+using TMPro;
 
 //Assign this script to Circe and all NPCs
 [RequireComponent(typeof(VisualController))]
@@ -30,6 +32,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     private bool isStunned = false;
     private bool isTransformed = false;
 
+    private BattleTextQueue BattleText;
+
     void Start()
     {
         if (visualController == null)
@@ -42,9 +46,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //}
         //Debug.Log("Is movePicker null?");
         //Debug.Log(gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
+        BattleText = GameObject.FindGameObjectWithTag("BattleText").GetComponent<BattleTextQueue>();
     }
 
-    public float GetEmotionValue(EmotionType type) {
+    public float GetEmotionValue(EmotionType type)
+    {
         return emotionValues[type];
     }
 
@@ -72,9 +78,9 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 int baseDamage = move.getEffectStrength();
                 float defense = defenseModifiers[move.GetEmotionType()];
                 float effectiveness = move.GetEmotionType().GetEffectivenessAgainst(currentEmotion);
-                float damageDealt = baseDamage / defense * effectiveness; 
+                float damageDealt = baseDamage / defense * effectiveness;
 
-                emotionValues[move.GetEmotionType()] -= 
+                emotionValues[move.GetEmotionType()] -=
                     Mathf.Abs(move.getEffectStrength())
                     / defenseModifiers[move.GetEmotionType()]
                     * move.GetEmotionType().GetEffectivenessAgainst(currentEmotion);
@@ -88,6 +94,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 break; //do nothing. User of this move was stunned.
             default: throw new NotImplementedException();
         }
+        BattleText.Enqueue(GetAcceptedMoveText(name, move, currentEmotion));
         CheckGameOver();
         //movePicker = GetComponent<IMovePicker>();
         if (!gameObject.CompareTag("Player"))
@@ -117,7 +124,8 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             battleManager.SubmitMove(new BasicMove(0, EmotionType.Null, MoveType.Null), this, battleManager.GetEnemy(this));
             isStunned = false;
             return;
-        } else if (isTransformed)
+        }
+        else if (isTransformed)
         {
             battleManager.SubmitMove(nextMove, this, battleManager.GetEnemy(this));
             isTransformed = false;
@@ -125,10 +133,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         }
         //Debug.Log("Line 107: " + gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
         movePicker = GetComponent<IMovePicker>();
-        
-        if (gameObject.tag == "Player") {
+
+        if (gameObject.tag == "Player")
+        {
             movePicker.MoveRequested();
-        } else
+        }
+        else
         {
             //TODO: debug why this isn't working with casting
             (movePicker as FSMMovePicker).MoveRequested();
@@ -142,24 +152,27 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //Debug.Log("LoadNextMove has created " + nextMove.toString());
         //for shield and enhancement spells, the target is the user
         EmotionSystem target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
-            this : battleManager.GetEnemy(this); 
+            this : battleManager.GetEnemy(this);
         battleManager.SubmitMove(nextMove, this, target);
     }
 
     // Method does not use the move variable so far
-    public void PlayMove() {
+    public void PlayMove()
+    {
         lastMoveUsed = nextMove;
         nextMove = new BasicMove(0, EmotionType.Null, MoveType.Null);
         currentEmotion = lastMoveUsed.GetEmotionType();
         visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
         //battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
-        if (gameObject.tag == "Player") {
+        if (gameObject.tag == "Player")
+        {
             //Debug.Log("Reached line 121");
             Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
             visualController.PlayEnemyBlockAnimation();
         }
         StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
+        BattleText.Enqueue(GetPlayMoveText(name, lastMoveUsed), true);
         Invoke("FinishTurn", 2);
     }
 
@@ -168,8 +181,57 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         battleManager.CompleteMove(this);
     }
 
-    private void PlayEnemySpellCastAnimation() {
+    private void PlayEnemySpellCastAnimation()
+    {
         visualController.PlayEnemySpellCastAnimation();
     }
 
+    private string GetPlayMoveText(string name, IBattleMove movePlayed)
+    {
+        switch (movePlayed.GetMoveType())
+        {
+            case MoveType.Null:
+                return string.Format("{0} was stunned! They were unable to speak!", name);
+            case MoveType.Damage:
+                return string.Format("{0} spoke with {1}!", name, movePlayed.GetEmotionType().ToString());
+            default:
+                return string.Format("{0} used a {1}.", name, PotionCraftingUIManager.getPotionName(movePlayed.GetEmotionType(), movePlayed.GetMoveType()));
+        }
+    }
+
+    private string GetAcceptedMoveText(string name, IBattleMove moveAccepted, EmotionType defendingEmotion)
+    {
+        switch (moveAccepted.GetMoveType())
+        {
+            case MoveType.Null:
+                return "";
+            case MoveType.Damage:
+                float effectiveness = moveAccepted.GetEmotionType().GetEffectivenessAgainst(defendingEmotion);
+                if (effectiveness > 1)
+                {
+                    return string.Format("{0}'s {1} was vulnerable to {2}.", name, defendingEmotion.ToString(), moveAccepted.GetEmotionType().ToString());
+                }
+                else if (effectiveness < 1)
+                {
+                    return string.Format("{0}'s {1} resisted words of {2}.", name, defendingEmotion.ToString(), moveAccepted.GetEmotionType().ToString());
+                }
+                else
+                {
+                    return "";
+                }
+            case MoveType.Paralysis:
+                return string.Format("{0} was stunned", name);
+            case MoveType.Enhancement:
+                return string.Format("{0}'s %s was restored!", name, moveAccepted.GetEmotionType().ToString());
+            case MoveType.Pharmaka:
+                return string.Format("With the power of Circe's Pharmaka, {0} has transcended into divinity!", name);
+            case MoveType.Shield:
+                return string.Format("{0} raised their resistanced to words of {1}", name, moveAccepted.GetEmotionType().ToString());
+            case MoveType.Transformation:
+                return string.Format("{0} was enchanted to think thoughts of {1}. Their next move will be type: {1}", name, moveAccepted.GetEmotionType().ToString());
+            default:
+                throw new Exception("Unaccounted movetype" +  moveAccepted.GetMoveType().ToString());
+                
+        }
+    }
 }

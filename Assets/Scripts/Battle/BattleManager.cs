@@ -74,9 +74,9 @@ public class BattleManager : MonoBehaviour
     /// <param name="target">The target of the move</param>
     public void SubmitMove(IBattleMove move, EmotionSystem user, EmotionSystem target)
     {
-        Debug.Log(move.ToString());
-        Debug.Log(user.ToString());
-        Debug.Log(target.ToString());
+        //Debug.Log(move.ToString());
+        //Debug.Log(user.ToString());
+        //Debug.Log(target.ToString());
         //Debug.Log("BattleManager: SubmitMove called with move:" + move.ToString() + "Target: " + target.name + "User: " + user.name);
         if (getPlayerIndex(user) != turnIndex)
         {
