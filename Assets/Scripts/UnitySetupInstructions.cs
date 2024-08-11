@@ -18,6 +18,7 @@ Set the slope limit for Circe's character controller to 60
 Set move speed in the Third Person Controller script to 2.
 
 Credits:
+Circe Model - Mechanist by Yuliya Perevoznikova
 Potion images from an asset pack by Josué Rocha
 Sound effects by Dustyroom
 Additional tree assets from a pack by past12pm
@@ -35,7 +36,6 @@ Font is from https://www.fontspace.com/aiden-font-f25745
 
 
 /*  UI COORDINATES
-
 Space prompt - position - (0, -425, 0)
 For all of the text objects - do the shift alt anchor thing and set it to center center, then set each to the specified positions below.
 Then in the Paragraph settings, select the 5th option (aligned in the middle vertically). Set all to font size 24
