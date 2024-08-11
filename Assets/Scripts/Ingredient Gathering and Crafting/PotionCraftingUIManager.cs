@@ -1,5 +1,4 @@
 using EmotionTypeExtension;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,7 +9,6 @@ using UnityEngine.UI;
 public class PotionCraftingUIManager : MonoBehaviour
 {
     [Header("Completed Potion Sprites")]
-    //Sprites for finalized potions
     public Sprite pharmakaPotionSprite;
     public Sprite paralysisPotionSprite;
     public Sprite loveEnhancementPotionSprite;
@@ -30,7 +28,8 @@ public class PotionCraftingUIManager : MonoBehaviour
     [Header("Crafting 2D UI elements")]
     public Image potionIcon;
     public Image potionPanel;
-    public Text potionText;
+    public Text craftingInstructionText;
+    public Text potionNameText;
 
     public EmotionType potionEmotion = EmotionType.Null;
     public MoveType potionMoveType = MoveType.Null;
@@ -39,16 +38,6 @@ public class PotionCraftingUIManager : MonoBehaviour
     void Start()
     {
         potionSprites = InitializeDictionary();
-        foreach (MoveType m in potionSprites.Keys)
-        {
-            /*
-             * Debug.Log("PotionSprites: MoveType: " + m.ToString());
-            foreach (EmotionType e in potionSprites[m].Keys)
-            {
-                Debug.Log("PotionSprites[" + m.ToString() + "][" + e.ToString() + "] = " + potionSprites[m][e].ToString());
-            }
-            */
-        }
     }
 
     public void UpdateUI(EmotionType emotion, MoveType move)
@@ -60,10 +49,8 @@ public class PotionCraftingUIManager : MonoBehaviour
             potionPanel.gameObject.SetActive(true);
             potionPanel.color = potionEmotion.GetColor();
             potionIcon.sprite = potionSprites[move][emotion];
-            potionText.text = "Press 'X' to craft!";
-        } else
-        {
-            potionPanel.gameObject.SetActive(false);
+            craftingInstructionText.text = "Press 'X' to craft!";
+            potionNameText.text = getPotionName(emotion, move);
         }
     }
 
@@ -102,4 +89,47 @@ public class PotionCraftingUIManager : MonoBehaviour
             } }
         };
     }
+
+    public static string getPotionName(EmotionType emotion, MoveType moveType)
+    {
+        switch (moveType)
+        {
+            case MoveType.Paralysis:
+                return "Potion of Paralysis";
+            case MoveType.Pharmaka:
+                return "Pharmaka";
+            case MoveType.Shield:
+                return "Potion of Defense (" + emotion.ToString() + ")";
+            case MoveType.Enhancement:
+                return "Potion of Healing (" + emotion.ToString() + ")";
+            case MoveType.Transformation:
+                return "Potion of Transformation (" + emotion.ToString() + ")";
+            case MoveType.Null:
+                return "";
+            default:
+                throw new System.Exception("Unaccounted potion type: " + moveType.ToString() + " - " + emotion.ToString());
+        }
+    }
+
+    public static string getPotionDescription(EmotionType emotion, MoveType moveType)
+    {
+        switch (moveType)
+        {
+            case MoveType.Paralysis:
+                return "Stun your opponent's next turn!";
+            case MoveType.Pharmaka:
+                return "Transcend the laws of divinity!";
+            case MoveType.Shield:
+                return "Increase your defense against words of " + emotion.ToString() + ".";
+            case MoveType.Enhancement:
+                return "Restore your " + emotion.ToString() + " level.";
+            case MoveType.Transformation:
+                return "Set your opponent's next turn to type: " + emotion.ToString() + ".";
+            case MoveType.Null:
+                return "";
+            default:
+                throw new System.Exception("Unaccounted potion type: " + moveType.ToString() + " - " + emotion.ToString());
+        }
+    }
+
 }

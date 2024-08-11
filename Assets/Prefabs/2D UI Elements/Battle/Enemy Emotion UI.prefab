@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -512, y: 242.5}
+  m_AnchoredPosition: {x: -415, y: -1.5}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1595362132473174919
@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ee54484f4be58a9418a3f72a47e88d50, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -167,6 +167,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1633203731451902449, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ee54484f4be58a9418a3f72a47e88d50, type: 3}
+    - target: {fileID: 2012315342163842600, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ee54484f4be58a9418a3f72a47e88d50, type: 3}
+    - target: {fileID: 2254155640490584499, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 297
+      objectReference: {fileID: 0}
+    - target: {fileID: 2254155640490584499, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 3038674130860015596, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -175,6 +191,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4135686585534874130, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -72.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516561871201686332, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -72.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881615987749052569, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 297
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881615987749052569, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5055118931969192908, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ee54484f4be58a9418a3f72a47e88d50, type: 3}
+    - target: {fileID: 5407463604390462494, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -72.72
+      objectReference: {fileID: 0}
     - target: {fileID: 5557300170625390119, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -182,6 +222,26 @@ PrefabInstance:
     - target: {fileID: 5557300170625390119, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841849108850202365, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ee54484f4be58a9418a3f72a47e88d50, type: 3}
+    - target: {fileID: 6398901626973263891, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 297
+      objectReference: {fileID: 0}
+    - target: {fileID: 6398901626973263891, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883968157215477040, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 297
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883968157215477040, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 7164300609006229400, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -193,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7702968970418364212, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_Name
-      value: Emotion Bar Manager Variant
+      value: Enemy Emotion UI
       objectReference: {fileID: 0}
     - target: {fileID: 8259083308024286561, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -202,6 +262,10 @@ PrefabInstance:
     - target: {fileID: 8259083308024286561, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8489779454409925195, guid: 2c371feb88466bf4caf3802534848e2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -72.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

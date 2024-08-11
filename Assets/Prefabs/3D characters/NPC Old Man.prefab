@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5251107426523682287}
   - component: {fileID: 8575405642148900806}
-  - component: {fileID: 1576979089778481383}
   - component: {fileID: -6210044762279469423}
   - component: {fileID: -2563967586732818676}
-  - component: {fileID: -4386234340709925403}
+  - component: {fileID: 3226098232947978361}
+  - component: {fileID: 4414283088330599372}
+  - component: {fileID: 4471270505096620437}
   m_Layer: 0
   m_Name: NPC Old Man
   m_TagString: Enemy
@@ -58,22 +59,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 1, z: 10}
   m_Center: {x: 0, y: 1.1, z: 0}
---- !u!114 &1576979089778481383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7940719953895527930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6266ab5b0ec2f6b4795fe8beec5e4fbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTag: Player
-  triggerBattlePanel: {fileID: 0}
-  BattleSceneName: 
-  NPCName: Sailor
 --- !u!114 &-6210044762279469423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,13 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimationObject: {fileID: 3592077688321363630, guid: 830d24448dcaf4c6da1d66584d9ef070, type: 3}
-  enemyAttackAnimationObject: {fileID: 3592077688321363630, guid: 4a46b6409bc8f49d3b6c3aa373569fd3, type: 3}
-  visualController: {fileID: 0}
+  visualController: {fileID: -2563967586732818676}
   currentEmotion: 0
   battleManager: {fileID: 0}
-  movePicker: {fileID: 0}
-  baseStrength: 0
+  baseStrength: 20
+  enemySpellAnimationDelay: 1.7
 --- !u!114 &-2563967586732818676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,16 +88,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackEffect: {fileID: 0}
-  playerAttackEffectPosition: {x: 0, y: 0, z: 0}
+  playerAttackEffect: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
+  playerAttackEffectPosition: {x: 2.7, y: 1.5, z: 0}
   playerAttackEffectRotation: {x: 0, y: 0, z: 0}
   upArrow: {fileID: 0}
   leftArrow: {fileID: 0}
   rightArrow: {fileID: 0}
   downArrow: {fileID: 0}
-  playerMoveSFX: {fileID: 0}
+  playerMoveSFX: {fileID: 8300000, guid: 38a17a92b9d9748c6a1e67972041b833, type: 3}
   moveSFXPitch: 0
---- !u!114 &-4386234340709925403
+  hasBlockAnimation: 0
+--- !u!114 &3226098232947978361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +107,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 7940719953895527930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23862b88fd16897499c8df13cabcf0e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 929846cee9942414f8a16ecaaaa2a565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fallSpeed: 1
+--- !u!95 &4414283088330599372
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719953895527930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 35c44a97c30e4e946a0f4d3310613b95, type: 3}
+  m_Controller: {fileID: 9100000, guid: 5a6355d64d4a946b58982b1d12afd6a3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4471270505096620437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940719953895527930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cede44cbc9147a4a8460b3346790c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMoodIndex: 0
+  loveTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  griefTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  wrathTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  mirthTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
 --- !u!1001 &8488196711846185449
 PrefabInstance:
   m_ObjectHideFlags: 0

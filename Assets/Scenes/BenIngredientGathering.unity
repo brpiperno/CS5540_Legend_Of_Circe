@@ -502,6 +502,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2563967586732818676, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1576979089778481383, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: NPCName
       value: Daedalus
@@ -514,6 +518,14 @@ PrefabInstance:
       propertyPath: triggerBattlePanel
       value: 
       objectReference: {fileID: 920694385}
+    - target: {fileID: 3226098232947978361, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471270505096620437, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5251107426523682287, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.45
@@ -561,7 +573,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 536098921}
   m_SourcePrefab: {fileID: 100100000, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
 --- !u!114 &534799140 stripped
 MonoBehaviour:
@@ -574,6 +589,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &536098913 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7940719953895527930, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+  m_PrefabInstance: {fileID: 496691229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &536098921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536098913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6266ab5b0ec2f6b4795fe8beec5e4fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTag: Player
+  triggerBattlePanel: {fileID: 920694385}
+  BattleSceneName: (3) Daedalus Battle
+  NPCName: Sailor
 --- !u!114 &554943866 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5799174852141794223, guid: 32a47040c1f80fe40b5a2a85f2b3612b, type: 3}
@@ -1966,6 +2002,10 @@ PrefabInstance:
     - target: {fileID: 5713475277560894303, guid: ae0dd4f40b80c804ca88442c3ff1f468, type: 3}
       propertyPath: m_SlopeLimit
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6277320018225040993, guid: ae0dd4f40b80c804ca88442c3ff1f468, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7372980894949986499, guid: ae0dd4f40b80c804ca88442c3ff1f468, type: 3}
       propertyPath: m_LocalPosition.x

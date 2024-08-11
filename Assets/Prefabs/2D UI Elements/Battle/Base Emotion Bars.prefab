@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2863361429025116831}
   - component: {fileID: 1633203731451902449}
   m_Layer: 5
-  m_Name: Mirth text (1)
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,11 +30,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 575185947747498501}
+  m_Father: {fileID: 4881615987749052569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113, y: 202.5}
+  m_AnchoredPosition: {x: -57, y: 2.5}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &2863361429025116831
@@ -110,6 +110,7 @@ RectTransform:
   m_Children:
   - {fileID: 7153334892089148355}
   - {fileID: 5588688302547576983}
+  - {fileID: 8489779454409925195}
   m_Father: {fileID: 575185947747498501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -274,6 +275,7 @@ RectTransform:
   m_Children:
   - {fileID: 1922857881121757801}
   - {fileID: 1045136545529230933}
+  - {fileID: 4135686585534874130}
   m_Father: {fileID: 575185947747498501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -513,6 +515,7 @@ RectTransform:
   m_Children:
   - {fileID: 6660841685627361663}
   - {fileID: 6442315399994598391}
+  - {fileID: 5407463604390462494}
   m_Father: {fileID: 575185947747498501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -808,7 +811,7 @@ GameObject:
   - component: {fileID: 9197538834343394002}
   - component: {fileID: 5055118931969192908}
   m_Layer: 5
-  m_Name: Grief text (1)
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,11 +829,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 575185947747498501}
+  m_Father: {fileID: 6883968157215477040}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113, y: 262.5}
+  m_AnchoredPosition: {x: -57, y: 2.5}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9197538834343394002
@@ -962,7 +965,7 @@ GameObject:
   - component: {fileID: 6316117601812089473}
   - component: {fileID: 5841849108850202365}
   m_Layer: 5
-  m_Name: Wrath text (1)
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,11 +983,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 575185947747498501}
+  m_Father: {fileID: 6398901626973263891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113, y: 222.5}
+  m_AnchoredPosition: {x: -57, y: 2.5}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6316117601812089473
@@ -1098,6 +1101,7 @@ RectTransform:
   m_Children:
   - {fileID: 2329468190097231398}
   - {fileID: 4466202267079173003}
+  - {fileID: 4516561871201686332}
   m_Father: {fileID: 575185947747498501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1336,10 +1340,6 @@ RectTransform:
   - {fileID: 2254155640490584499}
   - {fileID: 6398901626973263891}
   - {fileID: 4881615987749052569}
-  - {fileID: 4135686585534874130}
-  - {fileID: 5407463604390462494}
-  - {fileID: 8489779454409925195}
-  - {fileID: 4516561871201686332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1359,11 +1359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8f7e681b7a9041b99bf3c69c778bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderSpeed: 10
   wrathSlider: {fileID: 5339404822918628418}
   griefSlider: {fileID: 2156527041849276473}
   loveSlider: {fileID: 471463019719740094}
   mirthSlider: {fileID: 4117791551823732364}
-  emotionValue: {fileID: 0}
+  emotionSystem: {fileID: 0}
 --- !u!1 &7831633100611785645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,7 +1413,7 @@ GameObject:
   - component: {fileID: 5524641830610422242}
   - component: {fileID: 2012315342163842600}
   m_Layer: 5
-  m_Name: Love text (1)
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,11 +1431,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 575185947747498501}
+  m_Father: {fileID: 2254155640490584499}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 113, y: 242.5}
+  m_AnchoredPosition: {x: -57, y: 2.5}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &5524641830610422242

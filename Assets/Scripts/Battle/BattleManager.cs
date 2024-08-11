@@ -55,6 +55,9 @@ public class BattleManager : MonoBehaviour
         //TODO: Enable Battle Specific UI
         //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
+        ToggleMovement(false);
+
+
     }
 
     void Update() {
@@ -155,5 +158,15 @@ public class BattleManager : MonoBehaviour
 
     private void ReturnToOverworld() {
         SceneManager.LoadScene("BenIngredientGathering");
+        ToggleMovement(true);
+    }
+
+    private void ToggleMovement(bool enabled)
+    {
+        ThirdPersonController[] controllers = GameObject.FindObjectsOfType<ThirdPersonController>();
+        foreach (ThirdPersonController controller in controllers)
+        {
+            controller.enabled = enabled;
+        }
     }
  }

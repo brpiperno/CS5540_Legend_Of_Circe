@@ -89,10 +89,11 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             default: throw new NotImplementedException();
         }
         CheckGameOver();
-        movePicker = GetComponent<IMovePicker>();
+        //movePicker = GetComponent<IMovePicker>();
         if (!gameObject.CompareTag("Player"))
         {
-            (movePicker as FSMMovePicker).UpdateLastMoveRecieved(move);
+            GetComponent<FSMMovePicker>().UpdateLastMoveRecieved(move);
+            ////(movePicker as FSMMovePicker).UpdateLastMoveRecieved(move);
         }
     }
 
