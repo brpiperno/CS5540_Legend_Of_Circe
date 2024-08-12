@@ -151,7 +151,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         lastMoveUsed = nextMove;
         nextMove = new BasicMove(0, EmotionType.Null, MoveType.Null);
         currentEmotion = lastMoveUsed.GetEmotionType();
-        visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
+        //visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
         //battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
         if (gameObject.tag == "Player") {

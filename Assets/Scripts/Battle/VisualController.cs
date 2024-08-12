@@ -51,8 +51,8 @@ public class VisualController : MonoBehaviour, IVisualController
             var newColor = ps.main;
             newColor.startColor = emotion.GetColor();
         }
-        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
-        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        //AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
 
     }
 
