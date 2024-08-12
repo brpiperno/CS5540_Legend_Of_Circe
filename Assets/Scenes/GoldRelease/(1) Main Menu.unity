@@ -2059,10 +2059,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 1143109739234745474, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2142422689379165860, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856146353584744642, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4929708575295866775, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
       propertyPath: cmr
       value: 
       objectReference: {fileID: 788180264}
+    - target: {fileID: 5250724604898465000, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250724604898465000, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250724604898465000, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941105160265463562, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941105160265463562, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190423233367328337, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
