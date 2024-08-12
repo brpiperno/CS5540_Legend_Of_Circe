@@ -20,7 +20,8 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI volumeValueText;
     public Slider mouseSensitivitySlider;
     public TextMeshProUGUI mouseSensitivityValueText;
-    public Camera cmr;
+
+    public CameraSettings cameraSettings;
 
     private void Awake()
     {
@@ -39,9 +40,11 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        if (cmr == null)
-        {
-            cmr = Camera.main;
+        if (PlayerPrefs.HasKey("MouseSensitivity")) {
+            mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
+        }
+        if (PlayerPrefs.HasKey("Volume")) {
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         }
     }
 
@@ -88,7 +91,10 @@ public class Menu : MonoBehaviour
         mouseSensitivity = newSensitivity;
         mouseSensitivitySlider.value = newSensitivity;
         mouseSensitivityValueText.text = newSensitivity.ToString("0.0");
-        //TODO : update thirdpersoncontroller object if there is one
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivity);
+        if (cameraSettings != null) {
+            cameraSettings.UpdateSensitivity(newSensitivity);
+        }
     }
 
     public void UpdateVolume(float newVolume)
@@ -97,6 +103,6 @@ public class Menu : MonoBehaviour
         volumeSlider.value = newVolume;
         volumeValueText.text = string.Format("{0:P1}", volume);
         AudioListener.volume = volume;
+        PlayerPrefs.SetFloat("Volume", newVolume);
     }
-
 }
