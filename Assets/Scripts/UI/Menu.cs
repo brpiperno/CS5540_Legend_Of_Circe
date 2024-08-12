@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,9 @@ public class Menu : MonoBehaviour
     public static float mouseSensitivity = 1.0f;
 
     public Slider volumeSlider;
+    public TextMeshProUGUI volumeValueText;
     public Slider mouseSensitivitySlider;
+    public TextMeshProUGUI mouseSensitivityValueText;
     public Camera cmr;
 
     private void Awake()
@@ -25,9 +28,13 @@ public class Menu : MonoBehaviour
         volumeSlider.minValue = 0;
         volumeSlider.value = volume;
         volumeSlider.maxValue = 1;
+        volumeValueText.text = string.Format("{0:P1}", volume);
+
         mouseSensitivitySlider.minValue = 0.2f;
         mouseSensitivitySlider.maxValue = 2.0f;
         mouseSensitivitySlider.value = mouseSensitivity;
+        mouseSensitivityValueText.text = mouseSensitivity.ToString("0.0");
+        mouseSensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivity);
     }
 
     private void Start()
@@ -80,6 +87,7 @@ public class Menu : MonoBehaviour
     {
         mouseSensitivity = newSensitivity;
         mouseSensitivitySlider.value = newSensitivity;
+        mouseSensitivityValueText.text = newSensitivity.ToString("0.0");
         //TODO : update thirdpersoncontroller object if there is one
     }
 
@@ -87,6 +95,7 @@ public class Menu : MonoBehaviour
     {
         volume = newVolume;
         volumeSlider.value = newVolume;
+        volumeValueText.text = string.Format("{0:P1}", volume);
         AudioListener.volume = volume;
     }
 
