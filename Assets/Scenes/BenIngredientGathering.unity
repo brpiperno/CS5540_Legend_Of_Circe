@@ -1665,6 +1665,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 80081403}
+    - target: {fileID: 6856386340839125495, guid: 78ce7f99c7fc74ba68e4c10169946692, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856386340839125495, guid: 78ce7f99c7fc74ba68e4c10169946692, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7661355246340016901, guid: 78ce7f99c7fc74ba68e4c10169946692, type: 3}
+      propertyPath: m_fontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7661355246340016901, guid: 78ce7f99c7fc74ba68e4c10169946692, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8208697959534233262, guid: 78ce7f99c7fc74ba68e4c10169946692, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.175
