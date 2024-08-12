@@ -65,7 +65,9 @@ public class Menu : MonoBehaviour
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0f : 1f;
+        Debug.Log("In TogglePause. The pauseMenu object is " + pauseMenu.name + ". pauseMenu is active? " + pauseMenu.activeSelf);
         pauseMenu.SetActive(isPaused);
+        Debug.Log("pauseMenu set to active? " + pauseMenu.activeSelf);
 
         Cursor.visible = keepMouseUnlocked || isPaused; 
         Cursor.lockState = keepMouseUnlocked || isPaused ? CursorLockMode.None : CursorLockMode.Locked;

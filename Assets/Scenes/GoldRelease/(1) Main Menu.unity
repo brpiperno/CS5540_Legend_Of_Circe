@@ -1107,9 +1107,10 @@ GameObject:
   - component: {fileID: 1278417583}
   - component: {fileID: 1278417582}
   - component: {fileID: 1278417581}
+  - component: {fileID: 1278417585}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainMenuCanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1201,6 +1202,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1278417585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278417580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee65680e910ebb4f9d03da527ba8d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1490583325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,18 +2058,6 @@ PrefabInstance:
     - target: {fileID: 1143109739234745474, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
       propertyPath: m_Name
       value: SettingsMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 1653473913826428644, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2535090952264528477, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3404024531825096088, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4929708575295866775, guid: 9b94fdc97bac9ba4ca89efbab157d987, type: 3}
       propertyPath: cmr
