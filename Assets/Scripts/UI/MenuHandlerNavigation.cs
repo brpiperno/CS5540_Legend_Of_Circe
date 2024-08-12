@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MenuHandlerNavigation : MonoBehaviour
 {
-    Transform mainMenuCanvas;
+    //Transform mainMenuCanvas;
 
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
         mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas").transform;
         Debug.Log("MainMenuCanvas is active: " + mainMenuCanvas.gameObject.activeSelf);
@@ -18,15 +18,19 @@ public class MenuHandlerNavigation : MonoBehaviour
             Debug.Log("Setting " + child.gameObject.name + " to inactive");
         }
         Debug.Log("MainMenuCanvas is active: " + mainMenuCanvas.gameObject.activeSelf);
-    }
+    }*/
 
-    void DisplaySettingsMenu() {
-        mainMenuCanvas.GetChild(3).gameObject.SetActive(true);
+    public void DisplaySettingsMenu() {
+        transform.GetChild(4).gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    void HideSettingsMenu() {
-        mainMenuCanvas.GetChild(3).gameObject.SetActive(false);
+    public void HideSettingsMenu() {
+        transform.GetChild(4).gameObject.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void Quit() {
+        Menu.Quit();
     }
 }
