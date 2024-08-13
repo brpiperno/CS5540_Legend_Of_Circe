@@ -46,12 +46,12 @@ public class InventoryUIManager : MonoBehaviour
         {
             moveTypeIngredientIcon.enabled = true;
             moveTypeIngredientIcon.sprite = moveSprites[moveType];
-            moveIngredientText.text = "Extract of\n" + moveType.ToString();
+            moveIngredientText.text = "Extract of " + moveType.ToString();
         }
         else
         {
             moveTypeIngredientIcon.enabled = false;
-            moveIngredientText.text = "Alchemical Base:\nNone";
+            moveIngredientText.text = "Alchemical Base: None";
         }
     }
 
@@ -63,12 +63,12 @@ public class InventoryUIManager : MonoBehaviour
             emotionIngredientPanel.color = emotionType.GetColor();
             emotionIngredientIcon.sprite = emotionSprites[emotionType];
             emotionIngredientIcon.enabled = true;
-            emotionIngredientText.text = "Extract of\n" + emotionType.ToString();
+            emotionIngredientText.text = "Extract of " + emotionType.ToString();
         }
         else
         {
             emotionIngredientIcon.enabled = false;
-            emotionIngredientText.text = "Emotional Extract:\nNone";
+            emotionIngredientText.text = "Emotional Extract: None";
         }
     }
 

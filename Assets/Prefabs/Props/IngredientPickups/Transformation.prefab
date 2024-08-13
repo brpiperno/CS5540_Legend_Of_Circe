@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 570814490912716505}
   m_Layer: 0
   m_Name: Transformation
-  m_TagString: Untagged
+  m_TagString: MoveTypePickup
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2991215285684593107
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveType: 1
   collectedSFX: {fileID: 8300000, guid: 616cf7f5cffb52e4caa0df9070ee4067, type: 3}
-  turnOnTime: 5
+  playerDetectionDistance: 10
+  isWithinRangeOfPlayer: 0
 --- !u!1001 &6685297559919564971
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,35 +8,37 @@ using EmotionTypeExtension;
 [RequireComponent(typeof(Renderer))]
 public class EmotionIngredient : MonoBehaviour
 {
-       
-    
-    private Collider cldr;
+    //private Collider cldr;
     public EmotionType emotionType;
     public AudioClip collectedSFX;
-    public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
-    private bool turnedOn = false;
-    private float startedTime;
+    //public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
+    //private bool turnedOn = false;
+    //private float startedTime;
+
+    public float playerDetectionDistance = 10f;
+
     private Renderer rndrer;
+    Transform player;
+    Transform canvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        cldr = GetComponent<Collider>();
-        cldr.enabled = false;
-        startedTime = Time.time;
+        //cldr = GetComponent<Collider>();
+        //startedTime = Time.time;
         rndrer = GetComponent<Renderer>();
         Color color = emotionType.GetColor();
         color.a = 0.2f;
         rndrer.material.color = color;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
     }
 
-    private void Update()
-    {
-        if (!turnedOn && Time.time >= startedTime + turnOnTime)
-        {
-            cldr.enabled = true;
-            cldr.isTrigger = true;
-            turnedOn = true;
+    void Update() {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer < playerDetectionDistance) {
+            Transform child = canvas.Find("EmotionIngredientExplanation");
         }
     }
 
@@ -57,8 +59,7 @@ public class EmotionIngredient : MonoBehaviour
                 inventory = GameObject.FindFirstObjectByType<Inventory>();
             }
             inventory.addEmotionIngredient(emotionType, gameObject);
-
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

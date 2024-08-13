@@ -16,9 +16,11 @@ public class EmotionTypeIngredient : MonoBehaviour
     //private float startedTime;
 
     public float playerDetectionDistance = 10f;
+    public bool isWithinRangeOfPlayer = false;
 
     private Renderer rndrer;
     Transform player;
+    //Transform canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +33,17 @@ public class EmotionTypeIngredient : MonoBehaviour
         rndrer.material.color = color;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        //canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
     }
 
     void Update() {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer < playerDetectionDistance) {
-
+            //Transform child = canvas.Find("EmotionIngredientExplanation");
+            //child.gameObject.SetActive(true);
+            isWithinRangeOfPlayer = true;
+        } else {
+            isWithinRangeOfPlayer = false;
         }
     }
 

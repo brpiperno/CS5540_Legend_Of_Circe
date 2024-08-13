@@ -14,22 +14,32 @@ public class MoveTypeIngredient : MonoBehaviour
     //private bool turnedOn = false;
     //private float startedTime;
 
+    public float playerDetectionDistance = 10f;
+    public bool isWithinRangeOfPlayer = false;
+
+    Transform player;
+    //Transform canvas;
+
     // Start is called before the first frame update
     void Start()
     {
         //cldr = GetComponent<Collider>();
         //startedTime = Time.time;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //canvas = GameObject.FindGameObjectWithTag("Canvas").transform;
     }
 
-    /*private void Update()
-    {
-        if (!turnedOn && Time.time >= startedTime + turnOnTime)
-        {
-            cldr.enabled = true;
-            cldr.isTrigger = true;
-            turnedOn = true;
+    void Update() {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer < playerDetectionDistance) {
+            //Transform child = canvas.Find("MoveIngredientExplanation");
+            //child.gameObject.SetActive(true);
+            isWithinRangeOfPlayer = true;
+        } else {
+            isWithinRangeOfPlayer = false;
         }
-    }*/
+    }
 
     private void OnTriggerEnter(Collider other)
     {

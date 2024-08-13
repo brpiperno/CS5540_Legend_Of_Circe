@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 2361054476281472215}
   m_Layer: 0
   m_Name: GriefPickup
-  m_TagString: Untagged
+  m_TagString: EmotionPickup
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &439362361849403932
 Transform:
   m_ObjectHideFlags: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotionType: 2
   collectedSFX: {fileID: 8300000, guid: 563884892133af446bdb373e00a7a764, type: 3}
-  turnOnTime: 5
+  playerDetectionDistance: 10
+  isWithinRangeOfPlayer: 0
 --- !u!1001 &3175443518472473939
 PrefabInstance:
   m_ObjectHideFlags: 0
