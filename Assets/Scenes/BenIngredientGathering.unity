@@ -627,7 +627,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTag: Player
   triggerBattlePanel: {fileID: 2071032747}
-  BattleSceneName: (3) Daedalus Battle
   NPCName: Sailor
 --- !u!1 &668334431 stripped
 GameObject:
@@ -1059,6 +1058,63 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &1275651374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275651377}
+  - component: {fileID: 1275651376}
+  - component: {fileID: 1275651375}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1275651375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275651374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ee65680e910ebb4f9d03da527ba8d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1275651376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275651374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67b04122a79b4d41b27e7a90532f6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1275651377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275651374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.8, y: 11.73, z: 2.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1599860467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1224,6 +1280,10 @@ PrefabInstance:
     - target: {fileID: 9177569064428636979, guid: 1428abdc92aa19c49b2eb9ff7babfff4, type: 3}
       propertyPath: m_Name
       value: Transformation
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177569064428636979, guid: 1428abdc92aa19c49b2eb9ff7babfff4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1858,7 +1918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8848070717540022058, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9154665296817469900, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2122,7 +2182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024472539410522356, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7071585609260112617, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2528,7 +2588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2740,6 +2800,10 @@ PrefabInstance:
     - target: {fileID: 7625876037589919623, guid: 2ebf403137aa0bc408f38f9110018846, type: 3}
       propertyPath: m_Name
       value: Enhancement
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625876037589919623, guid: 2ebf403137aa0bc408f38f9110018846, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8347508415516815743, guid: 2ebf403137aa0bc408f38f9110018846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3066,3 +3130,4 @@ SceneRoots:
   - {fileID: 8454502527258655875}
   - {fileID: 1982717412}
   - {fileID: 900374119135992790}
+  - {fileID: 1275651377}

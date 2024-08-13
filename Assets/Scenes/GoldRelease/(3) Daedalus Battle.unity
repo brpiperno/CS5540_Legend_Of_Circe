@@ -990,7 +990,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: baseStrength
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: battleManager
@@ -1141,15 +1141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gatheringUI: {fileID: 0}
-  mirthPrefabDrop: {fileID: 3024472539410522356, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
-  lovePrefabDrop: {fileID: 1320508769966560038, guid: f288c546d65e47d458c0a9a5531409f1, type: 3}
-  wrathPrefabDrop: {fileID: 5450069358699974683, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
-  griefPrefabDrop: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
-  EnhancementPrefabDrop: {fileID: 7625876037589919623, guid: 2ebf403137aa0bc408f38f9110018846, type: 3}
-  ShieldPrefabDrop: {fileID: 4897650447536225936, guid: 8bcd3f031c040a64fb386c72231bd7d5, type: 3}
-  ParalysisPrefabDrop: {fileID: 8830794094116864256, guid: 9b912bbe5f2b53b438ab11747664edb6, type: 3}
-  PharmakaPrefabDrop: {fileID: 8848070717540022058, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
-  TransformationPrefabDrop: {fileID: 9177569064428636979, guid: 1428abdc92aa19c49b2eb9ff7babfff4, type: 3}
 --- !u!1 &1007219380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8692351778908677122, guid: d3dd8bdf2702d43d28f5b7acb0869c2e, type: 3}
@@ -1669,7 +1660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: baseStrength
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: battleManager

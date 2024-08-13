@@ -55,14 +55,12 @@ public class BattleManager : MonoBehaviour
         //TODO: Enable Battle Specific UI
         //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
-        ToggleMovement(false);
-
-
     }
 
     void Update() {
-        if (gameOver && Input.GetKeyDown("space")) {
-            ReturnToOverworld();
+        if (gameOver && Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("Reached line 62");
+            LevelManager.BattleLost();
         }
     }
 
@@ -120,9 +118,10 @@ public class BattleManager : MonoBehaviour
         if (loser.gameObject.tag == "Player") {
             gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
-            Animator anim = loser.gameObject.GetComponent<Animator>();
-            anim.SetInteger("state", 2);
+            //Animator anim = loser.gameObject.GetComponent<Animator>();
+            //anim.SetInteger("state", 2);
             gameOver = true;
+            Debug.Log("gameOver set to true");
             gameOverOrWon = true;
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
@@ -151,24 +150,15 @@ public class BattleManager : MonoBehaviour
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
 
-    private void WinActions() {
+    public void WinActions() {
         AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
         //GameObject winText = GameObject.FindGameObjectWithTag("WinText");
         winScreen.SetActive(true);
-        Invoke("ReturnToOverworld", 3);
+        Invoke("CallBattleWon", 3);
     }
 
-    private void ReturnToOverworld() {
-        SceneManager.LoadScene("BenIngredientGathering");
-        ToggleMovement(true);
-    }
-
-    private void ToggleMovement(bool enabled)
-    {
-        ThirdPersonController[] controllers = GameObject.FindObjectsOfType<ThirdPersonController>();
-        foreach (ThirdPersonController controller in controllers)
-        {
-            controller.enabled = enabled;
-        }
+    // Done this way because you cannot call invoke directly on LevelManager.BattleWon since it's a static method
+    void CallBattleWon() {
+        LevelManager.BattleWon();
     }
  }

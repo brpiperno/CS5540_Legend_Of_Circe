@@ -12,8 +12,7 @@ public class NPCTriggerBattle : MonoBehaviour
     public string playerTag = "Player";
     private bool playerWithinRange = false;
     public GameObject triggerBattlePanel;
-    public string BattleSceneName;
-    public string NPCName = "Sailor";
+    public string NPCName;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +23,6 @@ public class NPCTriggerBattle : MonoBehaviour
             Debug.Log("NPCTriggerBattle: Battle Trigger Text was not set for GameObject: " + name);
         }
         triggerBattlePanel.SetActive(false);
-        if (BattleSceneName == null)
-        {
-            Debug.Log("NPCTriggerBattle: battle scene is not set for GameObject: " + name);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +40,7 @@ public class NPCTriggerBattle : MonoBehaviour
     {
         if (playerWithinRange && Input.GetButton("Jump"))
         {
-            SceneManager.LoadScene(BattleSceneName);
+            LevelManager.StartBattle();
         }
     }
 
