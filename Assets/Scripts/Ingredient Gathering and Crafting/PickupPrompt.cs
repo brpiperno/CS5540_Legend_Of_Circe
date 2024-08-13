@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EmotionTypeExtension;
+using TMPro;
 
 public class PickupPrompt : MonoBehaviour
 {
@@ -24,13 +26,26 @@ public class PickupPrompt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        emotionIngredientExplanation.SetActive(false);
+        moveTypeIngredientExplanation.SetActive(false);
         bool shouldSetActive = false;
         foreach(GameObject pickup in emotionPickups) {
-            if (pickup.activeSelf == true && pickup.GetComponent<EmotionTypeIngredient>().isWithinRangeOfPlayer) {
+            EmotionTypeIngredient pickupScript = pickup.GetComponent<EmotionTypeIngredient>();
+            if (pickup.activeSelf == true && pickupScript.isWithinRangeOfPlayer) {
                 shouldSetActive = true;
                 GameObject textChild = emotionIngredientExplanation.transform.Find("a").gameObject;
-                textChild.GetComponent<Text>().text = "\n" + emotionItemName(pickup.emotionType) + ": Used to craft " + 
-                    pickup.emotionType.ToString() + " spells";
+                /*if (textChild == null) {
+                    print("Line 35");
+                }
+                if (textChild.GetComponent<TextMeshProUGUI>() == null) {
+                    print("Line 38");
+                }
+                Debug.Log("Should not be null: " + emotionItemName(pickupScript.emotionType));
+                if (pickupScript.emotionType == null) {
+                    print("Line 42");
+                }*/
+                textChild.GetComponent<TextMeshProUGUI>().text = "\n" + emotionItemName(pickupScript.emotionType) + ": Used to craft " + 
+                    pickupScript.emotionType.ToString() + " potions";
                 break;
             }
         }
@@ -40,11 +55,16 @@ public class PickupPrompt : MonoBehaviour
         if (!shouldSetActive) {
             shouldSetActive = false;
             foreach(GameObject pickup in moveTypePickups) {
-                if (pickup.activeSelf == true && pickup.GetComponent<MoveTypeIngredient>().isWithinRangeOfPlayer) {
+                MoveTypeIngredient pickupScript = pickup.GetComponent<MoveTypeIngredient>();
+                if (pickup.activeSelf == true && pickupScript.isWithinRangeOfPlayer) {
                     shouldSetActive = true;
                     GameObject textChild = moveTypeIngredientExplanation.transform.Find("a").gameObject;
-                    textChild.GetComponent<Text>().text = "\n" + moveTypeItemName(pickup.moveType) + ": Used to craft " + 
-                        nameof(pickup.moveType) + " spells";
+                    if (pickupScript.moveType == MoveType.Pharmaka) {
+                        textChild.GetComponent<TextMeshProUGUI>().text = "\n" + moveTypeItemName(pickupScript.moveType) + ": Used to craft Pharmaka";
+                    } else {
+                        textChild.GetComponent<TextMeshProUGUI>().text = "\n" + moveTypeItemName(pickupScript.moveType) + 
+                            ": Used to craft Potion of " + potionName(pickupScript.moveType);
+                    }
                     break;
                 }
             }
@@ -66,10 +86,8 @@ public class PickupPrompt : MonoBehaviour
             case EmotionType.Mirth:
                 return "Wine";
                 break;
-            case EmotionType.Null:
-                return "--";
-                break;
         }
+        return "--";
     }
 
     string moveTypeItemName(MoveType m) {
@@ -92,9 +110,25 @@ public class PickupPrompt : MonoBehaviour
             case MoveType.Damage:
                 return "Damage";
                 break;
-            case MoveType.Null:
-                return "--";
+        }
+        return "--";
+    }
+
+    string potionName(MoveType m) {
+        switch (m) {
+            case MoveType.Shield:
+                return "Defense";
+                break;
+            case MoveType.Transformation:
+                return "Transformation";
+                break;
+            case MoveType.Enhancement:
+                return "Healing";
+                break;
+            case MoveType.Paralysis:
+                return "Paralysis";
                 break;
         }
+        return "--";
     }
 }

@@ -890,22 +890,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80081402}
     m_Modifications:
-    - target: {fileID: 3634263069061252096, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_Name
-      value: a
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654100729191379417, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_Color.b
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654100729191379417, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_Color.g
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 5654100729191379417, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_Color.r
-      value: 0.78431374
-      objectReference: {fileID: 0}
     - target: {fileID: 7731600627584416493, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -936,7 +920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7731600627584416493, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 550
+      value: 475
       objectReference: {fileID: 0}
     - target: {fileID: 7731600627584416493, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,47 +974,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveTypeIngredientExplanation
       objectReference: {fileID: 0}
-    - target: {fileID: 8138765866181480303, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8236765987022873174, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_text
-      value: '
-
-        <Item name>: Used to craft <move> spells'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8138765866181480303, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1028490617}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
 --- !u!224 &1028490615 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7731600627584416493, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
   m_PrefabInstance: {fileID: 1028490614}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1028490616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8138765866181480303, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-  m_PrefabInstance: {fileID: 1028490614}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1028490617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028490616}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e30ca39a5b0c64f49bc0947f6b27412a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickups: []
 --- !u!114 &1138489382 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8124843163449356729, guid: 32a47040c1f80fe40b5a2a85f2b3612b, type: 3}
@@ -1896,8 +1849,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1982717412}
     m_Modifications:
     - target: {fileID: 8848070717540022058, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848070717540022058, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
       propertyPath: m_Name
       value: Pharmaka
+      objectReference: {fileID: 0}
+    - target: {fileID: 8848070717540022058, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9154665296817469900, guid: 0678d07cb3a5a3648ba48f8587fff3cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2067,6 +2028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paralysis
       objectReference: {fileID: 0}
+    - target: {fileID: 8830794094116864256, guid: 9b912bbe5f2b53b438ab11747664edb6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2217,10 +2182,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80081402}
     m_Modifications:
-    - target: {fileID: 3634263069061252096, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
-      propertyPath: m_Name
-      value: a
-      objectReference: {fileID: 0}
     - target: {fileID: 7731600627584416493, guid: 3c5aba642a17a47b5974ab222870ca7c, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -2564,6 +2525,10 @@ PrefabInstance:
     - target: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
       propertyPath: m_Name
       value: GriefPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3034,6 +2999,10 @@ PrefabInstance:
     - target: {fileID: 5450069358699974683, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
       propertyPath: m_Name
       value: WrathPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450069358699974683, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5700262476688838500, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
       propertyPath: m_LocalPosition.x
