@@ -56,7 +56,7 @@ public class EmotionIngredient : MonoBehaviour
             {
                 inventory = GameObject.FindFirstObjectByType<Inventory>();
             }
-            inventory.addEmotionIngredient(emotionType);
+            inventory.addEmotionIngredient(emotionType, gameObject);
 
             Destroy(this.gameObject);
         }

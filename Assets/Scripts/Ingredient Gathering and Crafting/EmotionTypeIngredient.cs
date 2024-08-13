@@ -14,7 +14,11 @@ public class EmotionTypeIngredient : MonoBehaviour
     //public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
     //private bool turnedOn = false;
     //private float startedTime;
+
+    public float playerDetectionDistance = 10f;
+
     private Renderer rndrer;
+    Transform player;
 
     // Start is called before the first frame update
     void Start()
@@ -25,17 +29,16 @@ public class EmotionTypeIngredient : MonoBehaviour
         Color color = emotionType.GetColor();
         color.a = 0.2f;
         rndrer.material.color = color;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    /*private void Update()
-    {
-        if (!turnedOn && Time.time >= startedTime + turnOnTime)
-        {
-            cldr.enabled = true;
-            cldr.isTrigger = true;
-            turnedOn = true;
+    void Update() {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer < playerDetectionDistance) {
+
         }
-    }*/
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,7 +56,7 @@ public class EmotionTypeIngredient : MonoBehaviour
             {
                 inventory = GameObject.FindFirstObjectByType<Inventory>();
             }
-            inventory.addEmotionIngredient(emotionType, this);
+            inventory.addEmotionIngredient(emotionType, gameObject);
             gameObject.SetActive(false);
         }
     }

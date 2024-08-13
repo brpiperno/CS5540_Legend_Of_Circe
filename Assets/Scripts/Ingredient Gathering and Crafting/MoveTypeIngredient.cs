@@ -47,7 +47,7 @@ public class MoveTypeIngredient : MonoBehaviour
             {
                 inventory = GameObject.FindFirstObjectByType<Inventory>();
             }
-            inventory.addMoveIngredient(moveType, this);
+            inventory.addMoveIngredient(moveType, gameObject);
             gameObject.SetActive(false);
         }
     }
