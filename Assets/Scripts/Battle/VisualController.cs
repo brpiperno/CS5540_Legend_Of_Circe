@@ -28,12 +28,16 @@ public class VisualController : MonoBehaviour, IVisualController
     public AudioClip playerMoveSFX;
     public float moveSFXPitch;
     public bool hasBlockAnimation;
+    GameObject player;
+    Animator playerAnimator;
     GameObject opponent;
-    private Animator anim;
+    Animator opponentAnimator;
 
     public void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
         opponent = GameObject.FindGameObjectWithTag("Enemy");
-        anim = opponent.GetComponent<Animator>();
+        opponentAnimator = opponent.GetComponent<Animator>();
     }
 
     public IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType) {
@@ -51,8 +55,8 @@ public class VisualController : MonoBehaviour, IVisualController
             var newColor = ps.main;
             newColor.startColor = emotion.GetColor();
         }
-        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
-        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        //AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
 
     }
 
@@ -101,14 +105,24 @@ public class VisualController : MonoBehaviour, IVisualController
         downArrow.SetActive(isVisible);
     }
 
+    public void PlayCirceSpellCastAnimation() {
+        playerAnimator.SetTrigger("spellCast");
+    }
+
     public void PlayEnemySpellCastAnimation() {
-        anim.SetTrigger("spellCast");
+        opponentAnimator.SetTrigger("spellCast");
     }
 
     public void PlayEnemyBlockAnimation() {
         Debug.Log(gameObject.name + " hasBlockAnimation: " + hasBlockAnimation);
         if (opponent.GetComponent<VisualController>().hasBlockAnimation) {
-            anim.SetTrigger("block");
+            opponentAnimator.SetTrigger("block");
+        }
+    }
+
+    public void PlayCirceBlockAnimation() {
+        if (player.GetComponent<VisualController>().hasBlockAnimation) {
+            playerAnimator.SetTrigger("block");
         }
     }
 }

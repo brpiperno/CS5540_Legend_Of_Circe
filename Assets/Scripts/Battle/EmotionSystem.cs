@@ -124,8 +124,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             battleManager.SubmitMove(new BasicMove(0, EmotionType.Null, MoveType.Null), this, battleManager.GetEnemy(this));
             isStunned = false;
             return;
-        }
-        else if (isTransformed)
+        } else if (isTransformed)
         {
             battleManager.SubmitMove(nextMove, this, battleManager.GetEnemy(this));
             isTransformed = false;
@@ -133,12 +132,10 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         }
         //Debug.Log("Line 107: " + gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
         movePicker = GetComponent<IMovePicker>();
-
-        if (gameObject.tag == "Player")
-        {
+        
+        if (gameObject.tag == "Player") {
             movePicker.MoveRequested();
-        }
-        else
+        } else
         {
             //TODO: debug why this isn't working with casting
             (movePicker as FSMMovePicker).MoveRequested();
@@ -152,22 +149,20 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //Debug.Log("LoadNextMove has created " + nextMove.toString());
         //for shield and enhancement spells, the target is the user
         EmotionSystem target = (move == MoveType.Shield || move == MoveType.Enhancement) ?
-            this : battleManager.GetEnemy(this);
+            this : battleManager.GetEnemy(this); 
         battleManager.SubmitMove(nextMove, this, target);
     }
 
     // Method does not use the move variable so far
-    public void PlayMove()
-    {
+    public void PlayMove() {
         lastMoveUsed = nextMove;
         nextMove = new BasicMove(0, EmotionType.Null, MoveType.Null);
         currentEmotion = lastMoveUsed.GetEmotionType();
-        visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
+        //visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
         //battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
-        if (gameObject.tag == "Player")
-        {
-            //Debug.Log("Reached line 121");
+        if (gameObject.tag == "Player") {
+            visualController.PlayCirceSpellCastAnimation();
             Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
             visualController.PlayEnemyBlockAnimation();
         }
@@ -181,9 +176,9 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         battleManager.CompleteMove(this);
     }
 
-    private void PlayEnemySpellCastAnimation()
-    {
+    private void PlayEnemySpellCastAnimation() {
         visualController.PlayEnemySpellCastAnimation();
+        visualController.PlayCirceBlockAnimation();
     }
 
     private string GetPlayMoveText(string name, IBattleMove movePlayed)
