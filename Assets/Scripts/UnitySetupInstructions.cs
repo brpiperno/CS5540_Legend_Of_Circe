@@ -31,6 +31,8 @@ Butterfly 2D asset from pixilart.com user abruptbird
 Spider 2D asset from pixilart.com user amytoorMarn
 Grief Mushroom ingreident 2D asset from redit user Aggravating-Carob580
 Font is from https://www.fontspace.com/aiden-font-f25745
+Shield icon from reddit user Lucario523
+Constantine font from https://www.1001fonts.com/ancient-fonts.html
 */
 
 

@@ -34,6 +34,13 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
     private BattleTextQueue BattleText;
 
+    //dialogue options when using a damage move of the appropriate emotion type.
+    public string[] WrathDialogue;
+    public string[] MirthDialogue;
+    public string[] GriefDialogue;
+    public string[] LoveDialogue;
+    private Dictionary<EmotionType, string[]> dialogueOptions;
+
     void Start()
     {
         if (visualController == null)
@@ -47,6 +54,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //Debug.Log("Is movePicker null?");
         //Debug.Log(gameObject.name + " Is movePicker null? " + (movePicker == null).ToString());
         BattleText = GameObject.FindGameObjectWithTag("BattleText").GetComponent<BattleTextQueue>();
+        dialogueOptions = new Dictionary<EmotionType, string[]>() {
+            {EmotionType.Grief, GriefDialogue },
+            {EmotionType.Mirth, MirthDialogue },
+            {EmotionType.Wrath, WrathDialogue },
+            {EmotionType.Love, LoveDialogue }
+        };
     }
 
     public float GetEmotionValue(EmotionType type)
@@ -57,7 +70,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public void AcceptMove(IBattleMove move)
     {
         //take effect based on the moves spell and emotion type
-        //Debug.Log("Emotion System of " + name + " has accepted move: Move: " + move.toString());
+        Debug.Log("Emotion System of " + name + " has accepted move: Move: " + move.toString());
         switch (move.GetMoveType())
         {
             case MoveType.Enhancement:
@@ -66,6 +79,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 break;
             case MoveType.Shield:
                 defenseModifiers[move.GetEmotionType()] *= 2;
+                visualController.UpdateDefense(move.GetEmotionType(), defenseModifiers[move.GetEmotionType()]);
                 break;
             case MoveType.Transformation:
                 LoadNextMove(move.GetEmotionType(), MoveType.Damage);
@@ -173,7 +187,10 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         }
         StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
         BattleText.Enqueue(GetPlayMoveText(name, lastMoveUsed), true);
-        Invoke("FinishTurn", 2);
+        System.Random rnd = new System.Random();
+        int maxIndex = dialogueOptions[lastMoveUsed.GetEmotionType()].Length - 1;
+        BattleText.Enqueue(name + ": " + dialogueOptions[lastMoveUsed.GetEmotionType()][rnd.Next(0, maxIndex)]);
+        Invoke("FinishTurn", 5);
     }
 
     private void FinishTurn()

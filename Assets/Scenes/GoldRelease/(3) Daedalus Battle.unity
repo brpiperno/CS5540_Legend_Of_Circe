@@ -224,11 +224,11 @@ RectTransform:
   - {fileID: 2057946110}
   - {fileID: 1481256690}
   - {fileID: 1963884144}
-  - {fileID: 897298756}
-  - {fileID: 1533921760}
   - {fileID: 128314294}
   - {fileID: 2143348261}
   - {fileID: 2132526581}
+  - {fileID: 897298756}
+  - {fileID: 1533921760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1014,6 +1014,101 @@ PrefabInstance:
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 427306908}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: LoveDialogue.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: GriefDialogue.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: WrathDialogue.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: LoveDialogue.Array.data[0]
+      value: I would say, some people are like constellations that only touch the
+        earth for a season.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: LoveDialogue.Array.data[1]
+      value: We are here! This is what it means to swim in the tide, to walk the
+        earth and feel it touch your feet. This is what it means to be alive.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: GriefDialogue.Array.data[0]
+      value: Please show me your scars! And let me pretend I have none!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: GriefDialogue.Array.data[1]
+      value: But perhaps no parent can truly see their child. When we look we see
+        only the mirror of our own faults.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: GriefDialogue.Array.data[2]
+      value: If I am wise, it is only because I have been fool enough for a hundred
+        lifetimes.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: GriefDialogue.Array.data[3]
+      value: All my life has been murk and depths, but I was not a part of that dark
+        water. I was a creature within it.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: GriefDialogue.Array.data[4]
+      value: Yet because I knew nothing, nothing was beneath me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.data[0]
+      value: You think yourself clever? Talk to me in a few thousand years and we'll
+        see how well you've fared!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.data[1]
+      value: Humbling women seems to me a chief pastime of poets like you. As if
+        there can be no story unless we crawl and weep.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.data[2]
+      value: It is a common saying that women are delicate creatures, lowers, eggs,
+        anything that may be crushed  in a moment's carelessness. If I had ever believed
+        it, I no longer did.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.data[3]
+      value: This is one thing gods and mortals share. When we are young, we think
+        ourselves the first to have each feeling in the world.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.data[4]
+      value: You can teach a viper to eat from your hand, but you cannot take away
+        how much it likes to bite.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: MirthDialogue.Array.data[5]
+      value: Witches are not so delicate.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: WrathDialogue.Array.data[0]
+      value: You shall know the power of this goddess firsthand!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: WrathDialogue.Array.data[1]
+      value: You think me naive? You cross paths with a God!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: WrathDialogue.Array.data[2]
+      value: How dare you talk to me that way!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2115308771220685749, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: WrathDialogue.Array.data[3]
+      value: You threw me to the crows, but it turns out I prefer them to you!
+      objectReference: {fileID: 0}
     - target: {fileID: 5186829697002237590, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: spacePrompt
       value: 
@@ -1038,6 +1133,10 @@ PrefabInstance:
       propertyPath: rightArrow
       value: 
       objectReference: {fileID: 1007219380}
+    - target: {fileID: 5759947500827125220, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
+      propertyPath: emotionBarManager
+      value: 
+      objectReference: {fileID: 1963884145}
     - target: {fileID: 5759947500827125220, guid: 72a499704509fce4384baa05d2714c1d, type: 3}
       propertyPath: playerAttackEffectPosition.x
       value: 0.5
@@ -1697,6 +1796,44 @@ PrefabInstance:
       propertyPath: visualController
       value: 
       objectReference: {fileID: 504941861}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: LoveDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: GriefDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: MirthDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: WrathDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: LoveDialogue.Array.data[0]
+      value: There are rare moments when another soul dips near yours, as stars once
+        a year brush the earth. Such a constellation you are to me.
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: LoveDialogue.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: GriefDialogue.Array.data[0]
+      value: How frustrated the impatient carpenter, whose tools have wings and free
+        will.
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: MirthDialogue.Array.data[0]
+      value: Even the best iron grows brittle with too much beating.
+      objectReference: {fileID: 0}
+    - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: WrathDialogue.Array.data[0]
+      value: You dare threaten us? Pasiphae shall hear of this!
+      objectReference: {fileID: 0}
     - target: {fileID: -4386234340709925403, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1721,6 +1858,10 @@ PrefabInstance:
       propertyPath: playerMoveSFX
       value: 
       objectReference: {fileID: 8300000, guid: 38a17a92b9d9748c6a1e67972041b833, type: 3}
+    - target: {fileID: -2563967586732818676, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
+      propertyPath: emotionBarManager
+      value: 
+      objectReference: {fileID: 1481256691}
     - target: {fileID: -2563967586732818676, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: playerAttackEffect
       value: 
@@ -1849,6 +1990,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80081402}
     m_Modifications:
+    - target: {fileID: 1346939394424400429, guid: e83d587f543d9410f9eeeb405e24264c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4032574
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346939394424400429, guid: e83d587f543d9410f9eeeb405e24264c, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4032574
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346939394424400429, guid: e83d587f543d9410f9eeeb405e24264c, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4339623
+      objectReference: {fileID: 0}
     - target: {fileID: 1955819859134834665, guid: e83d587f543d9410f9eeeb405e24264c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1979,6 +2132,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5890831807799348171, guid: e83d587f543d9410f9eeeb405e24264c, type: 3}
   m_PrefabInstance: {fileID: 1481256689}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481256691 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6973432123991725640, guid: e83d587f543d9410f9eeeb405e24264c, type: 3}
+  m_PrefabInstance: {fileID: 1481256689}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b8f7e681b7a9041b99bf3c69c778bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495928641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
@@ -2711,6 +2875,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7120160184284295044, guid: d3dd8bdf2702d43d28f5b7acb0869c2e, type: 3}
   m_PrefabInstance: {fileID: 1963884143}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1963884145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 921316856054000027, guid: d3dd8bdf2702d43d28f5b7acb0869c2e, type: 3}
+  m_PrefabInstance: {fileID: 1963884143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b8f7e681b7a9041b99bf3c69c778bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2057946110 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
@@ -2833,26 +3008,30 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2240995375098198894, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 2240995375098198894, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2240995375098198894, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 3751019701241014743, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4004840265883179148, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 4004840265883179148, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367346598723160354, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5802631640896579448, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
@@ -2941,7 +3120,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7080793256324433732, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8621224833821413118, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

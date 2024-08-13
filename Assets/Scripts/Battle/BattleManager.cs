@@ -33,6 +33,9 @@ public class BattleManager : MonoBehaviour
     bool gameOverOrWon = false;
     GameObject opponent;
 
+    EmotionSystem toBeTarget; //The target emotion system that accepts a move (after some delay for animation, particles, etc)
+    IBattleMove toBeMove; //The move used on the target (after some delay)
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,7 +88,15 @@ public class BattleManager : MonoBehaviour
         {
             user.PlayMove();
             target.AcceptMove(move);
+            //toBeTarget = target;
+            //toBeMove = move;
+            //Invoke("TargetAcceptMove", 8.0f);
         }
+    }
+
+    private void TargetAcceptMove()
+    {
+        toBeTarget.AcceptMove(toBeMove);
     }
 
     /// <summary>

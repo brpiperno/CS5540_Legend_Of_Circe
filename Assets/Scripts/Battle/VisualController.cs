@@ -31,6 +31,8 @@ public class VisualController : MonoBehaviour, IVisualController
     GameObject opponent;
     private Animator anim;
 
+    public EmotionBarManager emotionBarManager;
+
     public void Start() {
         opponent = GameObject.FindGameObjectWithTag("Enemy");
         anim = opponent.GetComponent<Animator>();
@@ -110,5 +112,10 @@ public class VisualController : MonoBehaviour, IVisualController
         if (opponent.GetComponent<VisualController>().hasBlockAnimation) {
             anim.SetTrigger("block");
         }
+    }
+
+    public void UpdateDefense(EmotionType type, int newValue)
+    {
+        emotionBarManager.updateDefenseModifierDisplay(type, newValue);
     }
 }

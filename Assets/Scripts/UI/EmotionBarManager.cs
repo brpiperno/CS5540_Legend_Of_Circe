@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using EmotionTypeExtension;
+using TMPro;
+using TMPro.Examples;
 
 
 //Script to be added to a slider that adjusts the bar's level when called.
@@ -15,9 +17,15 @@ public class EmotionBarManager : MonoBehaviour
     public Slider griefSlider;
     public Slider loveSlider;
     public Slider mirthSlider;
-    
+
+    public TextMeshProUGUI wrathDefenseText;
+    public TextMeshProUGUI griefDefenseText;
+    public TextMeshProUGUI loveDefenseText;
+    public TextMeshProUGUI mirthDefenseText;
+
     private Dictionary<EmotionType, Slider> sliders = new Dictionary<EmotionType, Slider>();
     private Dictionary<EmotionType, Text> barValues = new Dictionary<EmotionType, Text>();
+    private Dictionary<EmotionType, TextMeshProUGUI> defenseModifiers; 
     public EmotionSystem emotionSystem; //get a reference to the object's emotion values that it should track
 
     private bool isUpdatingUI = true; //whether the emotion bars are currently being updated
@@ -42,6 +50,13 @@ public class EmotionBarManager : MonoBehaviour
         barValues.Add(EmotionType.Love, loveSlider.transform.Find("Value").gameObject.GetComponent<Text>());
         barValues.Add(EmotionType.Wrath, wrathSlider.transform.Find("Value").gameObject.GetComponent<Text>());
         barValues.Add(EmotionType.Mirth, mirthSlider.transform.Find("Value").gameObject.GetComponent<Text>());
+
+        defenseModifiers = new Dictionary<EmotionType, TextMeshProUGUI>() {
+            {EmotionType.Grief, griefDefenseText },
+            {EmotionType.Love, loveDefenseText   },
+            {EmotionType.Mirth, mirthDefenseText },
+            {EmotionType.Wrath, wrathDefenseText }
+        };
     }
 
     private void Update()
@@ -79,5 +94,10 @@ public class EmotionBarManager : MonoBehaviour
     public bool isChanging()
     {
         return isUpdatingUI;
+    }
+
+    public void updateDefenseModifierDisplay(EmotionType emotion, int modifier)
+    {
+        defenseModifiers[emotion].text = modifier.ToString() + "x";
     }
 }
