@@ -1765,6 +1765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Love Pickup
       objectReference: {fileID: 0}
+    - target: {fileID: 1320508769966560038, guid: f288c546d65e47d458c0a9a5531409f1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3932919696313259480, guid: f288c546d65e47d458c0a9a5531409f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.733143
@@ -1954,6 +1958,10 @@ PrefabInstance:
     - target: {fileID: 3024472539410522356, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
       propertyPath: m_Name
       value: Mirth pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024472539410522356, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7071585609260112617, guid: d5746ef464d1e3c4db937230e23bd792, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2250,6 +2258,10 @@ PrefabInstance:
     - target: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
       propertyPath: m_Name
       value: GriefPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498805934581896373, guid: 5040706c23e587543b11cb8e5324ea86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2720,6 +2732,10 @@ PrefabInstance:
     - target: {fileID: 5450069358699974683, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
       propertyPath: m_Name
       value: WrathPickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5450069358699974683, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5700262476688838500, guid: cd92c3e803eb7754a934ac01650e34e6, type: 3}
       propertyPath: m_LocalPosition.x

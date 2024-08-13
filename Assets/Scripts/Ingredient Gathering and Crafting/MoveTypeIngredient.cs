@@ -7,22 +7,21 @@ using EmotionTypeExtension;
 [RequireComponent(typeof(Collider))]
 public class MoveTypeIngredient : MonoBehaviour
 {
-    private Collider cldr;
+    //private Collider cldr;
     public MoveType moveType;
     public AudioClip collectedSFX;
-    public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
-    private bool turnedOn = false;
-    private float startedTime;
+    //public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
+    //private bool turnedOn = false;
+    //private float startedTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        cldr = GetComponent<Collider>();
-        cldr.enabled = false;
-        startedTime = Time.time;
+        //cldr = GetComponent<Collider>();
+        //startedTime = Time.time;
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (!turnedOn && Time.time >= startedTime + turnOnTime)
         {
@@ -30,7 +29,7 @@ public class MoveTypeIngredient : MonoBehaviour
             cldr.isTrigger = true;
             turnedOn = true;
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -48,8 +47,8 @@ public class MoveTypeIngredient : MonoBehaviour
             {
                 inventory = GameObject.FindFirstObjectByType<Inventory>();
             }
-            inventory.addMoveIngredient(moveType);
-            Destroy(this.gameObject);
+            inventory.addMoveIngredient(moveType, this);
+            gameObject.SetActive(false);
         }
     }
 }

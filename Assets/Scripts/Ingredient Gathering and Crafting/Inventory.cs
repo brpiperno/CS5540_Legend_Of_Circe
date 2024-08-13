@@ -19,8 +19,12 @@ public class Inventory : MonoBehaviour
     private static IBattleMove craftedSpell;
     public InventoryUIManager gatheringUI;
 
+    // After picking up an object, save the object here, so that when the next object is picked up, this one can be set active again
+    private GameObject disabledEmotionIngredient;
+    private GameObject disabledMoveTypeIngredient;
+
     //When the inventory is maxed out, drop the prefab at the front of the queue of the right type
-    [Header("EmotionIngrdient Drop Prefabs")]
+    /*[Header("EmotionIngrdient Drop Prefabs")]
     public GameObject mirthPrefabDrop;
     public GameObject lovePrefabDrop;
     public GameObject wrathPrefabDrop;
@@ -33,16 +37,15 @@ public class Inventory : MonoBehaviour
     public GameObject ParalysisPrefabDrop;
     public GameObject PharmakaPrefabDrop;
     public GameObject TransformationPrefabDrop;
-    private Dictionary<MoveType, GameObject> moveIngredientDropOptions;
+    private Dictionary<MoveType, GameObject> moveIngredientDropOptions;*/
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        initializeVariables();
+        //initializeVariables();
         craftedSpell = new BasicMove(0, EmotionType.Null, MoveType.Null);
-        //DontDestroyOnLoad(this.gameObject.transform.parent.gameObject);
         safeUpdateUI(); //don't do so if in a battle scene
     }
 
@@ -55,7 +58,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void addMoveIngredient(MoveType moveType)
+    public void addMoveIngredient(MoveType moveType, GameObject pickedUpObject)
     {
         MoveType first;
         bool hasIngredient = moveIngredientsCollected.TryPeek(out first);
@@ -67,15 +70,18 @@ public class Inventory : MonoBehaviour
         //if the max size has been met, drop the first in the queue into the overworld a few feet in front of the player
         else if (hasIngredient && moveIngredientsCollected.Count >= maxMoveIngredients) 
         {
-            dropInFrontOfPlayer(moveIngredientDropOptions[moveIngredientsCollected.Dequeue()]);
+            //dropInFrontOfPlayer(moveIngredientDropOptions[moveIngredientsCollected.Dequeue()]);
             //Debug.Log("Dropped movetype prefab in front of player");
+            moveIngredientsCollected.Dequeue();
+            disabledMoveTypeIngredient.SetActive(true);
         }
         moveIngredientsCollected.Enqueue(moveType);
+        disabledMoveTypeIngredient = pickedUpObject;
         //Debug.Log("Collected moveType Ingredient: " + moveType.ToString());
         safeUpdateUI();
     }
 
-    public void addEmotionIngredient(EmotionType emotionType)
+    public void addEmotionIngredient(EmotionType emotionType, GameObject pickedUpObject)
     {
         EmotionType first;
         bool hasIngredient = emotionIngredientsCollected.TryPeek(out first);
@@ -88,10 +94,13 @@ public class Inventory : MonoBehaviour
         else if (hasIngredient && emotionIngredientsCollected.Count >= maxEmotionIngredients)
         {
             //Debug.Log("emotionIngredientCount: " + emotionIngredientsCollected.Count);
-            dropInFrontOfPlayer(emotionIngredientDropOptions[emotionIngredientsCollected.Dequeue()]);
+            //dropInFrontOfPlayer(emotionIngredientDropOptions[emotionIngredientsCollected.Dequeue()]);
             //Debug.Log("Dropped emotion prefab in front of player");
+            emotionIngredientsCollected.Dequeue();
+            disabledEmotionIngredient.SetActive(true);
         }
         emotionIngredientsCollected.Enqueue(emotionType);
+        disabledEmotionIngredient = pickedUpObject;
         //Debug.Log("Collected emotion ingredient: " + emotionType.ToString());
         safeUpdateUI();
     }
@@ -163,7 +172,7 @@ public class Inventory : MonoBehaviour
         return craftedSpell.GetMoveType() == MoveType.Null || craftedSpell.GetEmotionType() == EmotionType.Null;
     }
 
-    private void initializeVariables()
+    /*private void initializeVariables()
     {
         emotionIngredientDropOptions = new Dictionary<EmotionType, GameObject>
         {
@@ -180,5 +189,5 @@ public class Inventory : MonoBehaviour
             { MoveType.Pharmaka, PharmakaPrefabDrop },
             { MoveType.Transformation, TransformationPrefabDrop }
         };
-    }
+    }*/
 }

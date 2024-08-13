@@ -8,29 +8,26 @@ using EmotionTypeExtension;
 [RequireComponent(typeof(Renderer))]
 public class EmotionTypeIngredient : MonoBehaviour
 {
-       
-    
-    private Collider cldr;
+    //private Collider cldr;
     public EmotionType emotionType;
     public AudioClip collectedSFX;
-    public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
-    private bool turnedOn = false;
-    private float startedTime;
+    //public float turnOnTime = 5.0f; //How long after instantiation that the collider is enabled
+    //private bool turnedOn = false;
+    //private float startedTime;
     private Renderer rndrer;
 
     // Start is called before the first frame update
     void Start()
     {
-        cldr = GetComponent<Collider>();
-        cldr.enabled = false;
-        startedTime = Time.time;
+        //cldr = GetComponent<Collider>();
+        //startedTime = Time.time;
         rndrer = GetComponent<Renderer>();
         Color color = emotionType.GetColor();
         color.a = 0.2f;
         rndrer.material.color = color;
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (!turnedOn && Time.time >= startedTime + turnOnTime)
         {
@@ -38,7 +35,7 @@ public class EmotionTypeIngredient : MonoBehaviour
             cldr.isTrigger = true;
             turnedOn = true;
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
@@ -56,9 +53,8 @@ public class EmotionTypeIngredient : MonoBehaviour
             {
                 inventory = GameObject.FindFirstObjectByType<Inventory>();
             }
-            inventory.addEmotionIngredient(emotionType);
-
-            Destroy(this.gameObject);
+            inventory.addEmotionIngredient(emotionType, this);
+            gameObject.SetActive(false);
         }
     }
 }

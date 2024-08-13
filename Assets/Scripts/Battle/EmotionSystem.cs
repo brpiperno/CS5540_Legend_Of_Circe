@@ -155,7 +155,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
         if (gameObject.tag == "Player") {
-            //Debug.Log("Reached line 121");
+            visualController.PlayCirceSpellCastAnimation();
             Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
             visualController.PlayEnemyBlockAnimation();
         }
@@ -170,6 +170,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
 
     private void PlayEnemySpellCastAnimation() {
         visualController.PlayEnemySpellCastAnimation();
+        visualController.PlayCirceBlockAnimation();
     }
 
 }
