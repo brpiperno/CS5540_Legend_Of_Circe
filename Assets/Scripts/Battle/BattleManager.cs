@@ -31,7 +31,7 @@ public class BattleManager : MonoBehaviour
     private  List<EmotionSystem> turnOrder;
     bool gameOver = false;
     bool gameOverOrWon = false;
-    GameObject opponent;
+    //GameObject opponent;
 
     EmotionSystem toBeTarget; //The target emotion system that accepts a move (after some delay for animation, particles, etc)
     IBattleMove toBeMove; //The move used on the target (after some delay)
@@ -53,7 +53,7 @@ public class BattleManager : MonoBehaviour
         turnOrder.AddRange(playersTeam); //player's team goes first, then enemies
         turnOrder.AddRange(opponentTeam);
         turnIndex = 0;
-        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        //opponent = GameObject.FindGameObjectWithTag("Enemy");
         //TODO: Turn off other player controls or NPC behavior
         //TODO: Enable Battle Specific UI
         //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
@@ -131,11 +131,13 @@ public class BattleManager : MonoBehaviour
         if (loser.gameObject.tag == "Player") {
             gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
+            Animator anim = loser.gameObject.GetComponent<Animator>();
+            anim.SetInteger("state", 2);
             gameOver = true;
             gameOverOrWon = true;
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
-            Animator anim = opponent.GetComponent<Animator>();
+            Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
             gameOverOrWon = true;
         } else {
