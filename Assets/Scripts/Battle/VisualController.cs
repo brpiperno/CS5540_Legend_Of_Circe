@@ -32,6 +32,7 @@ public class VisualController : MonoBehaviour, IVisualController
     private Animator anim;
 
     public EmotionBarManager emotionBarManager;
+    public Renderer currentEmotionIndicator;
 
     public void Start() {
         opponent = GameObject.FindGameObjectWithTag("Enemy");
@@ -55,7 +56,7 @@ public class VisualController : MonoBehaviour, IVisualController
         }
         Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
         AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
-
+        currentEmotionIndicator.material.color = emotion.GetColor();
     }
 
     public void updateEmotionBarUI() {
