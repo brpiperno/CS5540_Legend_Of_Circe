@@ -23,7 +23,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             {EmotionType.Mirth, 1}
         };
     public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
-    public IBattleMove lastMoveUsed;
+    public IBattleMove lastMoveUsed = new BasicMove(-1, EmotionType.Null, MoveType.Null);
     public IBattleMove nextMove = new BasicMove(-1, EmotionType.Null, MoveType.Null);
     public BattleManager battleManager; //The battle manager that it sends moves to;
     public IMovePicker movePicker;
@@ -148,6 +148,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         movePicker = GetComponent<IMovePicker>();
         
         if (gameObject.tag == "Player") {
+            visualController = gameObject.GetComponent<VisualController>();
+            EmotionSystem enemy = battleManager.GetEnemy(this);
+            IBattleMove enemiesMove = enemy.lastMoveUsed;
+            Debug.Log("EmotionSystem: visualController is null: " + (visualController == null));
+            visualController.UpdateSuperEffectiveHits(enemiesMove.GetEmotionType());
+            //visualController.UpdateSuperEffectiveHits(battleManager.GetEnemy(this).lastMoveUsed.GetEmotionType());
             movePicker.MoveRequested();
         } else
         {
@@ -175,7 +181,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         //visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType());
         //battleManager.CompleteMove(this); //tell the battle manager that this user's turn is 
         // Starts the opponent spell cast animation during the player's turn, because the animation takes a bit of time to start
-        if (gameObject.tag == "Player") {
+        if (gameObject.tag == "Player" && lastMoveUsed.GetMoveType() == MoveType.Damage) {
             visualController.PlayCirceSpellCastAnimation();
             Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
             visualController.PlayEnemyBlockAnimation();

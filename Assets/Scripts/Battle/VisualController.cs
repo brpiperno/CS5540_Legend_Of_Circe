@@ -28,10 +28,10 @@ public class VisualController : MonoBehaviour, IVisualController
     public AudioClip playerMoveSFX;
     public float moveSFXPitch;
     public bool hasBlockAnimation;
-    GameObject player;
-    Animator playerAnimator;
-    GameObject opponent;
-    Animator opponentAnimator;
+    public GameObject player;
+    public Animator playerAnimator;
+    public GameObject opponent;
+    public Animator opponentAnimator;
 
     public EmotionBarManager emotionBarManager;
     public Renderer currentEmotionIndicator;
@@ -109,14 +109,21 @@ public class VisualController : MonoBehaviour, IVisualController
     }
 
     public void PlayCirceSpellCastAnimation() {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
+        Debug.Log(string.Format("player animator is null = {0}", (playerAnimator == null)));
         playerAnimator.SetTrigger("spellCast");
     }
 
     public void PlayEnemySpellCastAnimation() {
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        opponentAnimator = opponent.GetComponent<Animator>();
         opponentAnimator.SetTrigger("spellCast");
     }
 
     public void PlayEnemyBlockAnimation() {
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        opponentAnimator = opponent.GetComponent<Animator>();
         Debug.Log(gameObject.name + " hasBlockAnimation: " + hasBlockAnimation);
         if (opponent.GetComponent<VisualController>().hasBlockAnimation) {
             opponentAnimator.SetTrigger("block");
@@ -124,6 +131,8 @@ public class VisualController : MonoBehaviour, IVisualController
     }
 
     public void PlayCirceBlockAnimation() {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
         if (player.GetComponent<VisualController>().hasBlockAnimation) {
             playerAnimator.SetTrigger("block");
         }
@@ -132,5 +141,10 @@ public class VisualController : MonoBehaviour, IVisualController
     public void UpdateDefense(EmotionType type, int newValue)
     {
         emotionBarManager.updateDefenseModifierDisplay(type, newValue);
+    }
+
+    public void UpdateSuperEffectiveHits(EmotionType type)
+    {
+        emotionBarManager.updateSuperEffectiveChoice(type);
     }
 }

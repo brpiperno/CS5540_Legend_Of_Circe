@@ -23,12 +23,29 @@ public class EmotionBarManager : MonoBehaviour
     public TextMeshProUGUI loveDefenseText;
     public TextMeshProUGUI mirthDefenseText;
 
+
+    public Image wrathIsSuperEffective;
+    public Image griefIsSuperEffective;
+    public Image loveIsSuperEffective;
+    public Image mirthIsSuperEffective;
+    private Dictionary<EmotionType, Image> superEffectiveIndicators;
+
     private Dictionary<EmotionType, Slider> sliders = new Dictionary<EmotionType, Slider>();
     private Dictionary<EmotionType, Text> barValues = new Dictionary<EmotionType, Text>();
     private Dictionary<EmotionType, TextMeshProUGUI> defenseModifiers; 
     public EmotionSystem emotionSystem; //get a reference to the object's emotion values that it should track
 
     private bool isUpdatingUI = true; //whether the emotion bars are currently being updated
+
+    private void Awake()
+    {
+        superEffectiveIndicators = new Dictionary<EmotionType, Image>() {
+            { EmotionType.Mirth, mirthIsSuperEffective },
+            { EmotionType.Grief, griefIsSuperEffective},
+            { EmotionType.Love, loveIsSuperEffective},
+            { EmotionType.Wrath, wrathIsSuperEffective},
+        };
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +74,8 @@ public class EmotionBarManager : MonoBehaviour
             {EmotionType.Mirth, mirthDefenseText },
             {EmotionType.Wrath, wrathDefenseText }
         };
+
+        
     }
 
     private void Update()
@@ -99,5 +118,23 @@ public class EmotionBarManager : MonoBehaviour
     public void updateDefenseModifierDisplay(EmotionType emotion, int modifier)
     {
         defenseModifiers[emotion].text = modifier.ToString() + "x";
+    }
+
+    public void updateSuperEffectiveChoice(EmotionType enemyEmotion)
+    {
+        Debug.Log(mirthIsSuperEffective.ToString());
+        Debug.Log(wrathIsSuperEffective.ToString());
+        Debug.Log(loveIsSuperEffective.ToString());
+        Debug.Log(griefIsSuperEffective.ToString());
+        Debug.Log(superEffectiveIndicators.Count);
+
+        if (wrathIsSuperEffective == null || mirthIsSuperEffective == null || griefIsSuperEffective == null || loveIsSuperEffective == null)
+        {
+            Debug.Log("supereffective indicator is null, skipping");
+        }
+        foreach (EmotionType emotion in superEffectiveIndicators.Keys)
+        {
+            superEffectiveIndicators[emotion].enabled = (emotion.GetEffectivenessAgainst(enemyEmotion) > 1);
+        }
     }
 }
