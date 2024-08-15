@@ -10,43 +10,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 15.000001
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 15.000001
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15.000001
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -121
+      value: -119.069
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: -0.559
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 100
+      value: 99.635
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.38268343
+      value: 0.26092744
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.92387956
+      value: 0.96535844
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 135
+      value: 149.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_Name
-      value: Medea 1
+      value: Medea with battle scripts
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       propertyPath: m_TagString
@@ -88,7 +88,7 @@ PrefabInstance:
       addedObject: {fileID: 5084435301823844639}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7696217309992297557}
+      addedObject: {fileID: 3394783203535382609}
   m_SourcePrefab: {fileID: 100100000, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
 --- !u!1 &1846656434023132898 stripped
 GameObject:
@@ -107,14 +107,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAttackAnimationObject: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
-  enemyAttackAnimationObject: {fileID: 5768623405074449868, guid: 068fdb4ddb5e34bfaa9dcd07894513b7, type: 3}
   visualController: {fileID: 5084435301823844639}
   currentEmotion: 0
   battleManager: {fileID: 0}
-  movePicker: {fileID: 7696217309992297557}
   baseStrength: 10
   enemySpellAnimationDelay: 1.7
+  WrathDialogue:
+  - Hate is a bottomless cup; I will pour and pour
+  - I know indeed what evil I intend to do, but stronger than all my afterthroughts
+    is my futry, fury that brings upon mortals the greatest evils!
+  - Hate me. But I tire of your barking bitterness.
+  MirthDialogue:
+  - I'd three times sooner go to war than suffer childbirth once.
+  - 'We must not think too much: people go mad if they think too much.'
+  - Gods often contradict our fondex expectations. What we anticipate does not come
+    to pass. What we don't expect some god finds a way to make it hapen. So with
+    this story.
+  GriefDialogue:
+  - Of all creatures that can feel and think, we women are the worst treated things
+    alive
+  - Death is the only water to wash away this dirt.
+  - Who can stop grief's avalanche once it starts to roll.
+  - Amongst mortals no man is happyl wealth may pour in and make one luckier than
+    another, but none can happy be.
+  LoveDialogue:
+  - My love for him is greater than my wisdom.
 --- !u!114 &5084435301823844639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +152,15 @@ MonoBehaviour:
   rightArrow: {fileID: 0}
   downArrow: {fileID: 0}
   playerMoveSFX: {fileID: 8300000, guid: 72127805eb2bc4e7fbf2e02eca266cfa, type: 3}
---- !u!114 &7696217309992297557
+  moveSFXPitch: 0
+  hasBlockAnimation: 0
+  player: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  opponent: {fileID: 1846656434023132898}
+  opponentAnimator: {fileID: 4903109677999386146}
+  emotionBarManager: {fileID: 0}
+  currentEmotionIndicator: {fileID: 0}
+--- !u!114 &3394783203535382609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,6 +169,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846656434023132898}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23862b88fd16897499c8df13cabcf0e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5cede44cbc9147a4a8460b3346790c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMoodIndex: 0
+  loveTransitions:
+  - 0.08
+  - 0.07
+  - 0.35
+  - 0.5
+  griefTransitions:
+  - 0.08
+  - 0.07
+  - 0.35
+  - 0.5
+  wrathTransitions:
+  - 0.75
+  - 0
+  - 0.2
+  - 0.05
+  mirthTransitions:
+  - 0.1
+  - 0.35
+  - 0.05
+  - 0.5
+--- !u!95 &4903109677999386146 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
+  m_PrefabInstance: {fileID: 1540738977142559667}
+  m_PrefabAsset: {fileID: 0}
