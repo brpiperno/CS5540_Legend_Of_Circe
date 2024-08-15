@@ -27,7 +27,7 @@ public class PotionCraftingUIManager : MonoBehaviour
 
     [Header("Crafting 2D UI elements")]
     public Image potionIcon;
-    public Image potionPanel;
+    //public Image potionPanel;
     public Text craftingInstructionText;
     public Text potionNameText;
 
@@ -46,11 +46,17 @@ public class PotionCraftingUIManager : MonoBehaviour
         Debug.Log("Updating UI with :" + emotion.ToString() + " / " + move.ToString());
         if (emotion != EmotionType.Null && move != MoveType.Null)
         {
-            potionPanel.gameObject.SetActive(true);
-            potionPanel.color = potionEmotion.GetColor();
+            //potionPanel.gameObject.SetActive(true);
+            //potionPanel.color = potionEmotion.GetColor();
             potionIcon.sprite = potionSprites[move][emotion];
+            potionIcon.enabled = true;
             craftingInstructionText.text = "Press 'X' to craft!";
             potionNameText.text = getPotionName(emotion, move);
+        } else
+        {
+            potionIcon.enabled = false;
+            potionNameText.text = "";
+            craftingInstructionText.text = "No potions available!";
         }
     }
 

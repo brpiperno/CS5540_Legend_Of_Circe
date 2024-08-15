@@ -17,11 +17,9 @@ public class ThirdPersonController : MonoBehaviour
     public float gravity = 9.81f;
     public float airControl = 1.0f;
 
-    Animator animator;
-
     //Animation variables
     //private int animState;
-    //private Animator animator;
+    private Animator animator;
     //public string animStateTriggerName = "animState";
 
 
@@ -29,8 +27,8 @@ public class ThirdPersonController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
-        animator.SetInteger("state", 0);
+        //animator = GetComponent<Animator>();
+        //animState = 0; //start at idle pose
     }
 
     // Update is called once per frame

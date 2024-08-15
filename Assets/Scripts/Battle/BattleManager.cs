@@ -33,6 +33,9 @@ public class BattleManager : MonoBehaviour
     bool gameOverOrWon = false;
     //GameObject opponent;
 
+    EmotionSystem toBeTarget; //The target emotion system that accepts a move (after some delay for animation, particles, etc)
+    IBattleMove toBeMove; //The move used on the target (after some delay)
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,9 +75,9 @@ public class BattleManager : MonoBehaviour
     /// <param name="target">The target of the move</param>
     public void SubmitMove(IBattleMove move, EmotionSystem user, EmotionSystem target)
     {
-        Debug.Log(move.ToString());
-        Debug.Log(user.ToString());
-        Debug.Log(target.ToString());
+        //Debug.Log(move.ToString());
+        //Debug.Log(user.ToString());
+        //Debug.Log(target.ToString());
         //Debug.Log("BattleManager: SubmitMove called with move:" + move.ToString() + "Target: " + target.name + "User: " + user.name);
         if (getPlayerIndex(user) != turnIndex)
         {
@@ -83,7 +86,15 @@ public class BattleManager : MonoBehaviour
         {
             user.PlayMove();
             target.AcceptMove(move);
+            //toBeTarget = target;
+            //toBeMove = move;
+            //Invoke("TargetAcceptMove", 8.0f);
         }
+    }
+
+    private void TargetAcceptMove()
+    {
+        toBeTarget.AcceptMove(toBeMove);
     }
 
     /// <summary>
@@ -118,16 +129,16 @@ public class BattleManager : MonoBehaviour
         if (loser.gameObject.tag == "Player") {
             gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
-            //Animator anim = loser.gameObject.GetComponent<Animator>();
-            //anim.SetInteger("state", 2);
+            Animator anim = loser.gameObject.GetComponent<Animator>();
+            anim.SetInteger("state", 2);
             gameOver = true;
-            Debug.Log("gameOver set to true");
             gameOverOrWon = true;
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
             gameOverOrWon = true;
+            Menu.EnemyDefeated(); //increment the defeat count in the main menu
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }

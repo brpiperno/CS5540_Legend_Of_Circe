@@ -28,10 +28,13 @@ public class VisualController : MonoBehaviour, IVisualController
     public AudioClip playerMoveSFX;
     public float moveSFXPitch;
     public bool hasBlockAnimation;
-    GameObject player;
-    Animator playerAnimator;
-    GameObject opponent;
-    Animator opponentAnimator;
+    public GameObject player;
+    public Animator playerAnimator;
+    public GameObject opponent;
+    public Animator opponentAnimator;
+
+    public EmotionBarManager emotionBarManager;
+    public Renderer currentEmotionIndicator;
 
     public void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -41,25 +44,23 @@ public class VisualController : MonoBehaviour, IVisualController
     }
 
     public IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType) {
-        /*if (hasBlockAnimation) {
+        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        if (hasBlockAnimation) {
             yield return new WaitForSeconds(1f);
-        }*/
-        if (!hasBlockAnimation) {
-            yield return new WaitForSeconds(0.7f);
-
-            AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
-            GameObject attack = Instantiate(playerAttackEffect, 
-                playerAttackEffectPosition,
-                Quaternion.Euler(playerAttackEffectRotation));
-            if (moveType == MoveType.Damage)
-            {
-                var ps = attack.GetComponent<ParticleSystem>();
-                var newColor = ps.main;
-                newColor.startColor = emotion.GetColor();
-            }
-            //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
-            //AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
         }
+        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        GameObject attack = Instantiate(playerAttackEffect, 
+            playerAttackEffectPosition,
+            Quaternion.Euler(playerAttackEffectRotation));
+        if (moveType == MoveType.Damage)
+        {
+            var ps = attack.GetComponent<ParticleSystem>();
+            var newColor = ps.main;
+            newColor.startColor = emotion.GetColor();
+        }
+        Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        currentEmotionIndicator.material.color = emotion.GetColor();
     }
 
     public void updateEmotionBarUI() {
@@ -108,14 +109,21 @@ public class VisualController : MonoBehaviour, IVisualController
     }
 
     public void PlayCirceSpellCastAnimation() {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
+        Debug.Log(string.Format("player animator is null = {0}", (playerAnimator == null)));
         playerAnimator.SetTrigger("spellCast");
     }
 
     public void PlayEnemySpellCastAnimation() {
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        opponentAnimator = opponent.GetComponent<Animator>();
         opponentAnimator.SetTrigger("spellCast");
     }
 
     public void PlayEnemyBlockAnimation() {
+        opponent = GameObject.FindGameObjectWithTag("Enemy");
+        opponentAnimator = opponent.GetComponent<Animator>();
         Debug.Log(gameObject.name + " hasBlockAnimation: " + hasBlockAnimation);
         if (opponent.GetComponent<VisualController>().hasBlockAnimation) {
             opponentAnimator.SetTrigger("block");
@@ -123,8 +131,20 @@ public class VisualController : MonoBehaviour, IVisualController
     }
 
     public void PlayCirceBlockAnimation() {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAnimator = player.GetComponent<Animator>();
         if (player.GetComponent<VisualController>().hasBlockAnimation) {
             playerAnimator.SetTrigger("block");
         }
+    }
+
+    public void UpdateDefense(EmotionType type, int newValue)
+    {
+        emotionBarManager.updateDefenseModifierDisplay(type, newValue);
+    }
+
+    public void UpdateSuperEffectiveHits(EmotionType type)
+    {
+        emotionBarManager.updateSuperEffectiveChoice(type);
     }
 }

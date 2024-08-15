@@ -31,4 +31,11 @@ public interface IVisualController
     /// </summary>
     /// <param name="isVisible">true if the emotion wheel should be visible</param>
     void setEmotionWheelVisibility(bool isVisible);
+
+    /// <summary>
+    /// Update a display of the user's defense values
+    /// </summary>
+    /// <param name="emotion"></param>
+    /// <param name="defense"></param>
+    void UpdateDefense(EmotionType emotion, int defense);
 }

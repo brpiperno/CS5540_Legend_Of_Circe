@@ -20,8 +20,13 @@ public class Menu : MonoBehaviour
     public TextMeshProUGUI volumeValueText;
     public Slider mouseSensitivitySlider;
     public TextMeshProUGUI mouseSensitivityValueText;
+    public Camera cmr;
+    public TextMeshProUGUI enemiesDefeatedCount;
 
     public CameraSettings cameraSettings;
+    private static int enemiesDefeated;
+
+    public GameObject AboutTheTeamCard;
 
     private void Awake()
     {
@@ -36,6 +41,7 @@ public class Menu : MonoBehaviour
         mouseSensitivitySlider.value = mouseSensitivity;
         mouseSensitivityValueText.text = mouseSensitivity.ToString("0.0");
         mouseSensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivity);
+        enemiesDefeated = PlayerPrefs.GetInt("enemiesDefeated", 0);
     }
 
     private void Start()
@@ -43,8 +49,16 @@ public class Menu : MonoBehaviour
         if (PlayerPrefs.HasKey("MouseSensitivity")) {
             mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
         }
+        if (cmr == null)
+        {
+            cmr = Camera.main;
+        }
         if (PlayerPrefs.HasKey("Volume")) {
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        }
+        if (enemiesDefeatedCount != null)
+        {
+            enemiesDefeatedCount.text = "Enemies Defeated: " + enemiesDefeated.ToString();
         }
     }
 
@@ -81,6 +95,11 @@ public class Menu : MonoBehaviour
         Cursor.lockState = keepMouseUnlocked || isPaused ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
+    public void ToggleTeamMenuCard()
+    {
+        AboutTheTeamCard.SetActive(!AboutTheTeamCard.activeSelf);
+    }
+
     public static void Quit()
     {
         Application.Quit();
@@ -95,6 +114,7 @@ public class Menu : MonoBehaviour
         if (cameraSettings != null) {
             cameraSettings.UpdateSensitivity(newSensitivity);
         }
+        //TODO : update thirdpersoncontroller object if there is one
     }
 
     public void UpdateVolume(float newVolume)
@@ -105,4 +125,17 @@ public class Menu : MonoBehaviour
         AudioListener.volume = volume;
         PlayerPrefs.SetFloat("Volume", newVolume);
     }
+
+    public static void EnemyDefeated()
+    {
+        enemiesDefeated++;
+        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
+    }
+
+    public static void clearGameProgress()
+    {
+        enemiesDefeated = 0;
+        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
+    }
+
 }

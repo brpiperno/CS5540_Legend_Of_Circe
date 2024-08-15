@@ -14,7 +14,8 @@ Drag each of the "arrow selected" Game Objects under Canvas to the appropriate f
 
 Drag the "Strum" audio to the SFX fields in each Visual Controller
 
-Set move speed in the Third Person Controller script to 5.
+Set the slope limit for Circe's character controller to 60
+Set move speed in the Third Person Controller script to 2 (or 5?)
 
 Credits:
 Circe Model - Mechanist by Yuliya Perevoznikova
@@ -31,10 +32,13 @@ Butterfly 2D asset from pixilart.com user abruptbird
 Spider 2D asset from pixilart.com user amytoorMarn
 Grief Mushroom ingreident 2D asset from redit user Aggravating-Carob580
 Font is from https://www.fontspace.com/aiden-font-f25745
+Shield icon from reddit user Lucario523
+Constantine font from https://www.1001fonts.com/ancient-fonts.html
 */
 
 
 /*  UI COORDINATES
+
 Space prompt - position - (0, -425, 0)
 For all of the text objects - do the shift alt anchor thing and set it to center center, then set each to the specified positions below.
 Then in the Paragraph settings, select the 5th option (aligned in the middle vertically). Set all to font size 24

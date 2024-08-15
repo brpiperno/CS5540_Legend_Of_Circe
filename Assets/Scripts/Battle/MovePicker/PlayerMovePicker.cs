@@ -10,6 +10,7 @@ public class PlayerMovePicker : AbstractMovePicker
     BattleManager battleManager;
     VisualController visualController;
     public PotionCraftingUIManager potionCraftingUIManager;
+
     public new void Start()
     {
         base.Start();
@@ -63,8 +64,9 @@ public class PlayerMovePicker : AbstractMovePicker
         }
         else if (Input.GetKeyDown(KeyCode.X) && Inventory.canCraft())
         {
-            Debug.Log("Player Pressed x while being able to craft");
+            //Debug.Log("Player Pressed x while being able to craft");
             userEmotionSystem.LoadNextMove(Inventory.getEmotionType(), Inventory.getMoveType());
+            Debug.Log(string.Format("Activated spell with ", Inventory.getEmotionType(), Inventory.getMoveType()));
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
