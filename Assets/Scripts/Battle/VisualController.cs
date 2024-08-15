@@ -41,23 +41,25 @@ public class VisualController : MonoBehaviour, IVisualController
     }
 
     public IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType) {
-        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
-        if (hasBlockAnimation) {
+        /*if (hasBlockAnimation) {
             yield return new WaitForSeconds(1f);
-        }
-        AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
-        GameObject attack = Instantiate(playerAttackEffect, 
-            playerAttackEffectPosition,
-            Quaternion.Euler(playerAttackEffectRotation));
-        if (moveType == MoveType.Damage)
-        {
-            var ps = attack.GetComponent<ParticleSystem>();
-            var newColor = ps.main;
-            newColor.startColor = emotion.GetColor();
-        }
-        //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
-        //AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        }*/
+        if (!hasBlockAnimation) {
+            yield return new WaitForSeconds(0.7f);
 
+            AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+            GameObject attack = Instantiate(playerAttackEffect, 
+                playerAttackEffectPosition,
+                Quaternion.Euler(playerAttackEffectRotation));
+            if (moveType == MoveType.Damage)
+            {
+                var ps = attack.GetComponent<ParticleSystem>();
+                var newColor = ps.main;
+                newColor.startColor = emotion.GetColor();
+            }
+            //Camera.main.GetComponent<AudioSource>().pitch = moveSFXPitch;
+            //AudioSource.PlayClipAtPoint(playerMoveSFX, Camera.main.transform.position);
+        }
     }
 
     public void updateEmotionBarUI() {
