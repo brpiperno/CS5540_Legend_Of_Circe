@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2071040648943871860, guid: cecee6bbcd5cc984abd94fd182dbd9a4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.6998901
+      value: -1.6998291
       objectReference: {fileID: 0}
     - target: {fileID: 2071040648943871860, guid: cecee6bbcd5cc984abd94fd182dbd9a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3277,8 +3277,8 @@ MonoBehaviour:
     well you've fared!
   - Humbling women seems to me a chief pastime of poets like you. As if there can
     be no story unless we crawl and weep.
-  - It is a common saying that women are delicate creatures, lowers, eggs, anything
-    that may be crushed  in a moment's carelessness. If I had ever believed it, I
+  - It is a common saying that women are delicate creatures, flowers, eggs, anything
+    that may be crushed in a moment's carelessness. If I had ever believed it, I
     no longer did.
   - This is one thing gods and mortals share. When we are young, we think ourselves
     the first to have each feeling in the world.
