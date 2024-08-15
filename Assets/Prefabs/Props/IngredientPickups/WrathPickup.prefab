@@ -15,11 +15,11 @@ GameObject:
   - component: {fileID: 6808406003551198222}
   m_Layer: 0
   m_Name: WrathPickup
-  m_TagString: EmotionPickup
+  m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5700262476688838500
 Transform:
   m_ObjectHideFlags: 0
@@ -121,8 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emotionType: 1
   collectedSFX: {fileID: 8300000, guid: 563884892133af446bdb373e00a7a764, type: 3}
-  playerDetectionDistance: 10
-  isWithinRangeOfPlayer: 0
+  turnOnTime: 5
 --- !u!1001 &9131272905557963889
 PrefabInstance:
   m_ObjectHideFlags: 0
