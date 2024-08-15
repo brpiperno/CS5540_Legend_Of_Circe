@@ -64,7 +64,7 @@ public class PlayerMovePicker : AbstractMovePicker
         }
         else if (Input.GetKeyDown(KeyCode.X) && Inventory.canCraft())
         {
-            Debug.Log("Player Pressed x while being able to craft");
+            //Debug.Log("Player Pressed x while being able to craft");
             userEmotionSystem.LoadNextMove(Inventory.getEmotionType(), Inventory.getMoveType());
             isAskingForPlayInput = false;
             isEmotionChosen = false;

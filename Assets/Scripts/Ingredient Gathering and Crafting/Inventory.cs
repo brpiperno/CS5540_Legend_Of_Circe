@@ -144,25 +144,6 @@ public class Inventory : MonoBehaviour
         craftedSpell = new BasicMove(spellStrength, emotionIngredientsCollected.Dequeue(), moveIngredientsCollected.Dequeue());
     }
 
-    public static IBattleMove GetSpell()
-    {
-        if (craftedSpell.GetMoveType() == MoveType.Null || craftedSpell.GetEmotionType() == EmotionType.Null)
-        {
-            throw new InvalidOperationException("Tried to retrieve Inventory's battle move when MoveType or EmotionType was null");
-        }
-        return craftedSpell;
-    }
-
-    public static void UseSpell()
-    {
-        craftedSpell = new BasicMove(0, EmotionType.Null, MoveType.Null);
-    }
-
-    public static bool hasSpell()
-    {
-        return craftedSpell.GetMoveType() == MoveType.Null || craftedSpell.GetEmotionType() == EmotionType.Null;
-    }
-
     private void initializeVariables()
     {
         emotionIngredientDropOptions = new Dictionary<EmotionType, GameObject>

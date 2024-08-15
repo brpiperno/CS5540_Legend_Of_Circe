@@ -60,6 +60,10 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             {EmotionType.Wrath, WrathDialogue },
             {EmotionType.Love, LoveDialogue }
         };
+        if (battleManager == null)
+        {
+            battleManager = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
+        }
     }
 
     public float GetEmotionValue(EmotionType type)
@@ -149,6 +153,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         
         if (gameObject.tag == "Player") {
             visualController = gameObject.GetComponent<VisualController>();
+            Debug.Log("EmotionSystem: " + name);
             EmotionSystem enemy = battleManager.GetEnemy(this);
             IBattleMove enemiesMove = enemy.lastMoveUsed;
             Debug.Log("EmotionSystem: visualController is null: " + (visualController == null));
@@ -186,11 +191,20 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             Invoke("PlayEnemySpellCastAnimation", enemySpellAnimationDelay);
             visualController.PlayEnemyBlockAnimation();
         }
-        StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
+        if (!lastMoveUsed.GetMoveType().Equals(MoveType.Null)) //don't play a move if stunned
+        {
+            StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
+        }
+        
         BattleText.Enqueue(GetPlayMoveText(name, lastMoveUsed), true);
-        System.Random rnd = new System.Random();
-        int maxIndex = dialogueOptions[lastMoveUsed.GetEmotionType()].Length - 1;
-        BattleText.Enqueue(name + ": " + dialogueOptions[lastMoveUsed.GetEmotionType()][rnd.Next(0, maxIndex)]);
+
+        if (lastMoveUsed.GetEmotionType() != EmotionType.Null)
+        {
+            System.Random rnd = new System.Random();
+            Debug.Log("EmotionSystem: line 197 for " + name);
+            int maxIndex = dialogueOptions[lastMoveUsed.GetEmotionType()].Length - 1;
+            BattleText.Enqueue(name + ": " + dialogueOptions[lastMoveUsed.GetEmotionType()][rnd.Next(0, maxIndex)]);
+        }
         Invoke("FinishTurn", 5);
     }
 
