@@ -21,6 +21,11 @@ public class Menu : MonoBehaviour
     public Slider mouseSensitivitySlider;
     public TextMeshProUGUI mouseSensitivityValueText;
     public Camera cmr;
+    public TextMeshProUGUI enemiesDefeatedCount;
+
+    private static int enemiesDefeated;
+
+    public GameObject AboutTheTeamCard;
 
     private void Awake()
     {
@@ -35,6 +40,7 @@ public class Menu : MonoBehaviour
         mouseSensitivitySlider.value = mouseSensitivity;
         mouseSensitivityValueText.text = mouseSensitivity.ToString("0.0");
         mouseSensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivity);
+        enemiesDefeated = PlayerPrefs.GetInt("enemiesDefeated", 0);
     }
 
     private void Start()
@@ -42,6 +48,10 @@ public class Menu : MonoBehaviour
         if (cmr == null)
         {
             cmr = Camera.main;
+        }
+        if (enemiesDefeatedCount != null)
+        {
+            enemiesDefeatedCount.text = "Enemies Defeated: " + enemiesDefeated.ToString();
         }
     }
 
@@ -78,6 +88,11 @@ public class Menu : MonoBehaviour
         Cursor.lockState = keepMouseUnlocked || isPaused ? CursorLockMode.None : CursorLockMode.Locked;
     }
 
+    public void ToggleTeamMenuCard()
+    {
+        AboutTheTeamCard.SetActive(!AboutTheTeamCard.activeSelf);
+    }
+
     public static void Quit()
     {
         Application.Quit();
@@ -97,6 +112,18 @@ public class Menu : MonoBehaviour
         volumeSlider.value = newVolume;
         volumeValueText.text = string.Format("{0:P1}", volume);
         AudioListener.volume = volume;
+    }
+
+    public static void EnemyDefeated()
+    {
+        enemiesDefeated++;
+        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
+    }
+
+    public static void clearGameProgress()
+    {
+        enemiesDefeated = 0;
+        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
     }
 
 }

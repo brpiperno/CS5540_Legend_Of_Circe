@@ -140,6 +140,7 @@ public class BattleManager : MonoBehaviour
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
             gameOverOrWon = true;
+            Menu.EnemyDefeated(); //increment the defeat count in the main menu
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
