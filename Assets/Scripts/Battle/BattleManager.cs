@@ -62,7 +62,7 @@ public class BattleManager : MonoBehaviour
 
     void Update() {
         if (gameOver && Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("Reached line 62");
+            //Debug.Log("Reached line 62");
             LevelManager.BattleLost();
         }
     }
@@ -127,11 +127,10 @@ public class BattleManager : MonoBehaviour
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
         if (loser.gameObject.tag == "Player") {
-            gameOverScreen.SetActive(true);
+            Invoke("LoseActions", 2);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 2);
-            gameOver = true;
             gameOverOrWon = true;
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
@@ -166,6 +165,11 @@ public class BattleManager : MonoBehaviour
         //GameObject winText = GameObject.FindGameObjectWithTag("WinText");
         winScreen.SetActive(true);
         Invoke("CallBattleWon", 3);
+    }
+
+    public void LoseActions() {
+        gameOverScreen.SetActive(true);
+        gameOver = true;
     }
 
     // Done this way because you cannot call invoke directly on LevelManager.BattleWon since it's a static method

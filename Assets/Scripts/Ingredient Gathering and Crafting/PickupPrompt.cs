@@ -76,16 +76,12 @@ public class PickupPrompt : MonoBehaviour
         switch (e) {
             case EmotionType.Love:
                 return "Cherries";
-                break;
             case EmotionType.Wrath:
                 return "Spider venom";
-                break;
             case EmotionType.Grief:
                 return "Milk cap";
-                break;
             case EmotionType.Mirth:
                 return "Wine";
-                break;
         }
         return "--";
     }
@@ -94,22 +90,16 @@ public class PickupPrompt : MonoBehaviour
         switch (m) {
             case MoveType.Shield:
                 return "Peach";
-                break;
             case MoveType.Transformation:
                 return "Butterfly";
-                break;
             case MoveType.Enhancement:
                 return "Cedar wood";
-                break;
             case MoveType.Paralysis:
                 return "Amanita mushroom";
-                break;
             case MoveType.Pharmaka:
                 return "Moly";
-                break;
             case MoveType.Damage:
                 return "Damage";
-                break;
         }
         return "--";
     }
@@ -118,16 +108,12 @@ public class PickupPrompt : MonoBehaviour
         switch (m) {
             case MoveType.Shield:
                 return "Defense";
-                break;
             case MoveType.Transformation:
                 return "Transformation";
-                break;
             case MoveType.Enhancement:
                 return "Healing";
-                break;
             case MoveType.Paralysis:
                 return "Paralysis";
-                break;
         }
         return "--";
     }

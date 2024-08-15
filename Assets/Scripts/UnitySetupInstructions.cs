@@ -17,6 +17,10 @@ Drag the "Strum" audio to the SFX fields in each Visual Controller
 Set the slope limit for Circe's character controller to 60
 Set move speed in the Third Person Controller script to 2 (or 5?)
 
+In the Navigation scenes, set the tag for all pickups to EmotionPickup or MoveTypePickup, matching the type of pickup it is.
+
+In battle scenes, set Circe -> Emotion System -> Enemy Spell Animation Delay to 4
+
 Credits:
 Circe Model - Mechanist by Yuliya Perevoznikova
 Potion images from an asset pack by Josué Rocha

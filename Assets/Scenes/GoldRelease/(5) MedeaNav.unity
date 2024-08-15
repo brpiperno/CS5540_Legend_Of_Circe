@@ -1110,6 +1110,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4038550511515807229, guid: 21f6d14074f5e4f718eb706a0d8c6197, type: 3}
   m_PrefabInstance: {fileID: 1599860467}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1599860469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9202891056980047700, guid: 21f6d14074f5e4f718eb706a0d8c6197, type: 3}
+  m_PrefabInstance: {fileID: 1599860467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1645718723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1231,7 +1236,7 @@ PrefabInstance:
     - target: {fileID: 4548290177263827604, guid: 9fbdd95dccb74423baaee5fd86bb989f, type: 3}
       propertyPath: triggerBattlePanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1599860469}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

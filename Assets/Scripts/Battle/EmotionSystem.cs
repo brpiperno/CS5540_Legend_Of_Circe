@@ -28,7 +28,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public BattleManager battleManager; //The battle manager that it sends moves to;
     public IMovePicker movePicker;
     public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
-    public float enemySpellAnimationDelay = 1.7f;
+    public float enemySpellAnimationDelay = 4f;
     private bool isStunned = false;
     private bool isTransformed = false;
 
@@ -201,7 +201,18 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         if (lastMoveUsed.GetEmotionType() != EmotionType.Null)
         {
             System.Random rnd = new System.Random();
-            Debug.Log("EmotionSystem: line 197 for " + name);
+            if (dialogueOptions == null) {
+                Debug.Log("dialogueOptions is null");
+            }
+            if (lastMoveUsed == null) {
+                Debug.Log("lastMoveUsed is null");
+            }
+            if (lastMoveUsed.GetEmotionType() == null) {
+                Debug.Log("lastMoveUsed.GetEmotionType() is null");
+            }
+            if (dialogueOptions[lastMoveUsed.GetEmotionType()] == null) {
+                Debug.Log("dialogueOptions[lastMoveUsed.GetEmotionType()] is null");
+            }
             int maxIndex = dialogueOptions[lastMoveUsed.GetEmotionType()].Length - 1;
             BattleText.Enqueue(name + ": " + dialogueOptions[lastMoveUsed.GetEmotionType()][rnd.Next(0, maxIndex)]);
         }

@@ -23,13 +23,13 @@ public class PlayNextScene : MonoBehaviour
                 prompted = true;
             } else {
                 skipIntroPrompt.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Loading";
-                SceneManager.LoadScene("BenIngredientGathering");
+                Menu.LoadNextlevel();
             }
         }
     }
 
     IEnumerator NextScene() {
         yield return new WaitForSeconds(41);
-        SceneManager.LoadScene("BenIngredientGathering");
+        Menu.LoadNextlevel();
     }
 }
