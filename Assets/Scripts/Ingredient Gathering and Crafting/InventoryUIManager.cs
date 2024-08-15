@@ -31,14 +31,17 @@ public class InventoryUIManager : MonoBehaviour
     public Sprite pharmakaIcon;
     private Dictionary<MoveType, Sprite> moveSprites;
 
+    void Awake() {
+        initializeVariables();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        initializeVariables();
         updateEmotionIngredientUI();
         updateMoveIngredientUI();
     }
+
     public void updateMoveIngredientUI()
     {       
         moveType = Inventory.getMoveType();
@@ -61,6 +64,15 @@ public class InventoryUIManager : MonoBehaviour
         if (Inventory.getEmotionType() != EmotionType.Null)
         {
             emotionIngredientPanel.color = emotionType.GetColor();
+            if (emotionIngredientIcon == null) {
+                Debug.Log("emotionIngredientIcon is null");
+            }
+            if (emotionSprites == null) {
+                Debug.Log("emotionSprites is null");
+            }
+            if (emotionType == null) {
+                Debug.Log("emotionType is null");
+            }
             emotionIngredientIcon.sprite = emotionSprites[emotionType];
             emotionIngredientIcon.enabled = true;
             emotionIngredientText.text = "Extract of " + emotionType.ToString();

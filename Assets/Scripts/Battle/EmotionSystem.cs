@@ -112,6 +112,9 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 break; //do nothing. User of this move was stunned.
             default: throw new NotImplementedException();
         }
+        if (BattleText == null) {
+            Debug.Log("BattleText is null");
+        }
         BattleText.Enqueue(GetAcceptedMoveText(name, move, currentEmotion));
         CheckGameOver();
         //movePicker = GetComponent<IMovePicker>();

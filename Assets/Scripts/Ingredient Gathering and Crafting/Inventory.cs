@@ -73,7 +73,9 @@ public class Inventory : MonoBehaviour
             //dropInFrontOfPlayer(moveIngredientDropOptions[moveIngredientsCollected.Dequeue()]);
             //Debug.Log("Dropped movetype prefab in front of player");
             moveIngredientsCollected.Dequeue();
-            disabledMoveTypeIngredient.SetActive(true);
+            if (disabledMoveTypeIngredient != null) {
+                disabledMoveTypeIngredient.SetActive(true);
+            }
         }
         moveIngredientsCollected.Enqueue(moveType);
         disabledMoveTypeIngredient = pickedUpObject;
@@ -97,7 +99,9 @@ public class Inventory : MonoBehaviour
             //dropInFrontOfPlayer(emotionIngredientDropOptions[emotionIngredientsCollected.Dequeue()]);
             //Debug.Log("Dropped emotion prefab in front of player");
             emotionIngredientsCollected.Dequeue();
-            disabledEmotionIngredient.SetActive(true);
+            if (disabledMoveTypeIngredient != null) {
+                disabledEmotionIngredient.SetActive(true);
+            }
         }
         emotionIngredientsCollected.Enqueue(emotionType);
         disabledEmotionIngredient = pickedUpObject;
