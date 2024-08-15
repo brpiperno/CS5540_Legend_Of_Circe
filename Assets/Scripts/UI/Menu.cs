@@ -138,16 +138,4 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
     }
 
-    public static void EnemyDefeated()
-    {
-        enemiesDefeated++;
-        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
-    }
-
-    public static void clearGameProgress()
-    {
-        enemiesDefeated = 0;
-        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
-    }
-
 }
