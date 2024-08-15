@@ -66,6 +66,7 @@ public class PlayerMovePicker : AbstractMovePicker
         {
             //Debug.Log("Player Pressed x while being able to craft");
             userEmotionSystem.LoadNextMove(Inventory.getEmotionType(), Inventory.getMoveType());
+            Debug.Log(string.Format("Activated spell with ", Inventory.getEmotionType(), Inventory.getMoveType()));
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
