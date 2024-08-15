@@ -41,7 +41,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
     public string[] LoveDialogue;
     private Dictionary<EmotionType, string[]> dialogueOptions;
 
-    void Start()
+    void Awake()
     {
         if (visualController == null)
         {
@@ -155,6 +155,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         movePicker = GetComponent<IMovePicker>();
         
         if (gameObject.tag == "Player") {
+            BattleText.Enqueue("Pick a move.");
             visualController = gameObject.GetComponent<VisualController>();
             Debug.Log("EmotionSystem: " + name);
             EmotionSystem enemy = battleManager.GetEnemy(this);

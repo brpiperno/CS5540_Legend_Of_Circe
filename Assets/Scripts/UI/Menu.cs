@@ -13,8 +13,8 @@ public class Menu : MonoBehaviour
     public GameObject pauseMenu;
     public bool keepMouseUnlocked = false;
 
-    public static float volume = 0.5f;
-    public static float mouseSensitivity = 1.0f;
+    public static float volume;
+    public static float mouseSensitivity;
 
     public Slider volumeSlider;
     public TextMeshProUGUI volumeValueText;
@@ -32,12 +32,13 @@ public class Menu : MonoBehaviour
     {
         volumeSlider.onValueChanged.AddListener(UpdateVolume);
         volumeSlider.minValue = 0;
-        volumeSlider.value = volume;
+        volumeSlider.value = PlayerPrefs.GetFloat("volume", 1.0f);
         volumeSlider.maxValue = 1;
         volumeValueText.text = string.Format("{0:P1}", volume);
 
         mouseSensitivitySlider.minValue = 0.2f;
         mouseSensitivitySlider.maxValue = 2.0f;
+        mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity", 1.0f);
         mouseSensitivitySlider.value = mouseSensitivity;
         mouseSensitivityValueText.text = mouseSensitivity.ToString("0.0");
         mouseSensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivity);
@@ -121,9 +122,9 @@ public class Menu : MonoBehaviour
     {
         volume = newVolume;
         volumeSlider.value = newVolume;
-        volumeValueText.text = string.Format("{0:P1}", volume);
+        volumeValueText.text = string.Format("{0:P0}", volume);
         AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("Volume", newVolume);
+        PlayerPrefs.SetFloat("Volume", volume);
     }
 
     public static void EnemyDefeated()

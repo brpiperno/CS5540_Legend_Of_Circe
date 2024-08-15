@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 
 
@@ -17,24 +18,37 @@ public class BattleTextQueue : MonoBehaviour
     public float msgActiveTimer = 0.0f; //how long has the current message been displayed?
     public float currentDuration = 3.0f; //duration for the current message;
     private TextMeshProUGUI textfield;
+    public Button nextButton;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         textfield = GetComponent<TextMeshProUGUI>();
+        if (nextButton == null)
+        {
+            nextButton = transform.parent.Find("NextButton").GetComponent<Button>();
+        }
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
-        msgActiveTimer += Time.deltaTime;
+        //msgActiveTimer += Time.deltaTime;
         if (msgActiveTimer >= currentDuration && queue.TryDequeue(out string msg))
         {
             textfield.text = msg;
             currentDuration = calculateDuration(msg);
             msgActiveTimer = 0.0f;
         }
+    }
+    */
+
+    public void Dequeue()
+    {
+        bool hasNext = queue.TryDequeue(out string result);
+        textfield.text = hasNext ? result : "";
+        updateButton();
+
     }
 
     /// <summary>
@@ -55,17 +69,28 @@ public class BattleTextQueue : MonoBehaviour
         {
             queue.Enqueue(text);
         }
+        if (textfield.text == "")
+        {
+            Dequeue();
+        }
+        updateButton();
     }
 
     public void Enqueue(string text)
     {
         Enqueue(text, false);
+
     }
 
     private float calculateDuration(string text)
     {
         //average reading speed is approximately 25 characters per second
         return Mathf.Clamp(text.Length / 25, minDuration, maxDuration);
+    }
+
+    private void updateButton()
+    {
+        nextButton.interactable = queue.Count > 0;
     }
 
 }
