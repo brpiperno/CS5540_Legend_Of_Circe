@@ -1577,18 +1577,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1363311485821072472, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1363311485821072472, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1363311485821072472, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1363311485821072472, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -119.069
       objectReference: {fileID: 0}
@@ -1636,97 +1624,14 @@ PrefabInstance:
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 427306908}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: LoveDialogue.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: GriefDialogue.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: MirthDialogue.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: WrathDialogue.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: LoveDialogue.Array.data[0]
-      value: My love for him is greater than my wisdom.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: GriefDialogue.Array.data[0]
-      value: Of all creatures that can feel and think, we women are the worst treated
-        things alove
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: GriefDialogue.Array.data[1]
-      value: Death is the only water to wash away this dirt.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: GriefDialogue.Array.data[2]
-      value: Who can stop grief's avalanche once it starts to roll.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: GriefDialogue.Array.data[3]
-      value: Amongst mortals no man is happyl wealth may pour in and make one luckier
-        than another, but none can happy be.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: MirthDialogue.Array.data[0]
-      value: I'd three times sooner go to war than suffer childbirth once.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: MirthDialogue.Array.data[1]
-      value: I'd three times sooner go to war than suffer childbirth once.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: MirthDialogue.Array.data[2]
-      value: Gods often contradict our fondex expectations. What we anticipate does
-        not come to pass. What we don't expect some god finds a way to make it hapen.
-        So with this story.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: MirthDialogue.Array.data[3]
-      value: 'We must not think too much: people go mad if they think too much.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: MirthDialogue.Array.data[4]
-      value: You have the skill. What is more, you were born a woman. And women,
-        though most helpless in doing good deeds, are of every evil the cleverest
-        of contrivers.
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: WrathDialogue.Array.data[0]
-      value: Hate is a bottomless cup; I will pour and pour
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: WrathDialogue.Array.data[1]
-      value: I know indeed what evil I intend to do, but stronger than all my afterthroughts
-        is my futry, fury that brings upon mortals the greatest evils!
-      objectReference: {fileID: 0}
-    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: WrathDialogue.Array.data[2]
-      value: Hate me. But I tire of your barking bitterness.
-      objectReference: {fileID: 0}
     - target: {fileID: 5084435301823844639, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 732479227}
     - target: {fileID: 5084435301823844639, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: opponent
-      value: 
-      objectReference: {fileID: 1494519635}
-    - target: {fileID: 5084435301823844639, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 732479235}
-    - target: {fileID: 5084435301823844639, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      propertyPath: opponentAnimator
-      value: 
-      objectReference: {fileID: 1494519636}
     - target: {fileID: 5084435301823844639, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
       propertyPath: emotionBarManager
       value: 
@@ -1735,14 +1640,10 @@ PrefabInstance:
       propertyPath: currentEmotionIndicator
       value: 
       objectReference: {fileID: 595159747}
-    m_RemovedComponents:
-    - {fileID: 7696217309992297557, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1846656434023132898, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1494519640}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
 --- !u!114 &1494519634 stripped
 MonoBehaviour:
@@ -1760,44 +1661,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1846656434023132898, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
   m_PrefabInstance: {fileID: 1494519633}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1494519636 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4903109677999386146, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
-  m_PrefabInstance: {fileID: 1494519633}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1494519640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494519635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cede44cbc9147a4a8460b3346790c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMoodIndex: 0
-  loveTransitions:
-  - 0.08
-  - 0.07
-  - 0.35
-  - 0.5
-  griefTransitions:
-  - 0.08
-  - 0.07
-  - 0.35
-  - 0.5
-  wrathTransitions:
-  - 0.75
-  - 0
-  - 0.2
-  - 0.05
-  mirthTransitions:
-  - 0.1
-  - 0.35
-  - 0.05
-  - 0.5
 --- !u!1 &1495928641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}

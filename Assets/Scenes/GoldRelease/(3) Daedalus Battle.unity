@@ -2840,6 +2840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 80081402}
     m_Modifications:
+    - target: {fileID: 313516961652511784, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2240995375098198894, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.175
@@ -2952,13 +2956,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleSettings
       objectReference: {fileID: 0}
+    - target: {fileID: 6601033076983109542, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7080793256324433732, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8466321682510014489, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8621224833821413118, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8709895530751486901, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
