@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,11 +18,11 @@ public class Menu : MonoBehaviour
     public Slider mouseSensitivitySlider;
     public TextMeshProUGUI mouseSensitivityValueText;
     public Camera cmr;
-    public TextMeshProUGUI enemiesDefeatedCount;
-
-    private static int enemiesDefeated;
+    public TextMeshProUGUI battlesLostText;
 
     public GameObject AboutTheTeamCard;
+
+    private static int battlesLost;
 
     private void Awake()
     {
@@ -41,7 +38,8 @@ public class Menu : MonoBehaviour
         mouseSensitivitySlider.value = mouseSensitivity;
         mouseSensitivityValueText.text = mouseSensitivity.ToString("0.0");
         mouseSensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivity);
-        enemiesDefeated = PlayerPrefs.GetInt("enemiesDefeated", 0);
+
+        battlesLost = PlayerPrefs.GetInt("battlesLost", 0);
     }
 
     private void Start()
@@ -50,9 +48,9 @@ public class Menu : MonoBehaviour
         {
             cmr = Camera.main;
         }
-        if (enemiesDefeatedCount != null)
+        if (battlesLostText != null)
         {
-            enemiesDefeatedCount.text = "Enemies Defeated: " + enemiesDefeated.ToString();
+            battlesLostText.text = "Confrontations\nlost: " + battlesLost.ToString();
         }
     }
 
@@ -76,7 +74,7 @@ public class Menu : MonoBehaviour
 
     public static void LoadMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void TogglePause()
@@ -117,16 +115,14 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetFloat("volume", volume);
     }
 
-    public static void EnemyDefeated()
+    public static void ClearBattlesLost()
     {
-        enemiesDefeated++;
-        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
+        PlayerPrefs.SetInt("battlesLost", 0);
     }
 
-    public static void clearGameProgress()
+    public static void LostBattle()
     {
-        enemiesDefeated = 0;
-        PlayerPrefs.SetInt("enemiesDefeated", enemiesDefeated);
+        battlesLost++;
+        PlayerPrefs.SetInt("battlesLost", battlesLost);
     }
-
 }

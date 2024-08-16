@@ -133,12 +133,13 @@ public class BattleManager : MonoBehaviour
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 2);
             playerWon = false;
+            Menu.LostBattle();
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
             playerWon = true;
-            Menu.EnemyDefeated(); //increment the defeat count in the main menu
+            
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
