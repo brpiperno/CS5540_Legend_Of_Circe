@@ -3233,7 +3233,7 @@ MonoBehaviour:
   visualController: {fileID: 8827978896530640465}
   currentEmotion: 0
   battleManager: {fileID: 427306908}
-  baseStrength: 10
+  baseStrength: 20
   enemySpellAnimationDelay: 4
   WrathDialogue:
   - You shall know the power of this goddess firsthand!
