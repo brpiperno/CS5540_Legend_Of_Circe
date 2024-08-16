@@ -88,6 +88,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             case MoveType.Transformation:
                 LoadNextMove(move.GetEmotionType(), MoveType.Damage);
                 Debug.Log("Transformed users next move to be damage, type :" + move.GetMoveType().ToString());
+                isTransformed = true;
                 break;
             case MoveType.Paralysis:
                 isStunned = true;

@@ -1446,7 +1446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: baseStrength
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -6210044762279469423, guid: 6a3c3c37133b6ae4d9590995c8166d88, type: 3}
       propertyPath: battleManager
@@ -2595,7 +2595,7 @@ PrefabInstance:
       objectReference: {fileID: 783180820}
     - target: {fileID: 2427902651307771653, guid: 6fa9d8664494c1c46a3dbbcef020569d, type: 3}
       propertyPath: baseStrength
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2427902651307771653, guid: 6fa9d8664494c1c46a3dbbcef020569d, type: 3}
       propertyPath: battleManager

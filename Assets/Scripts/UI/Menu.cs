@@ -52,6 +52,7 @@ public class Menu : MonoBehaviour
         {
             battlesLostText.text = "Confrontations\nlost: " + battlesLost.ToString();
         }
+        mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity", 1.0f);
     }
 
     void Update()
@@ -103,7 +104,6 @@ public class Menu : MonoBehaviour
         mouseSensitivitySlider.value = newSensitivity;
         mouseSensitivityValueText.text = newSensitivity.ToString("0.0");
         PlayerPrefs.SetFloat("mouseSensitivity", newSensitivity);
-        //TODO : update thirdpersoncontroller object if there is one
     }
 
     public void UpdateVolume(float newVolume)
@@ -118,6 +118,7 @@ public class Menu : MonoBehaviour
     public static void ClearBattlesLost()
     {
         PlayerPrefs.SetInt("battlesLost", 0);
+        battlesLost = 0;
     }
 
     public static void LostBattle()

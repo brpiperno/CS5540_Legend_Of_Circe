@@ -3259,110 +3259,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753222203}
   m_CullTransparentMesh: 1
---- !u!1001 &1764005804
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 52828309193972616, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 269315682892740515, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_Name
-      value: Circe (Model)
-      objectReference: {fileID: 0}
-    - target: {fileID: 646017521403768089, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3072736284926637119, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3671383042519181569, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6937576209994485584, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8955312117500733587, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: NavCam
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8955312117500733587, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-      propertyPath: BattleCam
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 810444992778634979, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-    - {fileID: 1973245826261259636, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-    - {fileID: 1577601094894469510, guid: cb569c01d0047ae47afac295867b5549, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cb569c01d0047ae47afac295867b5549, type: 3}
 --- !u!1 &1887631344
 GameObject:
   m_ObjectHideFlags: 0
@@ -4008,10 +3904,6 @@ GameObject:
   m_Component:
   - component: {fileID: 63843755833625991}
   - component: {fileID: 6197794601393903613}
-  - component: {fileID: 7806416743540988954}
-  - component: {fileID: 3506095213099834200}
-  - component: {fileID: 7551571961605859325}
-  - component: {fileID: 2043569630022471178}
   m_Layer: 0
   m_Name: New Circe
   m_TagString: Player
@@ -4601,19 +4493,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 63843755833625991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2043569630022471178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840204052517574461}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad0a6c6f2fe82e459fee19b2f522c73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gatheringUI: {fileID: 0}
 --- !u!4 &2064442670837128054
 Transform:
   m_ObjectHideFlags: 0
@@ -5373,54 +5252,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &3506095213099834200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840204052517574461}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visualController: {fileID: 7806416743540988954}
-  currentEmotion: 0
-  battleManager: {fileID: 0}
-  baseStrength: 10
-  enemySpellAnimationDelay: 1.7
-  WrathDialogue:
-  - You shall know the power of this goddess firsthand!
-  - You think me naive? You cross paths with a God!
-  - How dare you talk to me that way!
-  - You threw me to the crows, but it turns out I prefer them to you!
-  MirthDialogue:
-  - You think yourself clever? Talk to me in a few thousand years and we'll see how
-    well you've fared!
-  - Humbling women seems to me a chief pastime of poets like you. As if there can
-    be no story unless we crawl and weep.
-  - It is a common saying that women are delicate creatures, lowers, eggs, anything
-    that may be crushed  in a moment's carelessness. If I had ever believed it, I
-    no longer did.
-  - This is one thing gods and mortals share. When we are young, we think ourselves
-    the first to have each feeling in the world.
-  - You can teach a viper to eat from your hand, but you cannot take away how much
-    it likes to bite.
-  - Witches are not so delicate.
-  GriefDialogue:
-  - Please show me your scars! And let me pretend I have none!
-  - But perhaps no parent can truly see their child. When we look we see only the
-    mirror of our own faults.
-  - If I am wise, it is only because I have been fool enough for a hundred lifetimes.
-  - All my life has been murk and depths, but I was not a part of that dark water.
-    I was a creature within it.
-  - Yet because I knew nothing, nothing was beneath me.
-  LoveDialogue:
-  - I would say, some people are like constellations that only touch the earth for
-    a season.
-  - We are here! This is what it means to swim in the tide, to walk the earth and
-    feel it touch your feet. This is what it means to be alive.
 --- !u!1 &3524716785872288312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7364,20 +7195,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3391726520502942916}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7551571961605859325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840204052517574461}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a494ff3b39b0454fb2e51e90153a8c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  emotionChosen: 2
-  potionCraftingUIManager: {fileID: 0}
 --- !u!1 &7570259092363509661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7583,34 +7400,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7806416743540988954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840204052517574461}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAttackEffect: {fileID: 2699264541284189959, guid: cb95916718edf43b99c32aaab490b546, type: 3}
-  playerAttackEffectPosition: {x: 0.5, y: 1.5, z: -6}
-  playerAttackEffectRotation: {x: -90, y: 0, z: 0}
-  upArrow: {fileID: 0}
-  leftArrow: {fileID: 0}
-  rightArrow: {fileID: 0}
-  downArrow: {fileID: 0}
-  playerMoveSFX: {fileID: 8300000, guid: 657578e4be6b64dbf9b09deada272e55, type: 3}
-  moveSFXPitch: 0
-  hasBlockAnimation: 0
-  player: {fileID: 840204052517574461}
-  playerAnimator: {fileID: 6197794601393903613}
-  opponent: {fileID: 0}
-  opponentAnimator: {fileID: 0}
-  emotionBarManager: {fileID: 0}
-  currentEmotionIndicator: {fileID: 3671174412033222201}
 --- !u!4 &7813860859732212578
 Transform:
   m_ObjectHideFlags: 0
@@ -8532,7 +8321,6 @@ SceneRoots:
   - {fileID: 1371446912}
   - {fileID: 1221333731}
   - {fileID: 1011008877}
-  - {fileID: 1764005804}
   - {fileID: 868610445}
   - {fileID: 512063193}
   - {fileID: 1059115754}

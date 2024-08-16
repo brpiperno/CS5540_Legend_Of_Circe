@@ -13,7 +13,7 @@ using System;
 /// - Updates any 2D UIs (emotion bars or player-specific UI)
 /// </summary>
 
-[RequireComponent(typeof(IEmotion))]
+//[RequireComponent(typeof(IEmotion))]
 public class VisualController : MonoBehaviour, IVisualController
 {
     private IEmotion userEmotion;
