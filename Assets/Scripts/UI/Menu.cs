@@ -69,7 +69,7 @@ public class Menu : MonoBehaviour
 
     public static void LoadPreviousLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public static void LoadMainMenu()

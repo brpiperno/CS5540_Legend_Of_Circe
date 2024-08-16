@@ -1622,6 +1622,10 @@ PrefabInstance:
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 427306908}
+    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
+      propertyPath: currentEmotion
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5084435301823844639, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
       propertyPath: player
       value: 

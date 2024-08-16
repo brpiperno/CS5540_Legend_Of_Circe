@@ -39,6 +39,7 @@ namespace EmotionTypeExtension
                 { 1.0f, 2.0f, 0.5f, 1.0f, 1.0f}, //Mirth Effectiveness
                 { 1.0f, 1.0f, 1.0f, 1.0f, 1.0f} //Null Effectiveness
             };
+            Debug.Log(string.Format("effectiveness {0} against {1} = {2}", attacker.ToString(), defender.ToString(), effectiveness));
             return effectiveness[(int)attacker, (int)defender];
         }
 

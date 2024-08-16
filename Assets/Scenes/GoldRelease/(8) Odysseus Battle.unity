@@ -936,6 +936,10 @@ PrefabInstance:
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 427306908}
+    - target: {fileID: 5232581809239379333, guid: 245790b61a642a348b1cdf54dbcbca7f, type: 3}
+      propertyPath: currentEmotion
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5685185408423426975, guid: 245790b61a642a348b1cdf54dbcbca7f, type: 3}
       propertyPath: m_Name
       value: Odysseus

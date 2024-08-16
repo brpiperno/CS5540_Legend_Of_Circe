@@ -22,12 +22,12 @@ public class EmotionSystem : MonoBehaviour, IEmotion
             {EmotionType.Grief, 1},
             {EmotionType.Mirth, 1}
         };
-    public EmotionType currentEmotion = EmotionType.Love; //set some starting default emotion this is updated with each move
+    public EmotionType currentEmotion = EmotionType.Null; //set some starting default emotion this is updated with each move
     public IBattleMove lastMoveUsed = new BasicMove(-1, EmotionType.Null, MoveType.Null);
     public IBattleMove nextMove = new BasicMove(-1, EmotionType.Null, MoveType.Null);
     public BattleManager battleManager; //The battle manager that it sends moves to;
     public IMovePicker movePicker;
-    public int baseStrength = 10; //effectiveness of IBattleMoves instantiated, where applicable.
+    public int baseStrength; //effectiveness of IBattleMoves instantiated, where applicable.
     public float enemySpellAnimationDelay = 1.7f;
     private bool isStunned = false;
     private bool isTransformed = false;
@@ -96,12 +96,9 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 int baseDamage = move.getEffectStrength();
                 float defense = defenseModifiers[move.GetEmotionType()];
                 float effectiveness = move.GetEmotionType().GetEffectivenessAgainst(currentEmotion);
-                float damageDealt = baseDamage / defense * effectiveness;
-
-                emotionValues[move.GetEmotionType()] -=
-                    Mathf.Abs(move.getEffectStrength())
-                    / defenseModifiers[move.GetEmotionType()]
-                    * move.GetEmotionType().GetEffectivenessAgainst(currentEmotion);
+                float damageDealt = (baseDamage * effectiveness) / defense;
+                float currentHealth = emotionValues[move.GetEmotionType()];
+                emotionValues[move.GetEmotionType()] = Mathf.Clamp(currentHealth - damageDealt, 0, 100);
                 visualController.updateEmotionBarUI();
                 //Debug.Log(String.Format("Took %d damage. Defense: %.2f. Effectiveness: %.2f. Base Strength: %d", ));
                 break;
