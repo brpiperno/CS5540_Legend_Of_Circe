@@ -112,7 +112,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 break; //do nothing. User of this move was stunned.
             default: throw new NotImplementedException();
         }
-        BattleText.Enqueue(GetAcceptedMoveText(name, move, currentEmotion));
+        BattleText.Enqueue(GetAcceptedMoveText(name, move, currentEmotion), false);
         CheckGameOver();
         //movePicker = GetComponent<IMovePicker>();
         if (!gameObject.CompareTag("Player"))
@@ -152,7 +152,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         movePicker = GetComponent<IMovePicker>();
         
         if (gameObject.tag == "Player") {
-            BattleText.Enqueue("Pick a move.");
+            BattleText.Enqueue("Pick a move.", false);
             visualController = gameObject.GetComponent<VisualController>();
             Debug.Log("EmotionSystem: " + name);
             EmotionSystem enemy = battleManager.GetEnemy(this);
@@ -196,16 +196,15 @@ public class EmotionSystem : MonoBehaviour, IEmotion
         {
             StartCoroutine(visualController.setAnimationTrigger(lastMoveUsed.GetEmotionType(), lastMoveUsed.GetMoveType()));
         }
-        
-        BattleText.Enqueue(GetPlayMoveText(name, lastMoveUsed), true);
-
+        string msg = GetPlayMoveText(name, lastMoveUsed);
         if (lastMoveUsed.GetEmotionType() != EmotionType.Null)
         {
             System.Random rnd = new System.Random();
-            Debug.Log("EmotionSystem: line 197 for " + name);
             int maxIndex = dialogueOptions[lastMoveUsed.GetEmotionType()].Length - 1;
-            BattleText.Enqueue(name + ": " + dialogueOptions[lastMoveUsed.GetEmotionType()][rnd.Next(0, maxIndex)]);
+            msg += "\n";
+            msg += name + ": " + dialogueOptions[lastMoveUsed.GetEmotionType()][rnd.Next(0, maxIndex)];
         }
+        BattleText.Enqueue(msg, true);
         Invoke("FinishTurn", 5);
     }
 
@@ -246,7 +245,7 @@ public class EmotionSystem : MonoBehaviour, IEmotion
                 }
                 else if (effectiveness < 1)
                 {
-                    return string.Format("{0}'s {1} resisted words of {2}.", name, defendingEmotion.ToString(), moveAccepted.GetEmotionType().ToString());
+                    return string.Format("{0}'s {1} made them resist words of {2}.", name, defendingEmotion.ToString(), moveAccepted.GetEmotionType().ToString());
                 }
                 else
                 {

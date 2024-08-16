@@ -29,8 +29,8 @@ public class BattleManager : MonoBehaviour
     // Only used for displaying the denominator of the slider text
     public static int maxSliderValue = 100;
     private  List<EmotionSystem> turnOrder;
-    bool gameOver = false;
-    bool gameOverOrWon = false;
+    bool gameOver = false; //is the battle complete?
+    bool playerWon = false; //did the player win?
     //GameObject opponent;
 
     EmotionSystem toBeTarget; //The target emotion system that accepts a move (after some delay for animation, particles, etc)
@@ -59,8 +59,6 @@ public class BattleManager : MonoBehaviour
         //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
         ToggleMovement(false);
-
-
     }
 
     void Update() {
@@ -113,7 +111,7 @@ public class BattleManager : MonoBehaviour
         }
         //increment the index, unles it is at its max,
         //in which set it back to zero and increment the round count
-        if (!gameOverOrWon) {
+        if (!gameOver) {
             turnIndex = (turnIndex == turnOrder.Count - 1) ? 0 : turnIndex + 1;
             turnOrder[turnIndex].RequestNextMove();//Ask the next person in line
         }
@@ -128,18 +126,18 @@ public class BattleManager : MonoBehaviour
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
+        gameOver = true;
         if (loser.gameObject.tag == "Player") {
             gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 2);
-            gameOver = true;
-            gameOverOrWon = true;
+            playerWon = false;
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
-            gameOverOrWon = true;
+            playerWon = true;
             Menu.EnemyDefeated(); //increment the defeat count in the main menu
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
@@ -171,8 +169,15 @@ public class BattleManager : MonoBehaviour
     }
 
     private void ReturnToOverworld() {
-        SceneManager.LoadScene("BenIngredientGathering");
         ToggleMovement(true);
+        if (playerWon)
+        {
+            Menu.LoadNextlevel();
+        }
+        else
+        {
+            Menu.LoadPreviousLevel();
+        }
     }
 
     private void ToggleMovement(bool enabled)
