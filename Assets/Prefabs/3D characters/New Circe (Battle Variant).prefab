@@ -52,8 +52,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: New Circe (Battle Variant)
       objectReference: {fileID: 0}
+    - target: {fileID: 3506095213065001432, guid: 2b0ff054fed044bb3b99b1c386561ab6, type: 3}
+      propertyPath: enemySpellAnimationDelay
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5043413784994717074, guid: 2b0ff054fed044bb3b99b1c386561ab6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b0ff054fed044bb3b99b1c386561ab6, type: 3}

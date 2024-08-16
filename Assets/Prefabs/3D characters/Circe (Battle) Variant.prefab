@@ -127,6 +127,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6937576209994485584, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      propertyPath: baseStrength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937576209994485584, guid: cb569c01d0047ae47afac295867b5549, type: 3}
+      propertyPath: enemySpellAnimationDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7029203924703542858, guid: cb569c01d0047ae47afac295867b5549, type: 3}
       propertyPath: field of view
       value: 40
