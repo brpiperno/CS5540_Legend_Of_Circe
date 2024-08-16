@@ -9,6 +9,10 @@ public class UpdateGoalText : MonoBehaviour
     void Start()
     {
         int numEnemiesLeft = 3 - LevelManager.numEnemiesDefeated;
-        GetComponent<Text>().text = numEnemiesLeft.ToString() + " people left to encounter";
+        if (numEnemiesLeft == 1) {
+            GetComponent<Text>().text = numEnemiesLeft.ToString() + " person left to encounter";
+        } else {
+            GetComponent<Text>().text = numEnemiesLeft.ToString() + " people left to encounter";
+        }
     }
 }

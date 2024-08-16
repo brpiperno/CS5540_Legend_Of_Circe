@@ -145,7 +145,7 @@ public class OdysseusBehavior : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, 10 * Time.deltaTime);
     }
  
-    private void OnDrawGizmos() {
+    /*private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackDistance);
         Gizmos.color = Color.green;
@@ -161,7 +161,7 @@ public class OdysseusBehavior : MonoBehaviour
         Debug.DrawLine(enemyEyes.position, frontRayPoint, Color.cyan);
         Debug.DrawLine(enemyEyes.position, leftRayPoint, Color.yellow);
         Debug.DrawLine(enemyEyes.position, rightRayPoint, Color.yellow);
-    }
+    }*/
 
     bool IsPlayerInClearFOV() {
         RaycastHit hit;

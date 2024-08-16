@@ -21,12 +21,12 @@ public class MenuHandlerNavigation : MonoBehaviour
     }*/
 
     public void DisplaySettingsMenu() {
-        transform.GetChild(4).gameObject.SetActive(true);
+        transform.Find("SettingsMenu").gameObject.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void HideSettingsMenu() {
-        transform.GetChild(4).gameObject.SetActive(false);
+        transform.Find("SettingsMenu").gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
 
