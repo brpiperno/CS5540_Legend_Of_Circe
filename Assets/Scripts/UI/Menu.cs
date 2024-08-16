@@ -23,7 +23,6 @@ public class Menu : MonoBehaviour
     public Camera cmr;
     public TextMeshProUGUI enemiesDefeatedCount;
 
-    public CameraSettings cameraSettings;
     private static int enemiesDefeated;
 
     public GameObject AboutTheTeamCard;
@@ -47,15 +46,9 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MouseSensitivity")) {
-            mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity");
-        }
         if (cmr == null)
         {
             cmr = Camera.main;
-        }
-        if (PlayerPrefs.HasKey("Volume")) {
-            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
         }
         if (enemiesDefeatedCount != null)
         {
@@ -111,10 +104,7 @@ public class Menu : MonoBehaviour
         mouseSensitivity = newSensitivity;
         mouseSensitivitySlider.value = newSensitivity;
         mouseSensitivityValueText.text = newSensitivity.ToString("0.0");
-        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensitivity);
-        if (cameraSettings != null) {
-            cameraSettings.UpdateSensitivity(newSensitivity);
-        }
+        PlayerPrefs.SetFloat("mouseSensitivity", newSensitivity);
         //TODO : update thirdpersoncontroller object if there is one
     }
 
@@ -124,7 +114,7 @@ public class Menu : MonoBehaviour
         volumeSlider.value = newVolume;
         volumeValueText.text = string.Format("{0:P0}", volume);
         AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.SetFloat("volume", volume);
     }
 
     public static void EnemyDefeated()

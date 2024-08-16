@@ -89,6 +89,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3394783203535382609}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9037207789290813082}
   m_SourcePrefab: {fileID: 100100000, guid: 21fb5f5b0ca9b4dc5b28835817225ffb, type: 3}
 --- !u!1 &1846656434023132898 stripped
 GameObject:
@@ -117,21 +120,24 @@ MonoBehaviour:
   - I know indeed what evil I intend to do, but stronger than all my afterthroughts
     is my futry, fury that brings upon mortals the greatest evils!
   - Hate me. But I tire of your barking bitterness.
+  - The presents of the wicked are pure poison.
   MirthDialogue:
   - I'd three times sooner go to war than suffer childbirth once.
-  - 'We must not think too much: people go mad if they think too much.'
   - Gods often contradict our fondex expectations. What we anticipate does not come
     to pass. What we don't expect some god finds a way to make it hapen. So with
     this story.
+  - 'We must not think too much: people go mad if they think too much.'
   GriefDialogue:
   - Of all creatures that can feel and think, we women are the worst treated things
-    alive
+    alive.
   - Death is the only water to wash away this dirt.
   - Who can stop grief's avalanche once it starts to roll.
   - Amongst mortals no man is happyl wealth may pour in and make one luckier than
     another, but none can happy be.
+  - Yes I know at a terrible first hand what is like to miss one's native land.
   LoveDialogue:
-  - My love for him is greater than my wisdom.
+  - How I bless you both... not here-beyond... every blessing here your father has
+    despoiled
 --- !u!114 &5084435301823844639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +167,39 @@ MonoBehaviour:
   emotionBarManager: {fileID: 0}
   currentEmotionIndicator: {fileID: 0}
 --- !u!114 &3394783203535382609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846656434023132898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cede44cbc9147a4a8460b3346790c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMoodIndex: 0
+  loveTransitions:
+  - 0.08
+  - 0.07
+  - 0.35
+  - 0.5
+  griefTransitions:
+  - 0.08
+  - 0.07
+  - 0.35
+  - 0.5
+  wrathTransitions:
+  - 0.75
+  - 0
+  - 0.2
+  - 0.05
+  mirthTransitions:
+  - 0.1
+  - 0.35
+  - 0.05
+  - 0.5
+--- !u!114 &9037207789290813082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

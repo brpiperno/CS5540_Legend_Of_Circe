@@ -30,25 +30,34 @@ public class BattleTextQueue : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*
+    
     void Update()
     {
-        //msgActiveTimer += Time.deltaTime;
-        if (msgActiveTimer >= currentDuration && queue.TryDequeue(out string msg))
+        msgActiveTimer += Time.deltaTime;
+        if (msgActiveTimer >= currentDuration)
         {
-            textfield.text = msg;
-            currentDuration = calculateDuration(msg);
+            safeDequeue();
+            currentDuration = calculateDuration(textfield.text);
             msgActiveTimer = 0.0f;
         }
     }
-    */
-
-    public void Dequeue()
+    
+    /// <summary>
+    /// Display the next item. If the next item is blank, do nothing
+    /// </summary>
+    public void safeDequeue()
     {
-        bool hasNext = queue.TryDequeue(out string result);
-        textfield.text = hasNext ? result : "";
+        if (queue.Count == 0)
+        {
+            return;
+        }
+        else if (queue.TryDequeue(out string result) && result.Length > 0)
+        {
+            textfield.text = result;
+            currentDuration = calculateDuration(textfield.text);
+            msgActiveTimer = 0.0f;
+        }
         updateButton();
-
     }
 
     /// <summary>
@@ -61,31 +70,21 @@ public class BattleTextQueue : MonoBehaviour
         if (text.Length == 0)
         {
             return;
-        } else if (resetQueue) {
+        } else if (resetQueue || textfield.text.Length == 0) {
             queue.Clear();
             queue.Enqueue(text);
-            msgActiveTimer = currentDuration; //run out the timer so that the message is displayed the nextframe
+            safeDequeue() ;
         } else
         {
             queue.Enqueue(text);
         }
-        if (textfield.text == "")
-        {
-            Dequeue();
-        }
         updateButton();
-    }
-
-    public void Enqueue(string text)
-    {
-        Enqueue(text, false);
-
     }
 
     private float calculateDuration(string text)
     {
         //average reading speed is approximately 25 characters per second
-        return Mathf.Clamp(text.Length / 25, minDuration, maxDuration);
+        return Mathf.Clamp(text.Length / 10, minDuration, maxDuration);
     }
 
     private void updateButton()

@@ -29,8 +29,8 @@ public class BattleManager : MonoBehaviour
     // Only used for displaying the denominator of the slider text
     public static int maxSliderValue = 100;
     private  List<EmotionSystem> turnOrder;
-    bool gameOver = false;
-    bool gameOverOrWon = false;
+    bool gameOver = false; //is the battle complete?
+    bool playerWon = false; //did the player win?
     //GameObject opponent;
 
     EmotionSystem toBeTarget; //The target emotion system that accepts a move (after some delay for animation, particles, etc)
@@ -58,12 +58,12 @@ public class BattleManager : MonoBehaviour
         //TODO: Enable Battle Specific UI
         //Debug.Log("BattleManager: created turn list of size " + turnOrder.Count);
         turnOrder[turnIndex].RequestNextMove();
+        ToggleMovement(false);
     }
 
     void Update() {
-        if (gameOver && Input.GetKeyDown(KeyCode.Space)) {
-            //Debug.Log("Reached line 62");
-            LevelManager.BattleLost();
+        if (gameOver && Input.GetKeyDown("space")) {
+            ReturnToOverworld();
         }
     }
 
@@ -111,7 +111,7 @@ public class BattleManager : MonoBehaviour
         }
         //increment the index, unles it is at its max,
         //in which set it back to zero and increment the round count
-        if (!gameOverOrWon) {
+        if (!gameOver) {
             turnIndex = (turnIndex == turnOrder.Count - 1) ? 0 : turnIndex + 1;
             turnOrder[turnIndex].RequestNextMove();//Ask the next person in line
         }
@@ -126,17 +126,18 @@ public class BattleManager : MonoBehaviour
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
+        gameOver = true;
         if (loser.gameObject.tag == "Player") {
-            Invoke("LoseActions", 2);
+            gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 2);
-            gameOverOrWon = true;
+            playerWon = false;
         } else if (loser.gameObject.tag == "Enemy") {
             Invoke("WinActions", 2);
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
-            gameOverOrWon = true;
+            playerWon = true;
             Menu.EnemyDefeated(); //increment the defeat count in the main menu
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
@@ -160,20 +161,31 @@ public class BattleManager : MonoBehaviour
         return (playersTeam.Contains(player)) ? opponentTeam[0] : playersTeam[0];
     }
 
-    public void WinActions() {
+    private void WinActions() {
         AudioSource.PlayClipAtPoint(winSFX, Camera.main.transform.position);
         //GameObject winText = GameObject.FindGameObjectWithTag("WinText");
         winScreen.SetActive(true);
-        Invoke("CallBattleWon", 3);
+        Invoke("ReturnToOverworld", 3);
     }
 
-    public void LoseActions() {
-        gameOverScreen.SetActive(true);
-        gameOver = true;
+    private void ReturnToOverworld() {
+        ToggleMovement(true);
+        if (playerWon)
+        {
+            Menu.LoadNextlevel();
+        }
+        else
+        {
+            Menu.LoadPreviousLevel();
+        }
     }
 
-    // Done this way because you cannot call invoke directly on LevelManager.BattleWon since it's a static method
-    void CallBattleWon() {
-        LevelManager.BattleWon();
+    private void ToggleMovement(bool enabled)
+    {
+        ThirdPersonController[] controllers = GameObject.FindObjectsOfType<ThirdPersonController>();
+        foreach (ThirdPersonController controller in controllers)
+        {
+            controller.enabled = enabled;
+        }
     }
  }
