@@ -7,8 +7,8 @@ public class PlayerMovePicker : AbstractMovePicker
 {
     public EmotionType emotionChosen = EmotionType.Grief;
     protected bool isEmotionChosen = false;
-    BattleManager battleManager;
-    VisualController visualController;
+    private BattleTextQueue battleText;
+    private VisualController visualController;
     public PotionCraftingUIManager potionCraftingUIManager;
 
     public new void Start()
@@ -23,9 +23,8 @@ public class PlayerMovePicker : AbstractMovePicker
             potionCraftingUIManager = GameObject.FindGameObjectWithTag("PotionUI").GetComponent<PotionCraftingUIManager>();
         }
         potionCraftingUIManager.UpdateUI(Inventory.getEmotionType(), Inventory.getMoveType());
-        battleManager = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
-        battleManager.spacePrompt.SetActive(false);
         //Because inventory items are static, we dont need a specific instance
+        battleText = GameObject.FindObjectOfType<BattleTextQueue>();
     }
 
     // Update is called once per frame
@@ -39,28 +38,28 @@ public class PlayerMovePicker : AbstractMovePicker
             emotionChosen = EmotionType.Grief;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            battleManager.spacePrompt.SetActive(true);
+            AskForConfirm();
         }
         else if (Input.GetKeyDown("left"))
         {
             emotionChosen = EmotionType.Love;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            battleManager.spacePrompt.SetActive(true);
+            AskForConfirm();
         }
         else if (Input.GetKeyDown("right"))
         {   
             emotionChosen = EmotionType.Wrath;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            battleManager.spacePrompt.SetActive(true);
+            AskForConfirm();
         }
         else if (Input.GetKeyDown("down"))
         {
             emotionChosen = EmotionType.Mirth;
             isEmotionChosen = true;
             visualController.updateEmotionWheelSelection(emotionChosen);
-            battleManager.spacePrompt.SetActive(true);
+            AskForConfirm();
         }
         else if (Input.GetKeyDown(KeyCode.X) && Inventory.canCraft())
         {
@@ -71,7 +70,6 @@ public class PlayerMovePicker : AbstractMovePicker
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
             visualController.RemoveHighlight();
-            battleManager.spacePrompt.SetActive(false);
             Inventory.CraftSpell();
             potionCraftingUIManager.UpdateUI(Inventory.getEmotionType(), Inventory.getMoveType());
         }
@@ -86,7 +84,6 @@ public class PlayerMovePicker : AbstractMovePicker
             isAskingForPlayInput = false;
             isEmotionChosen = false;
             visualController.setEmotionWheelVisibility(false);
-            battleManager.spacePrompt.SetActive(false);
         }
 
         
@@ -97,5 +94,10 @@ public class PlayerMovePicker : AbstractMovePicker
         //Debug.Log("PlayerMovePicker MoveRequested reached");
         visualController.setEmotionWheelVisibility(true);
         base.MoveRequested();
+    }
+
+    private void AskForConfirm()
+    {
+        battleText.Enqueue("Press 'space' to confirm.", true);
     }
 }

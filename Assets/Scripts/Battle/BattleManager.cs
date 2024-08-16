@@ -21,7 +21,6 @@ public class BattleManager : MonoBehaviour
     public int turnIndex;
     public AudioClip loseSFX;
     public AudioClip winSFX;
-    public GameObject spacePrompt;
     public GameObject winScreen;
     public GameObject gameOverScreen;
 

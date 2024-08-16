@@ -221,7 +221,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2057946110}
   - {fileID: 1481256690}
   - {fileID: 1963884144}
   - {fileID: 128314294}
@@ -685,7 +684,6 @@ MonoBehaviour:
   turnIndex: 0
   loseSFX: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   winSFX: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
-  spacePrompt: {fileID: 1495928641}
   winScreen: {fileID: 1081280927}
   gameOverScreen: {fileID: 488707473}
 --- !u!1 &488707473 stripped
@@ -1826,117 +1824,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8f7e681b7a9041b99bf3c69c778bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1495928641 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-  m_PrefabInstance: {fileID: 1554300782}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1533921760 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3113867867844517700, guid: 6550c5816839c4cd592e6728046d0f94, type: 3}
   m_PrefabInstance: {fileID: 7003727823441200468}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1554300782
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 80081402}
-    m_Modifications:
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -425
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_Name
-      value: Space prompt
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160468650511428012, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
 --- !u!1001 &1572779531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1996,7 +1888,7 @@ PrefabInstance:
     - target: {fileID: 357956093132326712, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 689628042323665157, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Name
       value: Aeaea Island
@@ -2008,7 +1900,7 @@ PrefabInstance:
     - target: {fileID: 936383703559534215, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 1382430856986062776, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2020,7 +1912,7 @@ PrefabInstance:
     - target: {fileID: 1551523464940619247, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 1638806273652503342, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2028,7 +1920,7 @@ PrefabInstance:
     - target: {fileID: 1638806273652503342, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 1641591962167636718, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2036,7 +1928,7 @@ PrefabInstance:
     - target: {fileID: 1641591962167636718, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 1853648042051167971, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2052,7 +1944,7 @@ PrefabInstance:
     - target: {fileID: 2650547781306287277, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 2847355758996935892, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2060,7 +1952,7 @@ PrefabInstance:
     - target: {fileID: 2847355758996935892, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 3207005639309355367, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2068,7 +1960,7 @@ PrefabInstance:
     - target: {fileID: 3207005639309355367, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 3354786505972501777, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2080,7 +1972,7 @@ PrefabInstance:
     - target: {fileID: 3519499508341828189, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 4167603936163161983, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2088,7 +1980,7 @@ PrefabInstance:
     - target: {fileID: 4167603936163161983, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 4382960207166345803, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2104,7 +1996,7 @@ PrefabInstance:
     - target: {fileID: 5108783976158507682, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 5552757612661719462, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2112,7 +2004,7 @@ PrefabInstance:
     - target: {fileID: 5552757612661719462, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 5675013894787849666, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2120,7 +2012,7 @@ PrefabInstance:
     - target: {fileID: 5675013894787849666, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 5892881757012482789, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2132,7 +2024,7 @@ PrefabInstance:
     - target: {fileID: 5947941152088468261, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 6053169840836391603, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2140,7 +2032,7 @@ PrefabInstance:
     - target: {fileID: 6053169840836391603, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 6515489017929419043, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2148,7 +2040,7 @@ PrefabInstance:
     - target: {fileID: 6515489017929419043, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 6710442326201768185, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2160,7 +2052,7 @@ PrefabInstance:
     - target: {fileID: 6712683239129691958, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 6810770771179512179, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2172,7 +2064,7 @@ PrefabInstance:
     - target: {fileID: 7111488338355792217, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 7117627702662205895, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2184,7 +2076,7 @@ PrefabInstance:
     - target: {fileID: 7259972261400204271, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 7278752033531329995, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2200,7 +2092,7 @@ PrefabInstance:
     - target: {fileID: 7607031443498075046, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 7615499553815196732, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2208,7 +2100,7 @@ PrefabInstance:
     - target: {fileID: 7615499553815196732, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 7621149885089684535, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2220,7 +2112,7 @@ PrefabInstance:
     - target: {fileID: 7759790557279750127, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 7819992243485715386, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2228,7 +2120,7 @@ PrefabInstance:
     - target: {fileID: 7819992243485715386, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 8133216216936683556, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2236,7 +2128,7 @@ PrefabInstance:
     - target: {fileID: 8133216216936683556, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: SystemDialoguePanel
       value: 
-      objectReference: {fileID: 1495928641}
+      objectReference: {fileID: 0}
     - target: {fileID: 8296938222351642968, guid: 108461cc563321543b016d5b25bd535f, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2631,11 +2523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b8f7e681b7a9041b99bf3c69c778bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2057946110 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1364517664488521198, guid: 2413063d46102cf499d03eb914e2783b, type: 3}
-  m_PrefabInstance: {fileID: 1554300782}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2132526581 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5802631640896579448, guid: 763f1ce1f14baa347b6d1a8bd2d78f13, type: 3}
