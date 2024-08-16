@@ -36,11 +36,12 @@ public class VisualController : MonoBehaviour, IVisualController
     public EmotionBarManager emotionBarManager;
     public Renderer currentEmotionIndicator;
 
-    public void Start() {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerAnimator = player.GetComponent<Animator>();
-        opponent = GameObject.FindGameObjectWithTag("Enemy");
-        opponentAnimator = opponent.GetComponent<Animator>();
+    public void Awake()
+    {
+        player = (player == null) ? GameObject.FindGameObjectWithTag("Player") : player;
+        playerAnimator = (playerAnimator == null) ? player.GetComponent<Animator>() : playerAnimator;
+        opponent = (opponent == null) ? GameObject.FindGameObjectWithTag("Enemy") : opponent;
+        opponentAnimator = (opponentAnimator == null) ? opponent.GetComponent<Animator>() : opponentAnimator;
     }
 
     public IEnumerator setAnimationTrigger(EmotionType emotion, MoveType moveType) {

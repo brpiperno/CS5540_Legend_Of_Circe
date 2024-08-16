@@ -61,6 +61,7 @@ public class EmotionBarManager : MonoBehaviour
             sliders[type].minValue = 0;
             sliders[type].maxValue = 100;
             sliders[type].value = 100;
+            sliders[type].interactable = false;
         }
 
         barValues.Add(EmotionType.Grief, griefSlider.transform.Find("Value").gameObject.GetComponent<Text>());

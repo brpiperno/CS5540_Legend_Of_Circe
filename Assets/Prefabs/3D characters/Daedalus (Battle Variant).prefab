@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5966492472308580298}
   - component: {fileID: 4959073442102032935}
   m_Layer: 0
-  m_Name: NPC Old Man
+  m_Name: Daedalus (Battle Variant)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

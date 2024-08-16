@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 
 //Assign this script to Circe and all NPCs
-[RequireComponent(typeof(VisualController))]
+//[RequireComponent(typeof(VisualController))]
 public class EmotionSystem : MonoBehaviour, IEmotion
 {
     public VisualController visualController;

@@ -10,39 +10,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.30332792
+      value: -76.026
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.25277507
+      value: 8.116
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.23551702
+      value: -20.23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.0720263
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.00056197407
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.9973722
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0077818446
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -0.894
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -171.739
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_Name
-      value: Odysseus
+      value: Odysseus (Battle Variant)
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       propertyPath: m_Controller
@@ -67,7 +67,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8111662369037606069}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5232581809239379333}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6135254870340865181}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6302745325169162356}
   m_SourcePrefab: {fileID: 100100000, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
+--- !u!95 &1391096038118554463 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
+  m_PrefabInstance: {fileID: 4766145205927855822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5685185408423426975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 487e640bb9060db499e30aacafa435f6, type: 3}
@@ -115,3 +129,98 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5232581809239379333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685185408423426975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4205804eb07c4103997540cc25cd2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualController: {fileID: 6302745325169162356}
+  currentEmotion: 0
+  battleManager: {fileID: 0}
+  baseStrength: 30
+  enemySpellAnimationDelay: 1.7
+  WrathDialogue:
+  - By hook or by crook this peril shall be something that we remember
+  MirthDialogue:
+  - A man who has been through bitter experiences and travelled far enjoys even his
+    sufferings after a time
+  - Few children are like their parents-- most are worse, few better
+  - Scepticism is as much the result of knowledge, as knowledge is of scepticism.
+  GriefDialogue:
+  - Of all creatures that breathe and move upon the earth, nothing is bred that is
+    weaker than man.
+  - 'Men are so quick to blame the gods: they say that gods devise their misery.
+    But they themselves- in their deparvity- deisgn grief greater than the griefs
+    that fate assigns.'
+  LoveDialogue:
+  - there is a time for many words, and there is also a time for sleep.
+  - 'Take Courage, my heart: You have been through worse than this. Be strong.'
+  - Down your brow, I run your curls, like thick hyacinth clusters full of blooms
+--- !u!114 &6135254870340865181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685185408423426975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cede44cbc9147a4a8460b3346790c53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMoodIndex: 0
+  loveTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  griefTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  wrathTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  mirthTransitions:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+--- !u!114 &6302745325169162356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685185408423426975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175f72c88c59b4ecd951a8519ad9d630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttackEffect: {fileID: 5768623405074449868, guid: f7073593e3c074489b1f5fc279c533ee, type: 3}
+  playerAttackEffectPosition: {x: -76, y: 8.2, z: 0}
+  playerAttackEffectRotation: {x: 0, y: 0, z: 0}
+  upArrow: {fileID: 0}
+  leftArrow: {fileID: 0}
+  rightArrow: {fileID: 0}
+  downArrow: {fileID: 0}
+  playerMoveSFX: {fileID: 0}
+  moveSFXPitch: 0
+  hasBlockAnimation: 0
+  player: {fileID: 0}
+  playerAnimator: {fileID: 0}
+  opponent: {fileID: 5685185408423426975}
+  opponentAnimator: {fileID: 1391096038118554463}
+  emotionBarManager: {fileID: 0}
+  currentEmotionIndicator: {fileID: 0}

@@ -33,7 +33,7 @@ public class Menu : MonoBehaviour
         volumeSlider.minValue = 0;
         volumeSlider.value = PlayerPrefs.GetFloat("volume", 1.0f);
         volumeSlider.maxValue = 1;
-        volumeValueText.text = string.Format("{0:P1}", volume);
+        volumeValueText.text = string.Format("{0:P0}", volume);
 
         mouseSensitivitySlider.minValue = 0.2f;
         mouseSensitivitySlider.maxValue = 2.0f;
