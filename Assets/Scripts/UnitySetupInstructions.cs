@@ -38,6 +38,7 @@ Grief Mushroom ingreident 2D asset from redit user Aggravating-Carob580
 Font is from https://www.fontspace.com/aiden-font-f25745
 Shield icon from reddit user Lucario523
 Constantine font from https://www.1001fonts.com/ancient-fonts.html
+Gold text for thumbnail - <a href="https://www.textstudio.com/">Font generator</a>
 */
 
 
