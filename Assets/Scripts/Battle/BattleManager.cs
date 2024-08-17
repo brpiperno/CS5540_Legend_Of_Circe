@@ -125,8 +125,8 @@ public class BattleManager : MonoBehaviour
         //end the battle
         //if the battleManager has an item held, give it to the player
         //load the previous scene if needed
-        gameOver = true;
         if (loser.gameObject.tag == "Player") {
+            gameOver = true;
             gameOverScreen.SetActive(true);
             AudioSource.PlayClipAtPoint(loseSFX, Camera.main.transform.position);
             Animator anim = loser.gameObject.GetComponent<Animator>();
@@ -138,7 +138,6 @@ public class BattleManager : MonoBehaviour
             Animator anim = loser.gameObject.GetComponent<Animator>();
             anim.SetInteger("state", 1);
             playerWon = true;
-            
         } else {
             throw new ArgumentException("Loser of the battle is neither Player nor Enemy (tag missing?).");
         }
