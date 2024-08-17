@@ -5,12 +5,13 @@ public class CameraSettings : MonoBehaviour
 {
     CinemachineFreeLook camera0;
     private static float mouseSensitivity;
+    private Menu menu;
 
     // Start is called before the first frame update
     void Start()
     {
         camera0 = gameObject.GetComponent<CinemachineFreeLook>();
-        UpdateSensitivity();
+        menu = GameObject.FindFirstObjectByType<Menu>();
     }
 
     public void UpdateSensitivity() {

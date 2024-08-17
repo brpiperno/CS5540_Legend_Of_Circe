@@ -23,6 +23,7 @@ public class Menu : MonoBehaviour
     public GameObject AboutTheTeamCard;
 
     private static int battlesLost;
+    private CameraSettings cameraSettings;
 
     private void Awake()
     {
@@ -40,14 +41,13 @@ public class Menu : MonoBehaviour
         mouseSensitivitySlider.onValueChanged.AddListener(UpdateMouseSensitivity);
 
         battlesLost = PlayerPrefs.GetInt("battlesLost", 0);
+
+        cameraSettings = GameObject.FindObjectOfType<CameraSettings>();
     }
 
     private void Start()
     {
-        if (cmr == null)
-        {
-            cmr = Camera.main;
-        }
+        cmr = (cmr == null) ? Camera.main : cmr;
         if (battlesLostText != null)
         {
             battlesLostText.text = "Confrontations\nlost: " + battlesLost.ToString();
@@ -104,6 +104,10 @@ public class Menu : MonoBehaviour
         mouseSensitivitySlider.value = newSensitivity;
         mouseSensitivityValueText.text = newSensitivity.ToString("0.0");
         PlayerPrefs.SetFloat("mouseSensitivity", newSensitivity);
+        if (cameraSettings != null)
+        {
+            cameraSettings.UpdateSensitivity();
+        }
     }
 
     public void UpdateVolume(float newVolume)

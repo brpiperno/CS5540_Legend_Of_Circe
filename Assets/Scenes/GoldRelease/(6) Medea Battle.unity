@@ -1619,6 +1619,10 @@ PrefabInstance:
       value: Medea
       objectReference: {fileID: 0}
     - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
+      propertyPath: baseStrength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184410549491925017, guid: 2e95320517ee6424d87606d02ec3f35e, type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 427306908}
@@ -2487,7 +2491,7 @@ PrefabInstance:
       objectReference: {fileID: 783180820}
     - target: {fileID: 2427902651307771653, guid: 6fa9d8664494c1c46a3dbbcef020569d, type: 3}
       propertyPath: baseStrength
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2427902651307771653, guid: 6fa9d8664494c1c46a3dbbcef020569d, type: 3}
       propertyPath: battleManager
