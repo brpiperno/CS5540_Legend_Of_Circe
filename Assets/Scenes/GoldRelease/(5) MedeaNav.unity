@@ -1261,7 +1261,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A princess seeks your blessings
+  m_Text: 'Daedalus, prisoner to your sister Pasiphae, returns to Crete.
+
+    A princess
+    comes ashore seeking your blessings'
 --- !u!222 &1882114805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2051,7 +2054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 653544044947741640, guid: 32a47040c1f80fe40b5a2a85f2b3612b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 653544044947741640, guid: 32a47040c1f80fe40b5a2a85f2b3612b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2313,7 +2316,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246581827901424416, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
       propertyPath: m_Volume
-      value: 0.079
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 448874169248937251, guid: e4180551425d4da49b1d0e10329f9354, type: 3}
       propertyPath: m_LocalPosition.x

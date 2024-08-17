@@ -53,6 +53,9 @@ public class Menu : MonoBehaviour
             battlesLostText.text = "Confrontations\nlost: " + battlesLost.ToString();
         }
         mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity", 1.0f);
+        isPaused = false;
+        mouseSensitivitySlider.value = mouseSensitivity;
+        volumeSlider.value = volume;
     }
 
     void Update()
@@ -60,6 +63,10 @@ public class Menu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
+        }
+        if (isPaused && !pauseMenu.activeInHierarchy)
+        {
+            isPaused = false;
         }
     }
 
