@@ -1,8 +1,10 @@
 # CS5540 Legend of Circe
 Final Project for CS 5540: A turn based RPG about Circe, Queen of Sorcery
 <br/>
-A game by Gracie Richards and Ben Piperno. Playable here: https://play.unity.com/en/games/59926476-2c55-4d0a-b1e3-f465d07d7c27/legend-of-circe-gold-release
+A game by Gracie Richards and Ben Piperno. 
 
+Playable here: https://play.unity.com/en/games/59926476-2c55-4d0a-b1e3-f465d07d7c27/legend-of-circe-gold-release
+Trailer here: https://youtu.be/N4JDAe0zi24?si=PHyzMVdpY_OukYpy
 <br/>
 
 Play as Circe, the legendary witch from Greek mythology, as she deals with her exile to the island of Aeaea. Gather ingredients and combine them to craft magical potions that you can use in battle. Decide the optimal emotion to express each turn to maximize the damage done against your opponent’s emotion levels. Practice your magic and sway the visitors to your island to help you on your quest!
