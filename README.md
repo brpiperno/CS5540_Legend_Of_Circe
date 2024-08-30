@@ -22,6 +22,7 @@ Features:
 <br/>
 13 possible potions that can be crafted from different combinations of natural resources, each one having a unique effect in battle<br/>
 A complete turn-based battle mechanic<br/>
+A finite state machine to determine the opponent's next move<br/>
 A system of emotions that are weak to some emotions and strong against others<br/>
 Varied dialogue that depends on which emotion you choose<br/>
 One of the NPCs patrolling between set points and following Circe when she enters his field of view<br/>
