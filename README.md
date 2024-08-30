@@ -11,11 +11,11 @@ Play as Circe, the legendary witch from Greek mythology, as she deals with her e
 Based on the hit novel by Madeline Miller
 <br/>
 
-## Controls:
+## Controls
 Use the arrow keys or WASD to move around, and move the mouse to control the camera. Go to the settings menu to set the mouse sensitivity.
 <br/>
 
-## Features:
+## Features
 - 13 possible potions that can be crafted from different combinations of natural resources, each one having a unique effect in battle
 - A complete turn-based battle mechanic
 - A finite state machine to determine the opponent's next move
