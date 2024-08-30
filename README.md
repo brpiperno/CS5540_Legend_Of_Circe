@@ -4,6 +4,7 @@ Final Project for CS 5540: A turn based RPG about Circe, Queen of Sorcery
 A game by Gracie Richards and Ben Piperno. 
 
 Playable here: https://play.unity.com/en/games/59926476-2c55-4d0a-b1e3-f465d07d7c27/legend-of-circe-gold-release
+
 Trailer here: https://youtu.be/N4JDAe0zi24?si=PHyzMVdpY_OukYpy
 <br/>
 
